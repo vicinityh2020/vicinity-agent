@@ -14,7 +14,16 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <restlet.version>2.3.9</restlet.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>http://maven.restlet.com</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -28,7 +37,27 @@
             <version>20160212</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.jackson</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.servlet</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.ssl</artifactId>
+            <version>2.1.7</version>
+        </dependency>
     </dependencies>
 
 </project>

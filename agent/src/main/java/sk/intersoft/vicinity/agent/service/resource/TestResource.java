@@ -4,6 +4,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
 public class TestResource extends ServerResource {
+
     @Get("txt")
     public String doSomeGet() throws Exception {
         System.out.println("DO GET");
