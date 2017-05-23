@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="agent" />
+        <module name="rest-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

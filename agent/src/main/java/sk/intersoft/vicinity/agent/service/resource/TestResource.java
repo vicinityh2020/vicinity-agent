@@ -8,7 +8,7 @@ public class TestResource extends ServerResource {
     public String doSomeGet() throws Exception {
         System.out.println("DO GET");
         System.out.println("REQ HEADERS: "+getRequest().getHeaders());
-        return "to GET return: ["+getAttribute("x")+"]";
+        return "AGENT to GET return: ["+getAttribute("x")+"]";
     }
 
 }
