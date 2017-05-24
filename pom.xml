@@ -10,6 +10,8 @@
     <modules>
         <module>agent</module>
         <module>rest-client</module>
+        <module>utils</module>
+        <module>adapter</module>
     </modules>
     <artifactId>vicinity-agent</artifactId>
     <version>1.0-SNAPSHOT</version>
