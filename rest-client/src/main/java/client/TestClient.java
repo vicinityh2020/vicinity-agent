@@ -31,7 +31,7 @@ public class TestClient {
         System.out.println("simple get: "+client.get(ENDPOINT+"alive/kokot"));
 
         System.out.println("TEST GET OBJ PROPS: ");
-        System.out.println("CNT: "+client.get(ENDPOINT + "objects/001/properties/PowerConsumption"));
+        System.out.println("CNT: "+client.get(ENDPOINT + "objects/002/properties/018BD53D:Brightness"));
 
 
     }
