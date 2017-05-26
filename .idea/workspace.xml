@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsslutils_jsslutils_1_0_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_restlet_jee_org_restlet_ext_ssl_2_1_7.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" afterPath="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-client/pom.xml" afterPath="$PROJECT_DIR$/rest-client/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-client/rest-client.iml" afterPath="$PROJECT_DIR$/rest-client/rest-client.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vicinity-agent.iws" />
@@ -27,36 +30,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="2025">
-              <caret line="62" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestClient.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TestClient.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="720">
-              <caret line="33" column="100" selection-start-line="33" selection-start-column="100" selection-end-line="33" selection-end-column="100" />
+            <state vertical-scroll-proportion="0.7891683" vertical-offset="672" max-vertical-offset="1485">
+              <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1009#1010#0" expanded="true" />
+                <element signature="e#1069#1070#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServiceResponse.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/response/ServiceResponse.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rest-client/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1245">
+              <caret line="59" column="24" selection-start-line="55" selection-start-column="27" selection-end-line="59" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1495799322198" expanded="true" signature="1906:2097" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CERTHSmartHomeClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHSmartHomeClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="690">
+              <caret line="53" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/RESTClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="900">
-              <caret line="27" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -105,10 +110,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AgentConfig.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AgentConfig.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44291338" vertical-offset="0" max-vertical-offset="508">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
               <caret line="15" column="73" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -161,7 +166,6 @@
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/test/TrustingSslContextFactory.java" />
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/test/TrustEveryOneManager.java" />
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/test/UnsafeSSLHelper.java" />
-        <option value="$PROJECT_DIR$/rest-client/pom.xml" />
         <option value="$PROJECT_DIR$/utils/pom.xml" />
         <option value="$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHClient.java" />
         <option value="$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHSmartHomeClient.java" />
@@ -183,8 +187,9 @@
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/RESTClient.java" />
         <option value="$PROJECT_DIR$/adapter/src/test/java/sk/intersoft/vicinity/adapter/certh/TestCERTHAdapter.java" />
         <option value="$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHLinksmartAdapter.java" />
-        <option value="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java" />
+        <option value="$PROJECT_DIR$/rest-client/pom.xml" />
+        <option value="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
       </list>
     </option>
   </component>
@@ -1146,7 +1151,11 @@
       <created>1495782102980</created>
       <updated>1495782102980</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="configuration update">
+      <created>1495785524444</created>
+      <updated>1495785524445</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1167,6 +1176,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973261" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1175,7 +1185,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1198,7 +1207,8 @@
     <MESSAGE value="upadted project infrastructure, separated agents and adapters, agent is now generic module working with specific adapter. Added AgentConfig for VICINITY/Infrastructure object id mapping and configuring agent adapter implementation. Made adapter as standalone service." />
     <MESSAGE value="upadted project infrastructure, separated agents and adapters, agent is now generic module working with specific adapter. Added AgentConfig for VICINITY/Infrastructure object id mapping and configuring agent adapter implementation. Made adapter as standalone service. Implemented AgentAdapter interface to define Adapter API. Implemented first method to get properties of the object. Implemented adapter prototype for CERTH SmartHome infrastructure." />
     <MESSAGE value="added CERTH LinkSmart adapter handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="added CERTH LinkSmart adapter handler" />
+    <MESSAGE value="configuration update" />
+    <option name="LAST_COMMIT_MESSAGE" value="configuration update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,7 +1240,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="1245">
           <caret line="76" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1495799322198" expanded="true" signature="1906:2097" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1248,6 +1260,8 @@
           <caret line="84" column="217" selection-start-line="84" selection-start-column="217" selection-end-line="84" selection-end-column="217" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1069#1070#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1308,7 +1322,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="1245">
           <caret line="38" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1495799322198" expanded="true" signature="1906:2097" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1326,6 +1342,8 @@
           <caret line="84" column="217" selection-start-line="84" selection-start-column="217" selection-end-line="84" selection-end-column="217" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1069#1070#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1464,24 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest-client/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="706" max-vertical-offset="1245">
-          <caret line="76" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHSmartHomeClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/src/main/java/sk/intersoft/vicinity/agent/utils/RESTUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
@@ -1552,14 +1552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/RESTClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="900">
-          <caret line="27" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHSmartHomeAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1065">
@@ -1588,6 +1580,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="15" column="73" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
@@ -1596,24 +1600,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java">
+    <entry file="file://$PROJECT_DIR$/adapter/src/main/java/sk/intersoft/vicinity/adapter/certh/CERTHSmartHomeClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="720">
-          <caret line="33" column="100" selection-start-line="33" selection-start-column="100" selection-end-line="33" selection-end-column="100" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="690">
+          <caret line="53" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/RESTClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="900">
+          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rest-client/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1245">
+          <caret line="59" column="24" selection-start-line="55" selection-start-column="27" selection-end-line="59" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1495799322198" expanded="true" signature="1906:2097" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java">
+    <entry file="file://$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44291338" vertical-offset="0" max-vertical-offset="508">
-          <caret line="15" column="73" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.7891683" vertical-offset="672" max-vertical-offset="1485">
+          <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1069#1070#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -32,8 +32,6 @@
     <orderEntry type="library" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.3.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
     <orderEntry type="library" name="Maven: org.restlet.jee:org.restlet.ext.servlet:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: org.restlet.jee:org.restlet.ext.ssl:2.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.jsslutils:jsslutils:1.0.5" level="project" />
   </component>
 </module>
 
