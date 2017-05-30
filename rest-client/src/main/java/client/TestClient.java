@@ -87,7 +87,8 @@ public class TestClient {
 
     public static void main(String[] args) throws Exception {
         TestClient c = new TestClient();
-        c.testLogin();
+//        c.testLogin();
+        c.test();
     }
 
 }
