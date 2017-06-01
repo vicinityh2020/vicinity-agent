@@ -2,7 +2,8 @@ package sk.intersoft.vicinity.agent.gateway;
 
 import org.restlet.data.ChallengeScheme;
 import org.restlet.resource.ClientResource;
-import sk.intersoft.vicinity.agent.config.AgentConfig;
+import sk.intersoft.vicinity.agent.config.NewAgentConfig;
+import sk.intersoft.vicinity.agent.config.ObjectConfig;
 
 import java.util.Map;
 
@@ -28,12 +29,12 @@ public class GatewayAPIClient {
     public static void login(String service){
         try{
             System.out.println("LOGGING DEVICES");
-            for (Map.Entry<String, String> entry : AgentConfig.deviceUUID2Infrastructure.entrySet()){
-                String deviceId = entry.getKey();
-                System.out.println("LOGGING : "+deviceId);
+            for (Map.Entry<String, ObjectConfig> entry : NewAgentConfig.objects.entrySet()){
+                String oid = entry.getKey();
+                System.out.println("LOGGING : "+oid);
 
                 ClientResource resource = new ClientResource(ENDPOINT+"/objects/"+service);
-                resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, deviceId, deviceId);
+                resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, oid, oid);
 
                 resource.get();
                 System.out.println("> STATUS: "+resource.getStatus());
@@ -64,6 +65,25 @@ public class GatewayAPIClient {
             loginResource.get();
             System.out.println("> STATUS: "+loginResource.getStatus());
             System.out.println("> RESPONSE: "+loginResource.getResponse().getEntity().getText());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void logout(String username, String password){
+        try{
+            System.out.println("LOGGING OFF ");
+            System.out.println("AS: "+username + " / "+password);
+
+            System.out.println("LOGOUT FIRST: ");
+            ClientResource logoutResource = new ClientResource(ENDPOINT+"/objects/logout");
+            logoutResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
+            logoutResource.get();
+            System.out.println("> STATUS: "+logoutResource.getStatus());
+            System.out.println("> RESPONSE: "+logoutResource.getResponse().getEntity().getText());
+
         }
         catch(Exception e){
             e.printStackTrace();

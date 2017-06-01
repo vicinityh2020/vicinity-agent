@@ -24,6 +24,7 @@ public class NewAgentConfig {
     public static Map<String, ObjectConfig> objects = new HashMap<String, ObjectConfig>();
 
 
+
     public static String objectInfrastructureId(String oid) {
         ObjectConfig object = objects.get(oid);
         if(object != null) return object.infrastructureId;

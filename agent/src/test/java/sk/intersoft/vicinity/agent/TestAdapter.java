@@ -1,7 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
 
-import sk.intersoft.vicinity.agent.adapter.Adapter;
+import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.config.NewAgentConfig;
 
 import java.io.File;
@@ -12,11 +12,13 @@ public class TestAdapter {
         System.out.println("CONFIG : ");
         NewAgentConfig.show();
 
-        Adapter adapter = new Adapter(NewAgentConfig.adapterEndpoint);
+        AgentAdapter adapter = new AgentAdapter(NewAgentConfig.adapterEndpoint);
+
 
         String oid = "0d485748-cf2a-450c-bcf6-02ac1cb39a2d";
         String iid = NewAgentConfig.objectInfrastructureId(oid);
         adapter.get("/objects/"+iid+"/properties/PowerConsumption");
+        adapter.get("/objects/0D485748-CF2A-450C-BCF6-02AC1CB39A2D:6/properties/PowerConsumption");
 
     }
 
