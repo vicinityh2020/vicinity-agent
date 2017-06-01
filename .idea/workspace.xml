@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/agent/bin/agent-config-gorenje.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectGetPropertyResource.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" afterPath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" afterPath="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/bin/agent-config.json" afterPath="$PROJECT_DIR$/agent/bin/agent-config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/bin/run.sh" afterPath="$PROJECT_DIR$/agent/bin/run.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -64,8 +64,8 @@
       <file leaf-file-name="run.sh" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent/bin/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="221">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="116" />
+            <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="221">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -93,41 +93,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AgentConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java">
+      <file leaf-file-name="AgentAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1411">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="1734">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AgentComponent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="357">
-              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentApplication.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AgentApplication.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="816">
-              <caret line="12" column="86" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="748">
+              <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestAgent.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ObjectActionResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="901">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestAgent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4037037" vertical-offset="54" max-vertical-offset="1139">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1241">
+              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -146,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/TestResource.java" />
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/test/Kokot.java" />
@@ -185,18 +184,19 @@
         <option value="$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/ObjectConfig.java" />
         <option value="$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/NewAgentConfig.java" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertiesResource.java" />
-        <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java" />
         <option value="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAdapter.java" />
         <option value="$PROJECT_DIR$/agent/pom.xml" />
-        <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
         <option value="$PROJECT_DIR$/agent/bin/agent-config.json" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java" />
-        <option value="$PROJECT_DIR$/agent/bin/run.sh" />
         <option value="$PROJECT_DIR$/agent/bin/agent-config-gorenje.json" />
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
+        <option value="$PROJECT_DIR$/agent/bin/run.sh" />
+        <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" />
         <option value="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" />
+        <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java" />
+        <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
       </list>
     </option>
   </component>
@@ -819,11 +819,11 @@
       <recent name="$PROJECT_DIR$/agent/src/main/webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sk.intersoft.vicinity.agent.service.resource" />
       <recent name="sk.intersoft.vicinity.agent.config" />
       <recent name="sk.intersoft.vicinity.adapter" />
       <recent name="sk.intersoft.vicinity.adapter.certh" />
       <recent name="sk.intersoft.vicinity.agent.service.response" />
-      <recent name="sk.intersoft.vicinity.agent.service.resource" />
     </key>
   </component>
   <component name="RunManager" selected="Application.TestAgent">
@@ -1160,7 +1160,11 @@
       <created>1496315817207</created>
       <updated>1496315817207</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="gorenje update">
+      <created>1496322973735</created>
+      <updated>1496322973735</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1219,7 +1223,8 @@
     <MESSAGE value="local notebook checkout" />
     <MESSAGE value="external config, dynamic reconfiguration introduced" />
     <MESSAGE value="added external configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="added external configuration" />
+    <MESSAGE value="gorenje update" />
+    <option name="LAST_COMMIT_MESSAGE" value="gorenje update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1231,13 +1236,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/TestResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="315">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1920">
@@ -1489,7 +1487,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java">
+    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectGetPropertyResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="935">
           <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
@@ -1533,14 +1531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="569" max-vertical-offset="1309">
-          <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/AgentConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="1411">
@@ -1553,14 +1543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <caret line="12" column="86" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -1580,14 +1562,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent/bin/agent-config-gorenje.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1619,16 +1593,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agent/bin/run.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="221">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="116" />
+        <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="221">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/bin/agent-config-gorenje.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="1734">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4037037" vertical-offset="54" max-vertical-offset="1139">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1241">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="901">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21518987" vertical-offset="0" max-vertical-offset="748">
+          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
           <folding />
         </state>
       </provider>

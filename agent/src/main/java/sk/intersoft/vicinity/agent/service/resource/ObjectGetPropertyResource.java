@@ -7,7 +7,7 @@ import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.response.ServiceResponse;
 
-public class ObjectPropertyResource extends ServerResource {
+public class ObjectGetPropertyResource extends ServerResource {
 
     private static String OBJECT_ID = "oid";
     private static String PROPERTY_ID = "pid";

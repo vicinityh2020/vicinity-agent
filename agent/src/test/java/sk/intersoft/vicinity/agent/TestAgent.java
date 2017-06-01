@@ -30,18 +30,24 @@ public class TestAgent {
     public void callProperty() throws Exception {
         login();
         try{
-//            String oid = "0D485748-CF2A-450C-BCF6-02AC1CB39A2D".toLowerCase();
-//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/PowerConsumption";
+            String oid = "0D485748-CF2A-450C-BCF6-02AC1CB39A2D".toLowerCase();
+
+
+//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/DeviceStatus";
 //            System.out.println("GET PROPERTY: "+endpoint);
 
-            String oid = "123";
-            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/123";
-            System.out.println("GET PROPERTY: "+endpoint);
+            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
+            System.out.println("ACTION ENDPOINT: "+endpoint);
+
+//            String oid = "123";
+//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/123";
+//            System.out.println("GET PROPERTY: "+endpoint);
 
 
             ClientResource resource = new ClientResource(endpoint);
             resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, LOGIN, PASSWORD);
-            resource.get();
+//            resource.get();
+            resource.post("{\"x\": \"y\"}");
             System.out.println("> STATUS: "+resource.getStatus());
             System.out.println("> RESPONSE: " + resource.getResponse().getEntity().getText());
 
