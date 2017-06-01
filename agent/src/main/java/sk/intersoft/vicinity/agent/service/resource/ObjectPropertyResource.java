@@ -1,14 +1,11 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
-import sk.intersoft.vicinity.agent.config.NewAgentConfig;
+import sk.intersoft.vicinity.agent.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.response.ServiceResponse;
-
-import java.util.logging.Logger;
 
 public class ObjectPropertyResource extends ServerResource {
 
@@ -20,7 +17,7 @@ public class ObjectPropertyResource extends ServerResource {
         try{
             String oid = getAttribute(OBJECT_ID);
             String pid = getAttribute(PROPERTY_ID);
-            String iid = NewAgentConfig.objectInfrastructureId(oid);
+            String iid = AgentConfig.objectInfrastructureId(oid);
 
             getLogger().info("GETTING PROPERTY VALUES FOR: ["+oid+"]["+pid+"]["+iid+"]");
 

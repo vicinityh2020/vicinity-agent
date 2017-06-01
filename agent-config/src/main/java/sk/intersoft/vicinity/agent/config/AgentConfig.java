@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class NewAgentConfig {
-    private final static Logger LOGGER = Logger.getLogger(NewAgentConfig.class.getName());
+public class AgentConfig {
+    private final static Logger LOGGER = Logger.getLogger(AgentConfig.class.getName());
 
     private static final String GATEWAY_API_ENDPOINT_KEY = "gateway-api-endpoint";
     private static final String ADAPTER_ENDPOINT_KEY = "adapter-endpoint";

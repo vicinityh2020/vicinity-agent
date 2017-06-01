@@ -18,11 +18,11 @@ public class TestConfig {
 
     public void test() throws Exception {
         System.out.println("CONFIG BEFORE: ");
-        NewAgentConfig.show();
+        AgentConfig.show();
 
-        NewAgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-config.json");
+        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-config.json");
         System.out.println("CONFIG AFTER: ");
-        NewAgentConfig.show();
+        AgentConfig.show();
 
     }
     public static void main(String[] args) throws Exception {

@@ -2,7 +2,7 @@ package sk.intersoft.vicinity.agent.gateway;
 
 import org.restlet.data.ChallengeScheme;
 import org.restlet.resource.ClientResource;
-import sk.intersoft.vicinity.agent.config.NewAgentConfig;
+import sk.intersoft.vicinity.agent.config.AgentConfig;
 import sk.intersoft.vicinity.agent.config.ObjectConfig;
 
 import java.util.Map;
@@ -29,7 +29,7 @@ public class GatewayAPIClient {
     public static void login(String service){
         try{
             System.out.println("LOGGING DEVICES");
-            for (Map.Entry<String, ObjectConfig> entry : NewAgentConfig.objects.entrySet()){
+            for (Map.Entry<String, ObjectConfig> entry : AgentConfig.objects.entrySet()){
                 String oid = entry.getKey();
                 System.out.println("LOGGING : "+oid);
 
