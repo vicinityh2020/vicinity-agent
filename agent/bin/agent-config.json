@@ -4,7 +4,7 @@
         "login": "test_vcnt0",
         "password": "0VicinityTestUser0"
     },
-    "gateway-api-endpoint": "some GTW endpoint",
+    "gateway-api-endpoint": "http://160.40.206.1:8181/api",
     "adapter-endpoint": "http://160.40.51.227:8091/Get_Obj_Prop_Adapter-0.0.1-SNAPSHOT",
 
     "objects": [

@@ -8,12 +8,11 @@ import sk.intersoft.vicinity.agent.config.ObjectConfig;
 import java.util.Map;
 
 public class GatewayAPIClient {
-    static String ENDPOINT =  "http://160.40.206.1:8181/api";
 
     public static void objects(){
         try{
             System.out.println("GETTING OBJECTS");
-            ClientResource resource = new ClientResource(ENDPOINT+"/objects");
+            ClientResource resource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects");
             resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, "test_vcnt0", "0VicinityTestUser0");
 
             resource.get();
@@ -33,7 +32,7 @@ public class GatewayAPIClient {
                 String oid = entry.getKey();
                 System.out.println("LOGGING : "+oid);
 
-                ClientResource resource = new ClientResource(ENDPOINT+"/objects/"+service);
+                ClientResource resource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/"+service);
                 resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, oid, oid);
 
                 resource.get();
@@ -53,14 +52,14 @@ public class GatewayAPIClient {
             System.out.println("LOGGING AS: "+username + " / "+password);
 
             System.out.println("LOGOUT FIRST: ");
-            ClientResource logoutResource = new ClientResource(ENDPOINT+"/objects/logout");
+            ClientResource logoutResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/logout");
             logoutResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
             logoutResource.get();
             System.out.println("> STATUS: "+logoutResource.getStatus());
             System.out.println("> RESPONSE: "+logoutResource.getResponse().getEntity().getText());
 
             System.out.println("THEN LOGIN: ");
-            ClientResource loginResource = new ClientResource(ENDPOINT+"/objects/login");
+            ClientResource loginResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/login");
             loginResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
             loginResource.get();
             System.out.println("> STATUS: "+loginResource.getStatus());
@@ -78,7 +77,7 @@ public class GatewayAPIClient {
             System.out.println("AS: "+username + " / "+password);
 
             System.out.println("LOGOUT FIRST: ");
-            ClientResource logoutResource = new ClientResource(ENDPOINT+"/objects/logout");
+            ClientResource logoutResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/logout");
             logoutResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
             logoutResource.get();
             System.out.println("> STATUS: "+logoutResource.getStatus());
