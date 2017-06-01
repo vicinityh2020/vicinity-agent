@@ -44,7 +44,8 @@ public class TestClient {
         System.out.println("simple get: "+client.get(ENDPOINT+"alive/kokot"));
 
         System.out.println("TEST GET OBJ PROPS: ");
-        System.out.println("CNT: "+client.get(ENDPOINT + "objects/002/properties/018BD53D:Brightness"));
+        System.out.println("CNT: "+client.get(ENDPOINT + "objects/D77EC6B0-F039-4734-925E-0A90CE7D1B5B:0184A96B:CO2/properties/0184A96B:CO2Level"));
+        System.out.println("CNT: "+client.get(ENDPOINT + "objects/0D485748-CF2A-450C-BCF6-02AC1CB39A2D:6/properties/PowerConsumption"));
 
 
     }

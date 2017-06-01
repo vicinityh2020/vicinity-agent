@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="adapter" />
         <module name="agent" />
+        <module name="agent-config" />
         <module name="rest-client" />
         <module name="utils" />
       </profile>
@@ -31,6 +32,7 @@
     <bytecodeTargetLevel>
       <module name="adapter" target="1.8" />
       <module name="agent" target="1.8" />
+      <module name="agent-config" target="1.8" />
       <module name="rest-client" target="1.8" />
       <module name="utils" target="1.8" />
     </bytecodeTargetLevel>

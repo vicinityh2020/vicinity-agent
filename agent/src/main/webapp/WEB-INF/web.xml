@@ -21,4 +21,11 @@
         <servlet-name>AgentComponent</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>
+            sk.intersoft.vicinity.agent.service.StartStop
+        </listener-class>
+    </listener>
+
 </web-app>
