@@ -47,6 +47,7 @@ public class AgentAdapter {
 //            return content;
 
 
+            LOGGER.info("agent call endpoint: " + callEndpoint);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 

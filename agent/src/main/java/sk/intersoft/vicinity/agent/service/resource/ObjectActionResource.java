@@ -15,21 +15,21 @@ public class ObjectActionResource extends ServerResource {
     private static String ACTION_ID = "aid";
 
     @Post()
-    public String getPropertyValue(Representation entity)  {
+    public String executeAction(Representation entity)  {
         try{
             String oid = getAttribute(OBJECT_ID);
-            String pid = getAttribute(ACTION_ID);
+            String aid = getAttribute(ACTION_ID);
             String iid = AgentConfig.objectInfrastructureId(oid);
 
             JSONObject input = new JSONObject(entity.getText());
 
-            getLogger().info("EXECUTING ACTION FOR: ["+oid+"]["+pid+"]["+iid+"]");
+            getLogger().info("EXECUTING ACTION FOR: ["+oid+"]["+aid+"]["+iid+"]");
             getLogger().info("INPUT: \n"+input.toString(2));
 
             if(iid != null) {
                 AgentAdapter adapter = AgentAdapter.getInstance();
 
-                String endpoint = "/objects/"+iid+"/actions/"+pid;
+                String endpoint = "/objects/"+iid+"/actions/"+aid;
                 getLogger().info("ADAPTER ENDPOINT: \n"+endpoint);
 
                 String adapterResponse = adapter.post(endpoint, input.toString());

@@ -1,0 +1,20 @@
+{
+    "auth": {
+        "type": "basic-auth",
+        "login": "test_vcnt0",
+        "password": "0VicinityTestUser0"
+    },
+    "gateway-api-endpoint": "http://160.40.206.1:8181/api",
+    "adapter-endpoint": "http://160.40.51.227:8091/SiteWhereAdapter-0.0.1-SNAPSHOT",
+
+    "objects": [
+        {
+            "oid": "0d485748-cf2a-450c-bcf6-02ac1cb39a2d",
+            "infrastructure-id": "0D485748-CF2A-450C-BCF6-02AC1CB39A2D:6",
+        },
+        {
+            "oid": "d77ec6b0-f039-4734-925e-0a90ce7d1b5b",
+            "infrastructure-id": "D77EC6B0-F039-4734-925E-0A90CE7D1B5B:0184A96B:CO2",
+        }
+    ]
+}
