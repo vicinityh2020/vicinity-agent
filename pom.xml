@@ -13,6 +13,7 @@
         <module>utils</module>
         <module>adapter</module>
         <module>agent-config</module>
+        <module>adapter-aau</module>
     </modules>
     <artifactId>vicinity-agent</artifactId>
     <version>1.0-SNAPSHOT</version>
