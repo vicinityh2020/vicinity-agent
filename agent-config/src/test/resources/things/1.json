@@ -1,0 +1,84 @@
+[
+
+{
+	"oid": "thermometer-1",
+	"properties": [{
+		"pid": "temp1",
+		"monitors": "AmbientTemperature",
+		"type": "SomeProperty",
+		"output": {
+			"units": "Celsius",
+			"datatype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "read:http://thermometer-1.endpoint/property-1",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+      			"href": "write: http://thermometer-1.endpoint/property-1",
+      			"mediatype": "application/json"
+      		}]
+
+	}],
+	"actions": [{
+		"type": "Action",
+		"aid": "switch",
+		"affects": "OnOff",
+		"read_links": [{
+			"href": "read: act http://thermometer-1.endpoint/property-1",
+			"mediatype": "application/json"
+		}],
+		"write_links": {
+      			"href": "write: act http://thermometer-1.endpoint/property-1",
+      			"mediatype": "application/json"
+      		},
+		"input": {
+			"units": "Adimensional",
+			"datatype": "boolean"
+		}
+	}]
+},
+
+{
+	"oid": "occupancy-1",
+	"type": "Thermometer",
+	"properties": [{
+		"pid": "occ1",
+		"type": "AnotherProp",
+		"monitors": "Motion",
+		"output": {
+			"units": "MotionUnit",
+			"datatype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "r http://occupancy-1.endpoint/property-1",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "w http://occupancy-1.endpoint/property-1",
+			"mediatype": "application/json"
+		}]
+
+	}],
+	"actions": [{
+		"type": "Action",
+		"aid": "switch",
+		"affects": "OnOff",
+		"read_links": [{
+			"href": "r a occupancy-1.endpoint/action-1",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "w a occupancy-1.endpoint/action-1",
+			"mediatype": "application/json"
+		}],
+		"input": {
+			"units": "Adimensional",
+			"datatype": "boolean"
+		}
+	}]
+}
+
+]
