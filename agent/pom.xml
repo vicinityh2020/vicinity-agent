@@ -11,7 +11,7 @@
 
     <artifactId>agent</artifactId>
     <name>Agent</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 
     <properties>
@@ -106,7 +106,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>fully.qualified.MainClass</mainClass>
+                            <mainClass>sk.intersoft.vicinity.agent.service.AgentServer</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

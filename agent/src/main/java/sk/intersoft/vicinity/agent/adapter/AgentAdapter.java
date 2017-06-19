@@ -5,6 +5,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -78,10 +79,52 @@ public class AgentAdapter {
 
 
 
+            LOGGER.info("POST ENDPOINT: "+callEndpoint);
+            LOGGER.info("POST DATA: "+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
             HttpPost request = new HttpPost(callEndpoint);
+
+            request.addHeader("Accept", "application/json");
+            request.addHeader("Content-Type", "application/json");
+
+            StringEntity data = new StringEntity(payload);
+
+            request.setEntity(data);
+
+            HttpResponse response = client.execute(request);
+
+
+            int status = response.getStatusLine().getStatusCode();
+            String content = EntityUtils.toString(response.getEntity());
+
+            HttpEntity entity = response.getEntity();
+            LOGGER.info("agent action status: " + status);
+            LOGGER.info("agent action entity: " + content);
+
+            return content;
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public String put(String path, String payload) throws Exception {
+        try{
+            String callEndpoint = endpoint + path;
+
+
+
+            LOGGER.info("POST ENDPOINT: "+callEndpoint);
+            LOGGER.info("POST DATA: "+payload);
+            HttpClient client = HttpClientBuilder.create()
+                    .build();
+
+            HttpPut request = new HttpPut(callEndpoint);
 
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");

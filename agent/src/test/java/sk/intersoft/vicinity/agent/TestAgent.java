@@ -45,7 +45,6 @@ public class TestAgent {
             System.out.println("GET PROPERTY: "+endpoint);
 
 
-
 //            ClientResource resource = new ClientResource(endpoint);
 //            resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, LOGIN, PASSWORD);
 //            resource.get();

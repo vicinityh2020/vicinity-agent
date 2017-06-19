@@ -42,4 +42,11 @@ public class AgentApplication extends Application {
         return guard;
     }
 
+    @Override
+    public synchronized void stop() throws Exception {
+        System.out.println("stopping app");
+        super.stop();
+    }
+
+
 }
