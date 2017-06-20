@@ -11,9 +11,7 @@
         <module>agent</module>
         <module>rest-client</module>
         <module>utils</module>
-        <module>adapter</module>
         <module>agent-config</module>
-        <module>adapter-aau</module>
         <module>testing-adapter</module>
     </modules>
     <artifactId>vicinity-agent</artifactId>

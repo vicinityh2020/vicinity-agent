@@ -23,8 +23,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="aau-adapter" />
-        <module name="adapter" />
-        <module name="adapter-aau" />
         <module name="agent" />
         <module name="agent-config" />
         <module name="rest-client" />

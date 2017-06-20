@@ -12,6 +12,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/aau-adapter/pom.xml" />
+        <option value="$PROJECT_DIR$/adapter-aau/pom.xml" />
+        <option value="$PROJECT_DIR$/adapter/pom.xml" />
       </set>
     </option>
   </component>
