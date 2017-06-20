@@ -60,9 +60,20 @@ public class TestAgent {
             System.out.println("SET PROPERTY: "+endpoint);
 
             ClientResource setResource = new ClientResource(endpoint);
-            setResource.put("{\"x\": \"y\"}", MediaType.APPLICATION_JSON);
+            setResource.put("{\"x\": \"y\"}");
             System.out.println("> STATUS: "+setResource.getStatus());
             System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
+
+
+
+            String aid = "switch1";
+            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
+            System.out.println("EXEC ACTION: "+endpoint);
+
+            ClientResource actionResource = new ClientResource(endpoint);
+            actionResource.post("{\"x\": \"y\"}");
+            System.out.println("> STATUS: "+actionResource.getStatus());
+            System.out.println("> RESPONSE: " + actionResource.getResponse().getEntity().getText());
 
         }
         catch(Exception e){

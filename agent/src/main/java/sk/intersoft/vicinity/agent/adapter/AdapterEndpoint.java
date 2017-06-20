@@ -6,7 +6,7 @@ import sk.intersoft.vicinity.agent.config.thing.InteractionPattern;
 public class AdapterEndpoint {
 
     public static String process(String iid, String pid, String href) {
-        String endpoint = href.replaceAll("\\{oid\\}", iid).replaceAll("\\{pid\\}", pid);
+        String endpoint = href.replaceAll("\\{oid\\}", iid).replaceAll("\\{pid\\}", pid).replaceAll("\\{aid\\}", pid);
         return endpoint;
     }
 

@@ -5,10 +5,7 @@ import org.restlet.Restlet;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
-import sk.intersoft.vicinity.adapter.testing.service.resource.GetCustomPropertyResource;
-import sk.intersoft.vicinity.adapter.testing.service.resource.GetSetPropertyResource;
-import sk.intersoft.vicinity.adapter.testing.service.resource.ObjectsResource;
-import sk.intersoft.vicinity.adapter.testing.service.resource.SetCustomPropertyResource;
+import sk.intersoft.vicinity.adapter.testing.service.resource.*;
 
 public class TestingAdapterApplication extends Application {
     public static final String OBJECTS = "/objects";
@@ -17,6 +14,9 @@ public class TestingAdapterApplication extends Application {
     public static final String GET_CUSTOM_PROPERTY = "/custom/{oid}/x";
 
     public static final String SET_CUSTOM_PROPERTY = "/custom-set/{oid}/y";
+
+    public static final String POST_ACTION = "/objects/{oid}/actions/{aid}";
+    public static final String POST_CUSTOM_ACTION = "/custom-post/{oid}/z";
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
@@ -35,8 +35,10 @@ public class TestingAdapterApplication extends Application {
         apiRouter.attach(OBJECTS, ObjectsResource.class);
         apiRouter.attach(OBJECTS+"/", ObjectsResource.class);
         apiRouter.attach(GET_PROPERTY, GetSetPropertyResource.class);
+        apiRouter.attach(POST_ACTION, ActionResource.class);
         apiRouter.attach(GET_CUSTOM_PROPERTY, GetCustomPropertyResource.class);
         apiRouter.attach(SET_CUSTOM_PROPERTY, SetCustomPropertyResource.class);
+        apiRouter.attach(POST_CUSTOM_ACTION, CustomActionResource.class);
 
         return apiRouter;
     }
