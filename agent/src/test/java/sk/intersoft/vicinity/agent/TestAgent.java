@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent;
 
 import org.restlet.Context;
 import org.restlet.data.ChallengeScheme;
+import org.restlet.data.MediaType;
 import org.restlet.resource.ClientResource;
 import sk.intersoft.vicinity.agent.config.AgentConfig;
 import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
@@ -12,7 +13,8 @@ public class TestAgent {
 
 //    public static final String AGENT_ENDPOINT = "http://160.40.206.250:9997/agent";
 //    public static final String AGENT_ENDPOINT = "http://localhost:9997/agent";
-    public static final String AGENT_ENDPOINT = "http://localhost:9996/aau-adapter";
+//    public static final String AGENT_ENDPOINT = "http://localhost:9996/aau-adapter";
+    public static final String AGENT_ENDPOINT = "http://localhost:9997/agent";
     public static final String LOGIN = "test_vcnt1";
     public static final String PASSWORD = "1VicinityTestUser1";
 
@@ -40,17 +42,27 @@ public class TestAgent {
 //            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
-            String oid = "123";
-            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/123";
+            String oid = "thermometer-1-uuid";
+            String pid = "temp1";
+
+
+            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
             System.out.println("GET PROPERTY: "+endpoint);
 
 
-//            ClientResource resource = new ClientResource(endpoint);
-//            resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, LOGIN, PASSWORD);
-//            resource.get();
-//            resource.post("{\"x\": \"y\"}");
-//            System.out.println("> STATUS: "+resource.getStatus());
-//            System.out.println("> RESPONSE: " + resource.getResponse().getEntity().getText());
+            ClientResource getResource = new ClientResource(endpoint);
+            getResource.get();
+            System.out.println("> STATUS: "+getResource.getStatus());
+            System.out.println("> RESPONSE: " + getResource.getResponse().getEntity().getText());
+
+
+
+            System.out.println("SET PROPERTY: "+endpoint);
+
+            ClientResource setResource = new ClientResource(endpoint);
+            setResource.put("{\"x\": \"y\"}", MediaType.APPLICATION_JSON);
+            System.out.println("> STATUS: "+setResource.getStatus());
+            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
 
         }
         catch(Exception e){

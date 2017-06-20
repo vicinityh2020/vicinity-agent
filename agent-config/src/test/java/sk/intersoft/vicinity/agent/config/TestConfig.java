@@ -20,7 +20,7 @@ public class TestConfig {
         System.out.println("CONFIG BEFORE: ");
         AgentConfig.show();
 
-        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-config.json");
+        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/testing-agent-config.json");
         System.out.println("CONFIG AFTER: ");
         AgentConfig.show();
 

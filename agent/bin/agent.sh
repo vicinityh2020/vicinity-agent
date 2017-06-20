@@ -1,11 +1,11 @@
 #!/bin/bash
 
 SERVER_PORT=9997
-JAR=service.jar
+JAR=agent.jar
 
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config.json
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config-gorenje.json
-CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config-aau.json
+CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/testing-agent-config.json
 
 COMMAND=$1
 

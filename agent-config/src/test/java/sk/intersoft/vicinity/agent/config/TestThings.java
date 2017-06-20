@@ -23,7 +23,7 @@ public class TestThings {
 
     public void test() throws Exception {
 
-        JSONArray json = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-config/src/test/resources/things/1.json"));
+        JSONArray json = new JSONArray(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/1.json"));
 
         List<ThingDescription> list = ThingsProcessor.process(json);
         System.out.println("PROCESSED");

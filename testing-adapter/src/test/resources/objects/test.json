@@ -1,0 +1,44 @@
+[
+
+{
+	"oid": "thermometer-1",
+	"properties": [
+	{
+		"pid": "temp1",
+		"monitors": "AmbientTemperature",
+		"type": "SomeProperty",
+		"output": {
+			"units": "Celsius",
+			"datatype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "/custom/{oid}/x",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+      			"href": "/custom-set/{oid}/y",
+      			"mediatype": "application/json"
+      		}]
+
+	},
+	{
+		"pid": "temp2",
+		"monitors": "AmbientTemperature",
+		"type": "SomeProperty",
+		"output": {
+			"units": "Celsius",
+			"datatype": "float"
+		},
+		"writable": false,
+		"links": [{
+			"href": "/objects/{oid}/properties/{pid}",
+			"mediatype": "application/json"
+		}]
+
+	},
+
+	],
+	"actions": []
+}
+]

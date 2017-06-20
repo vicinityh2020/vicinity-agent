@@ -25,8 +25,8 @@
 		"type": "Action",
 		"aid": "switch",
 		"affects": "OnOff",
-		"read_links": [{
-			"href": "read: act http://thermometer-1.endpoint/property-1",
+		"links": [{
+			"href": "ls: act http://thermometer-1.endpoint/property-1",
 			"mediatype": "application/json"
 		}],
 		"write_links": {
@@ -56,8 +56,8 @@
 			"href": "r http://occupancy-1.endpoint/property-1",
 			"mediatype": "application/json"
 		}],
-		"links": [{
-			"href": "ls http://occupancy-1.endpoint/property-1",
+		"write_links": [{
+			"href": "w http://occupancy-1.endpoint/property-1",
 			"mediatype": "application/json"
 		}]
 

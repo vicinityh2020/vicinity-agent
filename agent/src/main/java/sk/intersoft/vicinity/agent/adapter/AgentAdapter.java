@@ -32,6 +32,7 @@ public class AgentAdapter {
         return adapter;
     }
 
+
     public String get(String path) throws Exception {
         try{
             String callEndpoint = endpoint + path;

@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 public class InteractionPattern {
+    public static final String PROPERTY = "property";
+    public static final String ACTION = "action";
+
+
     public static final String PID = "pid";
     public static final String AID = "aid";
 
@@ -35,16 +39,26 @@ public class InteractionPattern {
         String id = JSONUtil.getString(idKey, object);
 
 
+        List<JSONObject> links = JSONUtil.getObjectArray("links", object);
         List<JSONObject> reads = JSONUtil.getObjectArray("read_links", object);
         List<JSONObject> writes = JSONUtil.getObjectArray("write_links", object);
 
         if(id == null) throw new Exception("Missing  "+idKey+" in: "+object.toString());
-        if(reads == null) throw new Exception("Missing read_links in: "+object.toString());
-        if(writes == null) throw new Exception("Missing write_links in: "+object.toString());
 
-        String readHref = getHref(reads);
-        String writeHref = getHref(writes);
+        if(reads != null && writes != null){
+            String readHref = getHref(reads);
+            String writeHref = getHref(writes);
+            return new InteractionPattern(id, readHref, writeHref);
+        }
+        else if(links != null){
+            String href = getHref(links);
+            return new InteractionPattern(id, href, href);
+        }
+        else {
+            throw new Exception("Missing or wrong configuration of links/read_links/write_links in: "+object.toString());
+        }
 
-        return new InteractionPattern(id, readHref, writeHref);
+
+
     }
 }

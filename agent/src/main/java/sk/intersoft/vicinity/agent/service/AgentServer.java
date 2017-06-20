@@ -13,8 +13,12 @@ public class AgentServer {
 	            @Override
 	            public void run() {
                     System.out.println("run shutdown");
+                    StartStop.stop();
 	                component.shutdown();
 	            }
 	        });
+
+
+        StartStop.start();
     }
 }

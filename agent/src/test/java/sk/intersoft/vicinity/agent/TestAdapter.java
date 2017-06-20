@@ -17,7 +17,7 @@ public class TestAdapter {
 
 
 //        String oid = "0d485748-cf2a-450c-bcf6-02ac1cb39a2d";
-//        String iid = AgentConfig.objectInfrastructureId(oid);
+//        String iid = AgentConfig.getInfrastructureId(oid);
 //        adapter.get("/objects/"+iid+"/properties/PowerConsumption");
 //        adapter.get("/objects/0D485748-CF2A-450C-BCF6-02AC1CB39A2D:6/properties/PowerConsumption");
 

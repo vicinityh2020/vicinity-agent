@@ -2,7 +2,6 @@ package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
@@ -19,7 +18,7 @@ public class ObjectActionResource extends ServerResource {
         try{
             String oid = getAttribute(OBJECT_ID);
             String aid = getAttribute(ACTION_ID);
-            String iid = AgentConfig.objectInfrastructureId(oid);
+            String iid = AgentConfig.getInfrastructureId(oid);
 
             JSONObject input = new JSONObject(entity.getText());
 

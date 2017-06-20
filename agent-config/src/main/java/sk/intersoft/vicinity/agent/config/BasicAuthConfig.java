@@ -16,9 +16,9 @@ public class BasicAuthConfig extends AuthConfig {
 
 
     public void show(){
-        LOGGER.info("BasicAuth");
-        LOGGER.info("login: "+login);
-        LOGGER.info("password: "+password);
+        System.out.println("BasicAuth");
+        System.out.println("login: "+login);
+        System.out.println("password: "+password);
     }
 
 }

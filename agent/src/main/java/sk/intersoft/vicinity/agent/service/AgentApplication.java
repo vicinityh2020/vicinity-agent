@@ -6,7 +6,7 @@ import org.restlet.data.ChallengeScheme;
 import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
 import sk.intersoft.vicinity.agent.service.resource.ObjectActionResource;
-import sk.intersoft.vicinity.agent.service.resource.ObjectGetPropertyResource;
+import sk.intersoft.vicinity.agent.service.resource.ObjectGetSetPropertyResource;
 import sk.intersoft.vicinity.agent.service.resource.TestResource;
 
 public class AgentApplication extends Application {
@@ -29,7 +29,7 @@ public class AgentApplication extends Application {
     public Router createApiRouter() {
         Router apiRouter = new Router(getContext());
         apiRouter.attach(TEST, TestResource.class);
-        apiRouter.attach(OBJECT_PROPERTY_VALUE, ObjectGetPropertyResource.class);
+        apiRouter.attach(OBJECT_PROPERTY_VALUE, ObjectGetSetPropertyResource.class);
         apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
 
         return apiRouter;
