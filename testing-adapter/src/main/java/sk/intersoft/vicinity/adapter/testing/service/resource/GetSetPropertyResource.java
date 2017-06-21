@@ -22,7 +22,7 @@ public class GetSetPropertyResource extends ServerResource {
             String pid = getAttribute("pid");
 
             JSONObject out = new JSONObject();
-            out.put("result", "get property");
+            out.put("echo", "get property");
             out.put("oid", oid);
             out.put("pid", pid);
 

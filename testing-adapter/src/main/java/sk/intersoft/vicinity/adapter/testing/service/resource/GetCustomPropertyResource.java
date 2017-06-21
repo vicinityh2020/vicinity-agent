@@ -15,7 +15,7 @@ public class GetCustomPropertyResource extends ServerResource {
             String oid = getAttribute("oid");
 
             JSONObject out = new JSONObject();
-            out.put("echo", "get propertyon custom endpoint");
+            out.put("echo", "get property on custom endpoint");
             out.put("oid", oid);
 
             return out.toString();
