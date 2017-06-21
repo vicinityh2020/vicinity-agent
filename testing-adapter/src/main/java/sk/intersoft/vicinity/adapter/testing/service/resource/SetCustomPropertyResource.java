@@ -19,7 +19,7 @@ public class SetCustomPropertyResource extends ServerResource {
             JSONObject input = new JSONObject(entity.getText());
 
             JSONObject out = new JSONObject();
-            out.put("result", "set custom property");
+            out.put("echo", "set property on custom endpoint");
             out.put("oid", oid);
             out.put("payload", input);
 

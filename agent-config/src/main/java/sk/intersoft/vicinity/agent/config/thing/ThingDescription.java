@@ -13,6 +13,8 @@ public class ThingDescription {
 
     public String oid;
     public String infrastructureID;
+    public String login;
+    public String password;
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
 
@@ -45,24 +47,25 @@ public class ThingDescription {
     }
 
     public void show(){
-        System.out.println("THING ["+oid+" / "+infrastructureID+"]:");
-        System.out.println("properties:");
+        System.out.println("  THING ["+oid+" / "+infrastructureID+"]:");
+        System.out.println("    login/password: "+login+" / "+password);
+        System.out.println("    properties:");
         for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
             String pid = entry.getKey();
             InteractionPattern pattern = entry.getValue();
-            System.out.println("  pid: ["+pid+"]");
-            System.out.println("    pattern pid: ["+pattern.id+"]");
-            System.out.println("    read: ["+pattern.readEndpoint+"]");
-            System.out.println("    write: ["+pattern.writeEndpoint+"]");
+            System.out.println("    pid: ["+pid+"]");
+            System.out.println("      pattern pid: ["+pattern.id+"]");
+            System.out.println("      read: ["+pattern.readEndpoint+"]");
+            System.out.println("      write: ["+pattern.writeEndpoint+"]");
         }
-        System.out.println("actions:");
+        System.out.println("    actions:");
         for (Map.Entry<String, InteractionPattern> entry : actions.entrySet()) {
             String pid = entry.getKey();
             InteractionPattern pattern = entry.getValue();
-            System.out.println("  aid: ["+pid+"]");
-            System.out.println("    pattern aid: ["+pattern.id+"]");
-            System.out.println("    read: ["+pattern.readEndpoint+"]");
-            System.out.println("    write: [" + pattern.writeEndpoint + "]");
+            System.out.println("    aid: ["+pid+"]");
+            System.out.println("      pattern aid: ["+pattern.id+"]");
+            System.out.println("      read: ["+pattern.readEndpoint+"]");
+            System.out.println("      write: [" + pattern.writeEndpoint + "]");
         }
 
     }

@@ -21,7 +21,7 @@ public class ActionResource extends ServerResource {
             JSONObject input = new JSONObject(entity.getText());
 
             JSONObject out = new JSONObject();
-            out.put("result", "exec action");
+            out.put("echo", "exec action");
             out.put("oid", oid);
             out.put("aid", aid);
             out.put("payload", input);

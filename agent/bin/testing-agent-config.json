@@ -9,12 +9,16 @@
 
     "thing-mapping": [
     {
-        "oid": "thermometer-1-uuid",
-        "infrastructure-id": "thermometer-1",
+        "oid": "test-1",
+        "infrastructure-id": "device-1",
+        "login": "test_vcnt1",
+        "password": "1VicinityTestUser1",
     },
     {
-        "oid": "occupancy-1-uuid",
-        "infrastructure-id": "occupancy-1",
+        "oid": "test-2",
+        "infrastructure-id": "device-2",
+        "login": "test_vcnt2",
+        "password": "2VicinityTestUser2",
     }
     ]
 

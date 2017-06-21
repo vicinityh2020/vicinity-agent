@@ -42,6 +42,16 @@ public class AgentConfig {
         return null;
     }
 
+    public static ThingMapping getMapping(String infrastructureId) {
+        for (Map.Entry<String, ThingMapping> entry : thingMapping.entrySet()) {
+            ThingMapping mapping = entry.getValue();
+            if(mapping.infrastructureId.equals(infrastructureId)){
+                return mapping;
+            }
+        }
+        return null;
+    }
+
     public static InteractionPattern getInteractionPattern(String oid, String pid, String patternType) throws Exception {
         if(oid == null) throw new Exception("Missing OID");
         if(pid == null) throw new Exception("Missing Interaction pattern ID");
@@ -105,10 +115,12 @@ public class AgentConfig {
 
     public static void configureThings(List<ThingDescription> list) throws Exception {
         for (ThingDescription thing : list) {
-            String oid = getOid(thing.infrastructureID);
-            if(oid != null){
-                thing.oid = oid;
-                things.put(oid, thing);
+            ThingMapping mapping = getMapping(thing.infrastructureID);
+            if(mapping != null){
+                thing.oid = mapping.oid;
+                thing.login = mapping.login;
+                thing.password = mapping.password;
+                things.put(thing.oid, thing);
             }
         }
     }
@@ -131,7 +143,7 @@ public class AgentConfig {
 
         System.out.println("Things: ");
         for (Map.Entry<String, ThingDescription> entry : things.entrySet()) {
-            System.out.println("[" + entry.getKey() + "]: ");
+            System.out.println("  [" + entry.getKey() + "]: ");
             entry.getValue().show();
         }
 

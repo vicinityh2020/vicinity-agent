@@ -45,7 +45,7 @@ public class GetSetPropertyResource extends ServerResource {
             JSONObject input = new JSONObject(entity.getText());
 
             JSONObject out = new JSONObject();
-            out.put("result", "set property");
+            out.put("echo", "set property");
             out.put("oid", oid);
             out.put("pid", pid);
             out.put("payload", input);

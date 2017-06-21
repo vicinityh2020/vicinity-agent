@@ -18,7 +18,7 @@ public class CustomActionResource extends ServerResource {
             JSONObject input = new JSONObject(entity.getText());
 
             JSONObject out = new JSONObject();
-            out.put("result", "exec custom action");
+            out.put("echo", "exec action on custom endpoint");
             out.put("oid", oid);
             out.put("payload", input);
 

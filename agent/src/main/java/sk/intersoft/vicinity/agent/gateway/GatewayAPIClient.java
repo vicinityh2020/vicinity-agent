@@ -3,21 +3,29 @@ package sk.intersoft.vicinity.agent.gateway;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.resource.ClientResource;
 import sk.intersoft.vicinity.agent.config.AgentConfig;
+import sk.intersoft.vicinity.agent.config.BasicAuthConfig;
 import sk.intersoft.vicinity.agent.config.ThingMapping;
 
 import java.util.Map;
 
 public class GatewayAPIClient {
+    public static final String loginEndpoint = AgentConfig.gatewayAPIEndpoint+"/objects/login";
+    public static final String logoutEndpoint = AgentConfig.gatewayAPIEndpoint+"/objects/logout";
 
-    public static void objects(){
+    public static void logInOut(String login, String password, boolean in){
         try{
-            System.out.println("GETTING OBJECTS");
-            ClientResource resource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects");
-            resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, "test_vcnt0", "0VicinityTestUser0");
+            System.out.println("LOG IN/OUT [login/password: "+login+" / "+password+"] :: [in: "+in+"][out: "+(!in)+"] ");
 
-            resource.get();
-            System.out.println("> STATUS: "+resource.getStatus());
-            System.out.println("> RESPONSE: "+resource.getResponse().getEntity().getText());
+            String endpoint = loginEndpoint;
+            if(!in) endpoint = logoutEndpoint;
+
+            System.out.println("endpoint: "+endpoint);
+
+//            ClientResource resource = new ClientResource(endpoint);
+//            resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
+//            resource.get();
+//            System.out.println("> LOG IN/OUT STATUS: "+resource.getStatus());
+//            System.out.println("> LOG IN/OUT RESPONSE: "+resource.getResponse().getEntity().getText());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -25,89 +33,11 @@ public class GatewayAPIClient {
 
     }
 
-    public static void login(String service){
-        try{
-            System.out.println("LOGGING DEVICES");
-            for (Map.Entry<String, ThingMapping> entry : AgentConfig.thingMapping.entrySet()){
-                String oid = entry.getKey();
-                System.out.println("LOGGING : "+oid);
-
-                ClientResource resource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/"+service);
-                resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, oid, oid);
-
-                resource.get();
-                System.out.println("> STATUS: "+resource.getStatus());
-                System.out.println("> RESPONSE: "+resource.getResponse().getEntity().getText());
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
+    public static void login(String login, String password) throws Exception {
+        logInOut(login, password, true);
     }
-
-    public static void relogin(String username, String password){
-        try{
-            System.out.println("LOGGING AGENT");
-            System.out.println("LOGGING AS: "+username + " / "+password);
-
-            System.out.println("LOGOUT FIRST: ");
-            ClientResource logoutResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/logout");
-            logoutResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
-            logoutResource.get();
-            System.out.println("> STATUS: "+logoutResource.getStatus());
-            System.out.println("> RESPONSE: "+logoutResource.getResponse().getEntity().getText());
-
-            System.out.println("THEN LOGIN: ");
-            ClientResource loginResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/login");
-            loginResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
-            loginResource.get();
-            System.out.println("> STATUS: "+loginResource.getStatus());
-            System.out.println("> RESPONSE: "+loginResource.getResponse().getEntity().getText());
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void logout(String username, String password){
-        try{
-            System.out.println("LOGGING OFF ");
-            System.out.println("AS: "+username + " / "+password);
-
-            System.out.println("LOGOUT FIRST: ");
-            ClientResource logoutResource = new ClientResource(AgentConfig.gatewayAPIEndpoint+"/objects/logout");
-            logoutResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, username, password);
-            logoutResource.get();
-            System.out.println("> STATUS: "+logoutResource.getStatus());
-            System.out.println("> RESPONSE: "+logoutResource.getResponse().getEntity().getText());
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void login(){
-        try{
-            login("login");
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void logout(){
-        try{
-            login("logout");
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
+    public static void logout(String login, String password) throws Exception {
+        logInOut(login, password, false);
     }
 
 }

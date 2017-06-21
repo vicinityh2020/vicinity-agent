@@ -18,20 +18,8 @@ public class TestAgent {
     public static final String LOGIN = "test_vcnt1";
     public static final String PASSWORD = "1VicinityTestUser1";
 
-    public void login() throws Exception {
-        try{
-            System.out.println("LOGIN");
-            AgentConfig.create("/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config-aau.json");
-            GatewayAPIClient.relogin(LOGIN, PASSWORD);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
 
     public void callProperty() throws Exception {
-//        login();
         try{
 //            String oid = "0D485748-CF2A-450C-BCF6-02AC1CB39A2D".toLowerCase();
 
@@ -42,8 +30,8 @@ public class TestAgent {
 //            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
-            String oid = "thermometer-1-uuid";
-            String pid = "temp1";
+            String oid = "test-1";
+            String pid = "device-1-pid-1";
 
 
             String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
