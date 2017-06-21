@@ -18,6 +18,8 @@ public class TestingAdapterApplication extends Application {
     public static final String POST_ACTION = "/objects/{oid}/actions/{aid}";
     public static final String POST_CUSTOM_ACTION = "/custom-post/{oid}/z";
 
+    public static final String EVENT_LISTENER = "/objects/{oid}/properties/{pid}/event";
+
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
         ChallengeAuthenticator apiGuard = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "realm");
@@ -39,6 +41,7 @@ public class TestingAdapterApplication extends Application {
         apiRouter.attach(GET_CUSTOM_PROPERTY, GetCustomPropertyResource.class);
         apiRouter.attach(SET_CUSTOM_PROPERTY, SetCustomPropertyResource.class);
         apiRouter.attach(POST_CUSTOM_ACTION, CustomActionResource.class);
+        apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
 
         return apiRouter;
     }
