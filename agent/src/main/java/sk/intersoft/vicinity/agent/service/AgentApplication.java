@@ -6,6 +6,7 @@ import org.restlet.data.ChallengeScheme;
 import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
 import sk.intersoft.vicinity.agent.service.resource.ObjectActionResource;
+import sk.intersoft.vicinity.agent.service.resource.ObjectActionTaskStubResource;
 import sk.intersoft.vicinity.agent.service.resource.ObjectGetSetPropertyResource;
 import sk.intersoft.vicinity.agent.service.resource.TestResource;
 
@@ -13,6 +14,9 @@ public class AgentApplication extends Application {
     public static final String TEST = "/alive/{x}";
     public static final String OBJECT_PROPERTY_VALUE = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
+    public static final String OBJECT_ACTION_TASK = "/objects/{oid}/actions/{aid}/tasks/{tid}";
+
+
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
@@ -31,6 +35,7 @@ public class AgentApplication extends Application {
         apiRouter.attach(TEST, TestResource.class);
         apiRouter.attach(OBJECT_PROPERTY_VALUE, ObjectGetSetPropertyResource.class);
         apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
+        apiRouter.attach(OBJECT_ACTION_TASK, ObjectActionTaskStubResource.class);
 
         return apiRouter;
     }

@@ -30,7 +30,7 @@ public class TestAgent {
 //            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
-            String oid = "test-1";
+            String oid = "test_vcnt1";
             String pid = "device-1-pid-1";
 
 
@@ -48,7 +48,7 @@ public class TestAgent {
             System.out.println("SET PROPERTY: "+endpoint);
 
             ClientResource setResource = new ClientResource(endpoint);
-            setResource.put("{\"x\": \"y\"}");
+            setResource.put("{\"value\": true}");
             System.out.println("> STATUS: "+setResource.getStatus());
             System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
 
@@ -62,6 +62,14 @@ public class TestAgent {
             actionResource.post("{\"x\": \"y\"}");
             System.out.println("> STATUS: "+actionResource.getStatus());
             System.out.println("> RESPONSE: " + actionResource.getResponse().getEntity().getText());
+
+
+            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid+"/tasks/x";
+            ClientResource getTaskResource = new ClientResource(endpoint);
+            getTaskResource.get();
+            System.out.println("> STATUS: "+getTaskResource.getStatus());
+            System.out.println("> RESPONSE: " + getTaskResource.getResponse().getEntity().getText());
+
 
         }
         catch(Exception e){
