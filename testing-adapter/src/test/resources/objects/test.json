@@ -53,7 +53,7 @@
 			"mediatype": "application/json"
 		}],
 		"read_links": [{
-			"href": "/some-read/objects/{oid}/actions/{aid}",
+			"href": "/objects/{oid}/actions/{aid}",
 			"mediatype": "application/json"
 		}]
 

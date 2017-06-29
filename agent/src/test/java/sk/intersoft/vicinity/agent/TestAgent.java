@@ -54,7 +54,7 @@ public class TestAgent {
 
 
 
-            String aid = "switch1";
+            String aid = "device-1-aid-1";
             endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
             System.out.println("EXEC ACTION: "+endpoint);
 
@@ -70,6 +70,14 @@ public class TestAgent {
             System.out.println("> STATUS: "+getTaskResource.getStatus());
             System.out.println("> RESPONSE: " + getTaskResource.getResponse().getEntity().getText());
 
+
+            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
+            System.out.println("ACTION STATUS: "+endpoint);
+
+            ClientResource actionStatusResource = new ClientResource(endpoint);
+            actionStatusResource.get();
+            System.out.println("> STATUS: "+actionStatusResource.getStatus());
+            System.out.println("> RESPONSE: " + actionStatusResource.getResponse().getEntity().getText());
 
         }
         catch(Exception e){

@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
 import org.restlet.representation.Representation;
+import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
@@ -35,6 +36,38 @@ public class ObjectActionResource extends ServerResource {
             AgentAdapter adapter = AgentAdapter.getInstance();
 
             String adapterResponse = adapter.post(endpoint, payload.toString());
+            getLogger().info("ADAPTER RESPONSE: \n"+endpoint);
+            JSONObject result = new JSONObject(adapterResponse);
+
+
+            getLogger().info("ADAPTER RETURNS: \n"+result.toString(2));
+            return ServiceResponse.success(result).toString();
+
+        }
+        catch(Exception e){
+            return ServiceResponse.failure(e).toString();
+        }
+
+    }
+
+
+    @Get()
+    public String getActionStatus()  {
+
+        try{
+
+            String oid = getAttribute(OBJECT_ID);
+            String aid = getAttribute(ACTION_ID);
+
+            getLogger().info("ACTION SATTUS FOR: ["+oid+"]["+aid+"]");
+
+            String endpoint = AdapterEndpoint.getEndpoint(oid, aid, InteractionPattern.ACTION, true);
+
+            getLogger().info("ACTION STAUTS ENDPOINT: ["+endpoint+"]");
+
+            AgentAdapter adapter = AgentAdapter.getInstance();
+
+            String adapterResponse = adapter.get(endpoint);
             getLogger().info("ADAPTER RESPONSE: \n"+endpoint);
             JSONObject result = new JSONObject(adapterResponse);
 

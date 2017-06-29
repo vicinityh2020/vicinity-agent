@@ -34,4 +34,26 @@ public class ActionResource extends ServerResource {
     }
 
 
+    @Get()
+    public String getActionStatus(Representation entity)  {
+        try{
+
+            System.out.println("get action status");
+
+            String oid = getAttribute("oid");
+            String aid = getAttribute("aid");
+
+
+            JSONObject out = new JSONObject();
+            out.put("echo", "action status");
+            out.put("oid", oid);
+            out.put("aid", aid);
+
+            return out.toString();
+        }
+        catch(Exception e){
+            return "{}";
+        }
+    }
+
 }
