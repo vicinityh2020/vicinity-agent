@@ -1,0 +1,29 @@
+{
+    "auth": {
+        "type": "basic-auth",
+        "login": "test_vcnt0",
+        "password": "0VicinityTestUser0"
+    },
+    "gateway-api-endpoint": "http://192.168.0.111:8181/api",
+    "adapter-endpoint": "http://160.40.51.227:8091/SiteWhereAdapter-0.0.1-SNAPSHOT",
+
+
+
+
+    "thing-mapping": [
+    {
+        "oid": "plugwise__000D6F0005B10494",
+        "infrastructure-id": "plugwise:000D6F0005B10494",
+        "login": "plugwise__000D6F0005B10494",
+        "password": "plugwise__000D6F0005B10494",
+    },
+    {
+        "oid": "hvacs__HVAC_LG_02",
+        "infrastructure-id": "hvacs:HVAC_LG_02",
+        "login": "hvacs__HVAC_LG_02",
+        "password": "hvacs__HVAC_LG_02",
+    }
+    ]
+
+}
+

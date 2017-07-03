@@ -6,7 +6,8 @@ JAR=agent.jar
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config.json
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config-gorenje.json
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/aau-agent-config.json
-CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/testing-agent-config.json
+#CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/testing-agent-config.json
+CONFIG_FILE=certh-sitewhere-agent-config.json
 
 COMMAND=$1
 

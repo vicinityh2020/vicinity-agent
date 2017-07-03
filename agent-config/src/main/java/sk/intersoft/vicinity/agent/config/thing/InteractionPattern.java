@@ -29,10 +29,13 @@ public class InteractionPattern {
 
     public static String getHref(List<JSONObject> links) throws Exception {
 
-        String link = JSONUtil.getString("href", links.get(0));
-        if(link == null) throw new Exception("missing href thing description link: "+link.toString());
+        if(links.size() > 0){
+            String link = JSONUtil.getString("href", links.get(0));
+            if(link == null) throw new Exception("missing href thing description link: "+link.toString());
 
-        return link;
+            return link;
+        }
+        return null;
     }
 
     public static InteractionPattern create(JSONObject object, String idKey) throws Exception {
@@ -45,7 +48,7 @@ public class InteractionPattern {
 
         if(id == null) throw new Exception("Missing  "+idKey+" in: "+object.toString());
 
-        if(reads != null && writes != null){
+        if(reads != null || writes != null){
             String readHref = getHref(reads);
             String writeHref = getHref(writes);
             return new InteractionPattern(id, readHref, writeHref);
