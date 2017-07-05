@@ -8,8 +8,8 @@ import java.io.File;
 
 public class TestAdapter {
     public void test() throws Exception {
-//        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-config-aau.json");
-        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-sitewhere-config.json");
+        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/aau-agent-config.json");
+//        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-sitewhere-config.json");
         System.out.println("CONFIG : ");
         AgentConfig.show();
 
@@ -31,9 +31,13 @@ public class TestAdapter {
 //        String postData = "{\"input\": [{\"parameterName\": \"switch\",\"parameterValue\": \"Off\"}]}";
 //        adapter.post("/objects/000D6F0005B10494/actions/switch", postData);
 
-        String postData = "{\"value\": 47}";
-        adapter.put("/objects/hvacs:HVAC_LG_02/properties/UCtrlTempSetPoint", postData);
+//        String postData = "{\"value\": 47}";
+//        adapter.put("/objects/hvacs:HVAC_LG_02/properties/UCtrlTempSetPoint", postData);
 
+        adapter.get("/objects/");
+
+        String postData = "{\"test\": \"some\"}";
+        adapter.post("/objects/x/events/y", postData);
 
     }
 

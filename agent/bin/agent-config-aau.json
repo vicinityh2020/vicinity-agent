@@ -6,7 +6,7 @@
     },
     "gateway-api-endpoint": "http://160.40.206.1:8181/api",
 
-    "adapter-endpoint": "http://localhost:9996/aau-adapter",
+    "adapter-endpoint": "http://localhost:9994/adapter",
 
     "objects": [
         {

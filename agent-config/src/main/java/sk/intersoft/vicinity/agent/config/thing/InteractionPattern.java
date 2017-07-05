@@ -10,10 +10,12 @@ import java.util.Map;
 public class InteractionPattern {
     public static final String PROPERTY = "property";
     public static final String ACTION = "action";
+    public static final String EVENT = "event";
 
 
     public static final String PID = "pid";
     public static final String AID = "aid";
+    public static final String EID = "eid";
 
     public String id;
     public String readEndpoint;
@@ -29,7 +31,7 @@ public class InteractionPattern {
 
     public static String getHref(List<JSONObject> links) throws Exception {
 
-        if(links.size() > 0){
+        if(links != null && links.size() > 0){
             String link = JSONUtil.getString("href", links.get(0));
             if(link == null) throw new Exception("missing href thing description link: "+link.toString());
 

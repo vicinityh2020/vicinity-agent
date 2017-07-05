@@ -1,0 +1,80 @@
+[
+
+{
+	"oid": "temperature-sensor",
+	"type": "Thermostat",
+	"properties": [
+	{
+		"pid": "temperature",
+		"monitors": "AmbientTemperature",
+		"output": {
+			"units": "Celsius",
+			"datatype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "/objects/{oid}/properties/{pid}",
+			"mediatype": "application/json"
+		}]
+	}
+	]
+},
+
+{
+	"oid": "pressure-sensor",
+	"type": "PressureSensor",
+	"properties": [
+	{
+		"pid": "pressure",
+		"monitors": "Pressure",
+		"output": {
+			"units": "Pascal",
+			"datatype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "/objects/{oid}/properties/{pid}",
+			"mediatype": "application/json"
+		}]
+	}
+	]
+},
+
+
+{
+	"oid": "lightbulb",
+	"type": "Lightbulb",
+	"actions": [
+	{
+		"aid": "dimmer",
+		"affects": "DimmingLevel",
+		"output": {
+			"units": "Status",
+			"datatype": "float"
+		},
+		"writable": false,
+		"write_links": [{
+			"href": "/objects/{oid}/actions/{aid}",
+			"mediatype": "application/json"
+		}]
+	},
+	{
+    	"aid": "color",
+    	"affects": "ColorLevel",
+    	"output": {
+    		"units": "Status",
+    		"datatype": "float"
+    	},
+    	"writable": false,
+    	"write_links": [{
+    		"href": "/objects/{oid}/actions/{aid}",
+    		"mediatype": "application/json"
+    	}]
+    }
+
+	]
+}
+
+
+
+]

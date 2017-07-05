@@ -1,25 +1,18 @@
 [
 
 {
-	"oid": "x",
-	"properties": [{
-		"pid": "y",
-		"monitors": "AmbientTemperature",
-		"type": "SomeProperty",
+	"oid": "service",
+	"events": [{
+		"eid": "load",
+		"monitors": "SomeEvent",
+		"type": "SomeEventType",
 		"output": {
-			"units": "Celsius",
+			"units": "SomeUnit",
 			"datatype": "float"
 		},
-		"writable": false,
-		"read_links": [{
-			"href": "read:http://thermometer-1.endpoint/property-1",
-			"mediatype": "application/json"
-		}],
-		"write_links": [{
-      			"href": "write: http://thermometer-1.endpoint/property-1",
-      			"mediatype": "application/json"
-      		}]
+		"writable": false
 
 	}]
+
 }
 ]

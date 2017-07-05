@@ -5,6 +5,8 @@ JAR=aau-adapter.jar
 
 OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/aau-adapter/src/test/resources/objects/aau.json
 
+AGENT_ENDPOINT=http://localhost:9997/agent
+
 COMMAND=$1
 
 PID=$(ps -eaf | grep $JAR | grep server.port=$SERVER_PORT | grep -v grep | awk '{print $2}')
@@ -29,7 +31,7 @@ else
     if [[ "" !=  "$PID" ]]; then
       echo "adapter is running"
     else
-        nohup java -Dobjects.file=$OBJECTS_FILE -Dserver.port=$SERVER_PORT -jar ../target/$JAR  &
+        nohup java -Dobjects.file=$OBJECTS_FILE -Dserver.port=$SERVER_PORT -Dagent.endpoint=$AGENT_ENDPOINT -jar ../target/$JAR  &
         echo "adapter started"
     fi
 

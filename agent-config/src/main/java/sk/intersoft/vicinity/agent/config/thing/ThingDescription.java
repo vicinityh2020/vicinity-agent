@@ -17,6 +17,7 @@ public class ThingDescription {
     public String password;
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
+    public Map<String, InteractionPattern> events = new HashMap<String, InteractionPattern>();
 
     public ThingDescription(String infrastructureID) {
         this.infrastructureID = infrastructureID;
@@ -29,6 +30,7 @@ public class ThingDescription {
         ThingDescription thing = new ThingDescription(oid);
         List<JSONObject> properties = JSONUtil.getObjectArray("properties", object);
         List<JSONObject> actions = JSONUtil.getObjectArray("actions", object);
+        List<JSONObject> events = JSONUtil.getObjectArray("events", object);
 
         if(properties != null){
             for(JSONObject property : properties){
@@ -40,6 +42,13 @@ public class ThingDescription {
             for(JSONObject action : actions){
                 InteractionPattern pattern = InteractionPattern.create(action, InteractionPattern.AID);
                 thing.actions.put(pattern.id, pattern);
+            }
+        }
+
+        if(events != null){
+            for(JSONObject event : events){
+                InteractionPattern pattern = new InteractionPattern(JSONUtil.getString(InteractionPattern.EID, event), null, null);
+                thing.events.put(pattern.id, pattern);
             }
         }
 
@@ -66,6 +75,13 @@ public class ThingDescription {
             System.out.println("      pattern aid: ["+pattern.id+"]");
             System.out.println("      read: ["+pattern.readEndpoint+"]");
             System.out.println("      write: [" + pattern.writeEndpoint + "]");
+        }
+        System.out.println("    events:");
+        for (Map.Entry<String, InteractionPattern> entry : events.entrySet()) {
+            String pid = entry.getKey();
+            InteractionPattern pattern = entry.getValue();
+            System.out.println("    eid: ["+pid+"]");
+            System.out.println("      pattern eid: ["+pattern.id+"]");
         }
 
     }

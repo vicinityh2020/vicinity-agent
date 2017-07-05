@@ -66,6 +66,9 @@ public class AgentConfig {
         else if(patternType.equals(InteractionPattern.ACTION)){
             pattern = thing.actions.get(pid);
         }
+        else if(patternType.equals(InteractionPattern.EVENT)){
+            pattern = thing.events.get(pid);
+        }
 
         if(pattern == null) throw new Exception("Missing interaction pattern ["+patternType+"] thing for OID: "+oid+" / pattern id: "+pid);
 
