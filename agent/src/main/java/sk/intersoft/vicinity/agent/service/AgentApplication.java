@@ -12,6 +12,7 @@ public class AgentApplication extends Application {
     public static final String OBJECT_PROPERTY_VALUE = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
     public static final String OBJECT_ACTION_TASK = "/objects/{oid}/actions/{aid}/tasks/{tid}";
+    public static final String EVENT_PUBLISHER = "/objects/{oid}/events/{eid}/publish";
     public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
 
 
@@ -34,6 +35,7 @@ public class AgentApplication extends Application {
         apiRouter.attach(OBJECT_PROPERTY_VALUE, ObjectGetSetPropertyResource.class);
         apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
         apiRouter.attach(OBJECT_ACTION_TASK, ObjectActionTaskStubResource.class);
+        apiRouter.attach(EVENT_PUBLISHER, EventPublisherResource.class);
         apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
 
         return apiRouter;

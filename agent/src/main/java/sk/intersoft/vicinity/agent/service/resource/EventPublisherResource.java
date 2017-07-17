@@ -1,13 +1,5 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
@@ -19,9 +11,7 @@ import sk.intersoft.vicinity.agent.config.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.service.response.ServiceResponse;
 
-import java.util.UUID;
-
-public class EventListenerResource extends ServerResource {
+public class EventPublisherResource extends ServerResource {
 
     @Post()
     public String readEvent(Representation entity)  {
@@ -41,24 +31,32 @@ public class EventListenerResource extends ServerResource {
             System.out.println("event payload: \n"+input);
 
 
-            System.out.println("RESEND EVENT TO AGENT");
-
-            String endpoint = AdapterEndpoint.getEventsEndpoint(id, eid);
-            getLogger().info("EXEC PASS EVENT TO ADAPTER ENDPOINT: ["+endpoint+"]");
-
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.post(endpoint, inputString);
-            getLogger().info("ADAPTER RESPONSE: \n"+endpoint);
-            JSONObject result = new JSONObject(adapterResponse);
+            String oid = AgentConfig.getOid(id);
 
 
-            getLogger().info("ADAPTER RETURNS: \n"+result.toString(2));
-            return ServiceResponse.success(result).toString();
+            System.out.println("VICINITY OID FROM OBJECT ID: \n"+oid);
+            if(oid != null) {
+                System.out.println("received infra-id mapped to oid .. send to gtw");
+                InteractionPattern pattern = AgentConfig.getInteractionPattern(oid, eid, InteractionPattern.EVENT);
+                System.out.println("INTERACTION PATTERN: \n"+pattern);
+
+
+                String gtwEndpoint = "/objects/"+oid+"/events/"+eid;
+
+                System.out.println("GTW API ENDPOINT: \n"+gtwEndpoint);
+
+                JSONObject out = new JSONObject(inputString);
+                out.put("oid", oid);
+                String gtwResponse = GatewayAPIClient.post(gtwEndpoint, out.toString());
+
+                return gtwResponse;
+            }
+            else throw new Exception("Unknown OID for event object: "+id);
 
         }
         catch(Exception e){
             e.printStackTrace();
+            System.out.println("EVENT PUBLISHER EXCEPTION...");
             return ServiceResponse.failure(e).toString();
         }
 

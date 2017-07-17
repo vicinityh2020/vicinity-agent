@@ -4,7 +4,7 @@
         "login": "test_vcnt0",
         "password": "0VicinityTestUser0"
     },
-    "gateway-api-endpoint": "http://3bedffc6.ngrok.io/api",
+    "gateway-api-endpoint": "http://138.201.156.73:8181/api",
     "adapter-endpoint": "http://localhost:9994/adapter",
 
     "thing-mapping": [

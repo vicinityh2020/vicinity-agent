@@ -1,6 +1,5 @@
 package sk.intersoft.vicinity.adapter.aau.service.resource;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -15,8 +14,46 @@ import org.restlet.resource.ServerResource;
 
 import java.util.UUID;
 
-public class EventListenerResource extends ServerResource {
+public class EventPublisherResource extends ServerResource {
 
+    public String pass2Agent(String oid, String eid, String payload) throws Exception {
+        try{
+            String callEndpoint = System.getProperty("agent.endpoint") + "/objects/"+oid+"/events/"+eid+"/publish";
+
+
+            System.out.println("POST EVENT ENDPOINT: "+callEndpoint);
+            System.out.println("POST DATA: "+payload);
+            HttpClient client = HttpClientBuilder.create()
+                    .build();
+
+            HttpPost request = new HttpPost(callEndpoint);
+
+//            request.addHeader("Accept", "application/json");
+//            request.addHeader("Content-Type", "application/json");
+
+            StringEntity data = new StringEntity(payload);
+
+            request.setEntity(data);
+
+            HttpResponse response = client.execute(request);
+
+
+            int status = response.getStatusLine().getStatusCode();
+            System.out.println("event resend status: " + status);
+
+            String content = EntityUtils.toString(response.getEntity());
+
+            System.out.println("event resend entity: " + content);
+
+            return content;
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
 
 
@@ -46,10 +83,8 @@ public class EventListenerResource extends ServerResource {
             out.put("values", values);
             out.put("oid", oid);
             out.put("eid", eid);
-            out.put("RECEIVED EVENT", true);
 
-
-            return out.toString();
+            return pass2Agent(oid, eid, out.toString());
         }
         catch(Exception e){
             e.printStackTrace();

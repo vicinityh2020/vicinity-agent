@@ -7,11 +7,13 @@ import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
 import sk.intersoft.vicinity.adapter.aau.service.resource.AliveResource;
 import sk.intersoft.vicinity.adapter.aau.service.resource.EventListenerResource;
+import sk.intersoft.vicinity.adapter.aau.service.resource.EventPublisherResource;
 import sk.intersoft.vicinity.adapter.aau.service.resource.ObjectsResource;
 
 public class AAUAdapterApplication extends Application {
     public static final String ALIVE = "/alive";
     public static final String OBJECTS = "/objects";
+    public static final String PUBLISH_EVENTS = "/objects/{oid}/events/{eid}/publish";
     public static final String RECEIVE_EVENTS = "/objects/{oid}/events/{eid}";
 
 
@@ -33,6 +35,7 @@ public class AAUAdapterApplication extends Application {
         apiRouter.attach(ALIVE, AliveResource.class);
         apiRouter.attach(OBJECTS, ObjectsResource.class);
         apiRouter.attach(OBJECTS+"/", ObjectsResource.class);
+        apiRouter.attach(PUBLISH_EVENTS, EventPublisherResource.class);
         apiRouter.attach(RECEIVE_EVENTS, EventListenerResource.class);
 
         return apiRouter;

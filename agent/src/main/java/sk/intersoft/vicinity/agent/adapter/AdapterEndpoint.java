@@ -29,6 +29,12 @@ public class AdapterEndpoint {
 
     }
 
+    public static String getEventsEndpoint(String oid, String eid) throws Exception {
+
+        // HARDCODED TO PASS EVENTS, WHICH ADAPTER LISTENS TO, TO ADAPTER
+        return "/objects/"+oid+"/events/"+eid;
+
+    }
 
 
 }
