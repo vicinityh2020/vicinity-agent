@@ -45,7 +45,7 @@ public class EventPublisherResource extends ServerResource {
 
             System.out.println("event resend entity: " + content);
 
-            return content;
+            return "{\"raw-response\": \""+content+"\"}";
 
         }
         catch(Exception e){
@@ -71,7 +71,7 @@ public class EventPublisherResource extends ServerResource {
 
 //            JSONObject input = new JSONObject(entity.getText());
 
-            String entityString = entity.getText();
+            String entityString = entity.getText().toLowerCase();
             System.out.println("event payload: \n"+entityString);
 
             JSONObject out = new JSONObject(entityString);

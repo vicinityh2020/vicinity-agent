@@ -9,7 +9,7 @@ public class AliveResource extends ServerResource {
     public String doSomeGet() throws Exception {
         System.out.println("DO GET");
         System.out.println("REQ HEADERS: "+getRequest().getHeaders());
-        return "AGENT ALIVE";
+        return "AGENT IS ALIVE";
     }
 
 }

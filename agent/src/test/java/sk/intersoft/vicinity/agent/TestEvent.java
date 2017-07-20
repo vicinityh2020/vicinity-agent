@@ -127,19 +127,9 @@ public class TestEvent {
             ClientResource resource = new ClientResource(endpoint);
             resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            JSONObject event = new JSONObject();
-            event.put("message", "hey, mary, i'm completely dumb-ass string for you!");
-
-            JSONObject o1 = new JSONObject();
-            o1.put("value", 100);
-            o1.put("unit", "kWh");
-
-            JSONObject o2 = new JSONObject();
-            o2.put("value", 1);
-            o2.put("unit", "h");
-
-            event.put("energy_reduction", o1);
-            event.put("time_period", o2);
+            String aauString = "{\"Energy_reduction\":{\"value\":20,\"unit\":\"kW\"},\"Time_period\":{\"value\":1,\"unit\":\"h\"}}";
+            JSONObject event = new JSONObject(aauString.toLowerCase());
+            event.put("message", "and now look, how handsome Jason i am!");
 
             StringRepresentation content = new StringRepresentation(event.toString(), MediaType.APPLICATION_JSON);
             resource.post(content, MediaType.APPLICATION_JSON);

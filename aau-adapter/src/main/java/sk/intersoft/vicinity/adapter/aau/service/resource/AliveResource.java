@@ -9,20 +9,20 @@ import java.util.Scanner;
 public class AliveResource extends ServerResource {
 
 
-    @Get("json")
+    @Get("txt")
     public String getAlive()  {
         try{
 
             System.out.println("getting alive");
             getLogger().info("GETTING ALIVE ...");
 
-            return "{\"echo\": \"yes, i'm alive\"}";
+            return "ADAPTER IS ALIVE";
 
         }
         catch(Exception e){
             System.out.println("no objects");
             getLogger().info("NO OBJECTS FILE .. return empty");
-            return "{\"echo\": \"something went ape for: alive\"}";
+            return "ADAPTER ALIVE: something went ape???";
         }
     }
 
