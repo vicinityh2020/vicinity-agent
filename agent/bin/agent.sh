@@ -9,8 +9,8 @@ REGISTER_ON_STARTUP=false
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/agent-config-gorenje.json
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/aau-agent-config.json
 #CONFIG_FILE=/home/kostelni/work/eu-projekty/vicinity/bitbucket-workspace/vicinity-agent/agent/bin/testing-agent-config.json
-CONFIG_FILE=aau-agent-config.json
-#CONFIG_FILE=unikl-agent-config.json
+#CONFIG_FILE=aau-agent-config.json
+CONFIG_FILE=unikl-agent-config.json
 #CONFIG_FILE=gorenje-agent-config.json
 
 COMMAND=$1

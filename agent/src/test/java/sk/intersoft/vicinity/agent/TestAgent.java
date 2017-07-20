@@ -33,7 +33,7 @@ public class TestAgent {
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
             String oid = "test_vcnt1";
-            String pid = "device_status";
+            String pid = "color";
 
 
             String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
@@ -46,33 +46,33 @@ public class TestAgent {
             System.out.println("> RESPONSE: " + getResource.getResponse().getEntity().getText());
 
 
-//
-//            System.out.println("SET PROPERTY: "+endpoint);
-//
-//            ClientResource setResource = new ClientResource(endpoint);
-//            setResource.put("{\"value\": true}");
-//            System.out.println("> STATUS: "+setResource.getStatus());
-//            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
-//
-//
-//
-            String aid = "light";
-            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
-            System.out.println("EXEC ACTION: "+endpoint);
 
-            ClientResource actionResource = new ClientResource(endpoint);
+            System.out.println("SET PROPERTY: "+endpoint);
 
-            JSONObject data = new JSONObject();
-            JSONObject param = new JSONObject();
-            JSONArray params = new JSONArray();
-            param.put("propName", "light");
-            param.put("propValue", "on");
-            params.put(param);
-            data.put("input", params);
-
-            actionResource.post(data.toString());
-            System.out.println("> STATUS: "+actionResource.getStatus());
-            System.out.println("> RESPONSE: " + actionResource.getResponse().getEntity().getText());
+            ClientResource setResource = new ClientResource(endpoint);
+            setResource.put("{\"property\": \"color\", \"value\": \"ff0000\"}");
+            System.out.println("> STATUS: "+setResource.getStatus());
+            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
+//
+//
+//
+//            String aid = "light";
+//            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
+//            System.out.println("EXEC ACTION: "+endpoint);
+//
+//            ClientResource actionResource = new ClientResource(endpoint);
+//
+//            JSONObject data = new JSONObject();
+//            JSONObject param = new JSONObject();
+//            JSONArray params = new JSONArray();
+//            param.put("propName", "light");
+//            param.put("propValue", "on");
+//            params.put(param);
+//            data.put("input", params);
+//
+//            actionResource.post(data.toString());
+//            System.out.println("> STATUS: "+actionResource.getStatus());
+//            System.out.println("> RESPONSE: " + actionResource.getResponse().getEntity().getText());
 //
 //
 //            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid+"/tasks/x";

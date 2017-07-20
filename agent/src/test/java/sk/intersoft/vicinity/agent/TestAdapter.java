@@ -8,7 +8,7 @@ import java.io.File;
 
 public class TestAdapter {
     public void test() throws Exception {
-        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/aau-agent-config.json");
+        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/unikl-agent-config.json");
 //        AgentConfig.create(new File("").getAbsolutePath() + "/agent/bin/agent-sitewhere-config.json");
         System.out.println("CONFIG : ");
         AgentConfig.show();
@@ -16,7 +16,7 @@ public class TestAdapter {
         AgentAdapter adapter = new AgentAdapter(AgentConfig.adapterEndpoint);
 
 
-//        String oid = "0d485748-cf2a-450c-bcf6-02ac1cb39a2d";
+        String oid = "abc-51742-0123456789-xyz-54790";
 //        String iid = AgentConfig.getInfrastructureId(oid);
 //        adapter.get("/objects/"+iid+"/properties/PowerConsumption");
 //        adapter.get("/objects/0D485748-CF2A-450C-BCF6-02AC1CB39A2D:6/properties/PowerConsumption");
@@ -28,16 +28,18 @@ public class TestAdapter {
 
 
 
-//        String postData = "{\"input\": [{\"parameterName\": \"switch\",\"parameterValue\": \"Off\"}]}";
-//        adapter.post("/objects/000D6F0005B10494/actions/switch", postData);
+        String postData = "{\"property\": \"color\",\"value\": \"ffff00\"}";
+        String result = adapter.put("/objects/"+oid+"/properties/color", postData);
+
+        System.out.println("WTF: "+result);
 
 //        String postData = "{\"value\": 47}";
 //        adapter.put("/objects/hvacs:HVAC_LG_02/properties/UCtrlTempSetPoint", postData);
 
-        adapter.get("/objects/");
+//        adapter.get("/objects/");
 
-        String postData = "{\"test\": \"some\"}";
-        adapter.post("/objects/x/events/y", postData);
+//        String postData = "{\"test\": \"some\"}";
+//        adapter.post("/objects/x/events/y", postData);
 
     }
 

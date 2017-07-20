@@ -119,8 +119,8 @@ public class AgentAdapter {
 
 
 
-            LOGGER.info("POST ENDPOINT: "+callEndpoint);
-            LOGGER.info("POST DATA: "+payload);
+            LOGGER.info("PUT ENDPOINT: "+callEndpoint);
+            LOGGER.info("PUT DATA: "+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 

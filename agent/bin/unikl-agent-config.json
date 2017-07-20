@@ -10,13 +10,13 @@
     "thing-mapping": [
     {
         "oid": "test_vcnt1",
-        "infrastructure-id": "abc-15269-0123456789-xyz-27575",
+        "infrastructure-id": "bulb1",
         "login": "test_vcnt1",
         "password": "1VicinityTestUser1",
     },
     {
         "oid": "test_vcnt2",
-        "infrastructure-id": "abc-61589-0123456789-xyz-36542",
+        "infrastructure-id": "bulb2",
         "login": "test_vcnt2",
         "password": "2VicinityTestUser2",
     }
