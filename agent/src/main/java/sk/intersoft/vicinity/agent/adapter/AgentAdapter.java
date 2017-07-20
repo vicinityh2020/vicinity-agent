@@ -100,9 +100,8 @@ public class AgentAdapter {
             int status = response.getStatusLine().getStatusCode();
             String content = EntityUtils.toString(response.getEntity());
 
-            HttpEntity entity = response.getEntity();
             LOGGER.info("agent action status: " + status);
-            LOGGER.info("agent action entity: " + content);
+            LOGGER.info("agent action entity content: " + content);
 
             return content;
 

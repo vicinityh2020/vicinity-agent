@@ -1,17 +1,10 @@
 [
-
 {
-	"oid": "service",
+	"oid": "simulation",
+	"type": "SomeSoftware",
 	"events": [{
-		"eid": "load",
+		"eid": "energy_reduction",
 		"monitors": "SomeEvent",
-		"type": "SomeEventType",
-		"output": {
-			"units": "SomeUnit",
-			"datatype": "float"
-		},
-		"writable": false
-
 	}]
 
 }

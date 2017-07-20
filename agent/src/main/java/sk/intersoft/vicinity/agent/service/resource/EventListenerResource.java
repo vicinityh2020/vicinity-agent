@@ -41,7 +41,7 @@ public class EventListenerResource extends ServerResource {
             System.out.println("event payload: \n"+input);
 
 
-            System.out.println("RESEND EVENT TO AGENT");
+            System.out.println("RESEND EVENT TO ADAPTER");
 
             String endpoint = AdapterEndpoint.getEventsEndpoint(id, eid);
             getLogger().info("EXEC PASS EVENT TO ADAPTER ENDPOINT: ["+endpoint+"]");
@@ -49,11 +49,11 @@ public class EventListenerResource extends ServerResource {
             AgentAdapter adapter = AgentAdapter.getInstance();
 
             String adapterResponse = adapter.post(endpoint, inputString);
-            getLogger().info("ADAPTER RESPONSE: \n"+endpoint);
+            getLogger().info("GTW API RESPONSE: \n");
             JSONObject result = new JSONObject(adapterResponse);
 
 
-            getLogger().info("ADAPTER RETURNS: \n"+result.toString(2));
+            getLogger().info("GTW API RETURNS: \n"+result.toString(2));
             return ServiceResponse.success(result).toString();
 
         }

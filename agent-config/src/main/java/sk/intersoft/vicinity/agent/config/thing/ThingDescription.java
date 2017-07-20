@@ -15,19 +15,21 @@ public class ThingDescription {
     public String infrastructureID;
     public String login;
     public String password;
+    public JSONObject json;
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> events = new HashMap<String, InteractionPattern>();
 
-    public ThingDescription(String infrastructureID) {
+    public ThingDescription(String infrastructureID, JSONObject object) {
         this.infrastructureID = infrastructureID;
+        this.json = object;
     }
 
     public static ThingDescription create(JSONObject object) throws Exception {
         String oid = JSONUtil.getString("oid", object);
         if(oid == null) throw new Exception("Missing oid in: "+object.toString());
 
-        ThingDescription thing = new ThingDescription(oid);
+        ThingDescription thing = new ThingDescription(oid, object);
         List<JSONObject> properties = JSONUtil.getObjectArray("properties", object);
         List<JSONObject> actions = JSONUtil.getObjectArray("actions", object);
         List<JSONObject> events = JSONUtil.getObjectArray("events", object);
@@ -58,6 +60,7 @@ public class ThingDescription {
     public void show(){
         System.out.println("  THING ["+oid+" / "+infrastructureID+"]:");
         System.out.println("    login/password: "+login+" / "+password);
+        System.out.println("    json: \n"+json.toString(2));
         System.out.println("    properties:");
         for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
             String pid = entry.getKey();

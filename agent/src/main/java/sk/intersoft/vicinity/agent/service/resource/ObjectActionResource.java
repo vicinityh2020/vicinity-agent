@@ -36,7 +36,10 @@ public class ObjectActionResource extends ServerResource {
             AgentAdapter adapter = AgentAdapter.getInstance();
 
             String adapterResponse = adapter.post(endpoint, payload.toString());
-            getLogger().info("ADAPTER RESPONSE: \n"+endpoint);
+            getLogger().info("ADAPTER RESPONSE FROM: \n"+endpoint);
+
+            getLogger().info("\n"+adapterResponse);
+
             JSONObject result = new JSONObject(adapterResponse);
 
 

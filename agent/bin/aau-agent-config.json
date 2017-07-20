@@ -10,7 +10,7 @@
     "thing-mapping": [
     {
         "oid": "235ad597-008a-41eb-9d94-3efe646e37f2",
-        "infrastructure-id": "service",
+        "infrastructure-id": "simulation",
         "login": "235ad597-008a-41eb-9d94-3efe646e37f2",
         "password": "235ad597-008a-41eb-9d94-3efe646e37f2"
     }

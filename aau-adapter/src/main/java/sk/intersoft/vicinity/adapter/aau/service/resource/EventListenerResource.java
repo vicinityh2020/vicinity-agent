@@ -35,21 +35,10 @@ public class EventListenerResource extends ServerResource {
 //            JSONObject input = new JSONObject(entity.getText());
 
             String entityString = entity.getText();
-            System.out.println("event payload: \n"+entityString);
-
-            JSONObject out = new JSONObject();
-            out.put("businessId", UUID.randomUUID().toString());
-
-            JSONArray values = new JSONArray();
-            values.put(entityString);
-
-            out.put("values", values);
-            out.put("oid", oid);
-            out.put("eid", eid);
-            out.put("RECEIVED EVENT", true);
+            System.out.println("received event payload: \n"+entityString);
 
 
-            return out.toString();
+            return entityString;
         }
         catch(Exception e){
             e.printStackTrace();

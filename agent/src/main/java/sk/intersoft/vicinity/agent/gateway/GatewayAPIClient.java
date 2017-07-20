@@ -58,7 +58,7 @@ public class GatewayAPIClient {
 //            request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
 
-            StringEntity data = new StringEntity("{\"test\": \"test x\"}");
+            StringEntity data = new StringEntity(payload);
 
             request.setEntity(data);
 

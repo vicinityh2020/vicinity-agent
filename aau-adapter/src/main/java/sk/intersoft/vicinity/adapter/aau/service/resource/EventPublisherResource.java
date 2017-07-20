@@ -65,7 +65,7 @@ public class EventPublisherResource extends ServerResource {
             String eid = getAttribute("eid");
 
             System.out.println("\n\n");
-            System.out.println("getting event: ");
+            System.out.println("publishing event: ");
             System.out.println("oid: "+oid);
             System.out.println("eid: "+eid);
 
@@ -74,13 +74,10 @@ public class EventPublisherResource extends ServerResource {
             String entityString = entity.getText();
             System.out.println("event payload: \n"+entityString);
 
-            JSONObject out = new JSONObject();
+            JSONObject out = new JSONObject(entityString);
             out.put("businessId", UUID.randomUUID().toString());
 
-            JSONArray values = new JSONArray();
-            values.put(entityString);
 
-            out.put("values", values);
             out.put("oid", oid);
             out.put("eid", eid);
 

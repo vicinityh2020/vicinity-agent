@@ -1,5 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.data.MediaType;
@@ -31,7 +33,7 @@ public class TestAgent {
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
             String oid = "test_vcnt1";
-            String pid = "device-1-pid-1";
+            String pid = "device_status";
 
 
             String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
@@ -44,40 +46,50 @@ public class TestAgent {
             System.out.println("> RESPONSE: " + getResource.getResponse().getEntity().getText());
 
 
-
-            System.out.println("SET PROPERTY: "+endpoint);
-
-            ClientResource setResource = new ClientResource(endpoint);
-            setResource.put("{\"value\": true}");
-            System.out.println("> STATUS: "+setResource.getStatus());
-            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
-
-
-
-            String aid = "device-1-aid-1";
+//
+//            System.out.println("SET PROPERTY: "+endpoint);
+//
+//            ClientResource setResource = new ClientResource(endpoint);
+//            setResource.put("{\"value\": true}");
+//            System.out.println("> STATUS: "+setResource.getStatus());
+//            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
+//
+//
+//
+            String aid = "light";
             endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
             System.out.println("EXEC ACTION: "+endpoint);
 
             ClientResource actionResource = new ClientResource(endpoint);
-            actionResource.post("{\"x\": \"y\"}");
+
+            JSONObject data = new JSONObject();
+            JSONObject param = new JSONObject();
+            JSONArray params = new JSONArray();
+            param.put("propName", "light");
+            param.put("propValue", "on");
+            params.put(param);
+            data.put("input", params);
+
+            actionResource.post(data.toString());
             System.out.println("> STATUS: "+actionResource.getStatus());
             System.out.println("> RESPONSE: " + actionResource.getResponse().getEntity().getText());
-
-
-            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid+"/tasks/x";
-            ClientResource getTaskResource = new ClientResource(endpoint);
-            getTaskResource.get();
-            System.out.println("> STATUS: "+getTaskResource.getStatus());
-            System.out.println("> RESPONSE: " + getTaskResource.getResponse().getEntity().getText());
-
-
-            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
-            System.out.println("ACTION STATUS: "+endpoint);
-
-            ClientResource actionStatusResource = new ClientResource(endpoint);
-            actionStatusResource.get();
-            System.out.println("> STATUS: "+actionStatusResource.getStatus());
-            System.out.println("> RESPONSE: " + actionStatusResource.getResponse().getEntity().getText());
+//
+//
+//            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid+"/tasks/x";
+//            ClientResource getTaskResource = new ClientResource(endpoint);
+//            getTaskResource.get();
+//            System.out.println("> STATUS: "+getTaskResource.getStatus());
+//            System.out.println("> RESPONSE: " + getTaskResource.getResponse().getEntity().getText());
+//
+//
+//            String aid = "light";
+//            endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/"+aid;
+//            System.out.println("ACTION STATUS: "+endpoint);
+//
+//            ClientResource actionStatusResource = new ClientResource(endpoint);
+//            actionStatusResource.get();
+//            System.out.println("> STATUS: "+actionStatusResource.getStatus());
+//            System.out.println("> RESPONSE: " + actionStatusResource.getResponse().getEntity().getText());
 
         }
         catch(Exception e){

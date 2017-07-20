@@ -21,7 +21,7 @@ public class EventPublisherResource extends ServerResource {
             String eid = getAttribute("eid");
 
             System.out.println("\n\n");
-            System.out.println("getting event: ");
+            System.out.println("publishing event: ");
             System.out.println("object id: "+id);
             System.out.println("eid: "+eid);
 

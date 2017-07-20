@@ -11,6 +11,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.data.MediaType;
 import org.restlet.representation.StringRepresentation;
@@ -113,7 +114,7 @@ public class TestEvent {
 
     public void simulateAdapterEvent() throws Exception {
         try{
-            String endpoint = "http://localhost:9994/adapter/objects/service/events/load/publish";
+            String endpoint = "http://localhost:9994/adapter/objects/simulation/events/energy_reduction/publish";
 
             String login = "test_vcnt0";
             String password = "0VicinityTestUser0";
@@ -126,7 +127,21 @@ public class TestEvent {
             ClientResource resource = new ClientResource(endpoint);
             resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            StringRepresentation content = new StringRepresentation("{\"adapter\": \"publish\"}", MediaType.APPLICATION_JSON);
+            JSONObject event = new JSONObject();
+            event.put("message", "hey, mary, i'm completely dumb-ass string for you!");
+
+            JSONObject o1 = new JSONObject();
+            o1.put("value", 100);
+            o1.put("unit", "kWh");
+
+            JSONObject o2 = new JSONObject();
+            o2.put("value", 1);
+            o2.put("unit", "h");
+
+            event.put("energy_reduction", o1);
+            event.put("time_period", o2);
+
+            StringRepresentation content = new StringRepresentation(event.toString(), MediaType.APPLICATION_JSON);
             resource.post(content, MediaType.APPLICATION_JSON);
             System.out.println("> POST EVENT STATUS: "+resource.getStatus());
             System.out.println("> POST EVENT RESPONSE: "+resource.getResponse().getEntity().getText());
