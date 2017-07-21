@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" afterPath="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAdapter.java" afterPath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" afterPath="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/bin/aau-agent-config.json" afterPath="$PROJECT_DIR$/agent/bin/aau-agent-config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/bin/agent.sh" afterPath="$PROJECT_DIR$/agent/bin/agent.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent/bin/unikl-agent-config.json" afterPath="$PROJECT_DIR$/agent/bin/unikl-agent-config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -50,21 +49,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="agent.sh" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="agent.sh" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent/bin/agent.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.1779661" vertical-offset="0" max-vertical-offset="750">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestAgent.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="aau-agent-config.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent/bin/aau-agent-config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestAgent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6640625" vertical-offset="220" max-vertical-offset="1650">
-              <caret line="52" column="53" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="1650">
+              <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -94,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/agent/bin/unikl-agent-config.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -115,16 +124,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="930">
               <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceResponse.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/response/ServiceResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="630">
-              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -177,7 +176,6 @@
         <option value="$PROJECT_DIR$/agent/bin/gorenje-agent-config.json" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java" />
         <option value="$PROJECT_DIR$/aau-adapter/src/main/java/sk/intersoft/vicinity/adapter/aau/service/resource/EventListenerResource.java" />
-        <option value="$PROJECT_DIR$/agent/bin/aau-agent-config.json" />
         <option value="$PROJECT_DIR$/aau-adapter/src/test/resources/objects/aau.json" />
         <option value="$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/thing/ThingDescription.java" />
         <option value="$PROJECT_DIR$/agent-config/src/main/java/sk/intersoft/vicinity/agent/config/thing/ThingsProcessor.java" />
@@ -189,11 +187,12 @@
         <option value="$PROJECT_DIR$/aau-adapter/src/main/java/sk/intersoft/vicinity/adapter/aau/service/resource/AliveResource.java" />
         <option value="$PROJECT_DIR$/aau-adapter/src/main/java/sk/intersoft/vicinity/adapter/aau/service/resource/EventPublisherResource.java" />
         <option value="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestEvent.java" />
-        <option value="$PROJECT_DIR$/agent/bin/agent.sh" />
         <option value="$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" />
         <option value="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAdapter.java" />
         <option value="$PROJECT_DIR$/agent/bin/unikl-agent-config.json" />
         <option value="$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java" />
+        <option value="$PROJECT_DIR$/agent/bin/aau-agent-config.json" />
+        <option value="$PROJECT_DIR$/agent/bin/agent.sh" />
       </list>
     </option>
   </component>
@@ -1136,14 +1135,18 @@
       <created>1500553404595</created>
       <updated>1500553404595</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="unikl integration progress">
+      <created>1500562200032</created>
+      <updated>1500562200032</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="35" width="1906" height="1045" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2607296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2607296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1152,7 +1155,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13523707" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3143777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3143777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1211,7 +1214,8 @@
     <MESSAGE value="preparation for prototype event publish/receive scenarios" />
     <MESSAGE value="update of prototype event publish/receive scenarios, added registration of discovered devices into communication server - now just testing bypass going around the gtw api .." />
     <MESSAGE value="testing commit for recovery" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing commit for recovery" />
+    <MESSAGE value="unikl integration progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="unikl integration progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1557,14 +1561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/bin/agent.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1274" max-vertical-offset="2175">
@@ -1581,18 +1577,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/bin/unikl-agent-config.json">
+    <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="1650">
+          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent/src/test/java/sk/intersoft/vicinity/agent/TestAgent.java">
+    <entry file="file://$PROJECT_DIR$/agent/bin/unikl-agent-config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6640625" vertical-offset="220" max-vertical-offset="1650">
-          <caret line="52" column="53" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/bin/aau-agent-config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent/bin/agent.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1779661" vertical-offset="0" max-vertical-offset="735">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>

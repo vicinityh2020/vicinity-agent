@@ -1,18 +1,18 @@
 {
     "auth": {
         "type": "basic-auth",
-        "login": "test_vcnt0",
-        "password": "0VicinityTestUser0"
+        "login": "lego_0",
+        "password": "lego_0"
     },
     "gateway-api-endpoint": "http://138.201.156.73:8181/api",
     "adapter-endpoint": "http://localhost:9994/adapter",
 
     "thing-mapping": [
     {
-        "oid": "235ad597-008a-41eb-9d94-3efe646e37f2",
         "infrastructure-id": "simulation",
-        "login": "235ad597-008a-41eb-9d94-3efe646e37f2",
-        "password": "235ad597-008a-41eb-9d94-3efe646e37f2"
+        "oid": "lego_1",
+        "login": "lego_1",
+        "password": "lego_1"
     }
     ]
 

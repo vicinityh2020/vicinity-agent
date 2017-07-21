@@ -1,24 +1,24 @@
 {
     "auth": {
         "type": "basic-auth",
-        "login": "test_vcnt0",
-        "password": "0VicinityTestUser0"
+        "login": "goethe_0",
+        "password": "goethe_0"
     },
     "gateway-api-endpoint": "http://138.201.156.73:8181/api",
     "adapter-endpoint": "http://131.246.211.170",
 
     "thing-mapping": [
     {
-        "oid": "test_vcnt1",
+        "oid": "goethe_1",
         "infrastructure-id": "bulb1",
-        "login": "test_vcnt1",
-        "password": "1VicinityTestUser1",
+        "login": "goethe_1",
+        "password": "goethe_1",
     },
     {
-        "oid": "test_vcnt2",
+        "oid": "goethe_2",
         "infrastructure-id": "bulb2",
-        "login": "test_vcnt2",
-        "password": "2VicinityTestUser2",
+        "login": "goethe_2",
+        "password": "goethe_2",
     }
     ]
 

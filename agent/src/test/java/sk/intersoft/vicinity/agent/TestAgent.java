@@ -32,8 +32,8 @@ public class TestAgent {
 //            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
 //            System.out.println("ACTION ENDPOINT: "+endpoint);
 
-            String oid = "test_vcnt1";
-            String pid = "color";
+            String oid = "goethe_1";
+            String pid = "brightness";
 
 
             String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
@@ -50,7 +50,7 @@ public class TestAgent {
             System.out.println("SET PROPERTY: "+endpoint);
 
             ClientResource setResource = new ClientResource(endpoint);
-            setResource.put("{\"property\": \"color\", \"value\": \"ff0000\"}");
+            setResource.put("{\"value\": \"10\"}");
             System.out.println("> STATUS: "+setResource.getStatus());
             System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
 //
