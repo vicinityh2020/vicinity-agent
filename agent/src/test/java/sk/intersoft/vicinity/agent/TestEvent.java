@@ -114,10 +114,10 @@ public class TestEvent {
 
     public void simulateAdapterEvent() throws Exception {
         try{
-            String endpoint = "http://localhost:9994/adapter/objects/simulation/events/energy_reduction/publish";
+            String endpoint = "http://147.232.202.101:9005/adapter/objects/simulation/events/energy_reduction/publish";
 
-            String login = "test_vcnt0";
-            String password = "0VicinityTestUser0";
+            String login = "lego_0";
+            String password = "lego_0";
 
 
             System.out.println("endpoint: "+endpoint);
@@ -129,7 +129,7 @@ public class TestEvent {
 
             String aauString = "{\"Energy_reduction\":{\"value\":20,\"unit\":\"kW\"},\"Time_period\":{\"value\":1,\"unit\":\"h\"}}";
             JSONObject event = new JSONObject(aauString.toLowerCase());
-            event.put("message", "and now look, how handsome Jason i am!");
+            event.put("message", "and now look, i am from distro!");
 
             StringRepresentation content = new StringRepresentation(event.toString(), MediaType.APPLICATION_JSON);
             resource.post(content, MediaType.APPLICATION_JSON);

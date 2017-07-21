@@ -16,43 +16,45 @@ public class TestAgent {
 //    public static final String AGENT_ENDPOINT = "http://160.40.206.250:9997/agent";
 //    public static final String AGENT_ENDPOINT = "http://localhost:9997/agent";
 //    public static final String AGENT_ENDPOINT = "http://localhost:9996/aau-adapter";
-    public static final String AGENT_ENDPOINT = "http://localhost:9997/agent";
-    public static final String LOGIN = "test_vcnt1";
-    public static final String PASSWORD = "1VicinityTestUser1";
+    public static final String AGENT_ENDPOINT = "http://localhost:9006/agent";
+    public static final String LOGIN = "lego_0";
+    public static final String PASSWORD = "lego_0";
 
 
     public void callProperty() throws Exception {
         try{
-//            String oid = "0D485748-CF2A-450C-BCF6-02AC1CB39A2D".toLowerCase();
+//            String oid = "lego_".toLowerCase();
 
 
-//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/DeviceStatus";
-//            System.out.println("GET PROPERTY: "+endpoint);
-
-//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/actions/Keket";
-//            System.out.println("ACTION ENDPOINT: "+endpoint);
-
-            String oid = "goethe_1";
-            String pid = "brightness";
-
-
-            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
-            System.out.println("GET PROPERTY: "+endpoint);
-
+            String endpoint = AGENT_ENDPOINT+"/alive";
+            System.out.println("OBJECTS: "+endpoint);
 
             ClientResource getResource = new ClientResource(endpoint);
             getResource.get();
             System.out.println("> STATUS: "+getResource.getStatus());
             System.out.println("> RESPONSE: " + getResource.getResponse().getEntity().getText());
 
-
-
-            System.out.println("SET PROPERTY: "+endpoint);
-
-            ClientResource setResource = new ClientResource(endpoint);
-            setResource.put("{\"value\": \"10\"}");
-            System.out.println("> STATUS: "+setResource.getStatus());
-            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
+//            String oid = "goethe_1";
+//            String pid = "brightness";
+//
+//
+//            String endpoint = AGENT_ENDPOINT+"/objects/"+oid+"/properties/"+pid;
+//            System.out.println("GET PROPERTY: "+endpoint);
+//
+//
+//            ClientResource getResource = new ClientResource(endpoint);
+//            getResource.get();
+//            System.out.println("> STATUS: "+getResource.getStatus());
+//            System.out.println("> RESPONSE: " + getResource.getResponse().getEntity().getText());
+//
+//
+//
+//            System.out.println("SET PROPERTY: "+endpoint);
+//
+//            ClientResource setResource = new ClientResource(endpoint);
+//            setResource.put("{\"value\": \"10\"}");
+//            System.out.println("> STATUS: "+setResource.getStatus());
+//            System.out.println("> RESPONSE: " + setResource.getResponse().getEntity().getText());
 //
 //
 //
