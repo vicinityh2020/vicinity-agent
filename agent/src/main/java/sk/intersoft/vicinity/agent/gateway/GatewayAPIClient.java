@@ -10,6 +10,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.data.MediaType;
 import org.restlet.representation.StringRepresentation;
@@ -42,6 +43,7 @@ public class GatewayAPIClient {
             String endpoint = AgentConfig.gatewayAPIEndpoint + path;
             System.out.println("POST EVENT TO endpoint: "+endpoint);
             System.out.println("POST DATA:  "+payload);
+
 
             CredentialsProvider provider = new BasicCredentialsProvider();
             UsernamePasswordCredentials credentials
@@ -79,6 +81,36 @@ public class GatewayAPIClient {
         }
 
     }
+
+    public static void register(String registration){
+        try{
+
+            System.out.println("DOING GTW API REGISTRATION FOR: ");
+            System.out.println(registration);
+
+            String adid = System.getProperty("agent.id");
+            System.out.println("AGENT ID: "+adid);
+
+            if(adid != null && !adid.trim().equals("")){
+                String endpoint = "/adapters/"+adid+"/objects";
+
+                System.out.println("gtw api service path: "+endpoint);
+
+                post(endpoint, registration);
+            }
+            else{
+                System.out.println("ADID does not exist .. set AGENT_ID in agent config!");
+
+            }
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
     public static void logInOut(String login, String password, boolean in){
         try{

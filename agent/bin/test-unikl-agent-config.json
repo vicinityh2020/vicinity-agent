@@ -1,0 +1,26 @@
+{
+    "auth": {
+        "type": "basic-auth",
+        "login": "test_vcnt0",
+        "password": "0VicinityTestUser0"
+    },
+    "gateway-api-endpoint": "http://138.201.156.73:8181/api",
+    "adapter-endpoint": "http://localhost:9995/adapter",
+
+    "thing-mapping": [
+    {
+        "oid": "test_vcnt1",
+        "infrastructure-id": "bulb1",
+        "login": "test_vcnt1",
+        "password": "1VicinityTestUser1",
+    },
+    {
+        "oid": "test_vcnt2",
+        "infrastructure-id": "bulb2",
+        "login": "test_vcnt2",
+        "password": "2VicinityTestUser2",
+    }
+    ]
+
+}
+

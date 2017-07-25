@@ -26,6 +26,9 @@ public class EventPublisherResource extends ServerResource {
             System.out.println("eid: "+eid);
 
             String inputString = entity.getText();
+
+
+
             JSONObject input = new JSONObject(inputString);
 
             System.out.println("event payload: \n"+input);
@@ -45,9 +48,11 @@ public class EventPublisherResource extends ServerResource {
 
                 System.out.println("GTW API ENDPOINT: \n"+gtwEndpoint);
 
+
                 JSONObject out = new JSONObject(inputString);
                 out.put("oid", oid);
                 String gtwResponse = GatewayAPIClient.post(gtwEndpoint, out.toString());
+
 
                 return gtwResponse;
             }

@@ -26,39 +26,39 @@ import java.util.Map;
 
 public class StartStop  {
 
-    public static void testRegister(String data){
-
-        try{
-            String endpoint = "http://vicinity.bavenir.eu:3000/commServer/registration";
-
-            System.out.println("testing registration baypass to: "+endpoint);
-
-            HttpClient client = HttpClientBuilder.create()
-                    .build();
-
-
-            HttpPost request = new HttpPost(endpoint);
-
-            request.addHeader("Accept", "application/json");
-            request.addHeader("Content-Type", "application/json");
-
-            StringEntity entity = new StringEntity(data);
-
-            request.setEntity(entity);
-
-            HttpResponse response = client.execute(request);
-
-            int status = response.getStatusLine().getStatusCode();
-            String responseContent = EntityUtils.toString(response.getEntity());
-            System.out.println("> REGISTER STATUS: "+status);
-            System.out.println("> REGISTER  RESPONSE: "+responseContent);
-
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public static void testRegister(String data){
+//
+//        try{
+//            String endpoint = "http://vicinity.bavenir.eu:3000/commServer/registration";
+//
+//            System.out.println("testing registration baypass to: "+endpoint);
+//
+//            HttpClient client = HttpClientBuilder.create()
+//                    .build();
+//
+//
+//            HttpPost request = new HttpPost(endpoint);
+//
+//            request.addHeader("Accept", "application/json");
+//            request.addHeader("Content-Type", "application/json");
+//
+//            StringEntity entity = new StringEntity(data);
+//
+//            request.setEntity(entity);
+//
+//            HttpResponse response = client.execute(request);
+//
+//            int status = response.getStatusLine().getStatusCode();
+//            String responseContent = EntityUtils.toString(response.getEntity());
+//            System.out.println("> REGISTER STATUS: "+status);
+//            System.out.println("> REGISTER  RESPONSE: "+responseContent);
+//
+//
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void start() {
         System.out.println("Launching starting sequence!");
@@ -88,16 +88,6 @@ public class StartStop  {
             System.out.println("Starting sequence config:");
             AgentConfig.show();
 
-            String register = System.getProperty("register.on.startup");
-            if(register != null && register.trim().equalsIgnoreCase("true")){
-                System.out.println("REGISTERING DEVICES TO SERVER WITH: ");
-                JSONObject registration = ThingsProcessor.prepareRegistration();
-                if(registration != null){
-                    System.out.println(registration.toString(2));
-
-                    testRegister(registration.toString());
-                }
-            }
 
             // 5. LOGIN AGENT VIA GTW API
             System.out.println("Login agent");
@@ -111,6 +101,26 @@ public class StartStop  {
                 ThingDescription thing = entry.getValue();
                 GatewayAPIClient.login(thing.login, thing.password);
             }
+
+            // 7. DO DYNAMIC REGISTRATION IF CONFIGURED
+            String register = System.getProperty("register.on.startup");
+            if(register != null && register.trim().equalsIgnoreCase("true")){
+                System.out.println("REGISTERING DEVICES TO SERVER WITH: ");
+                JSONObject registration = ThingsProcessor.prepareRegistration();
+                if(registration != null){
+                    System.out.println(registration.toString(2));
+
+                    GatewayAPIClient.register(registration.toString());
+                }
+                else{
+                    System.out.println("EMPTY REGISTRATION STRING .. DO NOTHING");
+
+                }
+            }
+            else{
+                System.out.println("NOT REGISTERING DEVICES TO SERVER");
+            }
+
 
             System.out.println("Starting sequence completed!");
 

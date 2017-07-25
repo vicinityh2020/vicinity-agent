@@ -23,7 +23,7 @@ public class ObjectsResource extends ServerResource {
         try{
 
             System.out.println("getting objects");
-            getLogger().info("GETTING OBJECTS ...");
+            getLogger().info("GETTING OBJECTS FROM: "+System.getProperty("objects.file"));
 
             return file2string(System.getProperty("objects.file"));
 

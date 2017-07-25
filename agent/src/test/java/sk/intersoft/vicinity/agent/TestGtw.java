@@ -55,8 +55,8 @@ public class TestGtw {
 
             HttpEntity entity = response.getEntity();
 
-            System.out.println("> LOG IN/OUT STATUS: "+status);
-            System.out.println("> LOG IN/OUT RESPONSE: "+content);
+            System.out.println("> STATUS: "+status);
+            System.out.println("> RESPONSE: "+content);
 
         }
         catch(Exception e){
@@ -71,14 +71,16 @@ public class TestGtw {
 
 //            String endpoint = "http://147.232.202.101:9007/api/objects/D77EC6B0-F039-4734-925E-0A90CE7D1B5B__018BD53D/properties/018BD53D:Brightness";
 //            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_1/properties/brightness";
-            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_2/properties/color";
+            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_1/properties/color";
+//            String endpoint = "http://160.40.49.115:8282/api/objects/goethe_2/properties/color";
+
 
             System.out.println("> CALLING: "+endpoint);
             ClientResource resource = new ClientResource(endpoint);
             resource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, LOGIN, PASSWORD);
             resource.get();
-            System.out.println("> LOG IN/OUT STATUS: "+resource.getStatus());
-            System.out.println("> LOG IN/OUT RESPONSE: "+resource.getResponse().getEntity().getText());
+            System.out.println("> STATUS: "+resource.getStatus());
+            System.out.println("> RESPONSE: "+resource.getResponse().getEntity().getText());
 
         }
         catch(Exception e){
@@ -89,7 +91,7 @@ public class TestGtw {
     public static void main(String[] args) throws Exception {
         TestGtw c = new TestGtw();
         c.get();
-        c.put();
+//        c.put();
 
 
     }

@@ -22,8 +22,8 @@ public class ThingsProcessor {
 
             JSONObject data = new JSONObject();
             JSONArray objects = new JSONArray();
-            data.put("adid", auth.login);
-            data.put("thingDescription", objects);
+            data.put("adid", System.getProperty("agent.id"));
+            data.put("thingDescriptions", objects);
 
             for (Map.Entry<String, ThingDescription> entry : AgentConfig.things.entrySet()) {
                 ThingDescription thing = entry.getValue();

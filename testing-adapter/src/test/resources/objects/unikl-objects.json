@@ -1,80 +1,107 @@
-[
-
-{
-	"oid": "temperature-sensor",
-	"type": "Thermostat",
-	"properties": [
-	{
-		"pid": "temperature",
-		"monitors": "AmbientTemperature",
+[{
+	"type": "PHLightBulb",
+	"oid": "bulb1",
+	"properties": [{
+		"pid": "brightness",
+		"monitors": "Brightness",
+		"writable": "true",
 		"output": {
-			"units": "Celsius",
-			"datatype": "float"
+			"units": "percentage(0-100)",
+			"datatype": "int"
 		},
-		"writable": false,
 		"read_links": [{
-			"href": "/objects/{oid}/properties/{pid}",
+			"href": "/objects/bulb1/properties/brightness",
 			"mediatype": "application/json"
-		}]
-	}
-	]
-},
-
-{
-	"oid": "pressure-sensor",
-	"type": "PressureSensor",
-	"properties": [
-	{
-		"pid": "pressure",
-		"monitors": "Pressure",
-		"output": {
-			"units": "Pascal",
-			"datatype": "float"
-		},
-		"writable": false,
-		"read_links": [{
-			"href": "/objects/{oid}/properties/{pid}",
-			"mediatype": "application/json"
-		}]
-	}
-	]
-},
-
-
-{
-	"oid": "lightbulb",
-	"type": "Lightbulb",
-	"actions": [
-	{
-		"aid": "dimmer",
-		"affects": "DimmingLevel",
-		"output": {
-			"units": "Status",
-			"datatype": "float"
-		},
-		"writable": false,
+		}],
 		"write_links": [{
-			"href": "/objects/{oid}/actions/{aid}",
+			"href": "/objects/bulb1/properties/brightness",
 			"mediatype": "application/json"
 		}]
-	},
-	{
-    	"aid": "color",
-    	"affects": "ColorLevel",
-    	"output": {
-    		"units": "Status",
-    		"datatype": "float"
-    	},
-    	"writable": false,
-    	"write_links": [{
-    		"href": "/objects/{oid}/actions/{aid}",
-    		"mediatype": "application/json"
-    	}]
-    }
-
-	]
-}
-
-
-
-]
+	}, {
+		"pid": "color",
+		"monitors": "Color",
+		"writable": "true",
+		"output": {
+			"units": "#rgb",
+			"datatype": "int"
+		},
+		"read_links": [{
+			"href": "/objects/bulb1/properties/color",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "/objects/bulb1/properties/color",
+			"mediatype": "application/json"
+		}]
+	}, {
+		"pid": "consumption",
+		"monitors": "Consumption",
+		"writable": "false",
+		"output": {
+			"units": "watt",
+			"datatype": "double"
+		},
+		"read_links": [{
+			"href": "/objects/bulb1/properties/consumption",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "/objects/bulb1/properties/consumption",
+			"mediatype": "application/json"
+		}]
+	}],
+	"actions": []
+}, {
+	"type": "PHLightBulb",
+	"oid": "bulb2",
+	"properties": [{
+		"pid": "brightness",
+		"monitors": "Brightness",
+		"writable": "true",
+		"output": {
+			"units": "percentage(0-100)",
+			"datatype": "int"
+		},
+		"read_links": [{
+			"href": "/objects/bulb2/properties/brightness",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "/objects/bulb2/properties/brightness",
+			"mediatype": "application/json"
+		}]
+	}, {
+		"pid": "color",
+		"monitors": "Color",
+		"writable": "true",
+		"output": {
+			"units": "#rgb",
+			"datatype": "int"
+		},
+		"read_links": [{
+			"href": "/objects/bulb2/properties/color",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "/objects/bulb2/properties/color",
+			"mediatype": "application/json"
+		}]
+	}, {
+		"pid": "consumption",
+		"monitors": "Consumption",
+		"writable": "false",
+		"output": {
+			"units": "watt",
+			"datatype": "double"
+		},
+		"read_links": [{
+			"href": "/objects/bulb2/properties/consumption",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+			"href": "/objects/bulb2/properties/consumption",
+			"mediatype": "application/json"
+		}]
+	}],
+	"actions": []
+}]
