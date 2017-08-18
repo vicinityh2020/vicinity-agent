@@ -29,8 +29,10 @@ public class ThingsProcessor {
                 ThingDescription thing = entry.getValue();
 
                 JSONObject json = new JSONObject(thing.json.toString());
+                json.put("name", json.getString("oid"));
+                json.remove("oid");
                 JSONObject credentials = new JSONObject();
-                credentials.put("name", thing.login);
+                credentials.put("oid", thing.login);
                 credentials.put("password", thing.password);
                 json.put("credentials", credentials);
 

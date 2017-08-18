@@ -71,7 +71,9 @@ public class TestGtw {
 
 //            String endpoint = "http://147.232.202.101:9007/api/objects/D77EC6B0-F039-4734-925E-0A90CE7D1B5B__018BD53D/properties/018BD53D:Brightness";
 //            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_1/properties/brightness";
-            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_1/properties/color";
+//            String endpoint = "http://147.232.202.101:9007/api/objects/goethe_1/properties/color";
+            String endpoint = "http://147.232.202.101:9007/api/objects/cerknica_0/properties/device_status";
+
 //            String endpoint = "http://160.40.49.115:8282/api/objects/goethe_2/properties/color";
 
 
