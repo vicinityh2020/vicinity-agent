@@ -95,14 +95,7 @@ public class StartStop  {
             GatewayAPIClient.login(auth.login, auth.password);
 
 
-            // 6. LOGIN DEVICES VIA GTW API
-            System.out.println("Login things");
-            for (Map.Entry<String, ThingDescription> entry : AgentConfig.things.entrySet()) {
-                ThingDescription thing = entry.getValue();
-                GatewayAPIClient.login(thing.login, thing.password);
-            }
-
-            // 7. DO DYNAMIC REGISTRATION IF CONFIGURED
+            // 6. DO DYNAMIC REGISTRATION IF CONFIGURED
             String register = System.getProperty("register.on.startup");
             if(register != null && register.trim().equalsIgnoreCase("true")){
                 System.out.println("REGISTERING DEVICES TO SERVER WITH: ");
@@ -120,6 +113,15 @@ public class StartStop  {
             else{
                 System.out.println("NOT REGISTERING DEVICES TO SERVER");
             }
+
+            // 7. LOGIN DEVICES VIA GTW API
+            System.out.println("Login things");
+            for (Map.Entry<String, ThingDescription> entry : AgentConfig.things.entrySet()) {
+                ThingDescription thing = entry.getValue();
+                System.out.println("Login thing: ["+thing.login+" / "+thing.password+"]");
+                GatewayAPIClient.login(thing.login, thing.password);
+            }
+
 
 
             System.out.println("Starting sequence completed!");
