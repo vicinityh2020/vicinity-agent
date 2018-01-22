@@ -36,6 +36,7 @@
       <module name="adapter" target="1.8" />
       <module name="adapter-aau" target="1.8" />
       <module name="agent" target="1.8" />
+      <module name="agent (1)" target="1.8" />
       <module name="agent-config" target="1.8" />
       <module name="agent-old" target="1.8" />
       <module name="rest-client" target="1.8" />
