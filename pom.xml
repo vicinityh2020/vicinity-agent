@@ -13,7 +13,6 @@
         <module>agent-config</module>
         <module>testing-adapter</module>
         <module>aau-adapter</module>
-        <module>agent</module>
     </modules>
     <artifactId>vicinity-agent</artifactId>
     <version>1.0-SNAPSHOT</version>
