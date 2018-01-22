@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
     <name>Vicinity Agent</name>
     <modules>
-        <module>agent</module>
+        <module>agent-old</module>
         <module>rest-client</module>
         <module>utils</module>
         <module>agent-config</module>

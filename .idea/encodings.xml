@@ -3,8 +3,8 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aau-adapter" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/agent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/agent-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/agent-old" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rest-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testing-adapter" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/utils" charset="UTF-8" />

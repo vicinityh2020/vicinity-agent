@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>agent</artifactId>
-    <name>Agent</name>
+    <artifactId>agent-old</artifactId>
+    <name>Agent Backup</name>
     <packaging>jar</packaging>
 
 
