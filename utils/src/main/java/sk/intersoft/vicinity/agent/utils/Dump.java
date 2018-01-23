@@ -3,7 +3,7 @@ package sk.intersoft.vicinity.agent.utils;
 public class Dump {
     StringBuffer out = new StringBuffer();
 
-    public String indent(int tab) {
+    public static String tab(int tab) {
         String out = "";
         for(int i = 0; i < tab; i++){
             out += "  ";
@@ -13,7 +13,7 @@ public class Dump {
 
 
     public void add(String string, int tab) {
-        out.append(indent(tab) + string);
+        out.append(Dump.tab(tab) + string);
         nl();
     }
 
@@ -28,4 +28,12 @@ public class Dump {
     public String toString(){
         return out.toString();
     }
+
+
+
+    // simple dump
+    public static void indent(String string, int tab) {
+        System.out.println(tab(tab) + string);
+    }
+
 }

@@ -30,19 +30,23 @@ public class ThingDescription {
     public static String ACTIONS_KEY = "actions";
     public static String EVENTS_KEY = "events";
 
+    public boolean sameAs(ThingDescription other) {
+        Dump.indent("DOING DIFF", 0);
+        if(!this.thingType.equalsIgnoreCase(other.thingType)){
+            Dump.indent("Thing [type] diff: ["+thingType+"] -> ["+other.thingType+"]", 1);
+            return false;
+        }
 
-    /**
-     * Thing description uses oid - vicinity id and infrastructure-id there are two cases
-     * to handle this ids...
-     * Thing description is created from json when:
-     * - agent sends the thing descriptions via ADAPTER GET /objects
-     *   in agent TDs, oid refers to thing infrastructure-id, oid is null
-     * - TD json is read from database, that means, device was discovered and has set both
-     *   ids: oid - vicinity id and infrastructure-id ..in this case, login/password must be set
-     * to distinguish these cases, check infrastructure-id first .. if present, device is read from db,
-     * otherwise it comes from agent /objects
-     * oid (no matter, what it means, must be present anyway)
-     */
+        Dump.indent("Thing properties check", 1);
+        boolean propertiesAreSame = ThingDescriptionDiff.samePatterns(properties, other.properties, 2);
+        if(!propertiesAreSame) {
+            Dump.indent("Thing properties are different", 2);
+            return false;
+        }
+        return true;
+    }
+
+
     public static ThingDescription create(JSONObject thingJSON) throws Exception {
 
         ThingDescription thing = new ThingDescription();

@@ -13,8 +13,8 @@ public class ThingsProcessor {
         List<ThingDescription> list = new ArrayList<ThingDescription>();
 
         Iterator i = things.iterator();
-        while(i.hasNext()){
-            JSONObject thing = (JSONObject)i.next();
+        while (i.hasNext()) {
+            JSONObject thing = (JSONObject) i.next();
             list.add(ThingDescription.create(thing));
         }
 
@@ -23,4 +23,7 @@ public class ThingsProcessor {
 
     }
 
+    public static ThingDescription process(JSONObject thing) throws Exception {
+        return ThingDescription.create(thing);
+    }
 }
