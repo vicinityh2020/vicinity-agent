@@ -26,7 +26,7 @@
 	],
 	"actions": [
 	{
-		"aid": "device-1-aid-1",
+		"aid": "device-1-aid-1x",
 		"affects": "AmbientTemperature",
 		"type": "SomeProperty",
 		"write_links": [{

@@ -83,7 +83,7 @@ public class ThingDescriptionDiff {
 
             InteractionPattern pattern2 = patterns2.get(id);
             if(pattern2 == null) {
-                Dump.indent("pattern ["+pattern1+"] is not mutual!", (indent + 2));
+                Dump.indent("pattern ["+pattern1.id+"] is not mutual!", (indent + 2));
                 return false;
             }
 

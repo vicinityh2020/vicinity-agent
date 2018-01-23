@@ -43,6 +43,21 @@ public class ThingDescription {
             Dump.indent("Thing properties are different", 2);
             return false;
         }
+
+        Dump.indent("Thing actions check", 1);
+        boolean actionsAreSame = ThingDescriptionDiff.samePatterns(actions, other.actions, 2);
+        if(!actionsAreSame) {
+            Dump.indent("Thing actions are different", 2);
+            return false;
+        }
+
+        Dump.indent("Thing events check", 1);
+        boolean eventsAreSame = ThingDescriptionDiff.samePatterns(events, other.events, 2);
+        if(!eventsAreSame) {
+            Dump.indent("Thing events are different", 2);
+            return false;
+        }
+
         return true;
     }
 
