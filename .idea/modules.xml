@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/aau-adapter/aau-adapter.iml" filepath="$PROJECT_DIR$/aau-adapter/aau-adapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/agent-config/agent-config.iml" filepath="$PROJECT_DIR$/agent-config/agent-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/agent-service/agent-service.iml" filepath="$PROJECT_DIR$/agent-service/agent-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/rest-client/rest-client.iml" filepath="$PROJECT_DIR$/rest-client/rest-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/testing-adapter/testing-adapter.iml" filepath="$PROJECT_DIR$/testing-adapter/testing-adapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />

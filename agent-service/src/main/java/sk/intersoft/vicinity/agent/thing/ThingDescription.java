@@ -1,0 +1,118 @@
+package sk.intersoft.vicinity.agent.thing;
+
+import org.json.JSONObject;
+import sk.intersoft.vicinity.agent.utils.Dump;
+import sk.intersoft.vicinity.agent.utils.JSONUtil;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ThingDescription {
+
+    public String dbId = null;
+    public String oid = null;
+    public String infrastructureID = null;
+    public String thingType;
+    public String login;
+    public String password;
+    public JSONObject json;
+
+    public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
+    public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
+    public Map<String, InteractionPattern> events = new HashMap<String, InteractionPattern>();
+
+    // JSON keys
+    public static String OID_KEY = "oid";
+    public static String INFRASTRUCTURE_ID_KEY = "infrastructure-id";
+    public static String TYPE_KEY = "type";
+    public static String PROPERTIES_KEY = "properties";
+    public static String ACTIONS_KEY = "actions";
+    public static String EVENTS_KEY = "events";
+
+
+    /**
+     * Thing description uses oid - vicinity id and infrastructure-id there are two cases
+     * to handle this ids...
+     * Thing description is created from json when:
+     * - agent sends the thing descriptions via ADAPTER GET /objects
+     *   in agent TDs, oid refers to thing infrastructure-id, oid is null
+     * - TD json is read from database, that means, device was discovered and has set both
+     *   ids: oid - vicinity id and infrastructure-id ..in this case, login/password must be set
+     * to distinguish these cases, check infrastructure-id first .. if present, device is read from db,
+     * otherwise it comes from agent /objects
+     * oid (no matter, what it means, must be present anyway)
+     */
+    public static ThingDescription create(JSONObject thingJSON) throws Exception {
+
+        ThingDescription thing = new ThingDescription();
+        thing.json = thingJSON;
+
+
+        String oid = JSONUtil.getString(OID_KEY, thingJSON);
+        if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
+        thing.infrastructureID = oid;
+
+        String thingType = JSONUtil.getString(TYPE_KEY, thingJSON);
+        if(thingType == null) throw new Exception("Missing [type] in: "+thingJSON.toString());
+        thing.thingType = thingType;
+
+        List<JSONObject> properties = JSONUtil.getObjectArray(PROPERTIES_KEY, thingJSON);
+        List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
+        List<JSONObject> events = JSONUtil.getObjectArray(EVENTS_KEY, thingJSON);
+
+        if(properties != null){
+            for(JSONObject property : properties){
+                InteractionPattern pattern = InteractionPattern.createProperty(property);
+                thing.properties.put(pattern.id, pattern);
+            }
+        }
+        if(actions != null){
+            for(JSONObject action : actions){
+                InteractionPattern pattern = InteractionPattern.createAction(action);
+                thing.actions.put(pattern.id, pattern);
+            }
+        }
+
+        if(events != null){
+            for(JSONObject event : events){
+                InteractionPattern pattern = InteractionPattern.createEvent(event);
+                thing.events.put(pattern.id, pattern);
+            }
+        }
+
+        return thing;
+    }
+
+    public String toString(int indent){
+        Dump dump = new Dump();
+
+        dump.add("THING :", indent);
+        dump.add("oid: "+oid, (indent + 1));
+        dump.add("infrastructure-id: "+infrastructureID, (indent + 1));
+        dump.add("type: "+thingType, (indent + 1));
+        dump.add("credentials: ", (indent + 1));
+        dump.add("login: "+login, (indent + 2));
+        dump.add("password: "+password, (indent + 2));
+        dump.add("PROPERTIES: "+properties.size(), (indent + 1));
+        for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
+            String id = entry.getKey();
+            dump.add("PROPERTY MAPPED KEY: "+id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 2));
+        }
+        dump.add("ACTIONS: "+actions.size(), (indent + 1));
+        for (Map.Entry<String, InteractionPattern> entry : actions.entrySet()) {
+            String id = entry.getKey();
+            dump.add("ACTION MAPPED KEY: "+id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 2));
+        }
+        dump.add("EVENTS: "+events.size(), (indent + 1));
+        for (Map.Entry<String, InteractionPattern> entry : events.entrySet()) {
+            String id = entry.getKey();
+            dump.add("EVENT MAPPED KEY: "+id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 2));
+        }
+
+        return dump.toString();
+    }
+}

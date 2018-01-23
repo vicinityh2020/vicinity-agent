@@ -23,7 +23,9 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="aau-adapter" />
+        <module name="agent" />
         <module name="agent-config" />
+        <module name="agent-service" />
         <module name="rest-client" />
         <module name="testing-adapter" />
         <module name="utils" />
@@ -37,6 +39,7 @@
       <module name="agent (1)" target="1.8" />
       <module name="agent-config" target="1.8" />
       <module name="agent-old" target="1.8" />
+      <module name="agent-service" target="1.8" />
       <module name="rest-client" target="1.8" />
       <module name="testing-adapter" target="1.8" />
       <module name="utils" target="1.8" />

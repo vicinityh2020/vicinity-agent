@@ -1,8 +1,8 @@
 package sk.intersoft.vicinity.agent.config;
 
 import org.json.JSONArray;
-import sk.intersoft.vicinity.agent.config.thing.ThingDescription;
-import sk.intersoft.vicinity.agent.config.thing.ThingsProcessor;
+import sk.intersoft.vicinity.agent.config.thing.ThingDescriptionBackup;
+import sk.intersoft.vicinity.agent.config.thing.ThingsProcessorBackup;
 
 import java.io.File;
 import java.util.List;
@@ -25,9 +25,9 @@ public class TestThings {
 
         JSONArray json = new JSONArray(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/1.json"));
 
-        List<ThingDescription> list = ThingsProcessor.process(json);
+        List<ThingDescriptionBackup> list = ThingsProcessorBackup.process(json);
         System.out.println("PROCESSED");
-        for(ThingDescription d : list){
+        for(ThingDescriptionBackup d : list){
             d.show();
         }
 
