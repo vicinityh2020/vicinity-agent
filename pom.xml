@@ -10,7 +10,6 @@
     <modules>
         <module>rest-client</module>
         <module>utils</module>
-        <module>agent-config</module>
         <module>testing-adapter</module>
         <module>aau-adapter</module>
         <module>agent-service</module>

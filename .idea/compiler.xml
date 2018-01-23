@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="aau-adapter" />
         <module name="agent" />
-        <module name="agent-config" />
         <module name="agent-service" />
         <module name="rest-client" />
         <module name="testing-adapter" />
