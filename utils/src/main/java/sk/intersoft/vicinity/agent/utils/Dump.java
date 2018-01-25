@@ -32,8 +32,8 @@ public class Dump {
 
 
     // simple dump
-    public static void indent(String string, int tab) {
-        System.out.println(tab(tab) + string);
+    public static String indent(String string, int tab) {
+        return tab(tab) + string;
     }
 
 }

@@ -20,12 +20,10 @@ public class TestConfig {
 
 
     public void test() throws Exception {
-        System.out.println("CONFIG BEFORE: ");
-        AgentConfig.show();
+        System.out.println("CONFIG BEFORE: \n"+AgentConfig.asString());
 
         AgentConfig.create(new File("").getAbsolutePath() + "/agent-service/bin/config/test-config.json");
-        System.out.println("CONFIG AFTER: ");
-        AgentConfig.show();
+        System.out.println("CONFIG AFTER: \n"+AgentConfig.asString());
 
     }
     public static void main(String[] args) throws Exception {

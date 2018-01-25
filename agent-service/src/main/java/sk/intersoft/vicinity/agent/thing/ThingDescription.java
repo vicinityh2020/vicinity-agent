@@ -1,6 +1,8 @@
 package sk.intersoft.vicinity.agent.thing;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ThingDescription {
+    final static Logger logger = LoggerFactory.getLogger(ThingDescription.class.getName());
 
     public String dbId = null;
     public String oid = null;
@@ -31,30 +34,31 @@ public class ThingDescription {
     public static String EVENTS_KEY = "events";
 
     public boolean sameAs(ThingDescription other) {
-        Dump.indent("DOING DIFF", 0);
+        logger.info("DOING DOMETHING");
+        logger.debug(Dump.indent("DOING DIFF", 0));
         if(!this.thingType.equalsIgnoreCase(other.thingType)){
-            Dump.indent("Thing [type] diff: ["+thingType+"] -> ["+other.thingType+"]", 1);
+            logger.debug(Dump.indent("Thing [type] diff: ["+thingType+"] -> ["+other.thingType+"]", 1));
             return false;
         }
 
-        Dump.indent("Thing properties check", 1);
+        logger.debug(Dump.indent("Thing properties check", 1));
         boolean propertiesAreSame = ThingDescriptionDiff.samePatterns(properties, other.properties, 2);
         if(!propertiesAreSame) {
-            Dump.indent("Thing properties are different", 2);
+            logger.debug(Dump.indent("Thing properties are different", 2));
             return false;
         }
 
-        Dump.indent("Thing actions check", 1);
+        logger.debug(Dump.indent("Thing actions check", 1));
         boolean actionsAreSame = ThingDescriptionDiff.samePatterns(actions, other.actions, 2);
         if(!actionsAreSame) {
-            Dump.indent("Thing actions are different", 2);
+            logger.debug(Dump.indent("Thing actions are different", 2));
             return false;
         }
 
-        Dump.indent("Thing events check", 1);
+        logger.debug(Dump.indent("Thing events check", 1));
         boolean eventsAreSame = ThingDescriptionDiff.samePatterns(events, other.events, 2);
         if(!eventsAreSame) {
-            Dump.indent("Thing events are different", 2);
+            logger.debug(Dump.indent("Thing events are different", 2));
             return false;
         }
 

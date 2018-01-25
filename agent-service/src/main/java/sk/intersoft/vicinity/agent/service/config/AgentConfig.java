@@ -1,13 +1,15 @@
 package sk.intersoft.vicinity.agent.service.config;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.io.File;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class AgentConfig {
-    private final static Logger LOGGER = Logger.getLogger(AgentConfig.class.getName());
+    final static Logger logger = LoggerFactory.getLogger(AgentConfig.class.getName());
 
     private static final String CREDENTIALS_KEY = "credentials";
     private static final String LOGIN_KEY = "login";
@@ -29,14 +31,14 @@ public class AgentConfig {
             return new Scanner(new File(path)).useDelimiter("\\Z").next();
         }
         catch(Exception e){
-            e.printStackTrace();
+            logger.error("", e);
             return null;
         }
     }
 
     public static void create(String configPath) throws Exception {
         JSONObject config = new JSONObject(file2string(configPath));
-        LOGGER.info("CONFIG FILE: \n"+config.toString(2));
+        logger.info("CREATING CONFIG FILE FROM: \n"+config.toString(2));
         JSONObject credentials = config.getJSONObject(CREDENTIALS_KEY);
         login = credentials.getString(LOGIN_KEY);
         password = credentials.getString(PASSWORD_KEY);
@@ -45,14 +47,18 @@ public class AgentConfig {
         adapterEndpoint = config.getString(ADAPTER_ENDPOINT_KEY);
     }
 
-    public static void show() {
-        System.out.println("AGENT CONFIG CREATED: ");
+    public static String asString() {
+        Dump dump = new Dump();
 
-        System.out.println("Credentials: ");
-        System.out.println("> login: [" + login + "]");
-        System.out.println("> password: [" + password + "]");
-        System.out.println("GatewayAPI Endpoint: " + gatewayAPIEndpoint);
-        System.out.println("Adapter Endpoint: " + adapterEndpoint);
+        dump.add("AGENT CONFIG CREATED: ", 0);
+
+        dump.add("Credentials: ", 1);
+        dump.add("login: [" + login + "]", 2);
+        dump.add("password: [" + password + "]", 2);
+        dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, 1);
+        dump.add("Adapter Endpoint: " + adapterEndpoint, 1);
+
+        return dump.toString();
     }
 
 }

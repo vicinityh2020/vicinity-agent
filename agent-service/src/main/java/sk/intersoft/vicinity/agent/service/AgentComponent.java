@@ -2,8 +2,11 @@ package sk.intersoft.vicinity.agent.service;
 
 import org.restlet.Component;
 import org.restlet.data.Protocol;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AgentComponent extends Component {
+    final static Logger logger = LoggerFactory.getLogger(AgentComponent.class.getName());
 
     public AgentComponent() throws Exception {
 
@@ -14,12 +17,12 @@ public class AgentComponent extends Component {
 
     @Override
     public synchronized void stop() throws Exception {
-        System.out.println("stopping ");
+        logger.info("stopping ");
         super.stop();
     }
 
     public void shutdown()  {
-        System.out.println("shutdown");
+        logger.info("shutdown");
     }
 
 }

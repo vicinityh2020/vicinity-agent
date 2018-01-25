@@ -5,9 +5,13 @@ import org.restlet.Restlet;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.routing.Router;
 import org.restlet.security.ChallengeAuthenticator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.service.resource.*;
 
 public class AgentApplication extends Application {
+    final static Logger logger = LoggerFactory.getLogger(AgentApplication.class.getName());
+
     public static final String ALIVE = "/alive";
     public static final String OBJECT_PROPERTY_VALUE = "/objects/{oid}/properties/{pid}";
 
@@ -41,7 +45,7 @@ public class AgentApplication extends Application {
 
     @Override
     public synchronized void stop() throws Exception {
-        System.out.println("stopping app");
+        logger.info("stopping app");
         super.stop();
     }
 

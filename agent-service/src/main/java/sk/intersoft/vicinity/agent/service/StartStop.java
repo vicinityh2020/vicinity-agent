@@ -1,13 +1,17 @@
 package sk.intersoft.vicinity.agent.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class StartStop {
+    final static Logger logger = LoggerFactory.getLogger(StartStop.class.getName());
 
     public static void start() {
-        System.out.println("Launching starting sequence!");
+        logger.info("Launching starting sequence!");
     }
 
     public static void stop() {
-        System.out.println("Launching shutdown sequence!");
+        logger.info("Launching shutdown sequence!");
     }
 
 }

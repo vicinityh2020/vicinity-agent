@@ -1,0 +1,24 @@
+<configuration>
+    <property name="LOG_BASE" value="/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/agent-service/bin/build/logs" />
+
+    <appender name="FileDaily" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_BASE}/agent-log.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="sk.intersoft" level="DEBUG"/>
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="INFO">
+        <appender-ref ref="FileDaily" />
+    </root>
+
+</configuration>
