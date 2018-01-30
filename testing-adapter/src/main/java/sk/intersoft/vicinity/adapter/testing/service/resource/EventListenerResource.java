@@ -27,7 +27,7 @@ public class EventListenerResource extends ServerResource {
         catch(Exception e){
             e.printStackTrace();
         }
-        return "{}";
+        return "{\"event\": \"received\"}";
     }
 
 }

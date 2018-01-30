@@ -43,11 +43,11 @@ else
 
         rm nohup.out;
 
-        nohup java \
+        java \
             -Dlogback.configurationFile=$LOGBACK_CONFIG_SOURCE \
             -Djava.util.logging.config.file=$LOGGING_CONFIG_SOURCE \
             -Dlogs.folder=$LOGS_FOLDER \
-            -cp "$JAR" sk.intersoft.vicinity.agent.service.config.PrepareLogging &
+            -cp "$JAR" sk.intersoft.vicinity.agent.service.config.PrepareLogging > nohup.out
 
         nohup java \
             -Dconfig.file=$CONFIG_FILE \

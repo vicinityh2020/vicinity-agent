@@ -48,6 +48,23 @@ public class JSONUtil {
         else throw new Exception("Missing or incorrect ["+key+"] in: "+object.toString());
     }
 
+    public static boolean getBoolean(String key, JSONObject object) throws Exception {
+        if(object.has(key)){
+            try{
+                return object.getBoolean(key);
+            }
+            catch(Exception e){
+                String value = object.getString(key);
+                if(value != null){
+                    if(value.trim().equalsIgnoreCase("true")) return true;
+                    else if(value.trim().equalsIgnoreCase("false")) return false;
+                    else throw new Exception("Key ["+key+"] should be boolean in: "+object.toString());
+                }
+                else throw new Exception("Missing or incorrect ["+key+"] in: "+object.toString());
+            }
+        }
+        else throw new Exception("Missing or incorrect ["+key+"] in: "+object.toString());
+    }
 
     public static List<JSONObject> getObjectArray(String key, JSONObject object) throws Exception {
         List<JSONObject> result = new ArrayList<JSONObject>();

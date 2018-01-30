@@ -13,12 +13,11 @@ import java.util.Map;
 public class ThingDescription {
     final static Logger logger = LoggerFactory.getLogger(ThingDescription.class.getName());
 
-    public String dbId = null;
     public String oid = null;
     public String infrastructureID = null;
+    public String password = null;
+    public boolean enabled = false;
     public String thingType;
-    public String login;
-    public String password;
     public JSONObject json;
 
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
@@ -28,10 +27,57 @@ public class ThingDescription {
     // JSON keys
     public static String OID_KEY = "oid";
     public static String INFRASTRUCTURE_ID_KEY = "infrastructure-id";
+    public static String PASSWORD_KEY = "password";
+    public static String ENABLED_KEY = "enabled";
     public static String TYPE_KEY = "type";
     public static String PROPERTIES_KEY = "properties";
     public static String ACTIONS_KEY = "actions";
     public static String EVENTS_KEY = "events";
+
+
+    public InteractionPattern getInteractionPattern(String patternID, String patternType) throws Exception {
+        if(patternID == null) throw new Exception("Missing Interaction pattern ID");
+
+
+        InteractionPattern pattern = null;
+        if(patternType.equals(InteractionPattern.PROPERTY)){
+            pattern = properties.get(patternID);
+        }
+        else if(patternType.equals(InteractionPattern.ACTION)){
+            pattern = actions.get(patternID);
+        }
+        else if(patternType.equals(InteractionPattern.EVENT)){
+            pattern = events.get(patternID);
+        }
+
+        if(pattern == null) throw new Exception("Missing interaction pattern ["+patternType+"] for [OID: "+oid+"] [PATTERN-ID: "+patternID+"]");
+
+        return pattern;
+
+    }
+
+    public String getReadHref(String patternID, String patternType) throws Exception {
+        InteractionPatternEndpoint endpoint = getInteractionPattern(patternID, patternType).readEndpoint;
+        if(endpoint != null) {
+            return endpoint.href;
+        }
+        else {
+            throw new Exception("Not existing READ interaction pattern ["+patternType+"] for [OID: "+oid+"] [PATTERN-ID: "+patternID+"]");
+        }
+
+    }
+    public String getWriteHref(String patternID, String patternType) throws Exception {
+        InteractionPatternEndpoint endpoint = getInteractionPattern(patternID, patternType).writeEndpoint;
+        if(endpoint != null) {
+            return endpoint.href;
+        }
+        else {
+            throw new Exception("Not existing WRITE interaction pattern ["+patternType+"] for [OID: "+oid+"] [PATTERN-ID: "+patternID+"]");
+        }
+
+    }
+
+
 
     public boolean sameAs(ThingDescription other) {
         logger.info("DOING DOMETHING");
@@ -66,15 +112,36 @@ public class ThingDescription {
     }
 
 
-    public static ThingDescription create(JSONObject thingJSON) throws Exception {
+    public static ThingDescription create(JSONObject thingJSON, boolean isConfiguration) throws Exception {
 
         ThingDescription thing = new ThingDescription();
         thing.json = thingJSON;
 
 
-        String oid = JSONUtil.getString(OID_KEY, thingJSON);
-        if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
-        thing.infrastructureID = oid;
+        if(isConfiguration){
+            logger.debug("processing thing configuration");
+
+            String oid = JSONUtil.getString(OID_KEY, thingJSON);
+            if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
+            thing.oid = oid;
+
+            String infrastructureId = JSONUtil.getString(INFRASTRUCTURE_ID_KEY, thingJSON);
+            if(infrastructureId == null) throw new Exception("Missing [infrastructure-id] in: "+thingJSON.toString());
+            thing.infrastructureID = infrastructureId;
+
+            String password = JSONUtil.getString(PASSWORD_KEY, thingJSON);
+            if(password == null) throw new Exception("Missing [password] in: "+thingJSON.toString());
+            thing.password = password;
+
+            boolean enabled = JSONUtil.getBoolean(ENABLED_KEY, thingJSON);
+            thing.enabled = enabled;
+        }
+        else{
+            logger.debug("processing thing from adapter");
+            String oid = JSONUtil.getString(OID_KEY, thingJSON);
+            if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
+            thing.infrastructureID = oid;
+        }
 
         String thingType = JSONUtil.getString(TYPE_KEY, thingJSON);
         if(thingType == null) throw new Exception("Missing [type] in: "+thingJSON.toString());
@@ -113,10 +180,10 @@ public class ThingDescription {
         dump.add("THING :", indent);
         dump.add("oid: "+oid, (indent + 1));
         dump.add("infrastructure-id: "+infrastructureID, (indent + 1));
+        dump.add("password: "+password, (indent + 1));
+        dump.add("enabled: "+enabled, (indent + 1));
         dump.add("type: "+thingType, (indent + 1));
         dump.add("credentials: ", (indent + 1));
-        dump.add("login: "+login, (indent + 2));
-        dump.add("password: "+password, (indent + 2));
         dump.add("PROPERTIES: "+properties.size(), (indent + 1));
         for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
             String id = entry.getKey();

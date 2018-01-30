@@ -12,21 +12,32 @@ import java.util.List;
 public class ThingsProcessor {
     final static Logger logger = LoggerFactory.getLogger(ThingsProcessor.class.getName());
 
-    public static List<ThingDescription> process(JSONArray things) throws Exception {
-        List<ThingDescription> list = new ArrayList<ThingDescription>();
+    public static ThingDescriptions process(JSONArray thingsJSON, boolean isConfiguration) throws Exception {
+        ThingDescriptions things = new ThingDescriptions();
 
-        Iterator i = things.iterator();
+        Iterator i = thingsJSON.iterator();
         while (i.hasNext()) {
-            JSONObject thing = (JSONObject) i.next();
-            list.add(ThingDescription.create(thing));
+            JSONObject thingJSON = (JSONObject) i.next();
+            try{
+                ThingDescription thing = ThingDescription.create(thingJSON, isConfiguration);
+                if(thing.oid != null) {
+                    things.byOID.put(thing.oid, thing);
+                }
+                if(thing.infrastructureID != null) {
+                    things.byInfrastructureID.put(thing.infrastructureID, thing);
+                }
+            }
+            catch(Exception e){
+                logger.error("thing not created!", e);
+            }
         }
 
 
-        return list;
+        return things;
 
     }
 
-    public static ThingDescription process(JSONObject thing) throws Exception {
-        return ThingDescription.create(thing);
+    public static ThingDescription process(JSONObject thing, boolean isConfiguration) throws Exception {
+        return ThingDescription.create(thing, isConfiguration);
     }
 }

@@ -13,7 +13,10 @@ public class AgentApplication extends Application {
     final static Logger logger = LoggerFactory.getLogger(AgentApplication.class.getName());
 
     public static final String ALIVE = "/alive";
-    public static final String OBJECT_PROPERTY_VALUE = "/objects/{oid}/properties/{pid}";
+    public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
+    public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
+    public static final String EVENT_PUBLISHER = "/objects/{oid}/events/{eid}/publish";
+    public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
 
 
 
@@ -32,6 +35,10 @@ public class AgentApplication extends Application {
     public Router createApiRouter() {
         Router apiRouter = new Router(getContext());
         apiRouter.attach(ALIVE, AliveResource.class);
+        apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
+        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
+        apiRouter.attach(EVENT_PUBLISHER, EventPublisherResource.class);
+        apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
 
         return apiRouter;
     }

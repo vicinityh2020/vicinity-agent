@@ -25,8 +25,8 @@ public class TestThingDiff {
         JSONObject thing1JSON = new JSONObject(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/thing1.json"));
         JSONObject thing2JSON = new JSONObject(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/thing2.json"));
 
-        ThingDescription thing1 = ThingsProcessor.process(thing1JSON);
-        ThingDescription thing2 = ThingsProcessor.process(thing2JSON);
+        ThingDescription thing1 = ThingsProcessor.process(thing1JSON, false);
+        ThingDescription thing2 = ThingsProcessor.process(thing2JSON, false);
         boolean same = thing1.sameAs(thing2);
         System.out.println("SAME: "+same);
     }

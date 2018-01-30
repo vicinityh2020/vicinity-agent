@@ -1,0 +1,120 @@
+[
+
+{
+	"oid": "device-1-oid",
+	"infrastructure-id": "device-1",
+	"password": "device-1-password",
+	"enabled": "false",
+	"type": "device-type",
+	"properties": [
+	{
+		"pid": "device-1-pid-1",
+		"monitors": "AmbientTemperature",
+		"type": "SomeProperty",
+		"output": {
+			"units": "Celsius",
+			"dataxtype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "/custom/{oid}/x",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+      			"href": "/custom-set/{oid}/y",
+      			"mediatype": "application/json"
+      		}]
+
+	}
+
+	],
+	"actions": [
+	{
+		"aid": "device-1-aid-1",
+		"affects": "AmbientTemperature",
+		"type": "SomeProperty",
+		"write_links": [{
+			"href": "/custom-post/{oid}/z",
+			"mediatype": "application/json"
+		}],
+		"read_links": [{
+			"href": "/objects/{oid}/actions/{aid}",
+			"mediatype": "application/json"
+		}]
+
+	}
+	],
+
+	"events": [
+    	{
+    		"eid": "device-1-eid-1",
+    		"monitors": "Whatever",
+
+            "write_links": [{
+                "href": "/objects/{oid}/properties/{eid}/event",
+                "mediatype": "application/json"
+            }]
+    	}
+    	]
+
+},
+{
+	"oid": "device-2-oid",
+	"infrastructure-id": "device-2",
+	"password": "device-1-password",
+	"enabled": "false",
+	"type": "device-type",
+	"properties": [
+	{
+		"pid": "device-1-pid-1",
+		"monitors": "AmbientTemperature",
+		"type": "SomeProperty",
+		"output": {
+			"units": "Celsius",
+			"dataxtype": "float"
+		},
+		"writable": false,
+		"read_links": [{
+			"href": "/custom/{oid}/x",
+			"mediatype": "application/json"
+		}],
+		"write_links": [{
+      			"href": "/custom-set/{oid}/y",
+      			"mediatype": "application/json"
+      		}]
+
+	}
+
+
+	],
+	"actions": [
+	{
+		"aid": "device-1-aid-1",
+		"affects": "AmbientTemperature",
+		"type": "SomeProperty",
+		"write_links": [{
+			"href": "/custom-post/{oid}/z",
+			"mediatype": "application/json"
+		}],
+		"read_links": [{
+			"href": "/objects/{oid}/actions/{aid}",
+			"mediatype": "application/json"
+		}]
+
+	}
+	],
+
+	"events": [
+    	{
+    		"eid": "device-1-eid-1",
+    		"monitors": "Whatever"
+
+    	}
+
+    	]
+
+}
+
+
+
+]

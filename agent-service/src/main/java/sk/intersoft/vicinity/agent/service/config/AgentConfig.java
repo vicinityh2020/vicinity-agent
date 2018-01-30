@@ -3,6 +3,7 @@ package sk.intersoft.vicinity.agent.service.config;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.io.File;
@@ -24,6 +25,8 @@ public class AgentConfig {
 
     public static String gatewayAPIEndpoint = "";
     public static String adapterEndpoint = "";
+
+    public static ThingDescriptions things = new ThingDescriptions();
 
 
     public static String file2string(String path) {

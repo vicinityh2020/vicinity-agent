@@ -15,6 +15,12 @@ public class InteractionPattern {
     public InteractionPatternEndpoint writeEndpoint = null;
 
 
+    // PATTERN TYPES
+    public static final String PROPERTY = "property";
+    public static final String ACTION = "action";
+    public static final String EVENT = "event";
+
+
     // JSON keys
     public static final String PID_KEY = "pid";
     public static final String AID_KEY = "aid";
@@ -93,6 +99,11 @@ public class InteractionPattern {
         pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
+        try{
+            createLinks(pattern, patternJSON);
+        }
+        catch (Exception e){
+        }
         return pattern;
 
     }
