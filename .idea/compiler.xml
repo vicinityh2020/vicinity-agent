@@ -25,6 +25,7 @@
         <module name="aau-adapter" />
         <module name="agent" />
         <module name="agent-service" />
+        <module name="hsqldb-test" />
         <module name="rest-client" />
         <module name="testing-adapter" />
         <module name="utils" />
@@ -39,6 +40,7 @@
       <module name="agent-config" target="1.8" />
       <module name="agent-old" target="1.8" />
       <module name="agent-service" target="1.8" />
+      <module name="hsqldb-test" target="1.8" />
       <module name="rest-client" target="1.8" />
       <module name="testing-adapter" target="1.8" />
       <module name="utils" target="1.8" />

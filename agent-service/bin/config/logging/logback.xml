@@ -1,10 +1,9 @@
 <configuration>
-    <property name="LOG_BASE" value="/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/agent-service/bin/build/logs" />
 
     <appender name="FileDaily" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>${LOG_BASE}/agent-log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOGS_FOLDER}/agent-log.%d{yyyy-MM-dd}.log</fileNamePattern>
 
         </rollingPolicy>
 
