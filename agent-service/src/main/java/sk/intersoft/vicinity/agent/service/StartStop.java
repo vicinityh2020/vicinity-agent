@@ -26,10 +26,6 @@ public class StartStop {
             AgentConfig.create(System.getProperty("config.file"));
             logger.info("AGENT CONFIGURED: \n"+AgentConfig.asString());
 
-            // 2. READ AGENT CONFIG
-            AgentAdapter.create(AgentConfig.adapterEndpoint);
-            logger.info("ADAPTER CLIENT CONFIGURED TO ENDPOINT: "+AgentAdapter.getInstance().endpoint);
-
             fakeConfig();
 
         }

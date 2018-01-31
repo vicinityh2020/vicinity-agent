@@ -11,6 +11,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 
 public class AgentAdapter {
     final static Logger logger = LoggerFactory.getLogger(AgentAdapter.class.getName());
@@ -23,11 +24,11 @@ public class AgentAdapter {
     }
 
 
-    public static void create(String endpoint){
-        adapter = new AgentAdapter(endpoint);
-    }
-
     public static AgentAdapter getInstance(){
+        if(adapter == null){
+            adapter = new AgentAdapter(AgentConfig.adapterEndpoint);
+            logger.info("ADAPTER CLIENT CONFIGURED TO ENDPOINT: "+adapter.endpoint);
+        }
         return adapter;
     }
 

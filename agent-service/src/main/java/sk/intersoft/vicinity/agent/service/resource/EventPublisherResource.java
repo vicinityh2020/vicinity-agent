@@ -8,7 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
+import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
+import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
+import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
 /**
  * Resource listening to events from adapter and resenting them to GTW API
@@ -33,26 +36,29 @@ public class EventPublisherResource extends ServerResource {
                 throw new Exception("Empty payload!");
             }
             String rawPayload = entity.getText();
-
-            logger.info("PAYLOAD: " + rawPayload);
+            logger.info("RAW PAYLOAD: " + rawPayload);
 
             JSONObject payload = new JSONObject(rawPayload);
+            logger.info("PAYLOAD: " + payload.toString(2));
 
-//            String endpoint = AdapterEndpoint.getEndpoint(oid, eid, InteractionPattern.EVENT, false);
-//
-//            logger.info("EVENT LISTENER ADAPTER ENDPOINT: [" + endpoint + "]");
-//
-//            AgentAdapter adapter = AgentAdapter.getInstance();
-//
-//            String adapterResponse = adapter.post(endpoint, payload.toString());
-//            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
-//
-//            JSONObject result = new JSONObject(adapterResponse);
-//
-//
-//            logger.info("ADAPTER RESPONSE: \n"+result.toString(2));
-//            return ResourceResponse.success(result).toString();
-            return "implement me, when GWT API implemented";
+            ThingDescription thing = AgentConfig.things.getThingByOID(oid);
+            if(thing == null) throw new Exception ("Missing thing with OID: "+oid);
+
+            InteractionPattern event = thing.events.get(eid);
+            if(event == null) throw new Exception ("Missing requested event ["+eid+"] in OID: "+oid);
+
+
+            String gtwEndpoint = "/objects/"+oid+"/events/"+eid;
+            logger.info("GTW API endpoint: " + gtwEndpoint);
+
+            JSONObject data = new JSONObject(rawPayload);
+            data.put(OBJECT_ID, oid);
+
+            String gtwResponse = GatewayAPIClient.getInstance().post(gtwEndpoint, data.toString());
+            logger.info("GTW API response: " + gtwResponse);
+
+            return gtwResponse;
+
         }
         catch(Exception e){
             logger.error("", e);
