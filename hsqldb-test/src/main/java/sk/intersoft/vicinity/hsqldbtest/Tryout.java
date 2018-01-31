@@ -35,7 +35,7 @@ public class Tryout {
             Class.forName("org.hsqldb.jdbcDriver");
             Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:"+dbFile, "SA", "");
 
-            String create = "CREATE TABLE  things (" +
+            String create = "CREATE TABLE IF NOT EXISTS things (" +
                     "id INTEGER IDENTITY PRIMARY KEY, "+
                     "json CLOB NOT NULL" +
                     ")";
@@ -52,6 +52,29 @@ public class Tryout {
 
     public void insert() throws Exception {
         System.out.println("TRYING DB INSERT STATEMENTS: "+dbFile);
+        try{
+            Class.forName("org.hsqldb.jdbcDriver");
+            Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:"+dbFile, "SA", "");
+
+            JSONObject o = new JSONObject();
+            o.put("x", "y");
+            o.put("y", "z");
+            String create = "INSERT INTO things (json) VALUES ('"+o.toString()+"')";
+            Statement statement = conn.createStatement();
+            statement.executeUpdate(create);
+            conn.commit();
+            conn.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void persist(String a, String b) throws Exception {
+        System.out.println("TRYING DB PERSIST: "+dbFile);
+        System.out.println("A: "+a);
+        System.out.println("B: "+b);
         try{
             Class.forName("org.hsqldb.jdbcDriver");
             Connection conn = DriverManager.getConnection("jdbc:hsqldb:file:"+dbFile, "SA", "");
@@ -99,6 +122,9 @@ public class Tryout {
 //        createTable();
 //        insert();
 //        insert();
+//        insert();
+        persist("a1", "b1");
+        persist("a2", "b2");
         list();
     }
 

@@ -3,7 +3,7 @@
     <appender name="FileDaily" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>${LOGS_FOLDER}/agent-log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOGS_FOLDER}/agent-%d{yyyy-MM-dd}.log</fileNamePattern>
 
         </rollingPolicy>
 

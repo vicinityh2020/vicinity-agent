@@ -5,7 +5,9 @@ JAR=agent.jar
 
 CONFIG_FILE=config/test-config.json
 
+
 LOGS_FOLDER=logs
+DEFAULT_LOG=$LOGS_FOLDER/agent.log
 
 LOG_CONFIG=config/logging
 
@@ -41,20 +43,20 @@ else
     else
 
 
-        rm nohup.out;
+        rm $DEFAULT_LOG;
 
         java \
             -Dlogback.configurationFile=$LOGBACK_CONFIG_SOURCE \
             -Djava.util.logging.config.file=$LOGGING_CONFIG_SOURCE \
             -Dlogs.folder=$LOGS_FOLDER \
-            -cp "$JAR" sk.intersoft.vicinity.agent.service.config.PrepareLogging > nohup.out
+            -cp "$JAR" sk.intersoft.vicinity.agent.service.config.PrepareLogging > $DEFAULT_LOG
 
         nohup java \
             -Dconfig.file=$CONFIG_FILE \
             -Dserver.port=$SERVER_PORT \
             -Dlogback.configurationFile=$LOGBACK_CONFIG \
             -Djava.util.logging.config.file=$LOGGING_CONFIG \
-            -jar $JAR  &
+            -jar $JAR  >> $DEFAULT_LOG 2>&1 &
         echo "agent started"
     fi
 
