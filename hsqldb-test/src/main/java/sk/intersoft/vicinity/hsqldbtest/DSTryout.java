@@ -15,7 +15,6 @@ public class DSTryout {
                 "infrastructure_id varchar(255), " +
                 "password varchar(255)" +
                 ")";
-
     }
 
     public String insertQuery(String oid, String infrastructureId, String password){
@@ -24,21 +23,21 @@ public class DSTryout {
                 "'"+infrastructureId+"', "+
                 "'"+password+"'"+
                 ")";
-
     }
 
     public String updateQuery(String oid, String infrastructureId, String password){
         return "UPDATE things SET infrastructure_id='"+infrastructureId+"', password='"+password+"' WHERE oid='"+oid+"'";
+    }
 
+    public String deleteQuery(String oid){
+        return "DELETE FROM WHERE oid='"+oid+"'";
     }
 
     public String listQuery(){
         return "SELECT * FROM things";
-
     }
     public String getOIDQuery(String oid){
         return "SELECT * FROM things WHERE oid='"+oid+"'";
-
     }
 
     public void query(String query) throws Exception {
@@ -76,6 +75,7 @@ public class DSTryout {
             e.printStackTrace();
         }
     }
+
 
     public void test() throws Exception {
 //        createTable();

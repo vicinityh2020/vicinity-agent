@@ -14,6 +14,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.json:json:20160212" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.7" level="project" />
+    <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.restlet.jee:org.restlet:2.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.restlet.jee:org.restlet.ext.jackson:2.3.9" level="project" />
