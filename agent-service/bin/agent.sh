@@ -1,11 +1,21 @@
 #!/bin/bash
 
 SERVER_PORT=9997
-JAR=agent.jar
-
 CONFIG_FILE=config/test-config.json
 
+# ==============================
+# DON'T TOUCH ANYTHING BELOW
+# ==============================
 
+# ------------------------------
+# Persistence
+# ------------------------------
+PERSISTENCE_FILE=db/thing.db
+# ------------------------------
+
+# ------------------------------
+# Logging
+# ------------------------------
 LOGS_FOLDER=logs
 DEFAULT_LOG=$LOGS_FOLDER/agent.log
 
@@ -16,6 +26,8 @@ LOGBACK_CONFIG_SOURCE=${LOG_CONFIG}/logback.xml
 
 LOGGING_CONFIG=${LOG_CONFIG}/resolved.logging.properties
 LOGBACK_CONFIG=${LOG_CONFIG}/resolved.logback.xml
+# ------------------------------
+
 
 COMMAND=$1
 
@@ -54,6 +66,7 @@ else
         nohup java \
             -Dconfig.file=$CONFIG_FILE \
             -Dserver.port=$SERVER_PORT \
+            -Dpersistence.file=$PERSISTENCE_FILE \
             -Dlogback.configurationFile=$LOGBACK_CONFIG \
             -Djava.util.logging.config.file=$LOGGING_CONFIG \
             -jar $JAR  >> $DEFAULT_LOG 2>&1 &

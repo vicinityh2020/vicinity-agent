@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 public class HSQL {
     final static Logger logger = LoggerFactory.getLogger(HSQL.class.getName());
 
-    static final String dbFile = System.getProperty("db.file");
+    static final String dbFile = System.getProperty("persistence.file");
 
     public static Connection getConnection() throws Exception {
         logger.debug("persistence file: "+dbFile);
