@@ -7,6 +7,8 @@ CONFIG_FILE=config/test-config.json
 # DON'T TOUCH ANYTHING BELOW
 # ==============================
 
+JAR=agent.jar
+
 # ------------------------------
 # Persistence
 # ------------------------------
