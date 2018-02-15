@@ -35,6 +35,11 @@ public class InteractionPattern {
     public static final String WRITE_LINKS_KEY = "write_links";
     public static final String LINKS_KEY = "links";
 
+    // JSON-LD keys
+    public static final String OBSERVES_KEY = "observes";
+    public static final String FOR_PROPERTY_KEY = "forProperty";
+
+
 
     public static InteractionPatternParameter createOutput(JSONObject patternJSON) throws Exception {
         List<JSONObject> outputs = JSONUtil.getObjectArray(OUTPUT_KEY, patternJSON);
@@ -60,8 +65,15 @@ public class InteractionPattern {
             throw new Exception("Missing or wrong configuration of links/read_links/write_links in: "+patternJSON.toString());
         }
     }
-    public static InteractionPattern createProperty(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createProperty(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
+
+        if(isConfiguration){
+            String observes = JSONUtil.getString(OBSERVES_KEY, patternJSON);
+            if(observes == null) throw new Exception("Missing ["+OBSERVES_KEY+"] in: "+patternJSON.toString());
+
+            patternJSON.put(MONITORS_KEY, ThingDescription.prefixed2value(observes));
+        }
 
         pattern.id = JSONUtil.getString(PID_KEY, patternJSON);
         if(pattern.id == null) throw new Exception("Missing ["+PID_KEY+"] in: "+patternJSON.toString());
@@ -75,8 +87,15 @@ public class InteractionPattern {
 
     }
 
-    public static InteractionPattern createAction(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createAction(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
+
+        if(isConfiguration){
+            String forProperty = JSONUtil.getString(FOR_PROPERTY_KEY, patternJSON);
+            if(forProperty == null) throw new Exception("Missing ["+FOR_PROPERTY_KEY+"] in: "+patternJSON.toString());
+
+            patternJSON.put(AFFECTS_KEY, ThingDescription.prefixed2value(forProperty));
+        }
 
         pattern.id = JSONUtil.getString(AID_KEY, patternJSON);
         if(pattern.id == null) throw new Exception("Missing ["+AID_KEY+"] in: "+patternJSON.toString());
@@ -90,7 +109,7 @@ public class InteractionPattern {
 
     }
 
-    public static InteractionPattern createEvent(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createEvent(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
         pattern.id = JSONUtil.getString(EID_KEY, patternJSON);

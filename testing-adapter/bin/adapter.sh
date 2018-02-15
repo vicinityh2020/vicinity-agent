@@ -3,7 +3,8 @@
 SERVER_PORT=9995
 JAR=testing-adapter.jar
 
-OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/unikl-objects.json
+#OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/unikl-objects.json
+OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects.json
 
 COMMAND=$1
 

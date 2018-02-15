@@ -55,8 +55,8 @@ public class AgentAdapter {
 
         }
         catch(Exception e){
-            e.printStackTrace();
-            return "[]";
+            logger.error("", e);
+            throw e;
         }
 
     }
@@ -95,8 +95,8 @@ public class AgentAdapter {
 
         }
         catch(Exception e){
-            e.printStackTrace();
-            return null;
+            logger.error("", e);
+            throw e;
         }
 
     }
@@ -135,8 +135,8 @@ public class AgentAdapter {
 
         }
         catch(Exception e){
-            e.printStackTrace();
-            return null;
+            logger.error("", e);
+            throw e;
         }
 
     }

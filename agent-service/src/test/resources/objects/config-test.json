@@ -2,15 +2,15 @@
 
 {
 	"oid": "device-1",
+	"name": "ultra friendly name",
 	"infrastructure-id": "device-1-infra",
 	"password": "device-1-password",
 	"enabled": "false",
-	"type": "device-type",
+	"type": "Lightbulb",
 	"properties": [
 	{
 		"pid": "device-1-pid-1",
-		"monitors": "AmbientTemperature",
-		"type": "SomeProperty",
+		"monitors": "OnOff",
 		"output": {
 			"units": "Celsius",
 			"dataxtype": "float"
@@ -31,8 +31,7 @@
 	"actions": [
 	{
 		"aid": "device-1-aid-1",
-		"affects": "AmbientTemperature",
-		"type": "SomeProperty",
+		"affects": "Motion",
 		"write_links": [{
 			"href": "/custom-post/{oid}/z",
 			"mediatype": "application/json"
@@ -43,15 +42,7 @@
 		}]
 
 	}
-	],
-
-	"events": [
-    	{
-    		"eid": "device-1-eid-1",
-    		"monitors": "Whatever"
-
-    	}
-    	]
+	]
 
 }
 

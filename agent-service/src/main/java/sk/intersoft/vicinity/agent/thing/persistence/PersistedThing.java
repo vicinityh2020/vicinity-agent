@@ -3,6 +3,7 @@ package sk.intersoft.vicinity.agent.thing.persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.db.HSQL;
+import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,15 +19,16 @@ public class PersistedThing {
     private static final String PASSWORD = "password";
 
 
-    String oid = null;
-    String infrastructureId = null;
-    String password = null;
+    public String oid = null;
+    public String infrastructureId = null;
+    public String password = null;
 
     public PersistedThing(String oid, String infrastructureId, String password){
         this.oid = oid;
         this.infrastructureId = infrastructureId;
         this.password = password;
     }
+
 
 
     private static final String createTableQuery(){
@@ -57,8 +59,11 @@ public class PersistedThing {
         return "DELETE FROM "+TABLE+" WHERE "+OID+"='"+oid+"'";
     }
 
-    private String getQuery(){
+    private static String getByOIDQuery(String oid){
         return "SELECT * FROM "+TABLE+" WHERE "+OID+"='"+oid+"'";
+    }
+    private static String getByInfrastructureIDQuery(String infrastructureId){
+        return "SELECT * FROM "+TABLE+" WHERE "+INFRASTRUCTURE_ID+"='"+infrastructureId+"'";
     }
 
 
@@ -116,9 +121,8 @@ public class PersistedThing {
     }
 
 
-    public PersistedThing get() {
-        logger.info("GET: "+toString());
-        String query = getQuery();
+    public static PersistedThing get(String query) {
+        logger.info("GET: ");
         logger.info("query: "+query);
 
         PersistedThing thing = null;
@@ -144,6 +148,16 @@ public class PersistedThing {
         return thing;
     }
 
+    public static PersistedThing getByOID(String oid) {
+        logger.info("GET BY OID: " + oid);
+        return get(getByOIDQuery(oid));
+    }
+
+    public static PersistedThing getByInfrastructureID(String infrastructureId) {
+        logger.info("GET BY Infrastructure-ID: " + infrastructureId);
+        return get(getByInfrastructureIDQuery(infrastructureId));
+    }
+
     public boolean delete() {
         logger.info("DELETE: " + toString());
         String query = deleteQuery();
@@ -153,7 +167,7 @@ public class PersistedThing {
 
     public boolean persist() {
         logger.info("PERSIST: " + toString());
-        PersistedThing thing = get();
+        PersistedThing thing = getByOID(oid);
         logger.info("existing thing: " + thing);
         String query = insertQuery();
         if(thing != null) {

@@ -12,6 +12,8 @@ import java.util.List;
 public class ThingsProcessor {
     final static Logger logger = LoggerFactory.getLogger(ThingsProcessor.class.getName());
 
+
+
     public static ThingDescriptions process(JSONArray thingsJSON, boolean isConfiguration) throws Exception {
         ThingDescriptions things = new ThingDescriptions();
 
@@ -20,15 +22,11 @@ public class ThingsProcessor {
             JSONObject thingJSON = (JSONObject) i.next();
             try{
                 ThingDescription thing = ThingDescription.create(thingJSON, isConfiguration);
-                if(thing.oid != null) {
-                    things.byOID.put(thing.oid, thing);
-                }
-                if(thing.infrastructureID != null) {
-                    things.byInfrastructureID.put(thing.infrastructureID, thing);
-                }
+                things.add(thing);
             }
             catch(Exception e){
                 logger.error("thing not created!", e);
+                throw e;
             }
         }
 
@@ -37,7 +35,21 @@ public class ThingsProcessor {
 
     }
 
-    public static ThingDescription process(JSONObject thing, boolean isConfiguration) throws Exception {
-        return ThingDescription.create(thing, isConfiguration);
+    public static ThingDescriptions process(String data, boolean isConfiguration) throws Exception {
+        if(isConfiguration){
+            JSONObject root = new JSONObject(data);
+            JSONArray results = root.getJSONArray("message");
+            JSONArray extraction = new JSONArray();
+            Iterator<Object> i = results.iterator();
+            while(i.hasNext()){
+                JSONObject item = (JSONObject)i.next();
+                extraction.put(item.getJSONObject("id").getJSONObject("info"));
+            }
+            return process(extraction, isConfiguration);
+        }
+        else {
+            return process(new JSONArray(data), isConfiguration);
+        }
     }
+
 }

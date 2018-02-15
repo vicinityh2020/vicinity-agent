@@ -3,6 +3,7 @@ package sk.intersoft.vicinity.agent.thing;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.thing.persistence.PersistedThing;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -18,7 +19,7 @@ public class ThingDescription {
     public String password = null;
     public boolean enabled = false;
     public String thingType;
-    public JSONObject json;
+    public String jsonString;
 
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
@@ -34,6 +35,21 @@ public class ThingDescription {
     public static String ACTIONS_KEY = "actions";
     public static String EVENTS_KEY = "events";
 
+    // JSON-LD keys
+    public static String LD_TYPE_KEY = "@type";
+
+
+    public JSONObject toJSON(){
+        return new JSONObject(jsonString);
+    }
+
+    public static String prefixed2value(String content) {
+        String[] parts = content.split(":");
+        if(parts.length == 2) {
+            return parts[1];
+        }
+        return content;
+    }
 
     public InteractionPattern getInteractionPattern(String patternID, String patternType) throws Exception {
         if(patternID == null) throw new Exception("Missing Interaction pattern ID");
@@ -115,26 +131,40 @@ public class ThingDescription {
     public static ThingDescription create(JSONObject thingJSON, boolean isConfiguration) throws Exception {
 
         ThingDescription thing = new ThingDescription();
-        thing.json = thingJSON;
 
 
         if(isConfiguration){
             logger.debug("processing thing configuration");
 
+            String ldType = JSONUtil.getString(LD_TYPE_KEY, thingJSON);
+            if(ldType == null) throw new Exception("Missing ["+LD_TYPE_KEY+"] in: "+thingJSON.toString());
+
+            thingJSON.put(TYPE_KEY, prefixed2value(ldType));
+
+
             String oid = JSONUtil.getString(OID_KEY, thingJSON);
             if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
             thing.oid = oid;
 
-            String infrastructureId = JSONUtil.getString(INFRASTRUCTURE_ID_KEY, thingJSON);
-            if(infrastructureId == null) throw new Exception("Missing [infrastructure-id] in: "+thingJSON.toString());
-            thing.infrastructureID = infrastructureId;
+            PersistedThing persisted = PersistedThing.getByOID(thing.oid);
+            if(persisted != null){
+                logger.debug("persisted thing: "+persisted.toString());
 
-            String password = JSONUtil.getString(PASSWORD_KEY, thingJSON);
-            if(password == null) throw new Exception("Missing [password] in: "+thingJSON.toString());
-            thing.password = password;
+                thing.infrastructureID = persisted.infrastructureId;
+            }
+            else {
+                logger.debug("NO persisted thing");
+            }
 
-            boolean enabled = JSONUtil.getBoolean(ENABLED_KEY, thingJSON);
-            thing.enabled = enabled;
+
+            try{
+                boolean enabled = JSONUtil.getBoolean(ENABLED_KEY, thingJSON);
+                thing.enabled = enabled;
+            }
+            catch(Exception e){
+                logger.debug("WRONG OR MISSING ENABLED PROPERTY! setting enabled to FALSE!");
+                thing.enabled = false;
+            }
         }
         else{
             logger.debug("processing thing from adapter");
@@ -153,23 +183,26 @@ public class ThingDescription {
 
         if(properties != null){
             for(JSONObject property : properties){
-                InteractionPattern pattern = InteractionPattern.createProperty(property);
+                InteractionPattern pattern = InteractionPattern.createProperty(property, isConfiguration);
                 thing.properties.put(pattern.id, pattern);
             }
         }
         if(actions != null){
             for(JSONObject action : actions){
-                InteractionPattern pattern = InteractionPattern.createAction(action);
+                InteractionPattern pattern = InteractionPattern.createAction(action, isConfiguration);
                 thing.actions.put(pattern.id, pattern);
             }
         }
 
         if(events != null){
             for(JSONObject event : events){
-                InteractionPattern pattern = InteractionPattern.createEvent(event);
+                InteractionPattern pattern = InteractionPattern.createEvent(event, isConfiguration);
                 thing.events.put(pattern.id, pattern);
             }
         }
+
+        // save JSON string with all changes done on the way
+        thing.jsonString = thingJSON.toString();
 
         return thing;
     }
@@ -202,7 +235,20 @@ public class ThingDescription {
             dump.add("EVENT MAPPED KEY: "+id, (indent + 2));
             dump.add(entry.getValue().toString(indent + 2));
         }
+        dump.add("JSON: \n"+jsonString, (indent + 1));
 
         return dump.toString();
+    }
+
+    public String toSimpleString(int indent){
+        Dump dump = new Dump();
+
+        dump.add(toSimpleString(), indent);
+
+        return dump.toString();
+    }
+
+    public String toSimpleString(){
+        return "THING : [OID: "+oid+"][INFRA-ID: "+infrastructureID+"] ";
     }
 }

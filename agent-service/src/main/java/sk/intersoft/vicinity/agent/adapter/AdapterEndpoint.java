@@ -4,6 +4,9 @@ import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
 public class AdapterEndpoint {
+    public static final String OBJECTS = "/objects";
+
+
     public static String process(ThingDescription thing, String patternID, String href) {
         String endpoint = href.replaceAll("\\{oid\\}", thing.infrastructureID).replaceAll("\\{pid\\}", patternID).replaceAll("\\{aid\\}", patternID).replaceAll("\\{eid\\}", patternID);
         return endpoint;
