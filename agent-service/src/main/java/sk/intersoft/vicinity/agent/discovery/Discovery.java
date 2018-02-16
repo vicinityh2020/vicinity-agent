@@ -23,22 +23,38 @@ public class Discovery {
     final static Logger logger = LoggerFactory.getLogger(Discovery.class.getName());
 
     // PAYLOAD KEYS
-    public static final String ADID_KEY = "adid";
+    public static final String AGID_KEY = "agid";
     public static final String THING_DESCRIPTIONS_KEY = "thingDescriptions";
+    public static final String OIDS_KEY = "oids";
 
-    public static JSONObject CreateUpdatePayload(ThingDescriptions things, boolean create) {
+    public static JSONObject DeletePayload(List<ThingDescription> things) {
+        JSONObject payload = new JSONObject();
+        JSONArray oids = new JSONArray();
+
+        payload.put(AGID_KEY, AgentConfig.login);
+        payload.put(OIDS_KEY, oids);
+
+
+        for (ThingDescription thing : things) {
+            oids.put(thing.oid);
+        }
+
+
+        return payload;
+
+    }
+
+    public static JSONObject CreateUpdatePayload(List<ThingDescription> things, boolean create) {
         JSONObject payload = new JSONObject();
         JSONArray thingsArray = new JSONArray();
 
-        payload.put(ADID_KEY, AgentConfig.login);
+        payload.put(AGID_KEY, AgentConfig.login);
         payload.put(THING_DESCRIPTIONS_KEY, thingsArray);
 
 
-        for (Map.Entry<String, ThingDescription> entry : things.byInfrastructureID.entrySet()) {
-            ThingDescription thing = entry.getValue();
+        for (ThingDescription thing : things) {
             JSONObject json = thing.toJSON();
             if(create){
-                json.put(ThingDescription.INFRASTRUCTURE_ID_KEY, json.getString(ThingDescription.OID_KEY));
                 json.remove(ThingDescription.OID_KEY);
             }
             thingsArray.put(json);
@@ -49,9 +65,9 @@ public class Discovery {
 
     }
 
-    public static void processCreate(String response,
-                                     ThingDescriptions toCreate,
-                                     ThingDescriptions config) {
+    public static void processCreated(String response,
+                                      ThingDescriptions toCreate,
+                                      ThingDescriptions config) {
         try{
             logger.debug("PROCESSING CREATE DATA: ");
 
@@ -80,10 +96,6 @@ public class Discovery {
                         logger.debug("thing persisted!");
                         logger.debug("assigning infra-id and adding to agent config");
 
-                        JSONObject json = thing.toJSON();
-                        json.put(ThingDescription.OID_KEY, oid);
-
-                        thing.jsonString = json.toString();
                         thing.oid = oid;
 
                         config.add(thing);
@@ -141,20 +153,45 @@ public class Discovery {
         // fire DELETE as first for case, when configuration was not assigned to infrastructure-id
         // that means, the thing is not persisted anymore from whatever reason (deleted database?)
         // must be deleted
-//        String deleteData = GatewayAPIClient.getInstance().get(GatewayAPIClient.DELETE);
-//        logger.info("DELETE response: "+deleteData);
+        logger.info("handling DELETE: "+diff.delete.byOID.keySet().size());
+        if(diff.delete.byOID.keySet().size() > 0){
+            List<ThingDescription> things = diff.delete.thingsByOID();
+            JSONObject payload = DeletePayload(things);
+            System.out.println("DELETE PAYLOAD: "+payload.toString(2));
+            String deleteData = GatewayAPIClient.getInstance().post(GatewayAPIClient.DELETE, payload.toString());
+            logger.info("DELETE response: " + deleteData);
+        }
+        else {
+            logger.info("Nothing to CREATE");
+        }
 
         // 5.2 HANDLE CREATE
-        logger.info("handling CREATE: ");
-//        System.out.println(CreateUpdatePayload(diff.create, true).toString(2));
-//        String createData = GatewayAPIClient.getInstance().post(GatewayAPIClient.CREATE, CreateUpdatePayload(diff.create, true).toString());
-//        logger.info("CREATE response: "+createData);
-        String createData = "{\"error\":false,\"message\":[{\"oid\":\"76ae8574-4be7-485c-9728-a6d5a7eac140\",\"password\":\"nbU38nc7Z1v3YhUHEYJTBUNUHDjto3+lABmoQpvifSI=\",\"infrastructure-id\":\"test-bulb1e\"},{\"oid\":\"7539cd28-f0b5-4251-916f-ba65ca19c09c\",\"password\":\"DehZ/eGSB4Q0LqrOvadlCim5pVYGVHSKwQUKxxU8Xag=\",\"infrastructure-id\":\"test-bulb2-to-create\"}]}";
-        processCreate(createData, diff.create, config);
+        logger.info("handling CREATE: "+diff.create.byInfrastructureID.keySet().size());
+        if(diff.create.byInfrastructureID.keySet().size() > 0){
+            List<ThingDescription> things = diff.create.thingsByInfrastructureId();
+            JSONObject payload = CreateUpdatePayload(things, true);
+            System.out.println("CREATE PAYLOAD: "+payload.toString(2));
+            String createData = GatewayAPIClient.getInstance().post(GatewayAPIClient.CREATE, payload.toString());
+            logger.info("CREATE response: " + createData);
+            processCreated(createData, diff.create, config);
+        }
+        else {
+            logger.info("Nothing to CREATE");
+        }
 
         // 5.3 HANDLE UPDATE
-//        String updateData = GatewayAPIClient.getInstance().get(GatewayAPIClient.UPDATE);
-//        logger.info("UPDATE response: "+updateData);
+        logger.info("handling UPDATE: "+diff.update.byOID.keySet().size());
+        if(diff.update.byOID.keySet().size() > 0){
+            List<ThingDescription> things = diff.update.thingsByInfrastructureId();
+            JSONObject payload = CreateUpdatePayload(things, false);
+            System.out.println("UPDATE PAYLOAD: "+payload.toString(2));
+            String updateData = GatewayAPIClient.getInstance().put(GatewayAPIClient.UPDATE, payload.toString());
+            logger.info("UPDATE response: "+updateData);
+            processCreated(updateData, diff.update, config);
+        }
+        else {
+            logger.info("Nothing to UPDATE");
+        }
 
         // 5.4 HANDLE UNCHANGED
         logger.info("adding UNCHANGED: ");
@@ -168,6 +205,9 @@ public class Discovery {
 
         logger.info("ACTUALIZED AGENT CONFIG: ");
         logger.info(config.toString(0));
+
+        logger.info("ACTUAL THING PERSISTENCE: ");
+        PersistedThing.list();
 
         logger.info("DISCOVERY : END");
     }

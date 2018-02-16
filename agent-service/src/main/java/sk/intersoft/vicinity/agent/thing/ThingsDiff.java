@@ -57,11 +57,12 @@ public class ThingsDiff {
             if(adapter.byInfrastructureID.get(infrastructureID) != null){
                 ThingDescription configThing = entry.getValue();
                 ThingDescription adapterThing = adapter.byInfrastructureID.get(infrastructureID);
+                adapterThing.oid = configThing.oid;
                 if(configThing.sameAs(adapterThing)){
-                    diff.unchanged.add(configThing);
+                    diff.unchanged.add(adapterThing);
                 }
                 else{
-                    diff.update.add(configThing);
+                    diff.update.add(adapterThing);
                 }
             }
         }

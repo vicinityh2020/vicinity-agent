@@ -7,6 +7,7 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -25,6 +26,8 @@ public class GatewayAPIClient {
     // ENDPOINTS:
     public static final String CONFIGURATION = "/agent/"+AgentConfig.login+"/items";
     public static final String CREATE = "/items/register";
+    public static final String UPDATE = "/items/update";
+    public static final String DELETE = "/items/remove";
 
 
     public GatewayAPIClient(String endpoint) {
@@ -130,6 +133,61 @@ public class GatewayAPIClient {
 
             int status = response.getStatusLine().getStatusCode();
             logger.info("post status: " + status);
+
+            String responseContent = EntityUtils.toString(response.getEntity());
+            logger.info("GTW API response: " + responseContent);
+
+
+            return responseContent;
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
+    public String put(String path, String payload) throws Exception {
+        try{
+
+            String login = AgentConfig.login;
+            String password = AgentConfig.password;
+
+            String callEndpoint = endpoint + path;
+
+            logger.info("GTW API PUT:");
+            logger.info("path: " + path);
+            logger.info("endpoint: " + callEndpoint);
+            logger.info("payload: " + payload);
+            logger.info("login: " + login);
+            logger.info("password: " + password);
+
+
+
+
+            CredentialsProvider provider = new BasicCredentialsProvider();
+            UsernamePasswordCredentials credentials
+                    = new UsernamePasswordCredentials(login, password);
+            provider.setCredentials(AuthScope.ANY, credentials);
+
+            HttpClient client = HttpClientBuilder.create()
+                    .setDefaultCredentialsProvider(provider)
+                    .build();
+
+
+            HttpPut request = new HttpPut(callEndpoint);
+
+            request.addHeader("Content-Type", "application/json");
+
+            StringEntity data = new StringEntity(payload);
+
+            request.setEntity(data);
+
+            HttpResponse response = client.execute(request);
+            logger.info("put executed");
+
+            int status = response.getStatusLine().getStatusCode();
+            logger.info("put status: " + status);
 
             String responseContent = EntityUtils.toString(response.getEntity());
             logger.info("GTW API response: " + responseContent);

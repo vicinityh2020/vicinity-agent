@@ -1,29 +1,29 @@
 [
 {
 	"type": "Lightbulb",
-	"oid": "test-bulb1e",
+	"oid": "magic-1",
 	"name": "horsedick",
 	"actions": [{
 		"read_links": [{
-			"href": "/objects/{oid}/actions/{aid}/change"
+			"href": "/objects/{oid}/actions/{aid}/"
 		}],
 		"affects": "Motion",
 		"write_links": [{
-			"href": "/custom-post/{oid}/z/change"
+			"href": "/custom-post/{oid}/z/"
 		}],
 		"aid": "device-1-aid-1"
 	}],
 	"properties": [{
-		"monitors": "OnOff",
+		"monitors": "Motion",
 		"output": {
-			"units": "core:Celsius"
+			"units": "Celsius"
 		},
 		"read_links": [{
-			"href": "/custom/{oid}/x/change"
+			"href": "/custom/{oid}/x/"
 		}],
 		"pid": "device-1-pid-1",
 		"write_links": [{
-			"href": "/custom-set/{oid}/y/change"
+			"href": "/custom-set/{oid}/y/xxxx"
 		}]
 	}]
 }

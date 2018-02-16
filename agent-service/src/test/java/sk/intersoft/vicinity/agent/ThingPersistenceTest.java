@@ -17,6 +17,7 @@ public class ThingPersistenceTest {
 //        (new PersistedThing("a2", "b2", "c2")).persist();
 //        (new PersistedThing("d282cb08-48da-4f1b-a681-3db34edca6bf", "test-bulb1", "x")).delete();
 //        (new PersistedThing("d282cb08-48da-4f1b-a681-3db34edca6bf", "test-bulb1", "x")).persist();
+        PersistedThing.clear();
         PersistedThing.list();
 
 

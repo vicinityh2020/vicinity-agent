@@ -17,7 +17,7 @@ public class InteractionPatternParameter {
     public static InteractionPatternParameter create(JSONObject parameterJSON) throws Exception {
         InteractionPatternParameter parameter = new InteractionPatternParameter();
 
-        parameter.units = JSONUtil.getString(UNITS_KEY, parameterJSON);
+        parameter.units = ThingDescription.prefixed2value(JSONUtil.getString(UNITS_KEY, parameterJSON));
         if(parameter.units == null) throw new Exception("Missing ["+UNITS_KEY+"] in: "+parameterJSON.toString());
 
         parameter.datatype = JSONUtil.getString(DATATYPE_KEY, parameterJSON);

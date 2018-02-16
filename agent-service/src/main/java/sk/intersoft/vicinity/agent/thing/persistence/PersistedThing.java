@@ -39,6 +39,10 @@ public class PersistedThing {
                 ")";
     }
 
+    private static final String clearQuery(){
+        return "DELETE FROM "+TABLE;
+    }
+
     private static final String listQuery(){
         return "SELECT * FROM "+TABLE;
     }
@@ -66,6 +70,9 @@ public class PersistedThing {
         return "SELECT * FROM "+TABLE+" WHERE "+INFRASTRUCTURE_ID+"='"+infrastructureId+"'";
     }
 
+    public static void clear() {
+        execute(clearQuery());
+    }
 
     public static void list()  {
         String query = listQuery();

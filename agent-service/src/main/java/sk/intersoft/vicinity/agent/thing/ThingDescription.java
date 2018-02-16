@@ -40,7 +40,20 @@ public class ThingDescription {
 
 
     public JSONObject toJSON(){
-        return new JSONObject(jsonString);
+        JSONObject json = new JSONObject(jsonString);
+        if(oid != null) {
+            json.put(OID_KEY, oid);
+        }
+        else {
+            json.remove(OID_KEY);
+        }
+        if(infrastructureID != null) {
+            json.put(INFRASTRUCTURE_ID_KEY, infrastructureID);
+        }
+        else {
+            json.remove(INFRASTRUCTURE_ID_KEY);
+        }
+        return json;
     }
 
     public static String prefixed2value(String content) {
@@ -235,7 +248,7 @@ public class ThingDescription {
             dump.add("EVENT MAPPED KEY: "+id, (indent + 2));
             dump.add(entry.getValue().toString(indent + 2));
         }
-        dump.add("JSON: \n"+jsonString, (indent + 1));
+        dump.add("JSON: \n"+toJSON().toString(2), (indent + 1));
 
         return dump.toString();
     }

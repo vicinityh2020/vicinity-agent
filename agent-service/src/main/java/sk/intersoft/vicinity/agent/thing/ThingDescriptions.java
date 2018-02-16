@@ -25,6 +25,21 @@ public class ThingDescriptions {
     }
 
 
+    public List<ThingDescription> things(Map<String, ThingDescription> map){
+        List<ThingDescription> things = new ArrayList<ThingDescription>();
+        for (Map.Entry<String, ThingDescription> entry : map.entrySet()) {
+            things.add(entry.getValue());
+        }
+        return things;
+    }
+
+    public List<ThingDescription> thingsByInfrastructureId(){
+        return things(byInfrastructureID);
+    }
+    public List<ThingDescription> thingsByOID(){
+        return things(byOID);
+    }
+
     public void add(ThingDescription thing) {
         if(thing.oid != null) {
             byOID.put(thing.oid, thing);
