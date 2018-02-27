@@ -13,7 +13,8 @@
 		}],
 		"aid": "device-1-aid-1"
 	}],
-	"properties": [{
+	"properties": [
+    {
 		"monitors": "Motion",
 		"output": {
 			"units": "Celsius"
@@ -23,8 +24,25 @@
 		}],
 		"pid": "device-1-pid-1",
 		"write_links": [{
-			"href": "/custom-set/{oid}/y/xxxx"
-		}]
-	}]
+			"href": "/custom-set/{oid}/y/"
+		},
+		]
+	},
+    {
+		"pid": "device-1-pid-2",
+		"monitors": "Motion",
+		"output": {
+			"units": "Celsius"
+		},
+		"read_links": [{
+			"href": "/custom/{oid}/x/"
+		}],
+		"write_links": [{
+			"href": "/custom-set/{oid}/y/"
+		},
+		]
+	}
+
+	]
 }
 ]

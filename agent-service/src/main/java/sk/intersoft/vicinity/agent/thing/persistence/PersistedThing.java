@@ -29,6 +29,11 @@ public class PersistedThing {
         this.password = password;
     }
 
+    public PersistedThing(ThingDescription thing){
+        this.oid = thing.oid;
+        this.infrastructureId = thing.infrastructureID;
+        this.password = thing.password;
+    }
 
 
     private static final String createTableQuery(){
@@ -55,19 +60,9 @@ public class PersistedThing {
                 ")";
     }
 
-    private String updateQuery(){
-        return "UPDATE "+TABLE+" SET "+INFRASTRUCTURE_ID+"='"+infrastructureId+"', "+PASSWORD+"='"+password+"' WHERE "+OID+"='"+oid+"'";
-    }
-
-    private String deleteQuery(){
-        return "DELETE FROM "+TABLE+" WHERE "+OID+"='"+oid+"'";
-    }
 
     private static String getByOIDQuery(String oid){
         return "SELECT * FROM "+TABLE+" WHERE "+OID+"='"+oid+"'";
-    }
-    private static String getByInfrastructureIDQuery(String infrastructureId){
-        return "SELECT * FROM "+TABLE+" WHERE "+INFRASTRUCTURE_ID+"='"+infrastructureId+"'";
     }
 
     public static void clear() {
@@ -160,27 +155,12 @@ public class PersistedThing {
         return get(getByOIDQuery(oid));
     }
 
-    public static PersistedThing getByInfrastructureID(String infrastructureId) {
-        logger.info("GET BY Infrastructure-ID: " + infrastructureId);
-        return get(getByInfrastructureIDQuery(infrastructureId));
-    }
 
-    public boolean delete() {
-        logger.info("DELETE: " + toString());
-        String query = deleteQuery();
-         logger.info("query: " + query);
-        return execute(query);
-    }
-
-    public boolean persist() {
-        logger.info("PERSIST: " + toString());
-        PersistedThing thing = getByOID(oid);
-        logger.info("existing thing: " + thing);
-        String query = insertQuery();
-        if(thing != null) {
-            query = updateQuery();
-        }
-        logger.info("persist query: " + query);
+    public static boolean save(ThingDescription thing) {
+        logger.info("SAVING: " + thing.toSimpleString());
+        PersistedThing persisted = new PersistedThing(thing);
+        String query = persisted.insertQuery();
+        logger.info("save query: " + query);
         return execute(query);
     }
 

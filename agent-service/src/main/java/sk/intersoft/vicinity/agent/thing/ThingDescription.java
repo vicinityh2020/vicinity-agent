@@ -17,7 +17,7 @@ public class ThingDescription {
     public String oid = null;
     public String infrastructureID = null;
     public String password = null;
-    public boolean enabled = false;
+    public boolean enabled = true;
     public String thingType;
     public String jsonString;
 
@@ -54,6 +54,11 @@ public class ThingDescription {
             json.remove(INFRASTRUCTURE_ID_KEY);
         }
         return json;
+    }
+
+    public void update(ThingDescription configThing) {
+        oid = configThing.oid;
+        password = configThing.password;
     }
 
     public static String prefixed2value(String content) {
@@ -164,20 +169,21 @@ public class ThingDescription {
                 logger.debug("persisted thing: "+persisted.toString());
 
                 thing.infrastructureID = persisted.infrastructureId;
+                thing.password = persisted.password;
             }
             else {
                 logger.debug("NO persisted thing");
             }
 
 
-            try{
-                boolean enabled = JSONUtil.getBoolean(ENABLED_KEY, thingJSON);
-                thing.enabled = enabled;
-            }
-            catch(Exception e){
-                logger.debug("WRONG OR MISSING ENABLED PROPERTY! setting enabled to FALSE!");
-                thing.enabled = false;
-            }
+//            try{
+//                boolean enabled = JSONUtil.getBoolean(ENABLED_KEY, thingJSON);
+//                thing.enabled = enabled;
+//            }
+//            catch(Exception e){
+//                logger.debug("WRONG OR MISSING ENABLED PROPERTY! setting enabled to TRUE!");
+//                thing.enabled = true;
+//            }
         }
         else{
             logger.debug("processing thing from adapter");
@@ -262,6 +268,6 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+infrastructureID+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+infrastructureID+"][PWD: "+password+"] ";
     }
 }

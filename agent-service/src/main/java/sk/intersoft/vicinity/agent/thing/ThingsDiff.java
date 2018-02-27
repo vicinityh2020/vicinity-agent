@@ -22,7 +22,8 @@ public class ThingsDiff {
         // always look at infrastructure-id .. it was attached to config from database when thing was created
 
         // find things to create:
-        // thing with infra-id from adapter does not exist in config
+        // config infra-id is set from database, when thing is created
+        // create adapter thing with infra-id that does not exist in config
         for (Map.Entry<String, ThingDescription> entry : adapter.byInfrastructureID.entrySet()) {
             String infrastructureID = entry.getKey();
             ThingDescription adapterThing = entry.getValue();
@@ -57,7 +58,7 @@ public class ThingsDiff {
             if(adapter.byInfrastructureID.get(infrastructureID) != null){
                 ThingDescription configThing = entry.getValue();
                 ThingDescription adapterThing = adapter.byInfrastructureID.get(infrastructureID);
-                adapterThing.oid = configThing.oid;
+                adapterThing.update(configThing);
                 if(configThing.sameAs(adapterThing)){
                     diff.unchanged.add(adapterThing);
                 }

@@ -90,13 +90,16 @@ public class Discovery {
                 ThingDescription thing = toCreate.byInfrastructureID.get(infrastructureId);
 
                 if(thing != null){
-                    logger.debug("creating: "+thing.toSimpleString());
-                    PersistedThing persisted = new PersistedThing(oid, infrastructureId, password);
-                    if(persisted.persist()){
-                        logger.debug("thing persisted!");
-                        logger.debug("assigning infra-id and adding to agent config");
+                    logger.debug("create base: "+thing.toSimpleString());
 
-                        thing.oid = oid;
+                    thing.oid = oid;
+                    thing.password = password;
+
+                    logger.debug("create updated: "+thing.toSimpleString());
+
+                    if(PersistedThing.save(thing)){
+                        logger.debug("thing persisted!");
+                        logger.debug("adding to agent config");
 
                         config.add(thing);
 
@@ -149,6 +152,18 @@ public class Discovery {
 
         ThingDescriptions config = new ThingDescriptions();
 
+        // 5.0 HANDLE UNCHANGED
+        // completely reset persistence .. delete everything and persist unchanged
+        // we are sure here, that persistence list is still fresh
+        logger.info("handling UNCHANGED: "+diff.unchanged.byOID.keySet().size());
+        PersistedThing.clear();
+        logger.info("persistence cleared");
+        for (Map.Entry<String, ThingDescription> entry : diff.unchanged.byOID.entrySet()) {
+            ThingDescription thing = entry.getValue();
+            config.add(thing);
+            PersistedThing.save(thing);
+        }
+
         // 5.1 HANDLE DELETE
         // fire DELETE as first for case, when configuration was not assigned to infrastructure-id
         // that means, the thing is not persisted anymore from whatever reason (deleted database?)
@@ -193,12 +208,6 @@ public class Discovery {
             logger.info("Nothing to UPDATE");
         }
 
-        // 5.4 HANDLE UNCHANGED
-        logger.info("adding UNCHANGED: ");
-        for (Map.Entry<String, ThingDescription> entry : diff.unchanged.byOID.entrySet()) {
-            ThingDescription thing = entry.getValue();
-            config.add(thing);
-        }
 
         // 6. LOG IN ENABLED THINGS!
         // TODO
