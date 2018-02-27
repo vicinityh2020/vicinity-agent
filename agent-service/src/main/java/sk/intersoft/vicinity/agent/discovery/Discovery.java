@@ -129,7 +129,7 @@ public class Discovery {
     }
 
     public static ThingDescriptions getAllAdapterThings() throws Exception {
-        logger.info("FETCHING THINGS FROM ALL ADAPTERS:");
+        logger.info("fetching things from all adapters:");
         ThingDescriptions things = new ThingDescriptions();
         try{
             for (Map.Entry<String, AdapterConfig> entry : AgentConfig.adapters.entrySet()) {
@@ -156,19 +156,20 @@ public class Discovery {
 
 
         // 2. READ CONFIGURATION FROM NM
+        logger.info("Getting configuration");
         String configData = GatewayAPIClient.get(GatewayAPIClient.CONFIGURATION);
         logger.info("Configuration response: "+configData);
         ThingDescriptions configuredThings = ThingsProcessor.process(configData, null);
-        logger.info("Configured things: \n"+configuredThings.toString(0));
+        logger.debug("Configured things: \n"+configuredThings.toString(0));
 
 
         // 3. READ ADAPTER OBJECTS
         ThingDescriptions adapterThings = getAllAdapterThings();
-        logger.info("Adapter things: \n"+adapterThings.toString(0));
+        logger.debug("Adapter things: \n"+adapterThings.toString(0));
 
         // 4. MAKE DIFF
         ThingsDiff diff = ThingsDiff.fire(configuredThings, adapterThings);
-        logger.debug(diff.toString(0));
+        logger.info(diff.toString(0));
 
         // 5. CREATE ACTUAL AGENT CONFIG: HANDLE DIFF
 
@@ -179,7 +180,7 @@ public class Discovery {
         // we are sure here, that persistence list is still fresh
         logger.info("handling UNCHANGED: "+diff.unchanged.byOID.keySet().size());
         PersistedThing.clear();
-        logger.info("persistence cleared");
+        logger.debug("persistence cleared");
         for (Map.Entry<String, ThingDescription> entry : diff.unchanged.byOID.entrySet()) {
             ThingDescription thing = entry.getValue();
             config.add(thing);
@@ -194,12 +195,12 @@ public class Discovery {
         if(diff.delete.byOID.keySet().size() > 0){
             List<ThingDescription> things = diff.delete.thingsByOID();
             JSONObject payload = DeletePayload(things);
-            System.out.println("DELETE PAYLOAD: "+payload.toString(2));
+            logger.debug("DELETE PAYLOAD: "+payload.toString(2));
             String deleteData = GatewayAPIClient.post(GatewayAPIClient.DELETE, payload.toString());
             logger.info("DELETE response: " + deleteData);
         }
         else {
-            logger.info("Nothing to CREATE");
+            logger.info("Nothing to DELETE");
         }
 
         // 5.2 HANDLE CREATE
@@ -207,7 +208,7 @@ public class Discovery {
         if(diff.create.byInfrastructureID.keySet().size() > 0){
             List<ThingDescription> things = diff.create.thingsByInfrastructureId();
             JSONObject payload = CreateUpdatePayload(things, true);
-            System.out.println("CREATE PAYLOAD: "+payload.toString(2));
+            logger.debug("CREATE PAYLOAD: "+payload.toString(2));
             String createData = GatewayAPIClient.post(GatewayAPIClient.CREATE, payload.toString());
             logger.info("CREATE response: " + createData);
             processCreated(createData, diff.create, config);
@@ -221,7 +222,7 @@ public class Discovery {
         if(diff.update.byOID.keySet().size() > 0){
             List<ThingDescription> things = diff.update.thingsByInfrastructureId();
             JSONObject payload = CreateUpdatePayload(things, false);
-            System.out.println("UPDATE PAYLOAD: "+payload.toString(2));
+            logger.debug("UPDATE PAYLOAD: "+payload.toString(2));
             String updateData = GatewayAPIClient.put(GatewayAPIClient.UPDATE, payload.toString());
             logger.info("UPDATE response: "+updateData);
             processCreated(updateData, diff.update, config);
@@ -235,10 +236,10 @@ public class Discovery {
         // TODO
 
         AgentConfig.things = config;
-        logger.info("ACTUALIZED AGENT CONFIG: ");
-        logger.info(AgentConfig.things.toString(0));
+        logger.info("AGENT CONFIG ACTUALIZED");
+        logger.debug(AgentConfig.things.toString(0));
 
-        logger.info("ACTUAL THING PERSISTENCE: ");
+        logger.debug("ACTUAL THING PERSISTENCE: ");
         PersistedThing.list();
 
         logger.info("DISCOVERY : END");

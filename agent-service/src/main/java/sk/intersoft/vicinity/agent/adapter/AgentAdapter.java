@@ -21,7 +21,7 @@ public class AgentAdapter {
         try{
 
 
-            logger.info("agent call endpoint: " + endpoint);
+            logger.info("GET ENDPOINT: " + endpoint);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
@@ -32,8 +32,8 @@ public class AgentAdapter {
             String content = EntityUtils.toString(response.getEntity());
 
             HttpEntity entity = response.getEntity();
-            logger.info("agent get status: " + status);
-            logger.info("agent get entity: " + content);
+            logger.info("agent GET status: " + status);
+            logger.info("agent GET response: " + content);
 
             return content;
 
@@ -49,7 +49,7 @@ public class AgentAdapter {
         try{
 
             logger.info("POST ENDPOINT: "+endpoint);
-            logger.info("POST DATA: "+payload);
+            logger.info("POST DATA: \n"+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
@@ -68,8 +68,8 @@ public class AgentAdapter {
             int status = response.getStatusLine().getStatusCode();
             String content = EntityUtils.toString(response.getEntity());
 
-            logger.info("agent action status: " + status);
-            logger.info("agent action entity content: " + content);
+            logger.info("agent POST status: " + status);
+            logger.info("agent POST response: " + content);
 
             return content;
 
@@ -85,7 +85,7 @@ public class AgentAdapter {
         try{
 
             logger.info("PUT ENDPOINT: "+endpoint);
-            logger.info("PUT DATA: "+payload);
+            logger.info("PUT DATA: \n"+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
@@ -105,8 +105,8 @@ public class AgentAdapter {
             String content = EntityUtils.toString(response.getEntity());
 
             HttpEntity entity = response.getEntity();
-            logger.info("agent action status: " + status);
-            logger.info("agent action entity: " + content);
+            logger.info("agent PUT status: " + status);
+            logger.info("agent PUT response: " + content);
 
             return content;
 

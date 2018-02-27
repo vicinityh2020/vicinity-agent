@@ -49,7 +49,6 @@ public class EventListenerResource extends AgentResource {
             JSONObject result = new JSONObject(adapterResponse);
 
 
-            logger.info("ADAPTER RESPONSE: \n"+result.toString(2));
             return ResourceResponse.success(result).toString();
 
         }

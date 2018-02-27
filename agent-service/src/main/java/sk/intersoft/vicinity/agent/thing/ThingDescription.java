@@ -117,7 +117,6 @@ public class ThingDescription {
 
 
     public boolean sameAs(ThingDescription other) {
-        logger.info("DOING DOMETHING");
         logger.debug(Dump.indent("DOING DIFF", 0));
         if(!this.thingType.equalsIgnoreCase(other.thingType)){
             logger.debug(Dump.indent("Thing [type] diff: ["+thingType+"] -> ["+other.thingType+"]", 1));

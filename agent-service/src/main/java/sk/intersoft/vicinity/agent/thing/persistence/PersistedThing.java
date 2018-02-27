@@ -71,7 +71,7 @@ public class PersistedThing {
 
     public static void list()  {
         String query = listQuery();
-        logger.info("LISTING: " + query);
+        logger.debug("LISTING: " + query);
 
         try{
             Connection conn = HSQL.getConnection();
@@ -79,10 +79,10 @@ public class PersistedThing {
                 Statement statement = conn.createStatement();
                 ResultSet result = statement.executeQuery(query);
                 while (result.next()) {
-                    logger.info("> RECORD: ");
-                    logger.info("  > " + result.getString(OID));
-                    logger.info("  > " + result.getString(INFRASTRUCTURE_ID));
-                    logger.info("  > " + result.getString(PASSWORD));
+                    logger.debug("> RECORD: ");
+                    logger.debug("  > " + result.getString(OID));
+                    logger.debug("  > " + result.getString(INFRASTRUCTURE_ID));
+                    logger.debug("  > " + result.getString(PASSWORD));
                 }
                 result.close();
                 conn.close();
@@ -97,7 +97,7 @@ public class PersistedThing {
     }
 
     public static boolean execute(String query) {
-        logger.info("EXECUTE: "+query);
+        logger.debug("EXECUTE: "+query);
 
         try{
             Connection conn = HSQL.getConnection();
@@ -124,8 +124,8 @@ public class PersistedThing {
 
 
     public static PersistedThing get(String query) {
-        logger.info("GET: ");
-        logger.info("query: "+query);
+        logger.debug("GET: ");
+        logger.debug("query: "+query);
 
         PersistedThing thing = null;
 
@@ -151,16 +151,16 @@ public class PersistedThing {
     }
 
     public static PersistedThing getByOID(String oid) {
-        logger.info("GET BY OID: " + oid);
+        logger.debug("GET BY OID: " + oid);
         return get(getByOIDQuery(oid));
     }
 
 
     public static boolean save(ThingDescription thing) {
-        logger.info("SAVING: " + thing.toSimpleString());
+        logger.debug("SAVING: " + thing.toSimpleString());
         PersistedThing persisted = new PersistedThing(thing);
         String query = persisted.insertQuery();
-        logger.info("save query: " + query);
+        logger.debug("save query: " + query);
         return execute(query);
     }
 

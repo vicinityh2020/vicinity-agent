@@ -58,10 +58,9 @@ public class GatewayAPIClient {
             request.addHeader("Content-Type", "application/json");
 
             HttpResponse response = client.execute(request);
-            logger.info("get executed");
 
             int status = response.getStatusLine().getStatusCode();
-            logger.info("get status: " + status);
+            logger.info("GET status: " + status);
 
             String responseContent = EntityUtils.toString(response.getEntity());
             logger.info("GTW API response: " + responseContent);
@@ -113,10 +112,9 @@ public class GatewayAPIClient {
             request.setEntity(data);
 
             HttpResponse response = client.execute(request);
-            logger.info("post executed");
 
             int status = response.getStatusLine().getStatusCode();
-            logger.info("post status: " + status);
+            logger.info("POST status: " + status);
 
             String responseContent = EntityUtils.toString(response.getEntity());
             logger.info("GTW API response: " + responseContent);
@@ -168,10 +166,9 @@ public class GatewayAPIClient {
             request.setEntity(data);
 
             HttpResponse response = client.execute(request);
-            logger.info("put executed");
 
             int status = response.getStatusLine().getStatusCode();
-            logger.info("put status: " + status);
+            logger.info("PUT status: " + status);
 
             String responseContent = EntityUtils.toString(response.getEntity());
             logger.info("GTW API response: " + responseContent);

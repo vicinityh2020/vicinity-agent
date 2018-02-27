@@ -26,7 +26,7 @@ public class PrepareLogging {
     }
 
     private static File destinationFile(File file) {
-        System.out.println("making destination file for: "+file.getAbsolutePath());
+//        System.out.println("making destination file for: "+file.getAbsolutePath());
 
         String name = file.getName();
         String parent = file.getParentFile().getAbsolutePath() + "/";
@@ -35,14 +35,14 @@ public class PrepareLogging {
         String[] parts = name.split("\\.");
         if(parts.length > 1) {
             String suffix = "."+parts[parts.length - 1];
-            System.out.println("has suffix: "+suffix);
+//            System.out.println("has suffix: "+suffix);
             List<String> update = new ArrayList<String>();
             update.add("resolved");
             for(int i = 0; i < parts.length - 1; i++){
-                System.out.println("adding to name: "+parts[i]);
+//                System.out.println("adding to name: "+parts[i]);
                 update.add(parts[i]);
             }
-            System.out.println("update: "+update);
+//            System.out.println("update: "+update);
             newName = StringUtils.join(update, ".")+ suffix;
         }
         else {
@@ -51,10 +51,10 @@ public class PrepareLogging {
 
         File destination = new File(parent + newName);
 
-        System.out.println("name: "+name);
-        System.out.println("parent: "+parent);
-        System.out.println("new name: "+newName);
-        System.out.println("new file: "+destination.getAbsolutePath());
+//        System.out.println("name: "+name);
+//        System.out.println("parent: "+parent);
+//        System.out.println("new name: "+newName);
+//        System.out.println("new file: "+destination.getAbsolutePath());
 
 
         return destination;
@@ -86,19 +86,19 @@ public class PrepareLogging {
             String path = System.getProperty(property);
 
 
-            System.out.println("UPDATING: ");
-            System.out.println("property: "+property);
-            System.out.println("path: "+path);
-            System.out.println("replacement: "+replacement);
+//            System.out.println("UPDATING: ");
+//            System.out.println("property: "+property);
+//            System.out.println("path: "+path);
+//            System.out.println("replacement: "+replacement);
 
 
 
             File file = file(path);
             String content = file2string(file);
-            System.out.println("content: "+content);
+//            System.out.println("content: "+content);
 
             String replaced = replace(content, replacement);
-            System.out.println("resolved content: \n"+replaced);
+//            System.out.println("resolved content: \n"+replaced);
 
 
             File destination = destinationFile(file);
@@ -114,7 +114,7 @@ public class PrepareLogging {
 
     public static void go() {
         try{
-            System.out.println("PREPARING LOGGING ...");
+//            System.out.println("PREPARING LOGGING ...");
 
             String logs = file(System.getProperty("logs.folder")).getAbsolutePath();
             System.setProperty(LOGS, logs);
@@ -125,9 +125,9 @@ public class PrepareLogging {
             handle(LOGBACK_PROPERTY, replacement);
             handle(LOGGING_PROPERTY, replacement);
 
-            System.out.println("LOGBACK: "+System.getProperty(LOGBACK_PROPERTY));
-            System.out.println("LOGGING: "+System.getProperty(LOGGING_PROPERTY));
-            System.out.println("LOGS: "+System.getProperty(LOGS));
+//            System.out.println("LOGBACK: "+System.getProperty(LOGBACK_PROPERTY));
+//            System.out.println("LOGGING: "+System.getProperty(LOGGING_PROPERTY));
+//            System.out.println("LOGS: "+System.getProperty(LOGS));
         }
         catch(Exception e){
             e.printStackTrace();

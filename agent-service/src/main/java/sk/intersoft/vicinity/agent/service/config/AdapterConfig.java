@@ -25,7 +25,7 @@ public class AdapterConfig {
     }
 
     public static AdapterConfig create(JSONObject config) throws Exception {
-        logger.info("CREATING ADAPTER CONFIG: "+config.toString());
+        logger.debug("CREATING ADAPTER CONFIG: "+config.toString());
         String adapterId = config.getString(ADAPTER_ID_KEY);
         String endpoint = config.getString(ADAPTER_ENDPOINT_KEY);
 

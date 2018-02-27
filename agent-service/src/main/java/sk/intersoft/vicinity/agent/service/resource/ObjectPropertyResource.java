@@ -38,7 +38,6 @@ public class ObjectPropertyResource extends AgentResource {
             JSONObject result = new JSONObject(adapterResponse);
 
 
-            logger.info("ADAPTER RESPONSE: \n"+result.toString(2));
             return ResourceResponse.success(result).toString();
 
         }
@@ -77,7 +76,6 @@ public class ObjectPropertyResource extends AgentResource {
 
             JSONObject result = new JSONObject(adapterResponse);
 
-            logger.info("ADAPTER JSON RESPONSE: \n"+result.toString(2));
             return ResourceResponse.success(result).toString();
 
         }
