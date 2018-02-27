@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class ThingsDiff {
@@ -44,7 +42,7 @@ public class ThingsDiff {
         // configuration thing without infrastructure-id .. does not have persistence, must be removed
         for (Map.Entry<String, ThingDescription> entry : config.byOID.entrySet()) {
             ThingDescription configThing = entry.getValue();
-            if(configThing.infrastructureID == null){
+            if(configThing.AgentInfrastructureID == null){
                 diff.delete.add(configThing);
             }
         }

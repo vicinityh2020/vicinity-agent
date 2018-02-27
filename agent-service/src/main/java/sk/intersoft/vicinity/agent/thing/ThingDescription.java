@@ -3,6 +3,7 @@ package sk.intersoft.vicinity.agent.thing;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.thing.persistence.PersistedThing;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
@@ -15,7 +16,9 @@ public class ThingDescription {
     final static Logger logger = LoggerFactory.getLogger(ThingDescription.class.getName());
 
     public String oid = null;
-    public String infrastructureID = null;
+    public String AgentInfrastructureID = null;
+    public String adapterId = null;
+    public String adapterThingId = null;
     public String password = null;
     public boolean enabled = true;
     public String thingType;
@@ -27,7 +30,7 @@ public class ThingDescription {
 
     // JSON keys
     public static String OID_KEY = "oid";
-    public static String INFRASTRUCTURE_ID_KEY = "infrastructure-id";
+    public static String AGENT_INFRASTRUCTURE_ID_KEY = "infrastructure-id";
     public static String PASSWORD_KEY = "password";
     public static String ENABLED_KEY = "enabled";
     public static String TYPE_KEY = "type";
@@ -47,11 +50,11 @@ public class ThingDescription {
         else {
             json.remove(OID_KEY);
         }
-        if(infrastructureID != null) {
-            json.put(INFRASTRUCTURE_ID_KEY, infrastructureID);
+        if(AgentInfrastructureID != null) {
+            json.put(AGENT_INFRASTRUCTURE_ID_KEY, AgentInfrastructureID);
         }
         else {
-            json.remove(INFRASTRUCTURE_ID_KEY);
+            json.remove(AGENT_INFRASTRUCTURE_ID_KEY);
         }
         return json;
     }
@@ -146,12 +149,12 @@ public class ThingDescription {
     }
 
 
-    public static ThingDescription create(JSONObject thingJSON, boolean isConfiguration) throws Exception {
+    public static ThingDescription create(JSONObject thingJSON, AdapterConfig adapterConfig) throws Exception {
 
         ThingDescription thing = new ThingDescription();
 
 
-        if(isConfiguration){
+        if(adapterConfig == null){
             logger.debug("processing thing configuration");
 
             String ldType = JSONUtil.getString(LD_TYPE_KEY, thingJSON);
@@ -168,7 +171,7 @@ public class ThingDescription {
             if(persisted != null){
                 logger.debug("persisted thing: "+persisted.toString());
 
-                thing.infrastructureID = persisted.infrastructureId;
+                thing.AgentInfrastructureID = persisted.infrastructureId;
                 thing.password = persisted.password;
             }
             else {
@@ -189,8 +192,12 @@ public class ThingDescription {
             logger.debug("processing thing from adapter");
             String oid = JSONUtil.getString(OID_KEY, thingJSON);
             if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
-            thing.infrastructureID = oid;
+            thing.AgentInfrastructureID = adapterConfig.adapterId + "_" +oid;
+            thing.adapterId = adapterConfig.adapterId;
+            thing.adapterThingId = oid;
         }
+
+        boolean isConfiguration = (adapterConfig == null);
 
         String thingType = JSONUtil.getString(TYPE_KEY, thingJSON);
         if(thingType == null) throw new Exception("Missing [type] in: "+thingJSON.toString());
@@ -231,7 +238,9 @@ public class ThingDescription {
 
         dump.add("THING :", indent);
         dump.add("oid: "+oid, (indent + 1));
-        dump.add("infrastructure-id: "+infrastructureID, (indent + 1));
+        dump.add("agent-infrastructure-id: "+ AgentInfrastructureID, (indent + 1));
+        dump.add("adapter-thing-id: "+ adapterThingId, (indent + 1));
+        dump.add("adapter-id: "+ adapterId, (indent + 1));
         dump.add("password: "+password, (indent + 1));
         dump.add("enabled: "+enabled, (indent + 1));
         dump.add("type: "+thingType, (indent + 1));
@@ -268,6 +277,6 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+infrastructureID+"][PWD: "+password+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+ AgentInfrastructureID +"][PWD: "+password+"] ";
     }
 }

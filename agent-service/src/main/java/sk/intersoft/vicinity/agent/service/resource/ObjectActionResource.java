@@ -12,7 +12,7 @@ import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 
-public class ObjectActionResource extends ServerResource {
+public class ObjectActionResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(ObjectActionResource.class.getName());
 
     private static String OBJECT_ID = "oid";
@@ -28,13 +28,11 @@ public class ObjectActionResource extends ServerResource {
             logger.info("OID: "+oid);
             logger.info("AID: " + aid);
 
-            String endpoint = AdapterEndpoint.getEndpoint(oid, aid, InteractionPattern.ACTION, true);
+            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, true);
 
             logger.info("GET ACTION STATUS ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.get(endpoint);
+            String adapterResponse = AgentAdapter.get(endpoint);
             logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
             JSONObject result = new JSONObject(adapterResponse);
@@ -70,13 +68,11 @@ public class ObjectActionResource extends ServerResource {
 
             JSONObject payload = new JSONObject(rawPayload);
 
-            String endpoint = AdapterEndpoint.getEndpoint(oid, aid, InteractionPattern.ACTION, false);
+            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, false);
 
             logger.info("EXECUTE ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.post(endpoint, payload.toString());
+            String adapterResponse = AgentAdapter.post(endpoint, payload.toString());
             logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
             JSONObject result = new JSONObject(adapterResponse);

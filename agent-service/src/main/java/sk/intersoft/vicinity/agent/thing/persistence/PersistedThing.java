@@ -31,7 +31,7 @@ public class PersistedThing {
 
     public PersistedThing(ThingDescription thing){
         this.oid = thing.oid;
-        this.infrastructureId = thing.infrastructureID;
+        this.infrastructureId = thing.AgentInfrastructureID;
         this.password = thing.password;
     }
 

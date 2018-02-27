@@ -54,7 +54,7 @@ public class EventPublisherResource extends ServerResource {
             JSONObject data = new JSONObject(rawPayload);
             data.put(OBJECT_ID, oid);
 
-            String gtwResponse = GatewayAPIClient.getInstance().post(gtwEndpoint, data.toString());
+            String gtwResponse = GatewayAPIClient.post(gtwEndpoint, data.toString());
             logger.info("GTW API response: " + gtwResponse);
 
             return gtwResponse;

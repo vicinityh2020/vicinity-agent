@@ -1,12 +1,8 @@
 package sk.intersoft.vicinity.agent.thing;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.utils.Dump;
-import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 import java.util.*;
 
@@ -44,11 +40,15 @@ public class ThingDescriptions {
         if(thing.oid != null) {
             byOID.put(thing.oid, thing);
         }
-        if(thing.infrastructureID != null) {
-            byInfrastructureID.put(thing.infrastructureID, thing);
+        if(thing.AgentInfrastructureID != null) {
+            byInfrastructureID.put(thing.AgentInfrastructureID, thing);
         }
     }
 
+    public void add(ThingDescriptions things) {
+        byOID.putAll(things.byOID);
+        byInfrastructureID.putAll(things.byInfrastructureID);
+    }
 
     public String toString(int indent){
         Dump dump = new Dump();

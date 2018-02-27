@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
 import org.json.JSONArray;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.thing.ThingsDiff;
@@ -26,8 +27,8 @@ public class TestRegistrationDiff {
         JSONArray adapter = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter.json"));
         JSONArray config = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/configuration.json"));
 
-        ThingDescriptions configuration = ThingsProcessor.process(config, true);
-        ThingDescriptions fromAdapter = ThingsProcessor.process(adapter, false);
+        ThingDescriptions configuration = ThingsProcessor.process(config, new AdapterConfig("test-id", "test-endpoint"));
+        ThingDescriptions fromAdapter = ThingsProcessor.process(adapter, null);
 
         ThingsDiff diff = ThingsDiff.fire(configuration, fromAdapter);
         System.out.println(diff.toString(0));

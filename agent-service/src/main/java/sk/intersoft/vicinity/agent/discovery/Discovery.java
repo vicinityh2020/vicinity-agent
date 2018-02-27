@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
@@ -31,7 +32,7 @@ public class Discovery {
         JSONObject payload = new JSONObject();
         JSONArray oids = new JSONArray();
 
-        payload.put(AGID_KEY, AgentConfig.login);
+        payload.put(AGID_KEY, AgentConfig.agentId);
         payload.put(OIDS_KEY, oids);
 
 
@@ -48,7 +49,7 @@ public class Discovery {
         JSONObject payload = new JSONObject();
         JSONArray thingsArray = new JSONArray();
 
-        payload.put(AGID_KEY, AgentConfig.login);
+        payload.put(AGID_KEY, AgentConfig.agentId);
         payload.put(THING_DESCRIPTIONS_KEY, thingsArray);
 
 
@@ -81,8 +82,8 @@ public class Discovery {
                 String oid = JSONUtil.getString(ThingDescription.OID_KEY, result);
                 if(oid == null) throw new Exception("Missing ["+ThingDescription.OID_KEY+"] in: "+result.toString());
 
-                String infrastructureId = JSONUtil.getString(ThingDescription.INFRASTRUCTURE_ID_KEY, result);
-                if(infrastructureId == null) throw new Exception("Missing ["+ThingDescription.INFRASTRUCTURE_ID_KEY+"] in: "+result.toString());
+                String infrastructureId = JSONUtil.getString(ThingDescription.AGENT_INFRASTRUCTURE_ID_KEY, result);
+                if(infrastructureId == null) throw new Exception("Missing ["+ThingDescription.AGENT_INFRASTRUCTURE_ID_KEY +"] in: "+result.toString());
 
                 String password = JSONUtil.getString(ThingDescription.PASSWORD_KEY, result);
                 if(password == null) throw new Exception("Missing ["+ThingDescription.PASSWORD_KEY+"] in: "+result.toString());
@@ -121,6 +122,30 @@ public class Discovery {
 
     }
 
+    public static ThingDescriptions addAdapterThings(AdapterConfig adapterConfig) throws Exception {
+        String data = AgentAdapter.get(adapterConfig.endpoint + AdapterEndpoint.OBJECTS);
+        ThingDescriptions things = ThingsProcessor.process(data, adapterConfig);
+        return things;
+    }
+
+    public static ThingDescriptions getAllAdapterThings() throws Exception {
+        logger.info("FETCHING THINGS FROM ALL ADAPTERS:");
+        ThingDescriptions things = new ThingDescriptions();
+        try{
+            for (Map.Entry<String, AdapterConfig> entry : AgentConfig.adapters.entrySet()) {
+                String id = entry.getKey();
+                AdapterConfig config = entry.getValue();
+                logger.info("fetching things from: ["+config.adapterId+"]");
+                things.add(addAdapterThings(config));
+            }
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+        return things;
+    }
+
     public static void fire() throws Exception {
         logger.info("DISCOVERY : START");
 
@@ -131,17 +156,14 @@ public class Discovery {
 
 
         // 2. READ CONFIGURATION FROM NM
-        String configData = GatewayAPIClient.getInstance().get(GatewayAPIClient.CONFIGURATION);
+        String configData = GatewayAPIClient.get(GatewayAPIClient.CONFIGURATION);
         logger.info("Configuration response: "+configData);
-        ThingDescriptions configuredThings = ThingsProcessor.process(configData, true);
+        ThingDescriptions configuredThings = ThingsProcessor.process(configData, null);
         logger.info("Configured things: \n"+configuredThings.toString(0));
 
 
         // 3. READ ADAPTER OBJECTS
-        String adaterData = AgentAdapter.getInstance().get(AdapterEndpoint.OBJECTS);
-        logger.info("Adapter objects response: "+adaterData);
-
-        ThingDescriptions adapterThings = ThingsProcessor.process(adaterData, false);
+        ThingDescriptions adapterThings = getAllAdapterThings();
         logger.info("Adapter things: \n"+adapterThings.toString(0));
 
         // 4. MAKE DIFF
@@ -173,7 +195,7 @@ public class Discovery {
             List<ThingDescription> things = diff.delete.thingsByOID();
             JSONObject payload = DeletePayload(things);
             System.out.println("DELETE PAYLOAD: "+payload.toString(2));
-            String deleteData = GatewayAPIClient.getInstance().post(GatewayAPIClient.DELETE, payload.toString());
+            String deleteData = GatewayAPIClient.post(GatewayAPIClient.DELETE, payload.toString());
             logger.info("DELETE response: " + deleteData);
         }
         else {
@@ -186,7 +208,7 @@ public class Discovery {
             List<ThingDescription> things = diff.create.thingsByInfrastructureId();
             JSONObject payload = CreateUpdatePayload(things, true);
             System.out.println("CREATE PAYLOAD: "+payload.toString(2));
-            String createData = GatewayAPIClient.getInstance().post(GatewayAPIClient.CREATE, payload.toString());
+            String createData = GatewayAPIClient.post(GatewayAPIClient.CREATE, payload.toString());
             logger.info("CREATE response: " + createData);
             processCreated(createData, diff.create, config);
         }
@@ -200,7 +222,7 @@ public class Discovery {
             List<ThingDescription> things = diff.update.thingsByInfrastructureId();
             JSONObject payload = CreateUpdatePayload(things, false);
             System.out.println("UPDATE PAYLOAD: "+payload.toString(2));
-            String updateData = GatewayAPIClient.getInstance().put(GatewayAPIClient.UPDATE, payload.toString());
+            String updateData = GatewayAPIClient.put(GatewayAPIClient.UPDATE, payload.toString());
             logger.info("UPDATE response: "+updateData);
             processCreated(updateData, diff.update, config);
         }
@@ -212,8 +234,9 @@ public class Discovery {
         // 6. LOG IN ENABLED THINGS!
         // TODO
 
+        AgentConfig.things = config;
         logger.info("ACTUALIZED AGENT CONFIG: ");
-        logger.info(config.toString(0));
+        logger.info(AgentConfig.things.toString(0));
 
         logger.info("ACTUAL THING PERSISTENCE: ");
         PersistedThing.list();

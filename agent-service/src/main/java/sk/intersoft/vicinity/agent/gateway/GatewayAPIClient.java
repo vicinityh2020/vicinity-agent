@@ -20,37 +20,21 @@ import sk.intersoft.vicinity.agent.service.resource.ResourceResponse;
 public class GatewayAPIClient {
     final static Logger logger = LoggerFactory.getLogger(GatewayAPIClient.class.getName());
 
-    public String endpoint = "";
-    public static GatewayAPIClient gtwAPI = null;
 
     // ENDPOINTS:
-    public static final String CONFIGURATION = "/agent/"+AgentConfig.login+"/items";
+    public static final String CONFIGURATION = "/agent/"+AgentConfig.agentId+"/items";
     public static final String CREATE = "/items/register";
     public static final String UPDATE = "/items/update";
     public static final String DELETE = "/items/remove";
 
 
-    public GatewayAPIClient(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-
-    public static GatewayAPIClient getInstance() {
-        if (gtwAPI == null) {
-            gtwAPI = new GatewayAPIClient(AgentConfig.gatewayAPIEndpoint);
-            logger.info("GATEWAY API CLIENT CONFIGURED TO ENDPOINT: " + gtwAPI.endpoint);
-        }
-        return gtwAPI;
-    }
-
-
-    public String get(String path) throws Exception {
+    public static String get(String path) throws Exception {
         try{
 
-            String login = AgentConfig.login;
+            String login = AgentConfig.agentId;
             String password = AgentConfig.password;
 
-            String callEndpoint = endpoint + path;
+            String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
             logger.info("GTW API GET:");
             logger.info("path: " + path);
@@ -92,13 +76,13 @@ public class GatewayAPIClient {
 
     }
 
-    public String post(String path, String payload) throws Exception {
+    public static String post(String path, String payload) throws Exception {
         try{
 
-            String login = AgentConfig.login;
+            String login = AgentConfig.agentId;
             String password = AgentConfig.password;
 
-            String callEndpoint = endpoint + path;
+            String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
             logger.info("GTW API POST:");
             logger.info("path: " + path);
@@ -147,13 +131,13 @@ public class GatewayAPIClient {
 
     }
 
-    public String put(String path, String payload) throws Exception {
+    public static String put(String path, String payload) throws Exception {
         try{
 
-            String login = AgentConfig.login;
+            String login = AgentConfig.agentId;
             String password = AgentConfig.password;
 
-            String callEndpoint = endpoint + path;
+            String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
             logger.info("GTW API PUT:");
             logger.info("path: " + path);

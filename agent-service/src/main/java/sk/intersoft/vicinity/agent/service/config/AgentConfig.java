@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.agent.service.config;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,24 +8,25 @@ import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.io.File;
-import java.util.Scanner;
+import java.util.*;
 
 public class AgentConfig {
     final static Logger logger = LoggerFactory.getLogger(AgentConfig.class.getName());
 
     private static final String CREDENTIALS_KEY = "credentials";
-    private static final String LOGIN_KEY = "login";
+    private static final String AGENT_ID_KEY = "agent-id";
     private static final String PASSWORD_KEY = "password";
 
     private static final String GATEWAY_API_ENDPOINT_KEY = "gateway-api-endpoint";
-    private static final String ADAPTER_ENDPOINT_KEY = "adapter-endpoint";
+    private static final String ADAPTERS_KEY = "adapters";
 
 
-    public static String login = "";
+    public static String agentId = "";
     public static String password = "";
 
     public static String gatewayAPIEndpoint = "";
-    public static String adapterEndpoint = "";
+    public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
+    public static Map<String, String> x = new HashMap<String, String>();
 
     public static ThingDescriptions things = new ThingDescriptions();
 
@@ -43,25 +45,41 @@ public class AgentConfig {
         JSONObject config = new JSONObject(file2string(configPath));
         logger.info("CREATING CONFIG FILE FROM: \n"+config.toString(2));
         JSONObject credentials = config.getJSONObject(CREDENTIALS_KEY);
-        login = credentials.getString(LOGIN_KEY);
+        agentId = credentials.getString(AGENT_ID_KEY);
         password = credentials.getString(PASSWORD_KEY);
 
         gatewayAPIEndpoint = config.getString(GATEWAY_API_ENDPOINT_KEY);
-        adapterEndpoint = config.getString(ADAPTER_ENDPOINT_KEY);
+
+        JSONArray adaptersArray = config.getJSONArray(ADAPTERS_KEY);
+        Iterator<Object> i = adaptersArray.iterator();
+        while(i.hasNext()){
+            JSONObject adapterConfig = (JSONObject)i.next();
+            AdapterConfig ac = AdapterConfig.create(adapterConfig);
+            adapters.put(ac.adapterId, ac);
+        }
     }
 
-    public static String asString() {
+    public static String asString(int indent) {
         Dump dump = new Dump();
 
-        dump.add("AGENT CONFIG CREATED: ", 0);
+        dump.add("AGENT CONFIG CREATED: ", indent);
 
-        dump.add("Credentials: ", 1);
-        dump.add("login: [" + login + "]", 2);
-        dump.add("password: [" + password + "]", 2);
-        dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, 1);
-        dump.add("Adapter Endpoint: " + adapterEndpoint, 1);
+        dump.add("Credentials: ", (indent + 1));
+        dump.add("agent-id: [" + agentId + "]", (indent + 2));
+        dump.add("password: [" + password + "]", (indent + 2));
+        dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, (indent + 1));
+        dump.add("Adapters: ", (indent + 1));
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            String id = entry.getKey();
+            AdapterConfig ac = entry.getValue();
+            dump.add("mapped key: "+id, (indent + 2));
+            dump.add(ac.asString(indent + 3));
+        }
 
         return dump.toString();
+    }
+    public static String asString() {
+        return asString(0);
     }
 
 }

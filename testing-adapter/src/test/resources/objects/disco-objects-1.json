@@ -1,7 +1,7 @@
 [
 {
 	"type": "Lightbulb",
-	"oid": "magic-1",
+	"oid": "magic-2",
 	"name": "horsedick",
 	"actions": [{
 		"read_links": [{
@@ -29,7 +29,7 @@
 		]
 	},
     {
-		"pid": "device-1-pid-2",
+		"pid": "device-1-pid-2-update",
 		"monitors": "Motion",
 		"output": {
 			"units": "Celsius"

@@ -41,9 +41,9 @@ public class TestClient {
         RESTClient client = new RESTClient();
 
         System.out.println("TEST GET and so: ");
-//        System.out.println("simple get: "+client.get(ENDPOINT+"alive/kokot"));
+        System.out.println("simple get: "+client.get(ENDPOINT+"alive/"));
 
-        System.out.println("simple get: "+client.get("http://160.40.206.121/VICINITY/VICINITY.svc/objects/123/properties/234"));
+//        System.out.println("simple get: "+client.get("http://160.40.206.121/VICINITY/VICINITY.svc/objects/123/properties/234"));
 
 //        System.out.println("TEST GET OBJ PROPS: ");
 //        System.out.println("CNT: "+client.get(ENDPOINT + "objects/D77EC6B0-F039-4734-925E-0A90CE7D1B5B:0184A96B:CO2/properties/0184A96B:CO2Level"));

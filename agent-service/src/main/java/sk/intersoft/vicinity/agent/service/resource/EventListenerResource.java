@@ -14,7 +14,7 @@ import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 /**
  * Resource listening to events from GTW API and resending them back to adapter
  */
-public class EventListenerResource extends ServerResource {
+public class EventListenerResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(EventListenerResource.class.getName());
 
     private static String OBJECT_ID = "oid";
@@ -39,13 +39,11 @@ public class EventListenerResource extends ServerResource {
 
             JSONObject payload = new JSONObject(rawPayload);
 
-            String endpoint = AdapterEndpoint.getEndpoint(oid, eid, InteractionPattern.EVENT, false);
+            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), eid, InteractionPattern.EVENT, false);
 
             logger.info("EVENT LISTENER ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.post(endpoint, payload.toString());
+            String adapterResponse = AgentAdapter.post(endpoint, payload.toString());
             logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
             JSONObject result = new JSONObject(adapterResponse);

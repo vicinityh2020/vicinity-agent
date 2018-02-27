@@ -10,8 +10,9 @@ import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
+import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
-public class ObjectPropertyResource extends ServerResource {
+public class ObjectPropertyResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(ObjectPropertyResource.class.getName());
 
     private static String OBJECT_ID = "oid";
@@ -27,13 +28,11 @@ public class ObjectPropertyResource extends ServerResource {
             logger.info("OID: "+oid);
             logger.info("PID: " + pid);
 
-            String endpoint = AdapterEndpoint.getEndpoint(oid, pid, InteractionPattern.PROPERTY, true);
+            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, true);
 
             logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.get(endpoint);
+            String adapterResponse = AgentAdapter.get(endpoint);
             logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
             JSONObject result = new JSONObject(adapterResponse);
@@ -69,13 +68,11 @@ public class ObjectPropertyResource extends ServerResource {
 
             JSONObject payload = new JSONObject(rawPayload);
 
-            String endpoint = AdapterEndpoint.getEndpoint(oid, pid, InteractionPattern.PROPERTY, false);
+            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, false);
 
             logger.info("SET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            AgentAdapter adapter = AgentAdapter.getInstance();
-
-            String adapterResponse = adapter.put(endpoint, payload.toString());
+            String adapterResponse = AgentAdapter.put(endpoint, payload.toString());
             logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
             JSONObject result = new JSONObject(adapterResponse);

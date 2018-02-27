@@ -11,37 +11,21 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 
 public class AgentAdapter {
     final static Logger logger = LoggerFactory.getLogger(AgentAdapter.class.getName());
 
-    public String endpoint = "";
-    public static AgentAdapter adapter = null;
-
-    public AgentAdapter(String endpoint){
-        this.endpoint = endpoint;
-    }
-
-
-    public static AgentAdapter getInstance(){
-        if(adapter == null){
-            adapter = new AgentAdapter(AgentConfig.adapterEndpoint);
-            logger.info("ADAPTER CLIENT CONFIGURED TO ENDPOINT: "+adapter.endpoint);
-        }
-        return adapter;
-    }
-
-    public String get(String path) throws Exception {
+    public static String get(String endpoint) throws Exception {
         try{
-            String callEndpoint = endpoint + path;
 
 
-            logger.info("agent call endpoint: " + callEndpoint);
+            logger.info("agent call endpoint: " + endpoint);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
-            HttpGet request = new HttpGet(callEndpoint);
+            HttpGet request = new HttpGet(endpoint);
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
@@ -61,19 +45,15 @@ public class AgentAdapter {
 
     }
 
-
-    public String post(String path, String payload) throws Exception {
+    public static String post(String endpoint, String payload) throws Exception {
         try{
-            String callEndpoint = endpoint + path;
 
-
-
-            logger.info("POST ENDPOINT: "+callEndpoint);
+            logger.info("POST ENDPOINT: "+endpoint);
             logger.info("POST DATA: "+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
-            HttpPost request = new HttpPost(callEndpoint);
+            HttpPost request = new HttpPost(endpoint);
 
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
@@ -101,18 +81,15 @@ public class AgentAdapter {
 
     }
 
-    public String put(String path, String payload) throws Exception {
+    public static String put(String endpoint, String payload) throws Exception {
         try{
-            String callEndpoint = endpoint + path;
 
-
-
-            logger.info("PUT ENDPOINT: "+callEndpoint);
+            logger.info("PUT ENDPOINT: "+endpoint);
             logger.info("PUT DATA: "+payload);
             HttpClient client = HttpClientBuilder.create()
                     .build();
 
-            HttpPut request = new HttpPut(callEndpoint);
+            HttpPut request = new HttpPut(endpoint);
 
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");

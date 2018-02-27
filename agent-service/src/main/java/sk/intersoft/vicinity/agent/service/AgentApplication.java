@@ -35,10 +35,19 @@ public class AgentApplication extends Application {
     public Router createApiRouter() {
         Router apiRouter = new Router(getContext());
         apiRouter.attach(ALIVE, AliveResource.class);
+        apiRouter.attach(ALIVE+"/", AliveResource.class);
+
         apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
+        apiRouter.attach(OBJECT_PROPERTY+"/", ObjectPropertyResource.class);
+
         apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
+        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);
+
         apiRouter.attach(EVENT_PUBLISHER, EventPublisherResource.class);
+        apiRouter.attach(EVENT_PUBLISHER+"/", EventPublisherResource.class);
+
         apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
+        apiRouter.attach(EVENT_LISTENER+"/", EventListenerResource.class);
 
         return apiRouter;
     }
