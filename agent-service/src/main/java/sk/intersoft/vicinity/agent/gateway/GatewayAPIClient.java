@@ -22,36 +22,50 @@ public class GatewayAPIClient {
 
 
     // ENDPOINTS:
+    public static final String LOGIN = "/objects/login";
+    public static final String LOGOUT = "/objects/logout";
+
     public static final String CONFIGURATION = "/agent/"+AgentConfig.agentId+"/items";
     public static final String CREATE = "/items/register";
     public static final String UPDATE = "/items/update";
     public static final String DELETE = "/items/remove";
 
+    public static HttpClient getClient() {
+        String login = AgentConfig.agentId;
+        String password = AgentConfig.password;
+
+        CredentialsProvider provider = new BasicCredentialsProvider();
+        UsernamePasswordCredentials credentials
+                = new UsernamePasswordCredentials(login, password);
+        provider.setCredentials(AuthScope.ANY, credentials);
+
+        return HttpClientBuilder.create()
+                .setDefaultCredentialsProvider(provider)
+                .build();
+
+    }
+
+    public static void login(String login, String password) throws Exception {
+        logger.info("doing login: ["+login+"]["+password+"]");
+        get(AgentConfig.gatewayAPIEndpoint + LOGIN);
+    }
+    public static void logout(String login, String password) throws Exception {
+        logger.info("doing logout: ["+login+"]["+password+"]");
+        get(AgentConfig.gatewayAPIEndpoint + LOGOUT);
+    }
 
     public static String get(String path) throws Exception {
         try{
 
-            String login = AgentConfig.agentId;
-            String password = AgentConfig.password;
 
             String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
             logger.info("GTW API GET:");
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
-            logger.info("login: " + login);
-            logger.info("password: " + password);
 
 
-            CredentialsProvider provider = new BasicCredentialsProvider();
-            UsernamePasswordCredentials credentials
-                    = new UsernamePasswordCredentials(login, password);
-            provider.setCredentials(AuthScope.ANY, credentials);
-
-            HttpClient client = HttpClientBuilder.create()
-                    .setDefaultCredentialsProvider(provider)
-                    .build();
-
+            HttpClient client = getClient();
 
             HttpGet request = new HttpGet(callEndpoint);
 
@@ -78,8 +92,6 @@ public class GatewayAPIClient {
     public static String post(String path, String payload) throws Exception {
         try{
 
-            String login = AgentConfig.agentId;
-            String password = AgentConfig.password;
 
             String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
@@ -87,20 +99,11 @@ public class GatewayAPIClient {
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
             logger.info("payload: " + payload);
-            logger.info("login: " + login);
-            logger.info("password: " + password);
 
 
 
 
-            CredentialsProvider provider = new BasicCredentialsProvider();
-            UsernamePasswordCredentials credentials
-                    = new UsernamePasswordCredentials(login, password);
-            provider.setCredentials(AuthScope.ANY, credentials);
-
-            HttpClient client = HttpClientBuilder.create()
-                    .setDefaultCredentialsProvider(provider)
-                    .build();
+            HttpClient client = getClient();
 
 
             HttpPost request = new HttpPost(callEndpoint);
@@ -132,29 +135,15 @@ public class GatewayAPIClient {
     public static String put(String path, String payload) throws Exception {
         try{
 
-            String login = AgentConfig.agentId;
-            String password = AgentConfig.password;
-
             String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
 
             logger.info("GTW API PUT:");
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
             logger.info("payload: " + payload);
-            logger.info("login: " + login);
-            logger.info("password: " + password);
 
 
-
-
-            CredentialsProvider provider = new BasicCredentialsProvider();
-            UsernamePasswordCredentials credentials
-                    = new UsernamePasswordCredentials(login, password);
-            provider.setCredentials(AuthScope.ANY, credentials);
-
-            HttpClient client = HttpClientBuilder.create()
-                    .setDefaultCredentialsProvider(provider)
-                    .build();
+            HttpClient client = getClient();
 
 
             HttpPut request = new HttpPut(callEndpoint);

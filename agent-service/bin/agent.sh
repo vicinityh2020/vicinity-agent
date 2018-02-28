@@ -12,7 +12,7 @@ JAR=agent.jar
 # ------------------------------
 # Persistence
 # ------------------------------
-PERSISTENCE_FILE=db/thing.db
+PERSISTENCE_FILE=config/db/thing.db
 # ------------------------------
 
 # ------------------------------
