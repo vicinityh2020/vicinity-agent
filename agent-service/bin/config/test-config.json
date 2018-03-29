@@ -1,18 +1,14 @@
 {
     "credentials": {
-        "agent-id": "7dc16ef2-b3c3-4e05-ba7f-b14388e0f7d9",
+        "agent-id": "f31e6c8b-eaa4-4fd6-b32b-bad97496b24f",
         "password": "test"
     },
-    "gateway-api-endpoint": "http://vicinity.bavenir.eu:3000/commServer",
+    "gateway-api-endpoint": "http://localhost:8181/api",
     "adapters": [
         {
             "adapter-id": "test-1",
             "endpoint": "http://localhost:9995/adapter"
-        },
-        {
-            "adapter-id": "test-2",
-            "endpoint": "http://localhost:9996/adapter"
-        },
+        }
     ]
 }
 

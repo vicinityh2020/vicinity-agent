@@ -25,19 +25,22 @@ public class GatewayAPIClient {
     public static final String LOGIN = "/objects/login";
     public static final String LOGOUT = "/objects/logout";
 
-    public static final String CONFIGURATION = "/agent/"+AgentConfig.agentId+"/items";
-    public static final String CREATE = "/items/register";
-    public static final String UPDATE = "/items/update";
-    public static final String DELETE = "/items/remove";
+    public static final String CONFIGURATION = "/agents/"+AgentConfig.agentId+"/objects";
 
-    public static HttpClient getClient() {
-        String login = AgentConfig.agentId;
-        String password = AgentConfig.password;
+    public static final String CREATE = "/agents/"+AgentConfig.agentId+"/objects";
+    public static final String UPDATE = "/agents/"+AgentConfig.agentId+"/objects";
+    public static final String DELETE = "/agents/"+AgentConfig.agentId+"/objects/delete";
+
+    public static HttpClient getClient(String login, String password) {
 
         CredentialsProvider provider = new BasicCredentialsProvider();
         UsernamePasswordCredentials credentials
                 = new UsernamePasswordCredentials(login, password);
         provider.setCredentials(AuthScope.ANY, credentials);
+
+        logger.info("GTW API CREDENTIALS:");
+        logger.info("login: ["+login+"]");
+        logger.info("password: ["+password+"]");
 
         return HttpClientBuilder.create()
                 .setDefaultCredentialsProvider(provider)
@@ -45,16 +48,20 @@ public class GatewayAPIClient {
 
     }
 
+    public static HttpClient getClient() {
+        return getClient(AgentConfig.agentId, AgentConfig.password);
+    }
+
     public static void login(String login, String password) throws Exception {
         logger.info("doing login: ["+login+"]["+password+"]");
-        get(AgentConfig.gatewayAPIEndpoint + LOGIN);
+        get(LOGIN, login, password);
     }
     public static void logout(String login, String password) throws Exception {
         logger.info("doing logout: ["+login+"]["+password+"]");
-        get(AgentConfig.gatewayAPIEndpoint + LOGOUT);
+        get(LOGOUT, login, password);
     }
 
-    public static String get(String path) throws Exception {
+    public static String get(String path, String login, String password) throws Exception {
         try{
 
 
@@ -65,7 +72,7 @@ public class GatewayAPIClient {
             logger.info("endpoint: " + callEndpoint);
 
 
-            HttpClient client = getClient();
+            HttpClient client = getClient(login, password);
 
             HttpGet request = new HttpGet(callEndpoint);
 
@@ -87,6 +94,10 @@ public class GatewayAPIClient {
             throw e;
         }
 
+    }
+
+    public static String get(String path) throws Exception {
+        return get(path, AgentConfig.agentId, AgentConfig.password);
     }
 
     public static String post(String path, String payload) throws Exception {

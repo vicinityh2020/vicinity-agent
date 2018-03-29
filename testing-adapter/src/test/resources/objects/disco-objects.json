@@ -1,7 +1,7 @@
 [
 {
 	"type": "Lightbulb",
-	"oid": "magic-1",
+	"oid": "magic-2",
 	"name": "horsedick",
 	"actions": [{
 		"read_links": [{
@@ -22,7 +22,7 @@
 		"read_links": [{
 			"href": "/custom/{oid}/x"
 		}],
-		"pid": "device-1-pid-1",
+		"pid": "device-1-pid-1-update",
 		"write_links": [{
 			"href": "/custom-set/{oid}/y"
 		},

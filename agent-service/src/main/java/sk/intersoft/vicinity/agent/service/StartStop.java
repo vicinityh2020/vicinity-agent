@@ -28,17 +28,17 @@ public class StartStop {
             logger.info("AGENT CONFIGURED: \n" + AgentConfig.asString());
 
             // 2. LOGIN AGENT
-//            logger.info("agent log in ..");
-//            GatewayAPIClient.login(AgentConfig.agentId, AgentConfig.password);
+            logger.info("agent log in ..");
+            GatewayAPIClient.login(AgentConfig.agentId, AgentConfig.password);
 
             // 3. RUN DISCO
             Discovery.fire();
 
             // 4. LOGIN THINGS FROM REDISCOVERED CONFIG
-//            for (ThingDescription thing : AgentConfig.things.thingsByOID()) {
-//                logger.info("login: "+thing.toSimpleString());
-//                GatewayAPIClient.login(thing.oid, thing.password);
-//            }
+            for (ThingDescription thing : AgentConfig.things.thingsByOID()) {
+                logger.info("login: "+thing.toSimpleString());
+                GatewayAPIClient.login(thing.oid, thing.password);
+            }
 
 
 
@@ -54,14 +54,14 @@ public class StartStop {
             logger.info("Launching shutdown sequence!");
 
             // 1. LOGOUT THINGS
-//            for (ThingDescription thing : AgentConfig.things.thingsByOID()) {
-//                logger.info("logout: "+thing.toSimpleString());
-//                GatewayAPIClient.logout(thing.oid, thing.password);
-//            }
+            for (ThingDescription thing : AgentConfig.things.thingsByOID()) {
+                logger.info("logout: "+thing.toSimpleString());
+                GatewayAPIClient.logout(thing.oid, thing.password);
+            }
 
             // 2. LOGOUT AGENT
-//            logger.info("agent log out ..");
-//            GatewayAPIClient.logout(AgentConfig.agentId, AgentConfig.password);
+            logger.info("agent log out ..");
+            GatewayAPIClient.logout(AgentConfig.agentId, AgentConfig.password);
         }
         catch(Exception e){
             logger.error("", e);

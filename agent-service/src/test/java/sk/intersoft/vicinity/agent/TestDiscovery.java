@@ -2,6 +2,8 @@ package sk.intersoft.vicinity.agent;
 
 
 import sk.intersoft.vicinity.agent.discovery.Discovery;
+import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
+import sk.intersoft.vicinity.agent.service.StartStop;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 
@@ -17,6 +19,8 @@ public class TestDiscovery {
     }
 
     public void test() throws Exception {
+        System.out.println("agent log in ..");
+        GatewayAPIClient.login(AgentConfig.agentId, AgentConfig.password);
         Discovery.fire();
 
     }
