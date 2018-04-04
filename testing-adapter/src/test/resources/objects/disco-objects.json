@@ -22,7 +22,7 @@
 		"read_links": [{
 			"href": "/custom/{oid}/x"
 		}],
-		"pid": "device-1-pid-1-update",
+		"pid": "device-1-pid-1",
 		"write_links": [{
 			"href": "/custom-set/{oid}/y"
 		},

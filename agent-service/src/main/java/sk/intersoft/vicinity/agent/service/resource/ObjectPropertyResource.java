@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
+import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
@@ -24,21 +25,41 @@ public class ObjectPropertyResource extends AgentResource {
             String oid = getAttribute(OBJECT_ID);
             String pid = getAttribute(PROPERTY_ID);
 
-            logger.info("GETTING PROPERTY VALUE FOR: ");
+            logger.info("GETTING PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: "+oid);
             logger.info("PID: " + pid);
 
-            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, true);
+            ThingDescription caller = getCallerObject();
+            if(caller != null){
+                logger.info("CALLER: " + caller.toSimpleString());
+                logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
 
-            logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
+                String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_PROPERTY, oid, pid);
 
-            String adapterResponse = AgentAdapter.get(endpoint);
-            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+                logger.info("GTW API ENDPOINT: "+endpoint);
 
-            JSONObject result = new JSONObject(adapterResponse);
+                String gtwResponse = GatewayAPIClient.get(endpoint, caller.oid, caller.password);
+                logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+
+                return gtwResponse;
+            }
+            else {
+                logger.info("NO CALLER .. CALLING ADAPTER FOR DATA");
+
+                String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, true);
+
+                logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
+
+                String adapterResponse = AgentAdapter.get(endpoint);
+                logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+
+                JSONObject result = new JSONObject(adapterResponse);
 
 
-            return ResourceResponse.success(result).toString();
+                return ResourceResponse.success(result).toString();
+
+            }
+
 
         }
         catch(Exception e){
@@ -65,18 +86,37 @@ public class ObjectPropertyResource extends AgentResource {
 
             logger.info("PAYLOAD: " + rawPayload);
 
-            JSONObject payload = new JSONObject(rawPayload);
+//            JSONObject payload = new JSONObject(rawPayload);
 
-            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, false);
 
-            logger.info("SET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
+            ThingDescription caller = getCallerObject();
+            if(caller != null){
+                logger.info("CALLER: " + caller.toSimpleString());
+                logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
 
-            String adapterResponse = AgentAdapter.put(endpoint, payload.toString());
-            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+                String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_PROPERTY, oid, pid);
 
-            JSONObject result = new JSONObject(adapterResponse);
+                logger.info("GTW API ENDPOINT: "+endpoint);
 
-            return ResourceResponse.success(result).toString();
+                String gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, caller.oid, caller.password);
+                logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+
+                return gtwResponse;
+            }
+            else {
+                logger.info("NO CALLER .. CALLING ADAPTER FOR DATA");
+                String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), pid, InteractionPattern.PROPERTY, false);
+
+                logger.info("SET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
+
+                String adapterResponse = AgentAdapter.put(endpoint, rawPayload.toString());
+                logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+
+                JSONObject result = new JSONObject(adapterResponse);
+
+                return ResourceResponse.success(result).toString();
+            }
+
 
         }
         catch(Exception e){

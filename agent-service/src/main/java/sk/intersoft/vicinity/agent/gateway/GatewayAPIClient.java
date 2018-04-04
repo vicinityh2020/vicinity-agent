@@ -25,6 +25,12 @@ public class GatewayAPIClient {
     public static final String LOGIN = "/objects/login";
     public static final String LOGOUT = "/objects/logout";
 
+    // interactions:
+    public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
+    public static final String OBJECT_ACTION = "/objects/{oid}/actions/{pid}";
+
+
+    // configuration:
     public static final String CONFIGURATION = "/agents/"+AgentConfig.agentId+"/objects";
 
     public static final String CREATE = "/agents/"+AgentConfig.agentId+"/objects";
@@ -46,6 +52,10 @@ public class GatewayAPIClient {
                 .setDefaultCredentialsProvider(provider)
                 .build();
 
+    }
+
+    public static String getInteractionEndpoint(String endpoint, String oid, String patternId) {
+        return endpoint.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId);
     }
 
     public static HttpClient getClient() {
@@ -70,6 +80,9 @@ public class GatewayAPIClient {
             logger.info("GTW API GET:");
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
 
 
             HttpClient client = getClient(login, password);
@@ -100,7 +113,7 @@ public class GatewayAPIClient {
         return get(path, AgentConfig.agentId, AgentConfig.password);
     }
 
-    public static String post(String path, String payload) throws Exception {
+    public static String post(String path, String payload, String login, String password) throws Exception {
         try{
 
 
@@ -110,11 +123,14 @@ public class GatewayAPIClient {
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
             logger.info("payload: " + payload);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
 
 
 
 
-            HttpClient client = getClient();
+            HttpClient client = getClient(login, password);
 
 
             HttpPost request = new HttpPost(callEndpoint);
@@ -143,7 +159,11 @@ public class GatewayAPIClient {
 
     }
 
-    public static String put(String path, String payload) throws Exception {
+    public static String post(String path, String payload) throws Exception {
+        return post(path, payload, AgentConfig.agentId, AgentConfig.password);
+    }
+
+    public static String put(String path, String payload, String login, String password) throws Exception {
         try{
 
             String callEndpoint = AgentConfig.gatewayAPIEndpoint + path;
@@ -152,9 +172,12 @@ public class GatewayAPIClient {
             logger.info("path: " + path);
             logger.info("endpoint: " + callEndpoint);
             logger.info("payload: " + payload);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
 
 
-            HttpClient client = getClient();
+            HttpClient client = getClient(login, password);
 
 
             HttpPut request = new HttpPut(callEndpoint);
@@ -183,4 +206,7 @@ public class GatewayAPIClient {
 
     }
 
+    public static String put(String path, String payload) throws Exception {
+        return put(path, payload, AgentConfig.agentId, AgentConfig.password);
+    }
 }
