@@ -28,17 +28,19 @@ public class ObjectActionResource extends AgentResource {
             logger.info("OID: "+oid);
             logger.info("AID: " + aid);
 
-            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, true);
+//            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, true);
+//
+//            logger.info("GET ACTION STATUS ADAPTER ENDPOINT: [" + endpoint + "]");
+//
+//            String adapterResponse = AgentAdapter.get(endpoint);
+//            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+//
+//            JSONObject result = new JSONObject(adapterResponse);
+//
+//
+//            return ResourceResponse.success(result).toString();
 
-            logger.info("GET ACTION STATUS ADAPTER ENDPOINT: [" + endpoint + "]");
-
-            String adapterResponse = AgentAdapter.get(endpoint);
-            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
-
-            JSONObject result = new JSONObject(adapterResponse);
-
-
-            return ResourceResponse.success(result).toString();
+            throw new Exception("Actions are not implemented yet!");
 
         }
         catch(Exception e){
@@ -58,25 +60,28 @@ public class ObjectActionResource extends AgentResource {
             logger.info("OID: "+oid);
             logger.info("AID: " + aid);
 
-            if(entity == null) {
-                throw new Exception("Empty payload!");
-            }
-            String rawPayload = entity.getText();
+//            if(entity == null) {
+//                throw new Exception("Empty payload!");
+//            }
+//            String rawPayload = entity.getText();
+//
+//            logger.info("PAYLOAD: " + rawPayload);
+//
+//            JSONObject payload = new JSONObject(rawPayload);
+//
+//            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, false);
+//
+//            logger.info("EXECUTE ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
+//
+//            String adapterResponse = AgentAdapter.post(endpoint, payload.toString());
+//            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
+//
+//            JSONObject result = new JSONObject(adapterResponse);
+//
+//            return ResourceResponse.success(result).toString();
 
-            logger.info("PAYLOAD: " + rawPayload);
+            throw new Exception("Actions are not implemented yet!");
 
-            JSONObject payload = new JSONObject(rawPayload);
-
-            String endpoint = AdapterEndpoint.getEndpoint(getThing(oid), aid, InteractionPattern.ACTION, false);
-
-            logger.info("EXECUTE ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
-
-            String adapterResponse = AgentAdapter.post(endpoint, payload.toString());
-            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
-
-            JSONObject result = new JSONObject(adapterResponse);
-
-            return ResourceResponse.success(result).toString();
 
         }
         catch(Exception e){

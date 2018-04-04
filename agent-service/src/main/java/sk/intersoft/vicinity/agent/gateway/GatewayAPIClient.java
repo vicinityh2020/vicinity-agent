@@ -27,7 +27,8 @@ public class GatewayAPIClient {
 
     // interactions:
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
-    public static final String OBJECT_ACTION = "/objects/{oid}/actions/{pid}";
+    public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
+    public static final String OBJECT_EVENT = "/objects/{oid}/events/{oid}";
 
 
     // configuration:
@@ -137,9 +138,11 @@ public class GatewayAPIClient {
 
             request.addHeader("Content-Type", "application/json");
 
-            StringEntity data = new StringEntity(payload);
+            if(payload != null){
+                StringEntity data = new StringEntity(payload);
+                request.setEntity(data);
+            }
 
-            request.setEntity(data);
 
             HttpResponse response = client.execute(request);
 

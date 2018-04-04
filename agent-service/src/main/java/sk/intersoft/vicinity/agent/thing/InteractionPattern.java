@@ -112,17 +112,20 @@ public class InteractionPattern {
     public static InteractionPattern createEvent(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
+        if(isConfiguration){
+            String observes = JSONUtil.getString(OBSERVES_KEY, patternJSON);
+            if(observes == null) throw new Exception("Missing ["+OBSERVES_KEY+"] in: "+patternJSON.toString());
+
+            patternJSON.put(MONITORS_KEY, ThingDescription.prefixed2value(observes));
+        }
+
         pattern.id = JSONUtil.getString(EID_KEY, patternJSON);
-        if(pattern.id == null) throw new Exception("Missing ["+PID_KEY+"] in: "+patternJSON.toString());
+        if(pattern.id == null) throw new Exception("Missing ["+EID_KEY+"] in: "+patternJSON.toString());
 
         pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
-        try{
-            createLinks(pattern, patternJSON);
-        }
-        catch (Exception e){
-        }
+        pattern.output = createOutput(patternJSON);
         return pattern;
 
     }

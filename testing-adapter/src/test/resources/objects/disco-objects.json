@@ -43,6 +43,17 @@
 		]
 	}
 
+	],
+	"events": [
+    {
+		"monitors": "Motion",
+		"output": {
+			"units": "Celsius"
+		},
+		"eid": "device-1-eid-1"
+	}
+
 	]
+
 }
 ]
