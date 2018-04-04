@@ -11,8 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConfigureLogging {
-    final static org.slf4j.Logger qlogger = LoggerFactory.getLogger(ConfigureLogging.class.getName());
-    final static java.util.logging.Logger ulogger = java.util.logging.Logger.getLogger(ConfigureLogging.class.getName());
 
     public static String toString(InputStream stream){
         if(stream != null){

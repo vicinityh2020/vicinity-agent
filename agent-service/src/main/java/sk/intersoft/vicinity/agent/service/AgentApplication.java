@@ -19,7 +19,6 @@ public class AgentApplication extends Application {
     public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
 
 
-
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
         ChallengeAuthenticator apiGuard = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "realm");
@@ -34,6 +33,7 @@ public class AgentApplication extends Application {
 
     public Router createApiRouter() {
         Router apiRouter = new Router(getContext());
+
         apiRouter.attach(ALIVE, AliveResource.class);
         apiRouter.attach(ALIVE+"/", AliveResource.class);
 
