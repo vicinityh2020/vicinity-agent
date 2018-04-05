@@ -116,7 +116,7 @@ To set object property value, the Agent implements the endpoint:
 ```
 PUT : /objects/{oid}/properties/{pid}
 ```
-PUT operation requires the payload with data structure specified in thing description for this property.
+PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
 For both operations, Agent enables two way interaction.
 
@@ -125,10 +125,11 @@ in both calls, **the request header must contain key-value pair**:
 ```
 infrastucture-id=infrastructure-id of requesting object
 ```
-Agent finds the corresponding **oid** for requesting object matching *infrastructure-id* in header and translates
+Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
 this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
 
-**Consuming property of local object** (in this VICINITY node)
+
+### Consuming property of local object (in this VICINITY node)
 
 If agent receives get/set property without the header **infrastucture-id**, the request is interpreted as consumption service
 to object in this infrastructure. The agent translates:
@@ -152,3 +153,12 @@ Property interaction pattern specification in Common Thing Description format:
     }]
 }
 ```
+
+Adapter is free to specify the endpoints to read/set property in form it requires. Endpoint to read property is specified
+in field *read_links*, endpoint to set property in *write_links*. Endpoint can contain variables **{oid}** and **{pid}**, which are
+replaced:
+* **{oid}** -> infrastructure if of this object
+* **{pid}** -> property unique identifier of property having this endpoint
+
+In both cases, *read_links* and *write_links* are specified as arrays, however in actual implementation Agent takes and uses
+only the first value in array.
