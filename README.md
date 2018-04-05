@@ -41,10 +41,10 @@ Auto Discovery process is launched, when Agent starts (by default) and is compos
 1. read the last active configuration of node from Neighbourhood Manager
 2. read the actual thing descriptions from all its Adapters
 3. make DIFF. Last active configuration and actual list of objects is compared, the result is
-..* the list of missing objects to delete
-..* the list of new objects to create
-..* the list of objects to update; update is the change of any of mandatory properties and is interpreted as the violence to contract, thus the update is in Neighbourhood Manager executed as: delete/create object + drop all friendships; the result of update operation is the brand new object with new **oid** and credentials
-..* the list of unchanged objects
+  * the list of missing objects to delete
+  * the list of new objects to create
+  * the list of objects to update; update is the change of any of mandatory properties and is interpreted as the violence to contract, thus the update is in Neighbourhood Manager executed as: delete/create object + drop all friendships; the result of update operation is the brand new object with new **oid** and credentials
+  * the list of unchanged objects
 4. the CRUD dance, delete/create/update objects
 5. actualize the actual configuration
 
