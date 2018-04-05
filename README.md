@@ -4,7 +4,7 @@
 
 VICINITY Agent serves as the interface between VICINITY GateWay and VICINITY Adapter.
 
-### Adapter role
+#### Adapter role
 
 Adapter represents the *driver* to specific infrastructure and
 provides just very basic interactions with objects behind it, namely:
@@ -17,7 +17,7 @@ provides just very basic interactions with objects behind it, namely:
 Every object in VICINITY has **its unique VICINITY identifier (oid)**,
 but adapter **always uses the internal object identifiers (infrastructure-id)**, specific for its infrastructure.
 
-### Agent role
+#### Agent role
 
 Agent is the functional extension of Adapter. The role of Agent is to make the life of Adapter developers easier.
 
