@@ -165,3 +165,5 @@ replaced:
 
 In both cases, *read_links* and *write_links* are specified as arrays, however in actual implementation Agent takes and uses
 only the first value in array.
+
+Once transformations are done, the endpoint is executed on Adapter.
