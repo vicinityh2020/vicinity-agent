@@ -105,7 +105,6 @@ Otherwise this interaction will be rejected on level of GTW API.
 
 ## Object properties
 
-### Consuming property of remote object (from another VICINITY node)
 
 To read object property value, the Agent implements the endpoint:
 ```
@@ -119,6 +118,10 @@ PUT : /objects/{oid}/properties/{pid}
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
 For both operations, Agent enables two way interaction.
+
+
+### Consuming property of remote object (from another VICINITY node)
+
 
 If **object from this infrastructure** (for which this Agent runs) wants to get/set property of **remote object** (another VICINITY node),
 in both calls, **the request header must contain key-value pair**:
