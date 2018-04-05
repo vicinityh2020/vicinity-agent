@@ -105,7 +105,7 @@ Otherwise this interaction will be rejected on level of GTW API.
 
 ## Object properties
 
-**Consuming property of remote object** (from another VICINITY node)
+### Consuming property of remote object (from another VICINITY node)
 
 To read object property value, the Agent implements the endpoint:
 ```
