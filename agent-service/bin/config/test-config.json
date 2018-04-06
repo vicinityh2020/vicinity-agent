@@ -7,9 +7,6 @@
     "adapters": [
         {
             "endpoint": "http://localhost:9995/adapter"
-        },
-        {
-            "endpoint": "http://localhost:9996/adapter"
         }
 
     ]

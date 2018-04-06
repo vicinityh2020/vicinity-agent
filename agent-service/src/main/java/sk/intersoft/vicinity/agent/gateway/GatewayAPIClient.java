@@ -28,7 +28,7 @@ public class GatewayAPIClient {
     // interactions:
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
-    public static final String OBJECT_EVENT = "/objects/{oid}/events/{oid}";
+    public static final String OBJECT_EVENT = "/objects/{oid}/events/{eid}";
 
 
     // configuration:

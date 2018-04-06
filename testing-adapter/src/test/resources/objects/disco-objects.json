@@ -1,6 +1,4 @@
-{
-"adapter-id": "keket",
-"thing-descriptions": [
+ [
 {
 	"type": "Lightbulb",
 	"oid": "magic-2",
@@ -59,4 +57,3 @@
 
 }
 ]
-}

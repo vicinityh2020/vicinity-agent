@@ -20,15 +20,12 @@ public class ObjectEventResource extends AgentResource {
     private static String INFRASTRUCTURE_ID = "infrastructure-id";
     private static String EVENT_ID = "eid";
 
-    public static String openChannel(String infrastructureId, String eid) throws Exception {
+    public static String openChannel(ThingDescription thing, String eid) throws Exception {
         logger.info("CREATING EVENT CHANNEL FOR: ");
-        logger.info("INFRASTRUCTURE ID: "+infrastructureId);
+        logger.info("PUBLISHER: "+thing.toSimpleString());
         logger.info("EID: " +eid);
 
 
-        ThingDescription thing = getThingByInfrastructureID(infrastructureId);
-
-        logger.info("THING for channel: " + thing.toSimpleString());
 
         // retrieve event to check it exists .. if not, exception is thrown
         InteractionPattern event = thing.getInteractionPattern(eid, InteractionPattern.EVENT);
@@ -67,7 +64,7 @@ public class ObjectEventResource extends AgentResource {
     }
 
     @Post()
-    public String openEventChannel()  {
+    public String openOrSubscribeEventChannel()  {
         try{
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);
@@ -75,7 +72,7 @@ public class ObjectEventResource extends AgentResource {
             ThingDescription caller = getCallerObject();
 
             if(caller == null){
-                return openChannel(oid, eid);
+                return openChannel(getThingByInfrastructureID(oid), eid);
             }
             else {
                 return subscribeChannel(caller, oid, eid);

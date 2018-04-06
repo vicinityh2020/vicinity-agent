@@ -38,20 +38,6 @@ public class AgentResource extends ServerResource {
         return null;
     }
 
-
-
-    public static ThingDescription getThingByInfrastructureID(String infrastructureId) throws Exception {
-        ThingDescription thing = AgentConfig.things.getThingByInfrastructureID(infrastructureId);
-        if(thing == null) throw new Exception("Unknown thing for infrastructure id: ["+infrastructureId+"]");
-        return thing;
-    }
-
-    protected ThingDescription getThing(String oid) throws Exception {
-        ThingDescription thing = AgentConfig.things.getThingByOID(oid);
-        if(thing == null) throw new Exception("Unknown thing for OID: ["+oid+"]");
-        return thing;
-    }
-
     private String getAdapterId() throws Exception {
 
         boolean multi = AgentConfig.hasMultiAdapters();
@@ -72,23 +58,36 @@ public class AgentResource extends ServerResource {
 
     }
 
+
+    public ThingDescription getThingByInfrastructureID(String infrastructureId) throws Exception {
+        String adapterId = getAdapterId();
+
+        logger.debug("adapter id to be used: ["+adapterId+"]");
+
+        String iid = ThingDescription.makeAdapterInfrastructureId(adapterId, infrastructureId);
+        logger.debug("infrastructure id to look for: ["+iid+"]");
+
+        ThingDescription thing = AgentConfig.things.getThingByInfrastructureID(iid);
+        if(thing == null) throw new Exception("Object for [adapter: "+adapterId+"][infrastructure-id: "+infrastructureId+"] does not exist!");
+
+        logger.debug("thing by infra-id: "+thing.toSimpleString());
+        return thing;
+    }
+
+    protected ThingDescription getThing(String oid) throws Exception {
+        ThingDescription thing = AgentConfig.things.getThingByOID(oid);
+        if(thing == null) throw new Exception("Unknown thing for OID: ["+oid+"]");
+        return thing;
+    }
+
+
     protected ThingDescription getCallerObject() throws Exception {
         String oid = getHeader(CALLER_OID_HEADER);
         logger.debug("getting caller header ["+CALLER_OID_HEADER+"]: ["+oid+"]");
 
         if(oid == null) return null;
         else {
-
-            String adapterId = getAdapterId();
-
-            logger.debug("adapter id to be used: ["+adapterId+"]");
-
-            String iid = ThingDescription.makeAdapterInfrastructureId(adapterId, oid);
-            logger.debug("infrastructure id to look for: ["+iid+"]");
-
-            ThingDescription caller = AgentConfig.things.getThingByInfrastructureID(iid);
-            logger.debug("thing by infra-id: "+caller);
-            return caller;
+            return getThingByInfrastructureID(oid);
         }
     }
 
