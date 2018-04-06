@@ -132,6 +132,7 @@ Failure:
 }
 ```
 
+
 # Auto discovery/configuration
 
 Agent always holds the actual configuration of objects behind its Adapter(s).
@@ -156,6 +157,28 @@ Auto Discovery process is launched, when Agent starts (by default) and is compos
 The result of auto discovery is the list of all active objects with actual credentials and their consumption/eventing services.
 Using the actual configuration, the Agent can translate between common VICINITY services and Adapter services, using the proper credentials.
 
+# General note on interaction concepts
+
+Before we dig into the possible interaction patterns, it is necessary (or at least good) to remind, what is the main
+concept of inter-object interaction in VICINITY.
+
+**In VICINITY, the interaction happens always between two objects!** That means:
+* if object(1) needs to interact with object(2), in Neighbourhood Manager, there must be set proper permission for this interaction
+* interaction is always triggered by object
+* interaction must be subscribed by credentials of object triggering this interaction - object must use its credentials to perform the interaction
+
+In some cases, objects that need to perform the interaction are passive. For example, the sensor needs to publish the event, but
+the sensor itself is the passive unit. In this case, the responsibility for performing action takes some logic component of the node.
+This can be value added service object or logic of Adapter. This active component acts on behalf of passive object.
+For example (depending on Adapter implementation, of course), Adapter manages the events from sensors
+(which are passive units, they don't trigger any interactions themselves).
+Once event needs to be published, Adapter calls the proper Agent service, providing information on event itself, but also
+on identifier of object, that produced the event. Agent translates this request to proper GTW API call, providing the credentials
+of object, that produced the event. Adapter acts on behalf of this object.
+
+Agent services are designed to simplify this process for the integrators.
+
+
 # Data consumption services
 
 Data consumption services allows to read/set property value or execute/read status of action on the object.
@@ -177,7 +200,8 @@ PUT : /objects/{oid}/properties/{pid}
 ```
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
-For both operations, Agent enables two way interaction.
+For both operations, Agent enables two way interaction. Consuming the property of remote object (from another VICINITY node),
+consuming property of local object (VICINITY node, where this Agent runs).
 
 
 ### Consuming property of remote object (from another VICINITY node)
@@ -205,6 +229,9 @@ Property interaction pattern specification in Common Thing Description format:
 {
     "pid": "property-unique-identifier",
     "monitors": "OntologyPropertyInstance",
+    "input": {
+        "tbd": "when datatype schema will be completed .. this is input definition to SET the property"
+    },
     "output": {
         "units": "OntologyUnitInstance"
     },
@@ -227,3 +254,23 @@ In both cases, *read_links* and *write_links* are specified as arrays, however i
 only the first value in array.
 
 Once transformations are done, the endpoint is executed on Adapter.
+
+## Object actions
+
+TBD
+
+# Eventing
+
+Consumption services enable to read object properties by request. The eventing mechanism enables objects to publish
+the values of their properties (or whatever needs to be published) once, the value changes. So other object can be notified with new value
+automatically, without explicitly requesting it.
+
+The VICINITY eventing mechanism is implemented as publish/subscribe pattern.
+
+## Event channel management
+
+The name of event channel for object is always specified as: **/objects/{oid}/event/{eid}**. Any object can open its channel for
+concrete event. Once the channel is open, other objects may subscribe to this channel. Once the object is subscribed to the channel,
+Adapter of this object will receive events from this channel.
+
+Again, in VICINITY
