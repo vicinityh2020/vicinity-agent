@@ -207,22 +207,19 @@ Otherwise this interaction will be rejected on level of GTW API.
 ## Object properties
 
 
-To read object property value, the Agent implements the endpoint:
-```
-GET : /objects/{oid}/properties/{pid}
-```
-
-To set object property value, the Agent implements the endpoint:
-```
-PUT : /objects/{oid}/properties/{pid}
-```
-PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
-
-For both operations, Agent enables two way interaction. Consuming the property of remote object (from another VICINITY node),
-consuming property of local object (VICINITY node, where this Agent runs).
-
 
 ### Consuming property of remote object (from another VICINITY node)
+
+To read remote object property value, the Agent implements the endpoint:
+```
+GET : /remote/objects/{oid}/properties/{pid}
+```
+
+To set remote object property value, the Agent implements the endpoint:
+```
+PUT : /remote/objects/{oid}/properties/{pid}
+```
+PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
 
 If **object from this infrastructure** (for which this Agent runs) wants to get/set property of **remote object** (another VICINITY node),
@@ -231,16 +228,28 @@ in both calls, **the request header must contain key-value pairs**:
 infrastucture-id=infrastructure-id of requesting object
 adapter-id=identifier of adapter for this object
 ```
+**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
+
 Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
 this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
 
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
 
 
-### Consuming property of local object (in this VICINITY node)
+### Consumption of local object property (in this VICINITY node)
 
-If agent receives get/set property without the header **infrastucture-id**, the request is interpreted as consumption service
-to object in this infrastructure. The agent translates:
+To read local object property value, the Agent implements the endpoint:
+```
+GET : /objects/{oid}/properties/{pid}
+```
+
+To set local object property value, the Agent implements the endpoint:
+```
+PUT : /objects/{oid}/properties/{pid}
+```
+PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
+
+
+Agent translates:
 * **oid** in request into **infrastructure-id** known in Adapter
 * the endpoint to be called on Adapter
 
@@ -342,7 +351,7 @@ In some cases, some object in Adapter needs to open or subscribe to channel on t
 
 To **open channel**, Agent provides the service:
 ```
-POST /objects/{infrastructure-id}/events/{eid}
+POST /objects/{infrastructure-id}/events/{eid}/open
 headers:
 adapter-id=adapter for this object
 ```
@@ -352,7 +361,7 @@ Agent translates this request into proper GTW API call, using credentials for ob
 
 To **subscribe to channel**, Agent provides the service:
 ```
-POST /objects/{oid}/events/{eid}
+POST /objects/{oid}/events/{eid}/subscribe
 headers:
 infrastructure-id=internal object id
 adapter-id=adapter for this object
