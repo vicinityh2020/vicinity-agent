@@ -338,7 +338,7 @@ The channel **/objects/{oid}/events/{eid}** is open, where **oid** is VICINITY i
 
 Field **subscriptions** contains the array of declarations, to which channels the Adapter objects will listen.
 The **infrastructure-id** specifies object behind the Adapter, which is subscribed to channel, the **oid** specifies the object producing event.
-The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/events/{eid}, where **oid** is VICINITY identifier of object producing event.
+The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/events/{eid}**, where **oid** is VICINITY identifier of object producing event.
 
 **adapter-id** is optional, when using only one adapter.
 If using multiple adapters, **adapter-id** must be provided to identify the object behind the correct adapter.
