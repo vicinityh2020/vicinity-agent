@@ -334,7 +334,7 @@ Opening the channels and subscriptions may be declared in Agent configuration fi
 Field **channels** contains the array of declarations, for which object and its event the channel should be open.
 As the channel is to be open for local object (within this VICINITY node), the **infrastructure-id** of object behind the Adapter
 is used.
-The channel **/objects/{oid}/events/{eid} is open, where **oid** is VICINITY identifier of object with **infrastructure-id**.
+The channel **/objects/{oid}/events/{eid}** is open, where **oid** is VICINITY identifier of object with **infrastructure-id**.
 
 Field **subscriptions** contains the array of declarations, to which channels the Adapter objects will listen.
 The **infrastructure-id** specifies object behind the Adapter, which is subscribed to channel, the **oid** specifies the object producing event.
