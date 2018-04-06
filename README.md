@@ -112,6 +112,8 @@ LOGS_FOLDER=logs
 
 
 ## Agent response
+The response of agent is always wrapped into following structure:
+
 Success:
 ```
 {

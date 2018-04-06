@@ -2,6 +2,7 @@
 
 SERVER_PORT=9997
 CONFIG_FILE=config/test-config.json
+LOGS_FOLDER=logs
 
 # ==============================
 # DON'T TOUCH ANYTHING BELOW
@@ -14,13 +15,6 @@ JAR=agent.jar
 # ------------------------------
 PERSISTENCE_FILE=config/db/thing.db
 # ------------------------------
-
-# ------------------------------
-# Logging
-# ------------------------------
-LOGS_FOLDER=logs
-# ------------------------------
-
 
 COMMAND=$1
 
