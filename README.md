@@ -306,7 +306,8 @@ Opening the channels and subscriptions may be declared in Agent configuration fi
         ],
         "subscriptions": [
             {
-                "oid": "VICINITY object id",
+                "oid": "VICINITY object id producing event",
+                "infrastructure-id": "internal object id consuming event",
                 "eid": "object event identifier",
             }
         ]
@@ -317,8 +318,11 @@ Opening the channels and subscriptions may be declared in Agent configuration fi
 Field **channels** contains the array of declarations, for which object and its event the channel should be open.
 As the channel is to be open for local object (within this VICINITY node), the **infrastructure-id** of object behind the Adapter
 is used.
+The channel **/objects/{oid}/events/{eid} is open, where **oid** is VICINITY identifier of object with **infrastructure-id**.
 
-Field **subscriptions** contains the array of declarations, to which channels the Adapter will listen.
+Field **subscriptions** contains the array of declarations, to which channels the Adapter objects will listen.
+The **infrastructure-id** specifies object behind the Adapter, which is subscribed to channel, the **oid** specifies the object producing event.
+The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/events/{eid}, where **oid** is VICINITY identifier of object producing event.
 
 Using this declaration, the Agent will create and subscribe to channels on when it starts.
 
@@ -366,3 +370,5 @@ When event appear, Agent will pass it to this Adapter endpoint. Parameters of th
 * **payload** will be wrapped into object containing **oid** of object that produced the event
 
 In current implementation, the Adapter is responsible for processing the events and passing them further to subscribed objects.
+
+
