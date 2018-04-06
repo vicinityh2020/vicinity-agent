@@ -264,7 +264,7 @@ Property interaction pattern specification in Common Thing Description format:
 Adapter is free to specify the endpoints to read/set property in form it requires. Endpoint to read property is specified
 in field *read_links*, endpoint to set property in *write_links*. Endpoint can contain variables **{oid}** and **{pid}**, which are
 replaced:
-* **{oid}** -> infrastructure if of this object
+* **{oid}** -> **infrastructure-id** of this object
 * **{pid}** -> property unique identifier of property having this endpoint
 
 In both cases, *read_links* and *write_links* are specified as arrays, however in actual implementation Agent takes and uses
