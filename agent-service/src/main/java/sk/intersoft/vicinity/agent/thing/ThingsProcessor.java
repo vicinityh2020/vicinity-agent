@@ -36,21 +36,16 @@ public class ThingsProcessor {
 
     }
 
-    public static ThingDescriptions process(String data, AdapterConfig adapterConfig) throws Exception {
-        if(adapterConfig == null){
-            JSONObject root = new JSONObject(data);
-            JSONArray results = root.getJSONArray("message");
-            JSONArray extraction = new JSONArray();
-            Iterator<Object> i = results.iterator();
-            while(i.hasNext()){
-                JSONObject item = (JSONObject)i.next();
-                extraction.put(item.getJSONObject("id").getJSONObject("info"));
-            }
-            return process(extraction, adapterConfig);
+    public static ThingDescriptions processConfiguration(String data) throws Exception {
+        JSONObject root = new JSONObject(data);
+        JSONArray results = root.getJSONArray("message");
+        JSONArray extraction = new JSONArray();
+        Iterator<Object> i = results.iterator();
+        while(i.hasNext()){
+            JSONObject item = (JSONObject)i.next();
+            extraction.put(item.getJSONObject("id").getJSONObject("info"));
         }
-        else {
-            return process(new JSONArray(data), adapterConfig);
-        }
+        return process(extraction, null);
     }
 
 }

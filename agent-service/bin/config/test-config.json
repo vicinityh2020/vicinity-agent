@@ -6,9 +6,12 @@
     "gateway-api-endpoint": "http://localhost:8181/api",
     "adapters": [
         {
-            "adapter-id": "test-1",
             "endpoint": "http://localhost:9995/adapter"
+        },
+        {
+            "endpoint": "http://localhost:9996/adapter"
         }
+
     ]
 }
 

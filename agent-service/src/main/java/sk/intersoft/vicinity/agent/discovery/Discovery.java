@@ -8,6 +8,7 @@ import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
 import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
+import sk.intersoft.vicinity.agent.service.config.AdapterData;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
@@ -122,9 +123,29 @@ public class Discovery {
 
     }
 
-    public static ThingDescriptions addAdapterThings(AdapterConfig adapterConfig) throws Exception {
+    public static JSONArray updateAdapterConfig(AdapterConfig adapterConfig, String data, boolean multi) throws Exception {
+        logger.debug("updating adapter config for: ");
+        logger.debug(adapterConfig.toString());
+        logger.debug("is multi: "+multi);
+
+        AdapterData adapterData = AdapterData.create(adapterConfig, data);
+        if(multi){
+            if(adapterData.adapterId == null){
+                throw new Exception("Missing [adapter-id] in thing descriptions from ["+adapterConfig.endpoint+"]");
+            }
+            AgentConfig.updateAdapter(adapterData);
+        }
+        else {
+            adapterConfig.adapterId = adapterData.adapterId;
+            if(adapterData.adapterId == null) adapterConfig.adapterId = AdapterConfig.DEFAULT_ADAPTER_ID;
+        }
+        return adapterData.things;
+    }
+
+    public static ThingDescriptions addAdapterThings(AdapterConfig adapterConfig, boolean multi) throws Exception {
         String data = AgentAdapter.get(adapterConfig.endpoint + AdapterEndpoint.OBJECTS);
-        ThingDescriptions things = ThingsProcessor.process(data, adapterConfig);
+        JSONArray thingsData = updateAdapterConfig(adapterConfig, data, multi);
+        ThingDescriptions things = ThingsProcessor.process(thingsData, adapterConfig);
         return things;
     }
 
@@ -132,12 +153,13 @@ public class Discovery {
         logger.info("fetching things from all adapters:");
         ThingDescriptions things = new ThingDescriptions();
         try{
-            for (Map.Entry<String, AdapterConfig> entry : AgentConfig.adapters.entrySet()) {
-                String id = entry.getKey();
-                AdapterConfig config = entry.getValue();
-                logger.info("fetching things from: ["+config.adapterId+"]");
-                things.add(addAdapterThings(config));
+            boolean multi = (AgentConfig.adaptersList.size() > 1);
+            for (AdapterConfig config : AgentConfig.adaptersList) {
+                logger.info("fetching things from: ["+config.toString()+"]");
+                things.add(addAdapterThings(config, multi));
             }
+            logger.info("agent adapter config update:\n"+AgentConfig.asString(0));
+
         }
         catch(Exception e){
             logger.error("", e);
@@ -159,7 +181,7 @@ public class Discovery {
         logger.info("Getting configuration");
         String configData = GatewayAPIClient.get(GatewayAPIClient.CONFIGURATION);
         logger.info("Configuration response: "+configData);
-        ThingDescriptions configuredThings = ThingsProcessor.process(configData, null);
+        ThingDescriptions configuredThings = ThingsProcessor.processConfiguration(configData);
         logger.debug("Configured things: \n"+configuredThings.toString(0));
 
 

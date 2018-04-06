@@ -20,6 +20,8 @@ public class TestingAdapterApplication extends Application {
 
     public static final String EVENT_LISTENER = "/objects/{oid}/properties/{pid}/event";
 
+    public static final String ADAPTER_ID = "adapter-1";
+
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
         ChallengeAuthenticator apiGuard = new ChallengeAuthenticator(getContext(), ChallengeScheme.HTTP_BASIC, "realm");

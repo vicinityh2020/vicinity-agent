@@ -32,7 +32,6 @@ public class ThingDescription {
     public static String OID_KEY = "oid";
     public static String AGENT_INFRASTRUCTURE_ID_KEY = "infrastructure-id";
     public static String PASSWORD_KEY = "password";
-    public static String ENABLED_KEY = "enabled";
     public static String TYPE_KEY = "type";
     public static String PROPERTIES_KEY = "properties";
     public static String ACTIONS_KEY = "actions";
@@ -148,6 +147,10 @@ public class ThingDescription {
     }
 
 
+    public static String makeAdapterInfrastructureId(String adapterId, String oid) {
+        return adapterId + ":" + oid;
+    }
+
     public static ThingDescription create(JSONObject thingJSON, AdapterConfig adapterConfig) throws Exception {
 
         ThingDescription thing = new ThingDescription();
@@ -191,7 +194,7 @@ public class ThingDescription {
             logger.debug("processing thing from adapter");
             String oid = JSONUtil.getString(OID_KEY, thingJSON);
             if(oid == null) throw new Exception("Missing [oid] in: "+thingJSON.toString());
-            thing.AgentInfrastructureID = adapterConfig.adapterId + "_" +oid;
+            thing.AgentInfrastructureID = makeAdapterInfrastructureId(adapterConfig.adapterId, oid);
             thing.adapterId = adapterConfig.adapterId;
             thing.adapterThingId = oid;
         }

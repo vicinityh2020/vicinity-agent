@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
+import org.restlet.data.ClientInfo;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Put;
@@ -28,6 +29,8 @@ public class ObjectPropertyResource extends AgentResource {
             logger.info("GETTING PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: "+oid);
             logger.info("PID: " + pid);
+
+
 
             ThingDescription caller = getCallerObject();
             if(caller != null){

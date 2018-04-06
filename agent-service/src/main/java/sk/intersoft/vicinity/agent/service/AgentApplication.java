@@ -16,8 +16,6 @@ public class AgentApplication extends Application {
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
     public static final String OBJECT_EVENT = "/objects/{oid}/events/{eid}";
-//    public static final String EVENT_PUBLISHER = "/objects/{oid}/events/{eid}/publish";
-//    public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
 
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {

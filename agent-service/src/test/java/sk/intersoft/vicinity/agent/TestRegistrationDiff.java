@@ -27,7 +27,7 @@ public class TestRegistrationDiff {
         JSONArray adapter = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter.json"));
         JSONArray config = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/configuration.json"));
 
-        ThingDescriptions configuration = ThingsProcessor.process(config, new AdapterConfig("test-id", "test-endpoint"));
+        ThingDescriptions configuration = ThingsProcessor.process(config, new AdapterConfig("test-endpoint"));
         ThingDescriptions fromAdapter = ThingsProcessor.process(adapter, null);
 
         ThingsDiff diff = ThingsDiff.fire(configuration, fromAdapter);

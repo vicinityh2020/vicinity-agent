@@ -25,11 +25,19 @@ public class AgentConfig {
     public static String password = "";
 
     public static String gatewayAPIEndpoint = "";
+    public static List<AdapterConfig> adaptersList = new ArrayList<AdapterConfig>();
     public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
     public static Map<String, String> x = new HashMap<String, String>();
 
     public static ThingDescriptions things = new ThingDescriptions();
 
+    public static boolean hasMultiAdapters(){
+        return adapters.keySet().size() > 1;
+    }
+
+    public AdapterConfig defaultAdapter(){
+        return adaptersList.get(0);
+    }
 
     public static String file2string(String path) {
         try{
@@ -38,6 +46,15 @@ public class AgentConfig {
         catch(Exception e){
             logger.error("", e);
             return null;
+        }
+    }
+
+    public static void updateAdapter(AdapterData data) throws  Exception {
+        AdapterConfig config = adapters.get(data.adapterId);
+        if(config != null) throw new Exception("duplicate adapter-id ["+data.adapterId+"]");
+        else {
+            data.config.adapterId = data.adapterId;
+            adapters.put(data.config.adapterId, data.config);
         }
     }
 
@@ -55,8 +72,9 @@ public class AgentConfig {
         while(i.hasNext()){
             JSONObject adapterConfig = (JSONObject)i.next();
             AdapterConfig ac = AdapterConfig.create(adapterConfig);
-            adapters.put(ac.adapterId, ac);
+            adaptersList.add(ac);
         }
+        if(adaptersList.size() == 0) throw new Exception("There are no adapters!!");
     }
 
     public static String asString(int indent) {
@@ -69,11 +87,16 @@ public class AgentConfig {
         dump.add("password: [" + password + "]", (indent + 2));
         dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, (indent + 1));
         dump.add("Adapters: ", (indent + 1));
+        dump.add("List: ", (indent + 2));
+        for(AdapterConfig ac : adaptersList){
+            dump.add(ac.asString(indent + 3));
+        }
+        dump.add("Map: ", (indent + 2));
         for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
             String id = entry.getKey();
             AdapterConfig ac = entry.getValue();
-            dump.add("mapped key: "+id, (indent + 2));
-            dump.add(ac.asString(indent + 3));
+            dump.add("mapped key: "+id, (indent + 3));
+            dump.add(ac.asString(indent + 4));
         }
 
         return dump.toString();

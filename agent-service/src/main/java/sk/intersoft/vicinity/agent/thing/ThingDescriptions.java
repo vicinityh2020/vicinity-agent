@@ -20,6 +20,9 @@ public class ThingDescriptions {
         return byOID.get(oid);
     }
 
+    public ThingDescription getThingByInfrastructureID(String oid){
+        return byInfrastructureID.get(oid);
+    }
 
     public List<ThingDescription> things(Map<String, ThingDescription> map){
         List<ThingDescription> things = new ArrayList<ThingDescription>();

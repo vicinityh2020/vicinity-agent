@@ -12,24 +12,22 @@ import java.util.Scanner;
 public class AdapterConfig {
     final static Logger logger = LoggerFactory.getLogger(AdapterConfig.class.getName());
 
-    private static final String ADAPTER_ID_KEY = "adapter-id";
     private static final String ADAPTER_ENDPOINT_KEY = "endpoint";
+    public static final String DEFAULT_ADAPTER_ID = "default-adapter";
 
 
     public String adapterId = "";
     public String endpoint = "";
 
-    public AdapterConfig(String adapterId, String endpoint){
-        this.adapterId = adapterId;
+    public AdapterConfig(String endpoint){
         this.endpoint = endpoint;
     }
 
     public static AdapterConfig create(JSONObject config) throws Exception {
         logger.debug("CREATING ADAPTER CONFIG: "+config.toString());
-        String adapterId = config.getString(ADAPTER_ID_KEY);
         String endpoint = config.getString(ADAPTER_ENDPOINT_KEY);
 
-        return new AdapterConfig(adapterId, endpoint);
+        return new AdapterConfig(endpoint);
     }
 
     public String asString(int indent) {

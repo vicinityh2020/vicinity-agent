@@ -17,39 +17,69 @@ public class ObjectEventResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(ObjectEventResource.class.getName());
 
     private static String OBJECT_ID = "oid";
+    private static String INFRASTRUCTURE_ID = "infrastructure-id";
     private static String EVENT_ID = "eid";
 
+    public static String openChannel(String infrastructureId, String eid) throws Exception {
+        logger.info("CREATING EVENT CHANNEL FOR: ");
+        logger.info("INFRASTRUCTURE ID: "+infrastructureId);
+        logger.info("EID: " +eid);
+
+
+        ThingDescription thing = getThingByInfrastructureID(infrastructureId);
+
+        logger.info("THING for channel: " + thing.toSimpleString());
+
+        // retrieve event to check it exists .. if not, exception is thrown
+        InteractionPattern event = thing.getInteractionPattern(eid, InteractionPattern.EVENT);
+        logger.info("Thing has event ["+eid+"]");
+
+        logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
+
+        String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, thing.oid, eid);
+
+        logger.info("GTW API ENDPOINT: "+endpoint);
+
+        String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+        logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+
+        return gtwResponse;
+
+    }
+
+    public static String subscribeChannel(ThingDescription subscriber, String oid, String eid) throws Exception {
+        logger.info("SUBSCRIBING EVENT CHANNEL FOR: ");
+        logger.info("OID: "+oid);
+        logger.info("EID: " +eid);
+        logger.info("SUBSCRIBER: " +subscriber.toSimpleString());
+
+        logger.info("CALLING GTW API WITH SUBSCRIBER CREDENTIALS");
+
+        String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, oid, eid);
+
+        logger.info("GTW API ENDPOINT: "+endpoint);
+
+        String gtwResponse = GatewayAPIClient.post(endpoint, null, subscriber.oid, subscriber.password);
+        logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+
+        return gtwResponse;
+
+    }
+
     @Post()
-    public String createEventChannel()  {
-        // request OID = event publisher OID
+    public String openEventChannel()  {
         try{
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);
 
-            logger.info("CREATING EVENT CHANNEL FOR: ");
-            logger.info("OID: "+oid);
-            logger.info("EID: " +eid);
+            ThingDescription caller = getCallerObject();
 
-
-            ThingDescription caller = getThing(oid);
-
-            logger.info("CALLER: " + caller.toSimpleString());
-
-            // retrieve event to check it exists .. if not, exception is thrown
-            InteractionPattern event = caller.getInteractionPattern(eid, InteractionPattern.EVENT);
-            logger.info("Object ["+oid+"] has Event ["+eid+"]");
-
-            logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
-
-            String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, oid, eid);
-
-            logger.info("GTW API ENDPOINT: "+endpoint);
-
-            String gtwResponse = GatewayAPIClient.post(endpoint, null, caller.oid, caller.password);
-            logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
-
-            return gtwResponse;
-
+            if(caller == null){
+                return openChannel(oid, eid);
+            }
+            else {
+                return subscribeChannel(caller, oid, eid);
+            }
 
         }
         catch(Exception e){
