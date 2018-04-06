@@ -391,8 +391,8 @@ Agent translates this request into proper GTW API call, using credentials for ob
 
 ### Consuming the event
 
-Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, Adapter
-**must** implement the service:
+Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, **Adapter
+must implement the service**:
 ```
 PUT /objects/{infrastructure-id}/events/{eid}
 ```
