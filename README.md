@@ -160,10 +160,10 @@ Auto Discovery process is launched, when Agent starts (by default) and is compos
 1. read the last active configuration of node from Neighbourhood Manager
 2. read the actual thing descriptions from all its Adapters
 3. make DIFF. Last active configuration and actual list of objects is compared, the result is
-  * the list of missing objects to delete
-  * the list of new objects to create
-  * the list of objects to update; update is the change of any of mandatory properties and is interpreted as the violence to contract, thus the update is in Neighbourhood Manager executed as: delete/create object + drop all friendships; the result of update operation is the brand new object with new **oid** and credentials
-  * the list of unchanged objects
+    * the list of missing objects to delete
+    * the list of new objects to create
+    * the list of objects to update; update is the change of any of mandatory properties and is interpreted as the violence to contract, thus the update is in Neighbourhood Manager executed as: delete/create object + drop all friendships; the result of update operation is the brand new object with new **oid** and credentials
+    * the list of unchanged objects
 4. the CRUD dance with Neighbourhood Manager, delete/create/update objects and their semantic models
 5. actualize the actual configuration
 6. log in all objects into P2P network
@@ -372,3 +372,9 @@ When event appear, Agent will pass it to this Adapter endpoint. Parameters of th
 In current implementation, the Adapter is responsible for processing the events and passing them further to subscribed objects.
 
 
+# Current implementation status
+* auto discovery/configuration: implemented
+* consumption services:
+    * get/set property: implemented
+    * execute/read status of action: tbd
+* eventing: in progress
