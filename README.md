@@ -87,7 +87,21 @@ The agent configuration can be found in *config/agent-config.json* file. The con
             "adapter-id": "adapter-1",
             "endpoint": "http://localhost:9995/adapter"
         }
-    ]
+    ],
+    "events": {
+        "channels": [
+            {
+                "infrastructure-id": "internal identifier of object publishing the event",
+                "eid": "object event identifier",
+            }
+        ],
+        "subscriptions": [
+            {
+                "oid": "VICINITY object id",
+                "eid": "object event identifier",
+            }
+        ]
+    }
 }
 ```
 
@@ -116,6 +130,7 @@ The response of agent is always wrapped into following structure:
 
 Success:
 ```
+#!json
 {
     "status": "success"
     "data": {
@@ -126,6 +141,7 @@ Success:
 
 Failure:
 ```
+#!json
 {
     "status": "failure"
     "reason": "the reason of failure, as much known as possible",
@@ -226,6 +242,7 @@ to object in this infrastructure. The agent translates:
 Property interaction pattern specification in Common Thing Description format:
 
 ```
+#!json
 {
     "pid": "property-unique-identifier",
     "monitors": "OntologyPropertyInstance",
@@ -270,7 +287,58 @@ The VICINITY eventing mechanism is implemented as publish/subscribe pattern.
 ## Event channel management
 
 The name of event channel for object is always specified as: **/objects/{oid}/event/{eid}**. Any object can open its channel for
-concrete event. Once the channel is open, other objects may subscribe to this channel. Once the object is subscribed to the channel,
-Adapter of this object will receive events from this channel.
+concrete event and publish data into it. Once the channel is open, other objects may subscribe to this channel. Once the object is subscribed to the channel,
+Adapter of this object will receive events from this channel, when they appear.
 
-Again, in VICINITY
+Opening the channels and subscriptions may be done statically, using Agent configuration file; or dynamically on the fly.
+
+### Static channel management
+
+Opening the channels and subscriptions may be declared in Agent configuration file, field **events**.
+```
+#!json
+    "events": {
+        "channels": [
+            {
+                "infrastructure-id": "internal identifier of object publishing the event",
+                "eid": "object event identifier",
+            }
+        ],
+        "subscriptions": [
+            {
+                "oid": "VICINITY object id",
+                "eid": "object event identifier",
+            }
+        ]
+    }
+
+```
+
+Field **channels** contains the array of declarations, for which object and its event the channel should be open.
+As the channel is to be open for local object (within this VICINITY node), the **infrastructure-id** of object behind the Adapter
+is used.
+
+Field **subscriptions** contains the array of declarations, to which channels the Adapter will listen.
+
+Using this declaration, the Agent will create and subscribe to channels on when it starts.
+
+### Dynamic channel management
+
+In some cases, some object in Adapter needs to open or subscribe to channel on the fly (depending on its internal logic).
+
+To open channel, Agent provides the service:
+```
+POST /objects/{infrastructure-id}/events/{eid}/open
+```
+Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
+
+To subscribe to channel, Agent provides the service:
+```
+POST /objects/{oid}/events/{eid}/subscribe
+header: infrastructure-id=internal object id
+```
+In this case, thee request must contain the header with key **infrastructure-id**, which specifies the internal object,
+that will listen to this channel.
+Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
+
+
