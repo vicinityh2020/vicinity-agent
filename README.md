@@ -328,13 +328,13 @@ In some cases, some object in Adapter needs to open or subscribe to channel on t
 
 To open channel, Agent provides the service:
 ```
-POST /objects/{infrastructure-id}/events/{eid}/open
+POST /objects/{infrastructure-id}/events/{eid}
 ```
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
 To subscribe to channel, Agent provides the service:
 ```
-POST /objects/{oid}/events/{eid}/subscribe
+POST /objects/{oid}/events/{eid}
 header: infrastructure-id=internal object id
 ```
 In this case, thee request must contain the header with key **infrastructure-id**, which specifies the internal object,
@@ -342,3 +342,27 @@ that will listen to this channel.
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
 
+## Event management
+
+### Publishing the event
+
+Object, for which the channel is opened may publish data into this channel by using Agent service:
+```
+PUT /objects/{infrastructure-id}/events/{eid}
+```
+Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
+
+
+### Consuming the event
+
+Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, Adapter
+**must** implement the service:
+```
+PUT /objects/{infrastructure-id}/events/{eid}
+```
+When event appear, Agent will pass it to this Adapter endpoint. Parameters of the call:
+* **infrastructure-id** is the internal id of subscriber - the object, that listens to event
+* **eid** id of event
+* **payload** will be wrapped into object containing **oid** of object that produced the event
+
+In current implementation, the Adapter is responsible for processing the events and passing them further to subscribed objects.
