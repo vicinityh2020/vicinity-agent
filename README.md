@@ -11,8 +11,7 @@ provides just very basic interactions with objects behind it, namely:
 * provide discovery information in *Common VICINITY Thing Description* format
 * get/set object property
 * get status/execute object action
-* open/subscribe to event channel
-* publish/receive event
+* receive event
 
 Every object in VICINITY has **its unique VICINITY identifier (oid)**,
 but adapter **always uses the internal object identifiers (infrastructure-id)**, specific for its infrastructure.
