@@ -232,7 +232,7 @@ in both calls, **the request header must contain key-value pairs**:
 infrastucture-id=infrastructure-id of requesting object
 adapter-id=identifier of adapter for this object
 ```
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
+**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
 Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
 this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
@@ -362,7 +362,7 @@ POST /objects/{infrastructure-id}/events/{eid}/open
 headers:
 adapter-id=adapter for this object
 ```
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
+**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
@@ -376,7 +376,7 @@ adapter-id=adapter for this object
 In this case, thee request must contain the header with key **infrastructure-id**, which specifies the internal object,
 that will listen to this channel.
 
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
+**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
@@ -391,7 +391,7 @@ PUT /objects/{infrastructure-id}/events/{eid}
 headers:
 adapter-id=adapter for this object
 ```
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters**.
+**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
