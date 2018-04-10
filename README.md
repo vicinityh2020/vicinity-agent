@@ -1,5 +1,7 @@
 # Overview
 
+[Adapter docs](docs/AGENT.md)
+
 VICINITY Agent serves as the interface between VICINITY GateWay and VICINITY Adapter.
 
 ## Adapter role
