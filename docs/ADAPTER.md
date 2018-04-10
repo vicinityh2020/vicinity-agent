@@ -217,7 +217,7 @@ will be included in the event payload. Event payload structure is yet TBD.
 Adapter implements following services:
 * **mandatory**: **GET /objects** - object discovery service
 * **mandatory**: endpoints provided in **read/write_links** in thing descriptions
-* optional **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
+* optional: **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
 
 All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](../README.md).
 Use it.
