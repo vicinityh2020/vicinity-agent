@@ -1,4 +1,4 @@
-# Overview
+# Agent for integrators
 
 [Adapter docs](docs/ADAPTER.md)
 
@@ -243,7 +243,7 @@ this request into corresponding GTW API call, setting the proper VICINITY creden
 ### How agent processes the consumption of local object property (in this VICINITY node)
 
 This is the description of process performed by Agent, when there is request for local property consumption.
-Adapters of local node do not use this endpoints. This endpoints serve as the access to Adapter object properties.
+Adapters of local node do not implement this endpoints. This endpoints serve as the access to Adapter object properties.
 
 To read local object property value, the Agent implements the endpoint:
 ```
@@ -256,43 +256,7 @@ PUT : /objects/{oid}/properties/{pid}
 ```
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
-
-Agent translates:
-* **oid** in request into **infrastructure-id** known in Adapter
-* the endpoint to be called on Adapter
-
-Property interaction pattern specification in Common Thing Description format:
-
-```
-#!json
-{
-    "pid": "property-unique-identifier",
-    "monitors": "OntologyPropertyInstance",
-    "input": {
-        "tbd": "when datatype schema will be completed .. this is input definition to SET the property"
-    },
-    "output": {
-        "units": "OntologyUnitInstance"
-    },
-    "read_links": [{
-        "href": "/any-endpoint/in-adapter/to-read/{pid}"
-    }],
-    "write_links": [{
-        "href": "/any-endpoint/in-adapter/to-set/{pid}"
-    }]
-}
-```
-
-Adapter is free to specify the endpoints to read/set property in form it requires. Endpoint to read property is specified
-in field *read_links*, endpoint to set property in *write_links*. Endpoint can contain variables **{oid}** and **{pid}**, which are
-replaced:
-* **{oid}** -> **infrastructure-id** of this object
-* **{pid}** -> property unique identifier of property having this endpoint
-
-In both cases, *read_links* and *write_links* are specified as arrays, however in actual implementation Agent takes and uses
-only the first value in array.
-
-Once transformations are done, the endpoint is executed on Adapter.
+How Agent translates this requests into corresponding Adapter endpoints is described in details in [Adapter docs](docs/ADAPTER.md), section **Interaction patterns**.
 
 ## Object actions
 

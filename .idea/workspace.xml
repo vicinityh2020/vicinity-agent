@@ -4,8 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/hsqldb-test/src/main/java/sk/intersoft/vicinity/hsqldbtest/DSTryout.java" line="11" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updating documentation">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ADAPTER.md" afterPath="$PROJECT_DIR$/docs/ADAPTER.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vicinity-agent.iws" />
@@ -59,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ADAPTER.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ADAPTER.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8298217" vertical-offset="2248" max-vertical-offset="2865">
-              <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3375">
+              <caret line="107" column="23" selection-start-line="107" selection-start-column="3" selection-end-line="107" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -79,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3735" max-vertical-offset="6675">
-              <caret line="283" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36142626" vertical-offset="3647" max-vertical-offset="6135">
+              <caret line="258" column="165" selection-start-line="258" selection-start-column="165" selection-end-line="258" selection-end-column="165" />
               <folding />
             </state>
           </provider>
@@ -199,8 +200,8 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/EventListenerResource.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1983,14 +1984,30 @@
       <created>1523363291393</created>
       <updated>1523363291394</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="updating documentation">
+      <created>1523367531235</created>
+      <updated>1523367531235</updated>
+    </task>
+    <task id="LOCAL-00099" summary="updating documentation">
+      <created>1523367865514</created>
+      <updated>1523367865514</updated>
+    </task>
+    <task id="LOCAL-00100" summary="updating documentation">
+      <created>1523367900430</created>
+      <updated>1523367900430</updated>
+    </task>
+    <task id="LOCAL-00101" summary="updating documentation">
+      <created>1523369026501</created>
+      <updated>1523369026501</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="35" width="1920" height="1045" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24785408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24785408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32618025" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2484,18 +2501,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3735" max-vertical-offset="6675">
-          <caret line="283" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3375">
+          <caret line="107" column="23" selection-start-line="107" selection-start-column="3" selection-end-line="107" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8298217" vertical-offset="2248" max-vertical-offset="2865">
-          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36142626" vertical-offset="3647" max-vertical-offset="6135">
+          <caret line="258" column="165" selection-start-line="258" selection-start-column="165" selection-end-line="258" selection-end-column="165" />
           <folding />
         </state>
       </provider>

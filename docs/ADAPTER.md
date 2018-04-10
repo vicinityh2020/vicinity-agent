@@ -1,4 +1,4 @@
-# Adapters for integrators
+# Adapter for integrators
 
 VICINITY Adapter serves as the proxy between common VICINITY services and underlying infrastructure.
 For each specific infrastructure to be integrated, there must exist specific VICINITY Adapter.
