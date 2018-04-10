@@ -210,6 +210,10 @@ Otherwise this interaction will be rejected on level of GTW API.
 
 ### Consuming property of remote object (from another VICINITY node)
 
+**Consuming of remote object property is always invoked by object behind the Adapter.** Thus, object must
+have permissions to consume the remote object property and proper VICINITY credentials
+of this object must be provided.
+
 To read remote object property value, the Agent implements the endpoint:
 ```
 GET : /remote/objects/{oid}/properties/{pid}
@@ -235,7 +239,10 @@ this request into corresponding GTW API call, setting the proper VICINITY creden
 
 
 
-### Consumption of local object property (in this VICINITY node)
+### How agent processes the consumption of local object property (in this VICINITY node)
+
+This is the description of process performed by Agent, when there is request for local property consumption.
+Adapters of local node do not use this endpoints. This endpoints serve as the access to Adapter object properties.
 
 To read local object property value, the Agent implements the endpoint:
 ```
