@@ -212,8 +212,13 @@ Once Agent receives the event, it propagates it into Adapter by calling its endp
 idetifier of Adapter object subscribed to event **eid** of object **oid**. The **oid** of object that produced the event
 will be included in the event payload. Event payload structure is yet TBD.
 
-# All other functionality...
+# Adapter API requirements summarized
 
-...such as how to access the remote object, how to open or subscribe event channels for objects are part of [Agent documentation](../README.md).
+Adapter implements following services:
+* **GET /objects** - mandatory object discovery service
+* endpoints provided in **read/write_links** in thing descriptions
+* optional **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
+
+All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](../README.md).
 Use it.
 
