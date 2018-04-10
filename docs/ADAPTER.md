@@ -61,7 +61,7 @@ Remote object (in Adapter) -> its Agent -> its GTW Api ---> this GTW Api -> this
 and vice versa, when objects behind Adapter needs to interact with remote object, the most easy way to do it is to
  use proper service of its Agent. See [Agent docs](../README.md).
 
-this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its Agent -> object of its Adapter
+object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its Agent -> object of its Adapter
 
 
 # Adapter API
@@ -138,6 +138,15 @@ That means, Adapter is free to specify any read/write link in thing description.
 If needed, **read/write_links** may contain properties, which Agent automatically translates before executing the link, namely:
 * **{oid}** is translated into **infrastructure id** of object
 * **{pid}/{aid}/{eid}** is translated into identifier of property/action/event, to which the link belongs
+
+### OID confusions
+* **oid** on level of GTW API (or VICINITY) is always the VICINITY specific object id
+* **oid** in Adapter thing description is always the internal, infrastructure specific, identifier of object behind the Adapter
+
+Adapter always uses the internal, infrastructure specific, identifiers of objects it manages. The only exception is, when
+some of Adapter objects needs to interact with remote object (from another VICINITY node). In this case, of course,
+the VICINITY **oid** of this remote object must be used.
+
 
 ### Examples:
 
