@@ -8,7 +8,33 @@
         {
             "endpoint": "http://localhost:9995/adapter"
         }
+    ],
+    "events": {
+        "channels": [
+            {
+                "infrastructure-id": "magic-2",
+                "eid": "device-1-eid-1",
+            },
+            {
+                "infrastructure-id": "magic-2",
+                "eid": "device-1-eid-1",
+            },
 
-    ]
+        ],
+
+        "subscriptions": [
+            {
+                "oid": "oid1",
+                "eid": "eid1",
+                "infrastructure-id": "magic-2"
+            },
+            {
+                "oid": "oid1",
+                "eid": "eid1",
+                "infrastructure-id": "magic-2"
+            }
+        ]
+
+    }
 }
 

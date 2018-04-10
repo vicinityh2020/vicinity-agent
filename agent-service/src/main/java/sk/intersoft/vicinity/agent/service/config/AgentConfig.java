@@ -20,6 +20,10 @@ public class AgentConfig {
     private static final String GATEWAY_API_ENDPOINT_KEY = "gateway-api-endpoint";
     private static final String ADAPTERS_KEY = "adapters";
 
+    private static final String EVENTS_KEY = "events";
+    private static final String OPEN_EVENT_CHANNELS_KEY = "channels";
+    private static final String SUBSCRIBE_EVENT_CHANNELS_KEY = "subscriptions";
+
 
     public static String agentId = "";
     public static String password = "";
@@ -28,6 +32,10 @@ public class AgentConfig {
     public static List<AdapterConfig> adaptersList = new ArrayList<AdapterConfig>();
     public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
     public static Map<String, String> x = new HashMap<String, String>();
+
+    public static List<EventChannel> eventChannels = new ArrayList<EventChannel>();
+    public static List<EventChannelSubscription> eventSubscriptions = new ArrayList<EventChannelSubscription>();
+
 
     public static ThingDescriptions things = new ThingDescriptions();
 
@@ -75,19 +83,44 @@ public class AgentConfig {
             adaptersList.add(ac);
         }
         if(adaptersList.size() == 0) throw new Exception("There are no adapters!!");
+
+        if(config.has(EVENTS_KEY)){
+            JSONObject events = config.getJSONObject(EVENTS_KEY);
+            if(events.has(OPEN_EVENT_CHANNELS_KEY)){
+                JSONArray channelsArray = events.getJSONArray(OPEN_EVENT_CHANNELS_KEY);
+                Iterator<Object> it = channelsArray.iterator();
+                while(it.hasNext()){
+                    JSONObject obj = (JSONObject)it.next();
+                    EventChannel c = EventChannel.create(obj);
+                    eventChannels.add(c);
+                }
+            }
+
+            if(events.has(SUBSCRIBE_EVENT_CHANNELS_KEY)){
+                JSONArray channelsArray = events.getJSONArray(SUBSCRIBE_EVENT_CHANNELS_KEY);
+                Iterator<Object> it = channelsArray.iterator();
+                while(it.hasNext()){
+                    JSONObject obj = (JSONObject)it.next();
+                    EventChannelSubscription c = EventChannelSubscription.create(obj);
+                    eventSubscriptions.add(c);
+                }
+            }
+
+        }
+
     }
 
     public static String asString(int indent) {
         Dump dump = new Dump();
 
-        dump.add("AGENT CONFIG CREATED: ", indent);
+        dump.add("AGENT CONFIG: ", indent);
 
         dump.add("Credentials: ", (indent + 1));
         dump.add("agent-id: [" + agentId + "]", (indent + 2));
         dump.add("password: [" + password + "]", (indent + 2));
         dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, (indent + 1));
         dump.add("Adapters: ", (indent + 1));
-        dump.add("List: ", (indent + 2));
+        dump.add("List: "+adaptersList.size(), (indent + 2));
         for(AdapterConfig ac : adaptersList){
             dump.add(ac.asString(indent + 3));
         }
@@ -97,6 +130,16 @@ public class AgentConfig {
             AdapterConfig ac = entry.getValue();
             dump.add("mapped key: "+id, (indent + 3));
             dump.add(ac.asString(indent + 4));
+        }
+
+        dump.add("Event channels to open: "+eventChannels.size(), (indent + 1));
+        for(EventChannel c : eventChannels){
+            dump.add(c.asString(indent + 2));
+        }
+
+        dump.add("Event channels to subscribe: "+eventSubscriptions.size(), (indent + 1));
+        for(EventChannelSubscription c : eventSubscriptions){
+            dump.add(c.asString(indent + 2));
         }
 
         return dump.toString();
