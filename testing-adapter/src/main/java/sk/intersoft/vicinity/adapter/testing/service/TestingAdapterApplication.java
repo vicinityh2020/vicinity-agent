@@ -18,7 +18,7 @@ public class TestingAdapterApplication extends Application {
     public static final String POST_ACTION = "/objects/{oid}/actions/{aid}";
     public static final String POST_CUSTOM_ACTION = "/custom-post/{oid}/z";
 
-    public static final String EVENT_LISTENER = "/objects/{oid}/properties/{pid}/event";
+    public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
 
     public static final String ADAPTER_ID = "adapter-1";
 

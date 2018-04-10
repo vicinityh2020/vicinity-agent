@@ -8,7 +8,7 @@ import org.restlet.resource.ServerResource;
 
 public class EventListenerResource extends ServerResource {
 
-    @Post()
+    @Put()
     public String readEvent(Representation entity)  {
         try{
 
