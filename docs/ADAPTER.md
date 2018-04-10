@@ -144,7 +144,8 @@ If needed, **read/write_links** may contain properties, which Agent automaticall
 * **oid** in Adapter thing description is always the internal, infrastructure specific, identifier of object behind the Adapter
 
 Adapter always uses the internal, infrastructure specific, identifiers of objects it manages. The only exception is, when
-some of Adapter objects needs to interact with remote object (from another VICINITY node). In this case, of course,
+some of Adapter objects needs to interact with remote object (from another VICINITY node). For example,
+if object representing the value added service needs to access remote objects. In this case, of course,
 the VICINITY **oid** of this remote object must be used.
 
 
