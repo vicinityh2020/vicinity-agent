@@ -17,94 +17,22 @@ public class ObjectEventResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(ObjectEventResource.class.getName());
 
     private static String OBJECT_ID = "oid";
-    private static String INFRASTRUCTURE_ID = "infrastructure-id";
     private static String EVENT_ID = "eid";
-
-    public static String openChannel(ThingDescription thing, String eid) throws Exception {
-        logger.info("CREATING EVENT CHANNEL FOR: ");
-        logger.info("PUBLISHER: "+thing.toSimpleString());
-        logger.info("EID: " +eid);
-
-
-
-        // retrieve event to check it exists .. if not, exception is thrown
-        InteractionPattern event = thing.getInteractionPattern(eid, InteractionPattern.EVENT);
-        logger.info("Thing has event ["+eid+"]");
-
-        logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
-
-        String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, thing.oid, eid);
-
-        logger.info("GTW API ENDPOINT: "+endpoint);
-
-        String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
-        logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
-
-        return gtwResponse;
-
-    }
-
-    public static String subscribeChannel(ThingDescription subscriber, String oid, String eid) throws Exception {
-        logger.info("SUBSCRIBING EVENT CHANNEL FOR: ");
-        logger.info("OID: "+oid);
-        logger.info("EID: " +eid);
-        logger.info("SUBSCRIBER: " +subscriber.toSimpleString());
-
-        logger.info("CALLING GTW API WITH SUBSCRIBER CREDENTIALS");
-
-        String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, oid, eid);
-
-        logger.info("GTW API ENDPOINT: "+endpoint);
-
-        String gtwResponse = GatewayAPIClient.post(endpoint, null, subscriber.oid, subscriber.password);
-        logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
-
-        return gtwResponse;
-
-    }
-
-    @Post()
-    public String openOrSubscribeEventChannel()  {
-        try{
-            String oid = getAttribute(OBJECT_ID);
-            String eid = getAttribute(EVENT_ID);
-
-            ThingDescription caller = getCallerObject();
-
-            if(caller == null){
-                return openChannel(getThingByInfrastructureID(oid), eid);
-            }
-            else {
-                return subscribeChannel(caller, oid, eid);
-            }
-
-        }
-        catch(Exception e){
-            logger.error("", e);
-            return ResourceResponse.failure(e).toString();
-        }
-
-    }
 
     @Put()
     public String publishEvent(Representation entity)  {
-        // request OID = event publisher OID
         try{
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);
 
-            logger.info("PUBLISHING EVENT FOR: ");
+            logger.info("CONSUMING EVENT FOR: ");
             logger.info("OID: "+oid);
             logger.info("EID: " +eid);
 
 
-            ThingDescription caller = getThing(oid);
+            ThingDescription thing = getThing(oid);
 
-            logger.info("CALLER: " + caller.toSimpleString());
-
-            // retrieve event to check it exists .. if not, exception is thrown
-            InteractionPattern event = caller.getInteractionPattern(eid, InteractionPattern.EVENT);
-            logger.info("Object ["+oid+"] has Event ["+eid+"]");
+            logger.info("CONSUMER (subscriber) THING IN ADAPTER: " + thing.toSimpleString());
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -113,17 +41,18 @@ public class ObjectEventResource extends AgentResource {
 
             logger.info("PAYLOAD: " + rawPayload);
 
-            logger.info("CALLING GTW API WITH CALLER CREDENTIALS");
+            logger.info("PASSING EVENT TO ADAPTER ADAPTER");
 
-            String endpoint = GatewayAPIClient.getInteractionEndpoint(GatewayAPIClient.OBJECT_EVENT, oid, eid);
+            String endpoint = AdapterEndpoint.getEventEndpoint(thing, eid);
 
-            logger.info("GTW API ENDPOINT: "+endpoint);
+            logger.info("ADAPTER API ENDPOINT: "+endpoint);
 
-            String gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, caller.oid, caller.password);
-            logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+            String adapterResponse = AgentAdapter.put(endpoint, rawPayload.toString());
+            logger.info("ADAPTER RAW RESPONSE: \n"+adapterResponse);
 
-            return gtwResponse;
+            JSONObject result = new JSONObject(adapterResponse);
 
+            return ResourceResponse.success(result).toString();
 
         }
         catch(Exception e){

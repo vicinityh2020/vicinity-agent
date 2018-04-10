@@ -362,9 +362,20 @@ POST /objects/{infrastructure-id}/events/{eid}/open
 headers:
 adapter-id=adapter for this object
 ```
-**adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
+
+Request parameter **infrastructure-id** specifies the identifier of object, which will publish the events.
+The channel is open for this object.
+
+Header **adapter-id** specifies the adapter of this object. This header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
+
+The body of this request must be empty.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
+
+Just to note, the channel of object with **infrastructure-id** may be open by another object (e.g. value added service
+may open the channel for sensor). The credentials will be provided for object with **infrastructure-id**, as if object
+opened the channel by itself.
+
 
 To **subscribe to channel**, Agent provides the service:
 ```
@@ -373,13 +384,17 @@ headers:
 infrastructure-id=internal object id
 adapter-id=adapter for this object
 ```
-In this case, thee request must contain the header with key **infrastructure-id**, which specifies the internal object,
+The request parameter **oid** specifies the VICINITY oid of object, to which channel this subscription applies.
+
+
+The request must contain the header with key **infrastructure-id**, which specifies the internal object,
 that will listen to this channel.
 
 **adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
-Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
+The body of this request must be empty.
 
+Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
 ## Event management
 
@@ -387,11 +402,15 @@ Agent translates this request into proper GTW API call, using credentials for ob
 
 Object, for which the channel is opened may publish data into this channel by using Agent service:
 ```
-PUT /objects/{infrastructure-id}/events/{eid}
+PUT /objects/{infrastructure-id}/events/{eid}/publish
 headers:
 adapter-id=adapter for this object
 ```
+**infrastructure-id** in request is the identifier of local object publishing the event.
+
 **adapter-id** header is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
+
+Body of this request must be JSON payload with published event data.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 

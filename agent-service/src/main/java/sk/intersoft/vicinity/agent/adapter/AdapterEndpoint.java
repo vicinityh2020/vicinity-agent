@@ -6,6 +6,7 @@ import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
 public class AdapterEndpoint {
     public static final String OBJECTS = "/objects";
+    public static final String EVENT_ENDPOINT = "/objects/{oid}/events/{eid}";
 
 
     public static String getEndpoint(ThingDescription thing) throws Exception {
@@ -39,6 +40,14 @@ public class AdapterEndpoint {
         if(href == null) throw new Exception("Unable to process endpoint for ["+readWriteString+":"+patternType+"] pattern : [OID: "+thing.oid+"/ PATTERN-ID: "+patternID+"]");
 
         return AdapterEndpoint.process(thing, patternID, href);
+
+    }
+
+    public static String getEventEndpoint(ThingDescription thing,
+                                          String eventID) throws Exception {
+
+        String endpoint = EVENT_ENDPOINT.replaceAll("\\{oid\\}", thing.adapterThingId).replaceAll("\\{eid\\}", eventID);
+        return getEndpoint(thing) + endpoint;
 
     }
 
