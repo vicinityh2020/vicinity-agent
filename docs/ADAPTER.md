@@ -1,7 +1,4 @@
-# Adapter Overview
-
-[Agent docs](../README.md)
-
+# Adapters for integrators
 
 VICINITY Adapter serves as the proxy between common VICINITY services and underlying infrastructure.
 For each specific infrastructure to be integrated, there must exist specific VICINITY Adapter.
@@ -117,6 +114,8 @@ Before looking into interaction patterns, it is important to explain, how Agent 
 used in Adapter.
 
 In Thing Description format, the interaction patterns always contain the keys **read_links** and **write_links**.
+In thing description at least one of **read_links** or **write_links** must be presented. If **read_links** is missing,
+ the pattern is only for writing and vice versa, if **write_links** is missing, the pattern is only for reading.
 These hold the information for Agent, what Adapter endpoint should be used to read property (or action status) and
 what Adapter endpoint should be used to set the value of property or execute the action.
 
@@ -189,7 +188,32 @@ ${adapter-endpoint}/custom/adapter-object-id/path-to/property-unique-identifier
 
 The same pattern is applied for both **read/write_links** and for all interaction patterns.
 
-The **!!!IMPORTANT!!!** thing is, that thing description allows to specify the links as the array of **href** objects.
+The **!!!IMPORTANT!!!** is, that thing description allows to specify the links as the array of **href** objects.
 In current implementation, Agent uses only the first link!
 
+
+## Consumption of events
+
+If Adapter tends to receive the events, it must implement the following endpoint:
+```
+PUT /objects/{subscriber-id}/events/{eid}
+```
+
+The rule is, that always **object subscribes to event channel**.
+The event channel name is always
+```
+/objects/{oid}/events/{eid}
+```
+
+The **oid** is VICINITY identifier of object producing the event **eid**.
+
+
+Once Agent receives the event, it propagates it into Adapter by calling its endpoint above. **subscriber-id** is the internal
+idetifier of Adapter object subscribed to event **eid** of object **oid**. The **oid** of object that produced the event
+will be included in the event payload. Event payload structure is yet TBD.
+
+# All other functionality...
+
+...such as how to access the remote object, how to open or subscribe event channels for objects are part of [Agent documentation](../README.md).
+Use it.
 
