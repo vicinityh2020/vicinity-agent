@@ -68,7 +68,7 @@ public class AgentResource extends ServerResource {
         logger.debug("infrastructure id to look for: ["+iid+"]");
 
         ThingDescription thing = AgentConfig.things.getThingByInfrastructureID(iid);
-        if(thing == null) throw new Exception("Object for [adapter: "+adapterId+"][infrastructure-id: "+infrastructureId+"] does not exist!");
+        if(thing == null) throw new Exception("Local object for [adapter: "+adapterId+"][infrastructure-id: "+infrastructureId+"] does not exist!");
 
         logger.debug("thing by infra-id: "+thing.toSimpleString());
         return thing;
@@ -85,7 +85,7 @@ public class AgentResource extends ServerResource {
         String oid = getHeader(CALLER_OID_HEADER);
         logger.debug("getting caller header ["+CALLER_OID_HEADER+"]: ["+oid+"]");
 
-        if(oid == null) return null;
+        if(oid == null) throw new Exception("Missing [infrastructure-id] header of local object!");
         else {
             return getThingByInfrastructureID(oid);
         }

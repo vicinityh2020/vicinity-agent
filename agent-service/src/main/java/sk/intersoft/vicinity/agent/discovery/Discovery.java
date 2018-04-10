@@ -130,14 +130,14 @@ public class Discovery {
 
         AdapterData adapterData = AdapterData.create(adapterConfig, data);
         if(multi){
-            if(adapterData.adapterId == null){
+            if(adapterData.adapterId == null || adapterData.adapterId.trim().equals("")){
                 throw new Exception("Missing [adapter-id] in thing descriptions from ["+adapterConfig.endpoint+"]");
             }
             AgentConfig.updateAdapter(adapterData);
         }
         else {
-            adapterConfig.adapterId = adapterData.adapterId;
-            if(adapterData.adapterId == null) adapterConfig.adapterId = AdapterConfig.DEFAULT_ADAPTER_ID;
+            if(adapterData.adapterId == null || adapterData.adapterId.trim().equals("")) adapterData.adapterId = AdapterConfig.DEFAULT_ADAPTER_ID;
+            AgentConfig.updateAdapter(adapterData);
         }
         return adapterData.things;
     }
