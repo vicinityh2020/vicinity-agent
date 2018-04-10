@@ -329,9 +329,10 @@ Opening the channels and subscriptions may be declared in Agent configuration fi
         "subscriptions": [
             {
                 "oid": "VICINITY object id producing event",
+                "eid": "object event to listen subscribe",
+
                 "infrastructure-id": "internal identifier of object subscribing for the event",
                 "adapter-id": "adapter identifier of subscriber object",
-                "eid": "object event identifier",
             }
         ]
     }
@@ -347,8 +348,7 @@ Field **subscriptions** contains the array of declarations, to which channels th
 The **infrastructure-id** specifies object behind the Adapter, which is subscribed to channel, the **oid** specifies the object producing event.
 The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/events/{eid}**, where **oid** is VICINITY identifier of object producing event.
 
-**adapter-id** is optional, when using only one adapter.
-If using multiple adapters, **adapter-id** must be provided to identify the object behind the correct adapter.
+**adapter-id** specifies the adapter of local object. This key is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
 Using this declaration, the Agent will create and subscribe to channels on when it starts.
 
