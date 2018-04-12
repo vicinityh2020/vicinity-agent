@@ -8,3 +8,113 @@
 | properties | array of objects | no | The array of property interaction patterns |
 | actions | array of objects | no | The array of action interaction patterns |
 | events | array of objects | no | The array of event interaction patterns |
+
+as dasjdlkajs dlaskjd aslkdj as
+ d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as...
+ d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
+as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d dd
+
+## Interaction patterns
+
+### Property goes here
