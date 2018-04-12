@@ -9,7 +9,7 @@
 | actions | array of objects | no | The array of action interaction patterns |
 | events | array of objects | no | The array of event interaction patterns |
 
-as dasjdlkajs dlaskjd aslkdj as\n
+as dasjdlkajs dlaskjd aslkdj as
  d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
 as dasjdlkajs dlaskjd aslkdj as...
  d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d as dasjdlkajs dlaskjd aslkdj as d
