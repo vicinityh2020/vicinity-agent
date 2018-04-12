@@ -1,5 +1,7 @@
 # Thing Descriptions for integrators
 
-a | b | c | d
---- | --- | --- | ---
-a asdjklhasdjkhasdjk h | b asdlasd as asd asd as d | c asd kjasd jkashd kjash | d asdkjasdkljasd
+| Field name | JSON Construct | Mandatory | Description
+| --- | --- | --- | --- |
+| oid | string | yes | Infrastructure specific unique identifier of the object |
+| name | string | yes | Human readable name of object visible in Neighbourhood manager |
+| type | string | yes | Ontology annotation: the class in VICINITY semantic model (currently one of classes in hierarchy for core:Device). **The ontology class is always provided without core: prefix! e.g. Device, instead of core:Device**. See [hierarchy of devices and services](http://iot.linkeddata.es/def/core/) |
