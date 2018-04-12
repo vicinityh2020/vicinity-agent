@@ -2,7 +2,4 @@
 
 a | b | c | d
 ---|---|---|---
-a asdjklhasdjkhasdjk h |
-b asdlasd as asd asd as d |
-c asd kjasd jkashd kjash |
-d asdkjasdkljasd
+a asdjklhasdjkhasdjk h | b asdlasd as asd asd as d | c asd kjasd jkashd kjash | d asdkjasdkljasd
