@@ -27,8 +27,8 @@
 | --- | --- | --- | --- |
 | aid | string | yes | Unique identifier of the action. Used by all VICINITY components as specified here. |
 | affects | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
-| read_link | object | yes | Definition of interaction to read the property. [see Link](#link) |
-| write_link | object | yes | Definition of interaction to set the property. [see Link](#link) |
+| read_link | object | at least one of read_link/write_link | Definition of interaction to read the property. [see Link](#link) |
+| write_link | object | at least one of read_link/write_link | Definition of interaction to set the property. [see Link](#link) |
 
 
 ### Event
@@ -43,8 +43,9 @@
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
-| output | string | yes | The payload of interaction pattern for this link. |
-| input | string | no | The payload of interaction pattern for this link. |
+| output | string | yes | The payload of output of interaction pattern for this link. Always required. |
+| input | string | yes, presented only if link is part of write_link, ignored otherwise | The payload of input to interaction pattern for this link. |
 
 
 ### Data schema
+See [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section)
