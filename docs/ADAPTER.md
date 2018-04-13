@@ -79,10 +79,7 @@ For this purpose, Adapter **must** implement the service:
 GET /objects
 ```
 
-This service returns the list of thing descriptions exposed by this Adapter.
-See (as much as possible) detailed specification of [VICINITY Common Thing Description format](TD.md).
-
-Common Thing Description Format: TBD soon.
+This service returns the list of thing descriptions exposed by this Adapter in [VICINITY Common Thing Description format](TD.md).
 
 **In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
 may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
@@ -179,9 +176,9 @@ description with one interaction pattern:
     "properties": [
         {
             "pid": "property-unique-identifier",
-            "read_link": [{
+            "read_link": {
                 "href": "link implemented by Adapter"
-            }]
+            }
         }
     ]
 }
