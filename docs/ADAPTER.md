@@ -5,9 +5,9 @@ between infrastructure specific language and VICINITY language. Adapter is kind 
 enabling VICINITY to interact with all specific infrastructures in same, uniform way.
 
 VICINITY Adapter serves as the proxy between common VICINITY services and underlying infrastructure.
-For each specific infrastructure to be integrated, there must exist specific VICINITY Adapter.
+For each specific infrastructure to be integrated, there must exist specific Adapter.
 The role of Adapter is to translate VICINITY services into infrastructure specific services.
-VICINITY Adapter provides the API, which must be implemented, when integrating new infrastructure.
+This document specifies the API that must be implemented in Adapter, when integrating infrastructure.
 
 All identifiers of objects used in adapter are local - infrastructure specific. The only exception is, when Adapter
 needs to access remote objects (another VICINITY node).
@@ -69,9 +69,9 @@ object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its 
 
 ## Discovery of Adapter objects
 
-One of the most important responsibilities of Client node is ability to describe, what objects are contained.
+One of the most important responsibilities of Client node is ability to describe, what objects are exposed to VICINITY.
 This is the responsibility of Adapter. Adapter must be able to provide the **list of object descriptions** that are
-exposed to VICINITY. Objects are described in **VICINITY common thing description** format.
+exposed to VICINITY. Objects are described in [**VICINITY common thing description**](TD.md) format.
 
 For this purpose, Adapter **must** implement the service:
 
