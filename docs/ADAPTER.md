@@ -153,6 +153,19 @@ if object representing the value added service needs to access remote objects. I
 the VICINITY **oid** of this remote object must be used.
 
 
+### HTTP Methods for interaction patterns
+
+To follow the REST specification and W3C WoT recommendations, Adapters **must always** implement the following
+endpoints (for read_links and write_links) in the interaction patterns:
+
+| Pattern | link | method |
+| --- | --- | --- |
+| Property | read_link | GET |
+| Property | write_link | PUT |
+| Action | read_link | GET |
+| Action | write_link | POST |
+
+
 ### Examples:
 
 Lets take the reading property interaction pattern to explain, how Agent interprets the read/write links. Skeleton of Adapter thing
