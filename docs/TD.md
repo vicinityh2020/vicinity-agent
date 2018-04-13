@@ -15,7 +15,7 @@ of objects is the part of auto discovery process and is performed in semantic re
 Lets look inside the thing description. For each part of it, it will be explained, how it is interpreted,
 when it is (in)valid and how to understand the *mandatory* parts of description.
 
-# Thing (object)
+# Object (the Thing)
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -112,13 +112,7 @@ In VICINITY, eventing mechanism is implemented as publish/subscribe pattern.
 ### Link
 
 Link represents the resource for interaction with the object. It is specified as the REST endpoint, that must be implemented in Adapter in order to interact with the pattern, which uses the link.
-See [Adapter Interaction patterns](ADAPTER.md#interaction-patterns) for explanation, how Agent
-works with the links.
 
-In actual implementation of Agent, the Link should always start with the  **/**. Agent executes link as
-```
-**{adapter-endpoint}/link**
-```
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -127,25 +121,49 @@ In actual implementation of Agent, the Link should always start with the  **/**.
 | output | string | yes | The payload of output of interaction pattern for this link. Always required. |
 
 
+In actual implementation of Agent, the **href** should always start with the  **/**. Agent executes link as
+```
+**{adapter-endpoint}/href**
+```
+
+The link specified in **href** may contain the properties, that are automatically translated by the Agent.
+This enables for example to specify the same link for all patterns. For example well known
+
+```
+/object/{oid}/properties/{pid}
+```
+
+See [Adapter Interaction patterns](ADAPTER.md#interaction-patterns) for explanation, how Agent
+works with the links.
+
+The important change according former thing description is, that link contains the **input** and **output** fields.
+It was necessary to move inputs/outputs into links, because different link may produce different outputs (e.g. reading the property value produces different payload as setting this property).
+
+Links for writing must contain mandatory **input** field. **input** describes the schema of payload required to set the property or execute the action.
+
 ### Data schema
 See [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section)
 
+
 ## Serialization of Thing Descriptions
 
-When using single adapter, it is not necessary to provide the **adapter-id**. So it is possible to use simplified serialization:
+
+**In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
+may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
+it is necessary to distinguish between them. In this case, there must exist persistent unique identifier of each Adapter.
+Identifier of Adapter must be unique just within the Client node. That means: each adapter used by same agent must use unique identifier.
+
+
+When using single adapter, it is not necessary to provide the **adapter-id**. So it is possible to use simplified serialization in Adapter */objects* service:
 
 ```
 #!json
 [
- the list of thing descriptions as described in
- common thing description format
+ array of thing descriptions
 ]
 ```
 
-However, **in current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
-may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
-it is necessary to distinguish between them. In this case, there must exist persistent unique identifier of each Adapter.
-Identifier of Adapter must be unique just within the Client node. That means: each adapter used by same agent must use unique identifier.
+
 If using multiple adapters, the */objects* service must contain the **adapter-id** in form:
 
 | Field name | JSON Construct | Mandatory | Description |
@@ -162,8 +180,7 @@ If using multiple adapters, the */objects* service must contain the **adapter-id
     "adapter-id": "unique adapter identifier",
     "thing-descriptions":
     [
-     the list of thing descriptions as described in
-     common thing description format
+     array of thing descriptions
     ]
 }
 ```
