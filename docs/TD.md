@@ -15,7 +15,7 @@ of objects is the part of auto discovery process and is performed in semantic re
 Lets look inside the thing description. For each part of it, it will be explained, how it is interpreted,
 when it is (in)valid and how to understand the *mandatory* parts of description.
 
-# Object
+# Thing (object)
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -29,19 +29,37 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 **Validity**
 * Specification tells, that object interaction patterns are not mandatory.
 But, object must contain at least one interaction pattern (of any type)
-* field **type** must contain the existing semantic annotation, otherwise it will be rejected
+* Field **type** must contain the existing semantic annotation, otherwise it will be rejected
 
 
 ## Interaction patterns
 
+Interaction patterns represent the resources enabling to interact with the object. Interaction pattern
+can be property, action or event.
+
+According to former thing descriptions, there is one main important change: **read_links** and **write_links**
+are now changed from array of links to **read_link** and **write_link** describing just one single object the link specification.
 
 ### Property
+
+Objects have the properties, that can be read or set.
+
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | pid | string | yes | Unique identifier of the property. Used by all VICINITY components as specified here. |
 | monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
-| read_link | object | at least one of read_link/write_link | Definition of interaction to read the property. [see Link](#link) |
-| write_link | object | at least one of read_link/write_link | Definition of interaction to set the property. [see Link](#link) |
+| read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
+| write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
+
+Property may contain just one of **read_link** or **write_link**.
+The links describe if property is available for reading and writing.
+If property contains only the **read_link**, it can be read, but it is not allowed to set this property and vice versa.
+If property contains only the **write_link**, it can be set, but it is not allowed to read it.
+
+**Validity**
+* Specification tells, that object interaction patterns are not mandatory.
+But, object must contain at least one interaction pattern (of any type)
+* Field **type** must contain the existing semantic annotation, otherwise it will be rejected
 
 
 
