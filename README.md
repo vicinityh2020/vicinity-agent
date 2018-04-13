@@ -49,3 +49,4 @@ object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its 
 * [Agent](docs/AGENT.md)
 * [Adapter](docs/ADAPTER.md)
 * [Common Thing Description Format](docs/TD.md)
+* [Thing Description Examples](docs/TDExamples.md)
