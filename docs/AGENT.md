@@ -270,7 +270,7 @@ The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/
 
 **adapter-id** specifies the adapter of local object. This key is optional, if using single adapter, but is **mandatory**, if using **multiple adapters** or Adapter explicitly provides it.
 
-Using this declaration, the Agent will create and subscribe to channels on when it starts.
+Using this declaration, the Agent will create and subscribe to channels when it starts.
 
 ### Dynamic channel management
 
@@ -337,22 +337,7 @@ Agent translates this request into proper GTW API call, using credentials for ob
 
 ### Consuming the event
 
-Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, **Adapter
-must implement the service**:
-```
-PUT /objects/{infrastructure-id}/events/{eid}
-```
-When event appear, Agent will pass it to this Adapter endpoint. Parameters of the call:
-* **infrastructure-id** is the internal id of subscriber - the object, that listens to event
-* **eid** id of event
-* **payload** will be wrapped into object containing **oid** of object that produced the event
+Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, Adapter
+must implement the service for event consumption (see [Adapter docs on event consumption](ADAPTER.md#consumption-of-events))
 
-In current implementation, the Adapter is responsible for processing the events and passing them further to subscribed objects.
-
-
-# Current implementation status
-* auto discovery/configuration: implemented
-* consumption services:
-    * get/set property: implemented
-    * execute/read status of action: tbd
-* eventing: in progress
+In current implementation, the Adapter is responsible for processing the events and passing them further to subscribed objects in Adapters.
