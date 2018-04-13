@@ -256,7 +256,7 @@ PUT : /objects/{oid}/properties/{pid}
 ```
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
-How Agent translates this requests into corresponding Adapter endpoints is described in details in [Adapter docs](docs/ADAPTER.md), section **Interaction patterns**.
+How Agent translates this requests into corresponding Adapter endpoints is described in details in [Adapter docs](docs/ADAPTER.md)Interaction patterns
 
 ## Object actions
 

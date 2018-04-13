@@ -71,7 +71,7 @@ object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its 
 
 One of the most important responsibilities of Client node is ability to describe, what objects are exposed to VICINITY.
 This is the responsibility of Adapter. Adapter must be able to provide the **list of object descriptions** that are
-exposed to VICINITY. Objects are described in [**VICINITY common thing description**](TD.md) format.
+exposed to VICINITY.
 
 For this purpose, Adapter **must** implement the service:
 
@@ -80,7 +80,7 @@ GET /objects
 ```
 
 This service returns the list of thing descriptions exposed by this Adapter in [VICINITY Common Thing Description format](TD.md).
-The output of this service is specified in Thing Description documentation, see section [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
+Depending of case if single or multiple adapters are used in same client node, the output of this service may differ, see [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
 
 
 
@@ -98,7 +98,11 @@ In thing description at least one of **read_link** or **write_link** must be pre
 These hold the information for Agent, what Adapter endpoint should be used to read property (or action status) and
 what Adapter endpoint should be used to set the value of property or execute the action.
 
-Common interaction patterns in VICINITY are **read/set property** or **read status/execute action**:
+**For each link in thing descriptions there must be implemented endpoint in Adapter!**
+
+### How agent interpretes the links in interaction patterns
+
+On the level of Agent, the common interaction patterns in VICINITY are **read/set property** or **read status/execute action**:
 ```
 GET/PUT  /objects/{oid}/properties/{pid}
 GET/POST /objects/{oid}/actions/{aid}
