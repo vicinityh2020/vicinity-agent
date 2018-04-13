@@ -41,7 +41,7 @@ can be property, action or event.
 Interaction patterns contain the links, that enable the physical interaction with object.
 Links represent the REST endpoints implemented by Adapter to manage the interaction pattern.
 The **read_link** represents the resource to read the value, **write_link** represents the resource to write value or execute action.
-Pattern may contain just one of **read_link** or **write_link**.
+Pattern may contain both **read_link** or **write_link** or just one of them.
 If pattern contains only the **read_link**, it can be read, but it is not allowed to set/execute it.
 If pattern contains only the **write_link**, it can be set/executed, but it is not allowed to read it.
 
@@ -92,12 +92,12 @@ But, object must contain at least one of read/write links.
 ### Event
 
 The event enables a mechanism for events to be published or notified by a object on a certain condition.
-For example sensor value change reaches the certain threshold, periodic notification of sensor value.
+For example sensor value change reaches the certain threshold, periodic notification of sensor value, etc.
 
 In VICINITY, the event pattern has different interpretation as properties or actions. Event can not be reached
-via write or read link. It is handled by Gateway API and Agent automatically, in a different way.
+via write or read link. It is handled by Gateway API and Agent automatically, in a VICINITY specific way.
 
-In VICINITY, eventing mechanism is implemented as publish/subscribe pattern.
+In VICINITY, eventing is implemented as publish/subscribe pattern.
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -117,7 +117,7 @@ Link represents the resource for interaction with the object. It is specified as
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
-| input | string | no | The payload of input to interaction pattern for this link. |
+| input | string | no | The payload of input to interaction pattern for this link. Mandatory for **write_link** |
 | output | string | yes | The payload of output of interaction pattern for this link. Always required. |
 
 
@@ -169,8 +169,7 @@ If using multiple adapters, the */objects* service must contain the **adapter-id
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | adapter-id | string | yes | Unique identifier of adapter within the client node. |
-| input | string | no | The payload of input to interaction pattern for this link. |
-| output | string | yes | The payload of output of interaction pattern for this link. Always required. |
+| thing-descriptions | array of objects | yes | The array of thing descriptions. |
 
 **Example**
 
