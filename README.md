@@ -41,7 +41,7 @@ Remote objects can access objects behind Adapter via sequence:
 Remote object (in Adapter) -> its Agent -> its GTW Api ---> this GTW Api -> this Agent -> this Adapter
 
 and vice versa, when objects behind Adapter needs to interact with remote object, the most easy way to do it is to
- use proper service of its Agent. See [Agent docs](../AGENT.md).
+ use proper service of its Agent.
 
 object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its Agent -> object of its Adapter
 
