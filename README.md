@@ -1,3 +1,7 @@
+# Agent working documentation
+
+All required information and specifications for client node integrators.
+
 # General concepts
 
 ## General note on interaction concepts
