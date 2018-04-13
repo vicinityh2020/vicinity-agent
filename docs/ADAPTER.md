@@ -118,9 +118,9 @@ There is no specific prescription for Adapter API. Agent will always use the end
 Before looking into interaction patterns, it is important to explain, how Agent uses and interpretes the interaction endpoints
 used in Adapter.
 
-In Thing Description format, the interaction patterns always contain the keys **read_links** and **write_links**.
-In thing description at least one of **read_links** or **write_links** must be presented. If **read_links** is missing,
- the pattern is only for writing and vice versa, if **write_links** is missing, the pattern is only for reading.
+In Thing Description format, the interaction patterns always contain the keys **read_link** and **write_link**.
+In thing description at least one of **read_link** or **write_link** must be presented. If **read_link** is missing,
+ the pattern is only for writing and vice versa, if **write_link** is missing, the pattern is only for reading.
 These hold the information for Agent, what Adapter endpoint should be used to read property (or action status) and
 what Adapter endpoint should be used to set the value of property or execute the action.
 
@@ -134,14 +134,16 @@ GET/POST /objects/{oid}/actions/{aid}
 into proper call of Adapter endpoint. When Agent receives one of common VICINITY interaction requests (above), it is interpreted as follows:
 * Agent holds the mapping between VICINITY **oid**s and Adapter's internal ids of objects.
 * Agent searches its configuration, looks for Adapter object mapped to **oid** and finds its corresponding thing description
-* In thing description, Agent looks for **read_links** or **write_links** depending on the request (get property/action status, read property/execute action). The result is the **link** to be executed on Adapter.
+* In thing description, Agent looks for **read_link** or **write_link** depending on the request (get property/action status, read property/execute action). The result is the **link** to be executed on Adapter.
 * Agent calls the Adapter with corresponding **link** and passes back the result as the response to request
 
 That means, Adapter is free to specify any read/write link in thing description. Agent will use it.
 
-If needed, **read/write_links** may contain properties, which Agent automatically translates before executing the link, namely:
+If needed, **read/write_link** may contain properties, which Agent automatically translates before executing the link, namely:
 * **{oid}** is translated into **infrastructure id** of object
 * **{pid}/{aid}/{eid}** is translated into identifier of property/action/event, to which the link belongs
+
+See also [VICINITY Common Thing Description format](TD.md) for additional explanation.
 
 ### OID confusions
 * **oid** on level of GTW API (or VICINITY) is always the VICINITY specific object id
@@ -156,7 +158,7 @@ the VICINITY **oid** of this remote object must be used.
 ### HTTP Methods for interaction patterns
 
 To follow the REST specification and W3C WoT recommendations, Adapters **must always** implement the following
-endpoints (for read_links and write_links) in the interaction patterns:
+http methods in endpoints of the interaction patterns:
 
 | Pattern | link | method |
 | --- | --- | --- |
@@ -168,7 +170,7 @@ endpoints (for read_links and write_links) in the interaction patterns:
 
 ### Examples:
 
-Lets take the reading property interaction pattern to explain, how Agent interprets the read/write links. Skeleton of Adapter thing
+Lets take the reading property interaction pattern to explain, how Agent interprets the read/write link. Skeleton of Adapter thing
 description with one interaction pattern:
 ```
 #!json
@@ -177,7 +179,7 @@ description with one interaction pattern:
     "properties": [
         {
             "pid": "property-unique-identifier",
-            "read_links": [{
+            "read_link": [{
                 "href": "link implemented by Adapter"
             }]
         }
@@ -204,10 +206,7 @@ Agent executes:
 ${adapter-endpoint}/custom/adapter-object-id/path-to/property-unique-identifier
 ```
 
-The same pattern is applied for both **read/write_links** and for all interaction patterns.
-
-The **!!!IMPORTANT!!!** is, that thing description allows to specify the links as the array of **href** objects.
-In current implementation, Agent uses only the first link!
+The same pattern is applied for both **read/write_link** and for all interaction patterns.
 
 
 ## Consumption of events
@@ -234,7 +233,7 @@ will be included in the event payload. Event payload structure is yet TBD.
 
 Adapter implements following services:
 * **mandatory**: **GET /objects** - object discovery service
-* **mandatory**: endpoints provided in **read/write_links** in thing descriptions
+* **mandatory**: endpoints with [prescribed http method](#HTTP-Methods-for-interaction-patterns) provided in **read/write_link** in thing descriptions
 * optional: **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
 
 All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](../README.md).
