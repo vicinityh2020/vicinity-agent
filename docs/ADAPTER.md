@@ -80,6 +80,7 @@ GET /objects
 ```
 
 This service returns the list of thing descriptions exposed by this Adapter in [VICINITY Common Thing Description format](TD.md).
+The output of this service is specified in Thing Description documentation, see section [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
 
 **In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
 may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,

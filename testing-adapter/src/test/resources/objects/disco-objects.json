@@ -29,18 +29,23 @@
 		]
 	},
     {
-		"pid": "device-1-pid-2",
-		"monitors": "Motion",
-		"output": {
-			"units": "Celsius"
-		},
-		"read_links": [{
+		"aid": "device-1-aid-2",
+		"observes": "Motion",
+		"read_link": {
+    		"output": {
+	    		"units": "Celsius"
+		    },
 			"href": "/custom/{oid}/x"
-		}],
-		"write_links": [{
+		},
+		"write_link": {
+    		"output": {
+	    		"units": "Celsius"
+		    },
+		    "input": {
+    			"units": "Celsius"
+	    	},
 			"href": "/custom-set/{oid}/y"
 		},
-		]
 	}
 
 	],

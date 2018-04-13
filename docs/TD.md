@@ -4,6 +4,12 @@ VICINITY Common Thing Description format is based on [W3C Wot Thing Description 
 For purposes of VICINITY it was necessary to slightly change it, but we try to follow it (what is quite tricky sometimes,
 as this draft is still continually changing :) )
 
+Thing Descriptions are provided by Adapter mandatory **/objects** service. It is the backbone service for VICINITY auto discovery of objects.
+Frankly speaking, Adapter must be able to describe all objects it exposes to VICINITY, together with their interaction
+patterns.
+
+
+
 pozor na mandatory attrs .. vysvetlit, ze kedy su a nie su mandarory!!
 
 | Field name | JSON Construct | Mandatory | Description |
@@ -57,9 +63,19 @@ pozor na mandatory attrs .. vysvetlit, ze kedy su a nie su mandarory!!
 ### Data schema
 See [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section)
 
-## Thing Descriptions when using multiple Adapters
+## Serialization of Thing Descriptions
 
-**In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
+When using single adapter, it is not necessary to provide the **adapter-id**. So it is possible to use simplified serialization:
+
+```
+#!json
+[
+ the list of thing descriptions as described in
+ common thing description format
+]
+```
+
+However, **in current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
 may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
 it is necessary to distinguish between them. In this case, there must exist persistent unique identifier of each Adapter.
 Identifier of Adapter must be unique just within the Client node. That means: each adapter used by same agent must use unique identifier.
@@ -91,3 +107,4 @@ clue, how to distinguish, to which Adapter the object belong. Once **adapter-id*
 as new Adapter and in discovery process, it re-creates all objects in it and creates new VICINITY **oid**s with new credentials.
 This means, objects are treated as new, so all friendships in Neighbourhood Manager of former objects will be lost.
 So, just generate some hash code for each Adapter and don't change it.
+
