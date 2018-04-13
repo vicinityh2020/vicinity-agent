@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updating documentation">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/AGENT.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ADAPTER.md" afterPath="$PROJECT_DIR$/docs/ADAPTER.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -63,8 +64,38 @@
       <file leaf-file-name="ADAPTER.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3375">
-              <caret line="107" column="23" selection-start-line="107" selection-start-column="3" selection-end-line="107" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="2715">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AGENT.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="5640">
+              <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="disco-objects.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1050">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TD.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/TD.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2211" max-vertical-offset="2985">
+              <caret line="171" column="79" selection-start-line="171" selection-start-column="79" selection-end-line="171" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -83,34 +114,9 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36142626" vertical-offset="3647" max-vertical-offset="6135">
-              <caret line="258" column="165" selection-start-line="258" selection-start-column="165" selection-end-line="258" selection-end-column="165" />
+            <state vertical-scroll-proportion="1.0798122" vertical-offset="0" max-vertical-offset="780">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OpenObjectEventResource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/OpenObjectEventResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2145">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="e#1160#1175#0" expanded="true" />
-                <element signature="e#1246#1269#0" expanded="true" />
-                <element signature="e#1413#1427#0" expanded="true" />
-                <element signature="e#1514#1540#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -121,19 +127,6 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="83" max-vertical-offset="690">
               <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ThingDescriptions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescriptions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="1365">
-              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-              <folding>
-                <element signature="e#732#733#0" expanded="true" />
-                <element signature="e#782#783#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -151,8 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/agent-service/bin/build/config/test-config.json" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/EventPublisherResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestThingDiff.java" />
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh" />
         <option value="$PROJECT_DIR$/rest-client/src/main/java/client/TestClient.java" />
@@ -181,7 +172,6 @@
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/discovery/Discovery.java" />
@@ -200,7 +190,10 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/EventListenerResource.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java" />
+        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json" />
+        <option value="$PROJECT_DIR$/docs/TD.md" />
         <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
+        <option value="$PROJECT_DIR$/docs/AGENT.md" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -2000,7 +1993,143 @@
       <created>1523369026501</created>
       <updated>1523369026501</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="updating documentation">
+      <created>1523369304885</created>
+      <updated>1523369304885</updated>
+    </task>
+    <task id="LOCAL-00103" summary="updating documentation">
+      <created>1523369898470</created>
+      <updated>1523369898470</updated>
+    </task>
+    <task id="LOCAL-00104" summary="updating documentation">
+      <created>1523369953943</created>
+      <updated>1523369953943</updated>
+    </task>
+    <task id="LOCAL-00105" summary="updating documentation">
+      <created>1523369980008</created>
+      <updated>1523369980009</updated>
+    </task>
+    <task id="LOCAL-00106" summary="updating documentation">
+      <created>1523370012590</created>
+      <updated>1523370012590</updated>
+    </task>
+    <task id="LOCAL-00107" summary="updating documentation">
+      <created>1523538430408</created>
+      <updated>1523538430408</updated>
+    </task>
+    <task id="LOCAL-00108" summary="updating documentation">
+      <created>1523538517870</created>
+      <updated>1523538517870</updated>
+    </task>
+    <task id="LOCAL-00109" summary="updating documentation">
+      <created>1523538542737</created>
+      <updated>1523538542738</updated>
+    </task>
+    <task id="LOCAL-00110" summary="updating documentation">
+      <created>1523538634083</created>
+      <updated>1523538634083</updated>
+    </task>
+    <task id="LOCAL-00111" summary="updating documentation">
+      <created>1523539014361</created>
+      <updated>1523539014361</updated>
+    </task>
+    <task id="LOCAL-00112" summary="updating documentation">
+      <created>1523539194903</created>
+      <updated>1523539194904</updated>
+    </task>
+    <task id="LOCAL-00113" summary="updating documentation">
+      <created>1523539338195</created>
+      <updated>1523539338195</updated>
+    </task>
+    <task id="LOCAL-00114" summary="updating documentation">
+      <created>1523539480209</created>
+      <updated>1523539480209</updated>
+    </task>
+    <task id="LOCAL-00115" summary="updating documentation">
+      <created>1523539515823</created>
+      <updated>1523539515823</updated>
+    </task>
+    <task id="LOCAL-00116" summary="updating documentation">
+      <created>1523539560884</created>
+      <updated>1523539560884</updated>
+    </task>
+    <task id="LOCAL-00117" summary="updating documentation">
+      <created>1523539618354</created>
+      <updated>1523539618354</updated>
+    </task>
+    <task id="LOCAL-00118" summary="updating documentation">
+      <created>1523540458119</created>
+      <updated>1523540458119</updated>
+    </task>
+    <task id="LOCAL-00119" summary="updating documentation">
+      <created>1523540772773</created>
+      <updated>1523540772773</updated>
+    </task>
+    <task id="LOCAL-00120" summary="updating documentation">
+      <created>1523616366115</created>
+      <updated>1523616366116</updated>
+    </task>
+    <task id="LOCAL-00121" summary="updating documentation">
+      <created>1523616626598</created>
+      <updated>1523616626598</updated>
+    </task>
+    <task id="LOCAL-00122" summary="updating documentation">
+      <created>1523616879638</created>
+      <updated>1523616879639</updated>
+    </task>
+    <task id="LOCAL-00123" summary="updating documentation">
+      <created>1523616913126</created>
+      <updated>1523616913126</updated>
+    </task>
+    <task id="LOCAL-00124" summary="updating documentation">
+      <created>1523617574227</created>
+      <updated>1523617574227</updated>
+    </task>
+    <task id="LOCAL-00125" summary="updating documentation">
+      <created>1523618072388</created>
+      <updated>1523618072389</updated>
+    </task>
+    <task id="LOCAL-00126" summary="updating documentation">
+      <created>1523618456613</created>
+      <updated>1523618456613</updated>
+    </task>
+    <task id="LOCAL-00127" summary="updating documentation">
+      <created>1523618591265</created>
+      <updated>1523618591265</updated>
+    </task>
+    <task id="LOCAL-00128" summary="updating documentation">
+      <created>1523619040947</created>
+      <updated>1523619040947</updated>
+    </task>
+    <task id="LOCAL-00129" summary="updating documentation">
+      <created>1523619924248</created>
+      <updated>1523619924248</updated>
+    </task>
+    <task id="LOCAL-00130" summary="updating documentation">
+      <created>1523621220020</created>
+      <updated>1523621220020</updated>
+    </task>
+    <task id="LOCAL-00131" summary="updating documentation">
+      <created>1523622154234</created>
+      <updated>1523622154234</updated>
+    </task>
+    <task id="LOCAL-00132" summary="updating documentation">
+      <created>1523623348196</created>
+      <updated>1523623348196</updated>
+    </task>
+    <task id="LOCAL-00133" summary="updating documentation">
+      <created>1523623799855</created>
+      <updated>1523623799855</updated>
+    </task>
+    <task id="LOCAL-00134" summary="updating documentation">
+      <created>1523624181725</created>
+      <updated>1523624181725</updated>
+    </task>
+    <task id="LOCAL-00135" summary="updating documentation">
+      <created>1523624896460</created>
+      <updated>1523624896460</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2089,21 +2218,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/InteractionPatternParameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="690">
-          <caret line="19" column="103" selection-start-line="19" selection-start-column="103" selection-end-line="19" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescriptionDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1530">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingsDiff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18872017" vertical-offset="1188" max-vertical-offset="1649">
@@ -2294,14 +2408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="975">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="3015">
@@ -2447,8 +2553,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="1335">
           <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="false" />
+            <element signature="e#782#783#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2501,18 +2607,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="1050">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/TD.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2211" max-vertical-offset="2985">
+          <caret line="171" column="79" selection-start-line="171" selection-start-column="79" selection-end-line="171" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3375">
-          <caret line="107" column="23" selection-start-line="107" selection-start-column="3" selection-end-line="107" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="2715">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="5640">
+          <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36142626" vertical-offset="3647" max-vertical-offset="6135">
-          <caret line="258" column="165" selection-start-line="258" selection-start-column="165" selection-end-line="258" selection-end-column="165" />
+        <state vertical-scroll-proportion="1.0798122" vertical-offset="0" max-vertical-offset="780">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding />
         </state>
       </provider>
