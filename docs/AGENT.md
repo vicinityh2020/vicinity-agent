@@ -220,8 +220,8 @@ TBD
 # Eventing
 
 Consumption services enable to read object properties by request. The eventing mechanism enables objects to publish
-the values of their properties (or whatever needs to be published) once, the value changes. So other object can be notified with new value
-automatically, without explicitly requesting it.
+the values of their properties (or whatever needs to be published) once, the conditions are met.
+So other object can receive data automatically, without explicitly requesting it.
 
 The VICINITY eventing mechanism is implemented as publish/subscribe pattern.
 
