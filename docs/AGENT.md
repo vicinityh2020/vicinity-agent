@@ -199,9 +199,6 @@ this request into corresponding GTW API call, setting the proper VICINITY creden
 
 ### How agent processes the consumption of local object property (in this VICINITY node)
 
-This is the description of process performed by Agent, when there is request for local property consumption.
-Adapters of local node do not implement this endpoints. This endpoints serve as the access to Adapter object properties.
-
 To read local object property value, the Agent implements the endpoint:
 ```
 GET : /objects/{oid}/properties/{pid}
@@ -213,7 +210,8 @@ PUT : /objects/{oid}/properties/{pid}
 ```
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
-How Agent translates this requests into corresponding Adapter endpoints is described in details in [Adapter docs](docs/ADAPTER.md#interaction-patterns)
+When Agent receive the property consumption request, it translates this requests into corresponding Adapter endpoints and execute it.
+This process is described in details in [Adapter interaction patterns](docs/ADAPTER.md#interaction-patterns)
 
 ## Object actions
 
