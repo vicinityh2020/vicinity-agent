@@ -1,5 +1,9 @@
 # Adapter for integrators
 
+Adapter is the first step into interoperability in VICINITY. Its main purpose is to serve as the translator
+between infrastructure specific language and VICINITY language. Adapter is kind of software *driver*
+enabling VICINITY to interact with all specific infrastructures in same, uniform way.
+
 VICINITY Adapter serves as the proxy between common VICINITY services and underlying infrastructure.
 For each specific infrastructure to be integrated, there must exist specific VICINITY Adapter.
 The role of Adapter is to translate VICINITY services into infrastructure specific services.
@@ -76,6 +80,7 @@ GET /objects
 ```
 
 This service returns the list of thing descriptions exposed by this Adapter.
+See (as much as possible) detailed specification of [VICINITY Common Thing Description format](TD.md).
 
 Common Thing Description Format: TBD soon.
 
