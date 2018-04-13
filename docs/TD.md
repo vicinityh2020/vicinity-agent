@@ -37,8 +37,6 @@ But, object must contain at least one interaction pattern (of any type).
 Interaction patterns represent the resources enabling to interact with the object. Interaction pattern
 can be property, action or event.
 
-According to former thing descriptions, there is one main important change: **read_links** and **write_links**
-are now changed from array of links to **read_link** and **write_link** describing just one single object the link specification.
 
 Interaction patterns contain the links, that enable the physical interaction with object.
 Links represent the REST endpoints implemented by Adapter to manage the interaction pattern.
@@ -47,6 +45,8 @@ Pattern may contain just one of **read_link** or **write_link**.
 If pattern contains only the **read_link**, it can be read, but it is not allowed to set/execute it.
 If pattern contains only the **write_link**, it can be set/executed, but it is not allowed to read it.
 
+According to former thing descriptions, there is one main important change: **read_links** and **write_links**
+are now changed from array of links to **read_link** and **write_link** describing just one single object with the link specification.
 
 ### Property
 
