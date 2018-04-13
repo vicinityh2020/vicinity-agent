@@ -15,7 +15,7 @@ of objects is the part of auto discovery process and is performed in semantic re
 Lets look inside the thing description. For each part of it, it will be explained, how it is interpreted,
 when it is (in)valid and how to understand the *mandatory* parts of description.
 
-# Object (the Thing)
+## Object (the Thing)
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
