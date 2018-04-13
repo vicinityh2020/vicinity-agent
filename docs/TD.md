@@ -186,7 +186,8 @@ If using multiple adapters, the */objects* service must contain the **adapter-id
 
 **!!!VERY IMPORTANT!!!** The **adapter-id** is used by agent to tie the objects with its adapter. It is treated
 as persistent and can not be changed. Agent holds the pairs **adapter-id : object-id** and **adapter-id** is the only
-clue, how to distinguish, to which Adapter the object belong. Once **adapter-id** is changed, Agent treats it
+clue, how to distinguish, to which Adapter the object belong (especially in cases, when multiple adapters may contain objects with same identifiers).
+Once **adapter-id** is changed, Agent treats it
 as new Adapter and in discovery process, it re-creates all objects in it and creates new VICINITY **oid**s with new credentials.
 This means, objects are treated as new, so all friendships in Neighbourhood Manager of former objects will be lost.
 So, just generate some hash code for each Adapter and don't change it.
