@@ -28,8 +28,8 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 
 **Validity**
 * Specification tells, that object interaction patterns are not mandatory.
-But, object must contain at least one interaction pattern (of any type)
-* Field **type** must contain the existing semantic annotation, otherwise it will be rejected
+But, object must contain at least one interaction pattern (of any type).
+* Field **type** must contain the existing semantic annotation in VICINITY ontology.
 
 
 ## Interaction patterns
@@ -40,9 +40,18 @@ can be property, action or event.
 According to former thing descriptions, there is one main important change: **read_links** and **write_links**
 are now changed from array of links to **read_link** and **write_link** describing just one single object the link specification.
 
+Interaction patterns contain the links, that enable the physical interaction with object.
+Links represent the REST endpoints implemented by Adapter to manage the interaction pattern.
+The **read_link** represents the resource to read the value, **write_link** represents the resource to write value or execute action.
+Pattern may contain just one of **read_link** or **write_link**.
+If pattern contains only the **read_link**, it can be read, but it is not allowed to set/execute it.
+If pattern contains only the **write_link**, it can be set/executed, but it is not allowed to read it.
+
+
 ### Property
 
-Objects have the properties, that can be read or set.
+Objects have the properties, that can be read or set. For example: the luminiscence of the lamp,
+actual energy consumption of appliance, actual value observed by sensor, etc.
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -51,36 +60,66 @@ Objects have the properties, that can be read or set.
 | read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
 | write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
 
-Property may contain just one of **read_link** or **write_link**.
-The links describe if property is available for reading and writing.
-If property contains only the **read_link**, it can be read, but it is not allowed to set this property and vice versa.
-If property contains only the **write_link**, it can be set, but it is not allowed to read it.
 
 **Validity**
-* Specification tells, that object interaction patterns are not mandatory.
-But, object must contain at least one interaction pattern (of any type)
-* Field **type** must contain the existing semantic annotation, otherwise it will be rejected
+* Specification tells, that read/write links are not mandatory.
+But, object must contain at least one of read/write links.
+* Field **monitors** must contain the existing semantic annotation in VICINITY ontology.
 
 
 
 ### Action
+
+The action triggers changes or processes on a object that may take a certain time to complete,
+(i.e., actions cannot be applied instantaneously like property writes).
+For example: LED fade in, self-destroying drone, switch on the lamp, etc.
+In VICINITY Gateway API, ongoing actions are modelled as task resources, which are created when an action invocation is received by the object.
+
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | aid | string | yes | Unique identifier of the action. Used by all VICINITY components as specified here. |
-| affects | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| affects | string | yes | Specification of what is affected by action. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
 | read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
 | write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
 
 
+**Validity**
+* Again, specification tells, that read/write links are not mandatory.
+But, object must contain at least one of read/write links.
+* Field **affects** must contain the existing semantic annotation in VICINITY ontology.
+
+
 ### Event
+
+The event enables a mechanism for events to be published or notified by a object on a certain condition.
+For example sensor value change reaches the certain threshold, periodic notification of sensor value.
+
+In VICINITY, the event pattern has different interpretation as properties or actions. Event can not be reached
+via write or read link. It is handled by Gateway API and Agent automatically, in a different way.
+
+In VICINITY, eventing mechanism is implemented as publish/subscribe pattern.
+
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | eid | string | yes | Unique identifier of the event. Used by all VICINITY components as specified here. |
-| monitored | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
 | output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
+
+**Validity**
+* Field **monitors** must contain the existing semantic annotation in VICINITY ontology.
 
 
 ### Link
+
+Link represents the resource for interaction with the object. It is specified as the REST endpoint, that must be implemented in Adapter in order to interact with the pattern, which uses the link.
+See [Adapter Interaction patterns](ADAPTER.md#interaction-patterns) for explanation, how Agent
+works with the links.
+
+In actual implementation of Agent, the Link should always start with the  **/**. Agent executes link as
+```
+**{adapter-endpoint}/link**
+```
+
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
