@@ -82,30 +82,6 @@ GET /objects
 This service returns the list of thing descriptions exposed by this Adapter in [VICINITY Common Thing Description format](TD.md).
 The output of this service is specified in Thing Description documentation, see section [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
 
-**In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
-may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
-it is necessary to distinguish between them. In this case, there must exist persistent unique identifier of each Adapter.
-If using multiple adapters, the */objects* service must contain the **adapter-id** in form:
-
-```
-#!json
-{
-    "adapter-id": "unique adapter identifier",
-    "thing-descriptions":
-    [
-     the list of thing descriptions as described in
-     common thing description format
-    ]
-}
-```
-
-Identifiers of adapters must be unique within the VICINITY node.
-
-**!!!VERY IMPORTANT!!!** The **adapter-id** is used by agent to tie the objects with its adapter. It is treated
-as persistent and can not be changed. Agent holds the pairs **adapter-id : object-id** and **adapter-id** is the only
-clue, how to distinguish, to which Adapter the object belong. Once **adapter-id** is changed, Agent treats it
-as new Adapter and in discovery process, it re-creates all objects in it and creates new VICINITY **oid**s with new credentials.
-This means, objects are treated as new, so all friendships in Neighbourhood Manager of former objects will be lost.
 
 
 ## Interaction patterns

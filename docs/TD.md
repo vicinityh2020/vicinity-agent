@@ -4,7 +4,8 @@ VICINITY Common Thing Description format is based on [W3C Wot Thing Description 
 For purposes of VICINITY it was necessary to slightly change it, but we try to follow it (what is quite tricky sometimes,
 as this draft is still continually changing :) )
 
-Thing Descriptions are provided by Adapter mandatory **/objects** service. It is the backbone service for VICINITY auto discovery of objects.
+Thing Descriptions are provided by [Adapter mandatory **/objects** service](ADAPTER.md#discovery-of-adapter-objects).
+It is the backbone service for VICINITY auto discovery of objects.
 Frankly speaking, Adapter must be able to describe all objects it exposes to VICINITY, together with their interaction
 patterns.
 
