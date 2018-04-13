@@ -9,9 +9,13 @@ It is the backbone service for VICINITY auto discovery of objects.
 Frankly speaking, Adapter must be able to describe all objects it exposes to VICINITY, together with their interaction
 patterns.
 
+Each Thing Description is the JSON object fully describing one object exposed by Adapter. The validation
+of objects is the part of auto discovery process and is performed in semantic repository, when creating the semantic model of object.
 
+Lets look inside the thing description. For each part of it, it will be explained, how it is interpreted,
+when it is (in)valid and how to understand the *mandatory* parts of description.
 
-pozor na mandatory attrs .. vysvetlit, ze kedy su a nie su mandarory!!
+# Object
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -21,6 +25,11 @@ pozor na mandatory attrs .. vysvetlit, ze kedy su a nie su mandarory!!
 | properties | array of objects | no | The array of property interaction patterns [see Property](#property) |
 | actions | array of objects | no | The array of action interaction patterns [see Action](#action) |
 | events | array of objects | no | The array of event interaction patterns [see Event](#event)|
+
+**Validity**
+* Specification tells, that object interaction patterns are not mandatory.
+But, object must contain at least one interaction pattern (of any type)
+* field **type** must contain the existing semantic annotation, otherwise it will be rejected
 
 
 ## Interaction patterns
