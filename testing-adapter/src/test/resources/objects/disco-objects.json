@@ -1,64 +1,134 @@
- [
+[
+
 {
-	"type": "Lightbulb",
-	"oid": "magic-2",
-	"name": "horsedick",
-	"actions": [{
-		"read_links": [{
-			"href": "/objects/{oid}/actions/{aid}"
-		}],
-		"affects": "Motion",
-		"write_links": [{
-			"href": "/custom-post/{oid}/z"
-		}],
-		"aid": "device-1-aid-1"
-	}],
-	"properties": [
-    {
-		"monitors": "Motion",
-		"output": {
-			"units": "Celsius"
-		},
-		"read_links": [{
-			"href": "/custom/{oid}/x"
-		}],
-		"pid": "device-1-pid-1",
-		"write_links": [{
-			"href": "/custom-set/{oid}/y"
-		},
-		]
-	},
-    {
-		"aid": "device-1-aid-2",
-		"observes": "Motion",
-		"read_link": {
-    		"output": {
-	    		"units": "Celsius"
-		    },
-			"href": "/custom/{oid}/x"
-		},
-		"write_link": {
-    		"output": {
-	    		"units": "Celsius"
-		    },
-		    "input": {
-    			"units": "Celsius"
-	    	},
-			"href": "/custom-set/{oid}/y"
-		},
-	}
-
-	],
-	"events": [
-    {
-		"monitors": "Motion",
-		"output": {
-			"units": "Celsius"
-		},
-		"eid": "device-1-eid-1"
-	}
-
-	]
-
+    "oid": "bulb1",
+    "name": "human reads my name here",
+    "type": "Lightbulb",
+    "properties": [
+        {
+            "pid": "brightness",
+            "monitors": "Luminance",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "output": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "property",
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                }
+            },
+            "write_link": {
+                "href": "/bulb/set-brightness/{oid}",
+                "input": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "brightness-level",
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                "output": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "success",
+                            "schema": {
+                                "type": "boolean"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "actions": [
+        {
+            "aid": "set-brightness",
+            "affects": "Luminance",
+            "read_link": {
+                "href": "/device/{oid}/status/{aid}",
+                "output": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "action",
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "status",
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                }
+            },
+            "write_link": {
+                "href": "/bulb/set-brightness/{oid}",
+                "input": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "brightness-level",
+                            "schema": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                "output": {
+                    "type": "object",
+                    "field": [
+                        {
+                            "name": "success",
+                            "schema": {
+                                "type": "boolean"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "events": [
+        {
+            "eid": "set-brightness",
+            "monitors": "Luminance",
+            "output": {
+                "type": "object",
+                "field": [
+                    {
+                        "name": "observed-property",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
 }
+
 ]

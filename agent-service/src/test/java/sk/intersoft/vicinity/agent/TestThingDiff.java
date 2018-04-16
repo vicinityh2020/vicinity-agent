@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingsProcessor;
 
@@ -25,7 +26,7 @@ public class TestThingDiff {
         JSONObject thing1JSON = new JSONObject(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/thing1.json"));
         JSONObject thing2JSON = new JSONObject(file2string(new File("").getAbsolutePath() + "/testing-adapter/src/test/resources/objects/thing2.json"));
 
-        ThingDescription thing1 = ThingDescription.create(thing1JSON, null);
+        ThingDescription thing1 = ThingDescription.create(thing1JSON, new AdapterConfig("x"));
         ThingDescription thing2 = ThingDescription.create(thing2JSON, null);
         boolean same = thing1.sameAs(thing2);
         System.out.println("SAME: "+same);

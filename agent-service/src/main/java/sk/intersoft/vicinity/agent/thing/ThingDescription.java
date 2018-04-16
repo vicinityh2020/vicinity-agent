@@ -63,13 +63,6 @@ public class ThingDescription {
         password = configThing.password;
     }
 
-    public static String prefixed2value(String content) {
-        String[] parts = content.split(":");
-        if(parts.length == 2) {
-            return parts[1];
-        }
-        return content;
-    }
 
     public InteractionPattern getInteractionPattern(String patternID, String patternType) throws Exception {
         if(patternID == null) throw new Exception("Missing Interaction pattern ID");
@@ -158,11 +151,6 @@ public class ThingDescription {
 
         if(adapterConfig == null){
             logger.debug("processing thing configuration");
-
-            String ldType = JSONUtil.getString(LD_TYPE_KEY, thingJSON);
-            if(ldType == null) throw new Exception("Missing ["+LD_TYPE_KEY+"] in: "+thingJSON.toString());
-
-            thingJSON.put(TYPE_KEY, prefixed2value(ldType));
 
 
             String oid = JSONUtil.getString(OID_KEY, thingJSON);

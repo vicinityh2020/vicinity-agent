@@ -31,49 +31,28 @@ public class InteractionPattern {
 
     public static final String OUTPUT_KEY = "output";
 
-    public static final String READ_LINKS_KEY = "read_links";
-    public static final String WRITE_LINKS_KEY = "write_links";
-    public static final String LINKS_KEY = "links";
-
-    // JSON-LD keys
-    public static final String OBSERVES_KEY = "observes";
-    public static final String FOR_PROPERTY_KEY = "forProperty";
+    public static final String READ_LINK_KEY = "read_link";
+    public static final String WRITE_LINK_KEY = "write_link";
 
 
 
-    public static InteractionPatternParameter createOutput(JSONObject patternJSON) throws Exception {
-        List<JSONObject> outputs = JSONUtil.getObjectArray(OUTPUT_KEY, patternJSON);
-        if(outputs != null && outputs.size() > 0) return InteractionPatternParameter.create(outputs.get(0));
-        else return null;
-    }
+
 
     public static void createLinks(InteractionPattern pattern, JSONObject patternJSON) throws Exception {
-        List<JSONObject> links = JSONUtil.getObjectArray(LINKS_KEY, patternJSON);
-        List<JSONObject> reads = JSONUtil.getObjectArray(READ_LINKS_KEY, patternJSON);
-        List<JSONObject> writes = JSONUtil.getObjectArray(WRITE_LINKS_KEY, patternJSON);
+        JSONObject read = JSONUtil.getObject(READ_LINK_KEY, patternJSON);
+        JSONObject write = JSONUtil.getObject(WRITE_LINK_KEY, patternJSON);
 
 
-        if(reads != null || writes != null){
-            pattern.readEndpoint = InteractionPatternEndpoint.create(reads);
-            pattern.writeEndpoint = InteractionPatternEndpoint.create(writes);
-        }
-        else if(links != null){
-            pattern.readEndpoint = InteractionPatternEndpoint.create(links);
-            pattern.writeEndpoint = InteractionPatternEndpoint.create(links);
+        if(read != null || write != null){
+            pattern.readEndpoint = InteractionPatternEndpoint.create(read, InteractionPatternEndpoint.READ);
+            pattern.writeEndpoint = InteractionPatternEndpoint.create(write, InteractionPatternEndpoint.WRITE);
         }
         else {
-            throw new Exception("Missing or wrong configuration of links/read_links/write_links in: "+patternJSON.toString());
+            throw new Exception("Missing or wrong configuration of read_link/write_link in: "+patternJSON.toString());
         }
     }
     public static InteractionPattern createProperty(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
-
-        if(isConfiguration){
-            String observes = JSONUtil.getString(OBSERVES_KEY, patternJSON);
-            if(observes == null) throw new Exception("Missing ["+OBSERVES_KEY+"] in: "+patternJSON.toString());
-
-            patternJSON.put(MONITORS_KEY, ThingDescription.prefixed2value(observes));
-        }
 
         pattern.id = JSONUtil.getString(PID_KEY, patternJSON);
         if(pattern.id == null) throw new Exception("Missing ["+PID_KEY+"] in: "+patternJSON.toString());
@@ -81,7 +60,6 @@ public class InteractionPattern {
         pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
-        pattern.output = createOutput(patternJSON);
         createLinks(pattern, patternJSON);
         return pattern;
 
@@ -90,20 +68,12 @@ public class InteractionPattern {
     public static InteractionPattern createAction(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
-        if(isConfiguration){
-            String forProperty = JSONUtil.getString(FOR_PROPERTY_KEY, patternJSON);
-            if(forProperty == null) throw new Exception("Missing ["+FOR_PROPERTY_KEY+"] in: "+patternJSON.toString());
-
-            patternJSON.put(AFFECTS_KEY, ThingDescription.prefixed2value(forProperty));
-        }
-
         pattern.id = JSONUtil.getString(AID_KEY, patternJSON);
         if(pattern.id == null) throw new Exception("Missing ["+AID_KEY+"] in: "+patternJSON.toString());
 
         pattern.refersTo = JSONUtil.getString(AFFECTS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+AFFECTS_KEY+"] in: "+patternJSON.toString());
 
-        pattern.output = createOutput(patternJSON);
         createLinks(pattern, patternJSON);
         return pattern;
 
@@ -112,12 +82,6 @@ public class InteractionPattern {
     public static InteractionPattern createEvent(JSONObject patternJSON, boolean isConfiguration) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
-        if(isConfiguration){
-            String observes = JSONUtil.getString(OBSERVES_KEY, patternJSON);
-            if(observes == null) throw new Exception("Missing ["+OBSERVES_KEY+"] in: "+patternJSON.toString());
-
-            patternJSON.put(MONITORS_KEY, ThingDescription.prefixed2value(observes));
-        }
 
         pattern.id = JSONUtil.getString(EID_KEY, patternJSON);
         if(pattern.id == null) throw new Exception("Missing ["+EID_KEY+"] in: "+patternJSON.toString());
@@ -125,7 +89,10 @@ public class InteractionPattern {
         pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
-        pattern.output = createOutput(patternJSON);
+        JSONObject output = JSONUtil.getObject(InteractionPatternParameter.OUTPUT_KEY, patternJSON);
+        if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+patternJSON.toString());
+        pattern.output = InteractionPatternParameter.create(output);
+
         return pattern;
 
     }

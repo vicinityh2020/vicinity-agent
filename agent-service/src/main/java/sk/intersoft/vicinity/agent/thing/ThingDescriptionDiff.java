@@ -23,34 +23,12 @@ public class ThingDescriptionDiff {
         }
     }
 
-    public static boolean sameParameter(InteractionPatternParameter parameter1,
-                                        InteractionPatternParameter parameter2,
-                                        int indent) {
-        if(parameter1 == null && parameter2 == null) return true;
-        else if (parameter1 != null && parameter2 != null){
-            if(!parameter1.units.equalsIgnoreCase(parameter2.units)){
-                logger.debug(Dump.indent("parameter units are different!", indent));
-                return false;
-            }
-            else return true;
-        }
-        else {
-            logger.debug(Dump.indent("parameters are different!", indent));
-            return false;
-        }
-    }
 
     public static boolean samePatterns(InteractionPattern pattern1,
                                        InteractionPattern pattern2,
                                        int indent) {
         if(!pattern1.refersTo.equalsIgnoreCase(pattern2.refersTo)){
             logger.debug(Dump.indent("patterns refers-to is different!", indent));
-            return false;
-        }
-
-        boolean outputsSame = sameParameter(pattern1.output, pattern2.output, indent);
-        if(!outputsSame){
-            logger.debug(Dump.indent("patterns have different outputs!", indent));
             return false;
         }
 

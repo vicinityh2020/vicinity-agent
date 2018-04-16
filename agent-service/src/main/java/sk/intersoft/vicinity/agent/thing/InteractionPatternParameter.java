@@ -5,22 +5,18 @@ import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 public class InteractionPatternParameter {
-    public static final String UNITS_KEY = "units";
-    public static final String DATATYPE_KEY = "datatype";
+    public static final String INPUT_KEY = "input";
+    public static final String OUTPUT_KEY = "output";
 
 
-    public String units;
-    public String datatype;
+    public String json;
 
 
 
     public static InteractionPatternParameter create(JSONObject parameterJSON) throws Exception {
         InteractionPatternParameter parameter = new InteractionPatternParameter();
 
-        parameter.units = ThingDescription.prefixed2value(JSONUtil.getString(UNITS_KEY, parameterJSON));
-        if(parameter.units == null) throw new Exception("Missing ["+UNITS_KEY+"] in: "+parameterJSON.toString());
-
-        parameter.datatype = JSONUtil.getString(DATATYPE_KEY, parameterJSON);
+        parameter.json = parameterJSON.toString();
 
         return parameter;
 
@@ -32,8 +28,7 @@ public class InteractionPatternParameter {
         Dump dump = new Dump();
 
         dump.add("parameter:", indent);
-        dump.add("units: "+units, (indent + 1));
-        dump.add("data-type: "+datatype, (indent + 1));
+        dump.add("json: "+json.toString(), (indent + 1));
 
         return dump.toString();
     }

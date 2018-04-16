@@ -176,7 +176,6 @@ public class Discovery {
         logger.info("Initialized persistence");
         PersistedThing.list();
 
-
         // 2. READ CONFIGURATION FROM NM
         logger.info("Getting configuration");
         String configData = GatewayAPIClient.get(GatewayAPIClient.CONFIGURATION);
@@ -188,6 +187,7 @@ public class Discovery {
         // 3. READ ADAPTER OBJECTS
         ThingDescriptions adapterThings = getAllAdapterThings();
         logger.debug("Adapter things: \n"+adapterThings.toString(0));
+
 
         // 4. MAKE DIFF
         ThingsDiff diff = ThingsDiff.fire(configuredThings, adapterThings);

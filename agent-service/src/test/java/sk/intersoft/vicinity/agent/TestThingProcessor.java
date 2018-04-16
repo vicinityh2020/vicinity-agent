@@ -25,7 +25,8 @@ public class TestThingProcessor {
     public void process() throws Exception{
         JSONArray json = new JSONArray(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/config-test.json"));
 
-        ThingDescriptions things = ThingsProcessor.process(json, new AdapterConfig("test-endpoint"));
+//        ThingDescriptions things = ThingsProcessor.process(json, new AdapterConfig("test-endpoint"));
+        ThingDescriptions things = ThingsProcessor.process(json, null);
         System.out.println(things.toString(0));
 
     }
