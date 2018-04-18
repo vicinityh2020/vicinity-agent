@@ -29,12 +29,19 @@ public class Discovery {
     public static final String THING_DESCRIPTIONS_KEY = "thingDescriptions";
     public static final String OIDS_KEY = "oids";
 
-    public static JSONObject DeletePayload(List<ThingDescription> things) {
+
+    public static JSONObject DeletePayload(JSONArray oids) {
         JSONObject payload = new JSONObject();
-        JSONArray oids = new JSONArray();
 
         payload.put(AGID_KEY, AgentConfig.agentId);
         payload.put(OIDS_KEY, oids);
+
+        return payload;
+
+    }
+
+    public static JSONObject DeleteThingsPayload(List<ThingDescription> things) {
+        JSONArray oids = new JSONArray();
 
 
         for (ThingDescription thing : things) {
@@ -42,7 +49,18 @@ public class Discovery {
         }
 
 
-        return payload;
+        return DeletePayload(oids);
+
+    }
+
+    public static JSONObject DeleteOidsPayload(List<String> oids2remove) {
+        JSONArray oids = new JSONArray();
+
+        for (String oid : oids2remove) {
+            oids.put(oid);
+        }
+
+        return DeletePayload(oids);
 
     }
 
@@ -213,16 +231,22 @@ public class Discovery {
         // fire DELETE as first for case, when configuration was not assigned to infrastructure-id
         // that means, the thing is not persisted anymore from whatever reason (deleted database?)
         // must be deleted
-        logger.info("handling DELETE: "+diff.delete.byOID.keySet().size());
+
+
+        logger.info("handling DELETE from DIFF: "+diff.delete.byOID.keySet().size());
+        logger.info("handling DELETE  - unparsed things: "+config.unparsed.size());
         if(diff.delete.byOID.keySet().size() > 0){
             List<ThingDescription> things = diff.delete.thingsByOID();
-            JSONObject payload = DeletePayload(things);
+            JSONObject payload = DeleteThingsPayload(things);
             logger.debug("DELETE PAYLOAD: "+payload.toString(2));
             String deleteData = GatewayAPIClient.post(GatewayAPIClient.DELETE, payload.toString());
             logger.info("DELETE response: " + deleteData);
         }
-        else {
-            logger.info("Nothing to DELETE");
+        if(config.unparsed.size() > 0){
+            JSONObject payload = DeleteOidsPayload(config.unparsed);
+            logger.debug("DELETE PAYLOAD: "+payload.toString(2));
+            String deleteData = GatewayAPIClient.post(GatewayAPIClient.DELETE, payload.toString());
+            logger.info("DELETE response: " + deleteData);
         }
 
         // 5.2 HANDLE CREATE
@@ -263,6 +287,8 @@ public class Discovery {
 
         logger.debug("ACTUAL THING PERSISTENCE: ");
         PersistedThing.list();
+
+
 
         logger.info("DISCOVERY : END");
     }

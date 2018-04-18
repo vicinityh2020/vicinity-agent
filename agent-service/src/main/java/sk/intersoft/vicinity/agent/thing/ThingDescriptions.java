@@ -12,6 +12,8 @@ public class ThingDescriptions {
     public Map<String, ThingDescription> byOID = new HashMap<String, ThingDescription>();
     public Map<String, ThingDescription> byInfrastructureID = new HashMap<String, ThingDescription>();
 
+    public List<String> unparsed = new ArrayList<String>();
+
     public int size() {
         return byInfrastructureID.keySet().size();
     }

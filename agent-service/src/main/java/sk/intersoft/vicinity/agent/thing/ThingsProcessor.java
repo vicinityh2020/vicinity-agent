@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
+import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,7 +28,14 @@ public class ThingsProcessor {
             }
             catch(Exception e){
                 logger.error("thing not created!", e);
-                throw e;
+                if(adapterConfig != null){
+                    throw e;
+                }
+                else {
+                    if(thingJSON.has(ThingDescription.OID_KEY)){
+                        things.unparsed.add(thingJSON.getString(ThingDescription.OID_KEY));
+                    }
+                }
             }
         }
 
@@ -36,7 +44,7 @@ public class ThingsProcessor {
 
     }
 
-    public static ThingDescriptions processConfiguration(String data) throws Exception {
+    public static JSONArray getConfigurationThings(String data) throws Exception {
         JSONObject root = new JSONObject(data);
         JSONArray results = root.getJSONArray("message");
         JSONArray extraction = new JSONArray();
@@ -45,7 +53,13 @@ public class ThingsProcessor {
             JSONObject item = (JSONObject)i.next();
             extraction.put(item.getJSONObject("id").getJSONObject("info"));
         }
-        return process(extraction, null);
+        return extraction;
     }
+
+    public static ThingDescriptions processConfiguration(String data) throws Exception {
+        JSONArray things = getConfigurationThings(data);
+        return process(things, null);
+    }
+
 
 }

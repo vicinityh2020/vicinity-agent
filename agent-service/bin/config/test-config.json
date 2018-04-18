@@ -1,6 +1,6 @@
 {
     "credentials": {
-        "agent-id": "f31e6c8b-eaa4-4fd6-b32b-bad97496b24f",
+        "agent-id": "4aaf6042-9888-4cd1-bc56-f42a84204101",
         "password": "test"
     },
     "gateway-api-endpoint": "http://localhost:8181/api",
