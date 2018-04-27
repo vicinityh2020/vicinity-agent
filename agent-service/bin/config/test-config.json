@@ -12,12 +12,12 @@
     "events": {
         "channels": [
             {
-                "infrastructure-id": "magic-2",
-                "eid": "device-1-eid-1",
+                "infrastructure-id": "bulb4",
+                "eid": "set-brightness",
             },
             {
-                "infrastructure-id": "magic-2",
-                "eid": "device-1-eid-1",
+                "infrastructure-id": "bulb4",
+                "eid": "set-brightness",
             },
 
         ],
@@ -26,12 +26,12 @@
             {
                 "oid": "oid1",
                 "eid": "eid1",
-                "infrastructure-id": "magic-2"
+                "infrastructure-id": "bulb4"
             },
             {
                 "oid": "oid1",
                 "eid": "eid1",
-                "infrastructure-id": "magic-2"
+                "infrastructure-id": "bulb4"
             }
         ]
 

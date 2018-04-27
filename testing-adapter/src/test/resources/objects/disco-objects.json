@@ -1,12 +1,12 @@
 [
 
 {
-    "oid": "bulb4",
+    "oid": "bulb7",
     "name": "human reads my name here",
     "type": "Lightbulb",
     "properties": [
         {
-            "pid": "brightness",
+            "pid": "brightness1",
             "monitors": "Luminance",
             "read_link": {
                 "href": "/device/{oid}/property/{pid}",
