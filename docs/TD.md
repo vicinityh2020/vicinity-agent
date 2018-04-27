@@ -117,8 +117,8 @@ Link represents the resource for interaction with the object. It is specified as
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
-| input | string | no | The payload of input to interaction pattern for this link. Mandatory for **write_link** |
-| output | string | yes | The payload of output of interaction pattern for this link. Always required. |
+| input | object | no | The payload of input to interaction pattern for this link. Mandatory for **write_link** |
+| output | object | yes | The payload of output of interaction pattern for this link. Always required. |
 
 
 In actual implementation of Agent, the **href** should always start with the  **/**. Agent executes link as
