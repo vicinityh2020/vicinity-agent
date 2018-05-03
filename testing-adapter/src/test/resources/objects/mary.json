@@ -1,0 +1,150 @@
+[
+    {
+        "events": [
+            {
+                "monitors": "Motion",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "mmHg"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                },
+                "eid": "systolic"
+            },
+            {
+                "monitors": "Motion",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "mmHg"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                },
+                "eid": "diastolic"
+            },
+            {
+                "monitors": "Motion",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "bpm"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                },
+                "eid": "pulse"
+            }
+        ],
+        "oid": "bloodpressure",
+        "name": "ForaBloodPressureMonitor",
+        "properties": [
+            {
+                "read_link": {
+                    "href": "/objects/{oid}/properties/{pid}",
+                    "mediaType": "application/json",
+                    "output": {
+                        "field": [],
+                        "type": ""
+                    }
+                },
+                "monitors": "Motion",
+                "pid": "systolic",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "mmHg"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "read_link": {
+                    "href": "/objects/{oid}/properties/{pid}",
+                    "mediaType": "application/json",
+                    "output": {
+                        "field": [],
+                        "type": ""
+                    }
+                },
+                "monitors": "Motion",
+                "pid": "diastolic",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "mmHg"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                }
+            },
+            {
+                "read_link": {
+                    "href": "/objects/{oid}/properties/{pid}",
+                    "mediaType": "application/json",
+                    "output": {
+                        "field": [],
+                        "type": ""
+                    }
+                },
+                "monitors": "Motion",
+                "pid": "pulse",
+                "output": {
+                    "field": [
+                        {
+                            "name": "value",
+                            "type": "integer",
+                            "units": "bpm"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "string",
+                            "units": "datetime"
+                        }
+                    ],
+                    "type": "object"
+                }
+            }
+        ],
+        "type": "CO2Sensor",
+        "version": "0.0.1"
+    }
+]

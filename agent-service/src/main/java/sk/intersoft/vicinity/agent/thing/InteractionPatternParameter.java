@@ -16,6 +16,8 @@ public class InteractionPatternParameter {
     public static InteractionPatternParameter create(JSONObject parameterJSON) throws Exception {
         InteractionPatternParameter parameter = new InteractionPatternParameter();
 
+        System.out.println("PARAM TO PROCESS: "+parameterJSON);
+
         parameter.json = parameterJSON.toString();
 
         return parameter;

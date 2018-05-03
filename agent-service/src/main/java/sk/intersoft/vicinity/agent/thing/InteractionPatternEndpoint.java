@@ -28,12 +28,15 @@ public class InteractionPatternEndpoint {
             if(endpoint.href == null) throw new Exception("Missing ["+HREF_KEY+"] in: "+linkJSON.toString());
 
             JSONObject output = JSONUtil.getObject(InteractionPatternParameter.OUTPUT_KEY, linkJSON);
-            if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+linkJSON.toString());
+//            if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+linkJSON.toString());
+            if(output == null) output = new JSONObject();
+            System.out.println("OUTPUT: "+output);
             endpoint.output = InteractionPatternParameter.create(output);
 
             if(linkType.equals(InteractionPatternEndpoint.WRITE)){
                 JSONObject input = JSONUtil.getObject(InteractionPatternParameter.INPUT_KEY, linkJSON);
-                if(input == null) throw new Exception("Missing ["+InteractionPatternParameter.INPUT_KEY+"] in: "+linkJSON.toString());
+//                if(input == null) throw new Exception("Missing ["+InteractionPatternParameter.INPUT_KEY+"] in: "+linkJSON.toString());
+                if(input == null) input = new JSONObject();
                 endpoint.input = InteractionPatternParameter.create(input);
             }
             return endpoint;

@@ -90,7 +90,8 @@ public class InteractionPattern {
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
         JSONObject output = JSONUtil.getObject(InteractionPatternParameter.OUTPUT_KEY, patternJSON);
-        if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+patternJSON.toString());
+//        if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+patternJSON.toString());
+        if(output == null) output =  new JSONObject();
         pattern.output = InteractionPatternParameter.create(output);
 
         return pattern;
