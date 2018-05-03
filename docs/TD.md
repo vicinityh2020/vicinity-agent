@@ -22,9 +22,11 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | oid | string | yes | Infrastructure specific unique identifier of the object |
 | name | string | yes | Human readable name of object visible in Neighbourhood manager |
 | type | string | yes | Ontology annotation: the class in VICINITY semantic model (currently one of classes in hierarchy for core:Device). **The ontology class is always provided without prefix!** e.g. use **Device**, instead of **core:Device**. See [hierarchy of devices and services](http://iot.linkeddata.es/def/core/) |
+| version | string | yes |Defines the version of the service. It is possible to have registered different version of the services |
 | properties | array of objects | no | The array of property interaction patterns [see Property](#property) |
 | actions | array of objects | no | The array of action interaction patterns [see Action](#action) |
 | events | array of objects | no | The array of event interaction patterns [see Event](#event)|
+| requirements | object | no | The requirement object [see Requirements](#requirements)|
 
 **Validity**
 * Specification tells, that object interaction patterns are not mandatory.
@@ -140,6 +142,40 @@ The important change according former thing description is, that link contains t
 It was necessary to move inputs/outputs into links, because different link may produce different outputs (e.g. reading the property value produces different payload as setting this property).
 
 Links for writing must contain mandatory **input** field. **input** describes the schema of payload required to set the property or execute the action.
+
+### Requirements
+
+The requirements are the list of interaction resources that are needed by the service to function properly (e.g. to calculate average energy consumption by the service the monitoring of action energy consumption is required). The requirements are specified as list of property, action and event requirements.
+
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | ---|
+| properties | array of objects | no | Required list of properties |
+| actions | array of objects | no | Required list of actions  |
+| events | array of objects | no | Required list of acceptable events |
+
+Each required interaction resource is specified by the interaction pattern fragment. The service defines only what it is necessary not how it should be accessible. For example, the service specify that it needs to monitor current energy consumption with the output data structure. However, it does not specify how to get it from a device. The interaction patterns fragments are as follow:
+
+##### Property requirement
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | ---|
+| monitors | array of objects | yes | One of the [property classes](http://iot.linkeddata.es/def/core/index-en.html) being monitored |
+| output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
+| required | array of strings | no | Reference to `pid`, `aid` or `eid` which requires this required. If missing required for all interaction patterns|
+
+##### Action requirement
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | ---|
+| affects | array of objects | yes | One of the [property classes](http://iot.linkeddata.es/def/core/index-en.html) being affected by the property |
+| input | object | yes | Definition of event payload. [see Data schema](#data-schema) |
+| output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
+| required | array of strings | no | Reference to `pid`, `aid` or `eid` which requires this required. If missing required for all interaction patterns|
+
+
+##### Event requirement
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
 
 ### Data schema
 See [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section)
