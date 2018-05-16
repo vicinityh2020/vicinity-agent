@@ -354,23 +354,12 @@ Fast example of expected payload for array  above:
 ## Serialization of Thing Descriptions
 
 
-**In current Agent implementation, the Client node may contain multiple adapters.** That means, one client node
-may serve multiple different infrastructures (per each there must exist specific Adapter). When multiple adapters are used,
-it is necessary to distinguish between them. In this case, there must exist persistent unique identifier of each Adapter.
-Identifier of Adapter must be unique just within the Client node. That means: each adapter used by same agent must use unique identifier.
+**In current Agent Service implementation, the Client node may contain multiple agents, containing multiple adapters.** That means, one agent service
+may serve multiple agents (one per client node), agents support adapters for multiple different infrastructures (per each specific infrastructure, there must exist specific Adapter). When multiple adapters are used,
+It is necessary to recognize, where the objects are located. So, there must exist persistent unique identifier of each Agent and also Adapter.
+Identifier of Adapter must be unique within the whole Agent Service. That means: each adapter used by same agent service must use unique identifier.
 
-
-When using single adapter, it is not necessary to provide the **adapter-id**. So it is possible to use simplified serialization in Adapter */objects* service:
-
-```
-#!json
-[
- array of thing descriptions
-]
-```
-
-
-If using multiple adapters, the */objects* service must contain the **adapter-id** in form:
+The adapter */objects* service must contain the **adapter-id** and thing descriptions in form:
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
