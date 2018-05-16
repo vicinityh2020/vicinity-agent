@@ -2,28 +2,19 @@ package sk.intersoft.vicinity.agent;
 
 
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
+import sk.intersoft.vicinity.agent.service.config.Configuration;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class TestConfig {
 
-    public static String file2string(String path) {
-        try{
-            return new Scanner(new File(path)).useDelimiter("\\Z").next();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
     public void test() throws Exception {
-        System.out.println("CONFIG BEFORE: \n"+AgentConfig.asString());
+        String file = new File("").getAbsolutePath() + "/agent-service/src/test/resources/config/service.json";
+        String folder = new File("").getAbsolutePath() + "/agent-service/src/test/resources/config/agents";
+        Configuration.create(file, folder);
+        System.out.println(Configuration.toString(0));
 
-        AgentConfig.create(new File("").getAbsolutePath() + "/agent-service/bin/config/test-config.json");
-        System.out.println("CONFIG AFTER: \n"+AgentConfig.asString());
 
     }
     public static void main(String[] args) throws Exception {

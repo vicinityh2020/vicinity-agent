@@ -3,46 +3,58 @@ package sk.intersoft.vicinity.agent.service.config;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
-import java.io.File;
-import java.util.Scanner;
 
 public class AdapterConfig {
     final static Logger logger = LoggerFactory.getLogger(AdapterConfig.class.getName());
 
-    private static final String ADAPTER_ENDPOINT_KEY = "endpoint";
-    public static final String DEFAULT_ADAPTER_ID = "default-adapter";
+    private static final String ADAPTER_ID_KEY = "adapter-id";
+    private static final String ENDPOINT_KEY = "endpoint";
+    private static final String ACTIVE_DISCOVERY_KEY = "active-discovery";
 
 
     public String adapterId = "";
-    public String endpoint = "";
+    public String endpoint = null;
+    public boolean activeDiscovery = false;
 
-    public AdapterConfig(String endpoint){
-        this.endpoint = endpoint;
+
+    public static AdapterConfig create(JSONObject json) throws Exception {
+        logger.debug("CREATING ADAPTER CONFIG FROM: \n"+json.toString(2));
+
+        AdapterConfig config = new AdapterConfig();
+
+        config.adapterId = json.getString(ADAPTER_ID_KEY);
+        if(json.has(ENDPOINT_KEY)){
+            config.endpoint = json.getString(ENDPOINT_KEY);
+
+            if(json.has(ACTIVE_DISCOVERY_KEY)){
+                config.activeDiscovery = json.getBoolean(ACTIVE_DISCOVERY_KEY);
+            }
+        }
+        else{
+            logger.debug("no endpoint! setting active discovery to TRUE");
+            config.activeDiscovery = true;
+        }
+
+
+        return config;
     }
 
-    public static AdapterConfig create(JSONObject config) throws Exception {
-        logger.debug("CREATING ADAPTER CONFIG: "+config.toString());
-        String endpoint = config.getString(ADAPTER_ENDPOINT_KEY);
-
-        return new AdapterConfig(endpoint);
-    }
-
-    public String asString(int indent) {
+    public String toString(int indent) {
         Dump dump = new Dump();
 
-        dump.add("ADAPTER CONFIG CREATED: ", indent);
+        dump.add("ADAPTER CONFIG: ", indent);
 
         dump.add("adapter-id: [" + adapterId + "]", (indent + 1));
         dump.add("endpoint: " + endpoint, (indent + 1));
+        dump.add("active disco: " + activeDiscovery, (indent + 1));
 
         return dump.toString();
     }
 
     public String toString() {
-        return "["+adapterId+" : "+endpoint+"]";
+        return "["+adapterId+" : "+endpoint+" : "+activeDiscovery+"]";
     }
 
 }

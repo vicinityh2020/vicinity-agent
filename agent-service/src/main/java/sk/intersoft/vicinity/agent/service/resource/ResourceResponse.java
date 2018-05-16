@@ -33,5 +33,4 @@ public class ResourceResponse {
         response.put(REASON, exception.getMessage());
         return response;
     }
-
 }

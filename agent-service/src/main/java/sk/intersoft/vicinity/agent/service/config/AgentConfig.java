@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.io.File;
@@ -17,100 +16,41 @@ public class AgentConfig {
     private static final String AGENT_ID_KEY = "agent-id";
     private static final String PASSWORD_KEY = "password";
 
-    private static final String GATEWAY_API_ENDPOINT_KEY = "gateway-api-endpoint";
     private static final String ADAPTERS_KEY = "adapters";
 
-    private static final String EVENTS_KEY = "events";
-    private static final String OPEN_EVENT_CHANNELS_KEY = "channels";
-    private static final String SUBSCRIBE_EVENT_CHANNELS_KEY = "subscriptions";
+    public String agentId = "";
+    public String password = "";
+
+    public Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
+
+    public static AgentConfig create(String source) throws Exception {
+        AgentConfig config = new AgentConfig();
+
+        JSONObject json = new JSONObject(source);
+        logger.info("CREATING AGENT CONFIG FROM: "+json.toString(2));
+        JSONObject credentials = json.getJSONObject(CREDENTIALS_KEY);
+        config.agentId = credentials.getString(AGENT_ID_KEY);
+        config.password = credentials.getString(PASSWORD_KEY);
 
 
-    public static String agentId = "";
-    public static String password = "";
-
-    public static String gatewayAPIEndpoint = "";
-    public static List<AdapterConfig> adaptersList = new ArrayList<AdapterConfig>();
-    public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
-    public static Map<String, String> x = new HashMap<String, String>();
-
-    public static List<EventChannel> eventChannels = new ArrayList<EventChannel>();
-    public static List<EventChannelSubscription> eventSubscriptions = new ArrayList<EventChannelSubscription>();
-
-
-    public static ThingDescriptions things = new ThingDescriptions();
-
-    public static boolean hasMultiAdapters(){
-        return adapters.keySet().size() > 1;
-    }
-
-    public AdapterConfig defaultAdapter(){
-        return adaptersList.get(0);
-    }
-
-    public static String file2string(String path) {
-        try{
-            return new Scanner(new File(path)).useDelimiter("\\Z").next();
+        JSONArray adaptersArray = json.getJSONArray(ADAPTERS_KEY);
+        if(adaptersArray.length() == 0){
+            throw new Exception("no adapters in agent config ["+config.agentId+"]");
         }
-        catch(Exception e){
-            logger.error("", e);
-            return null;
-        }
-    }
 
-    public static void updateAdapter(AdapterData data) throws  Exception {
-        AdapterConfig config = adapters.get(data.adapterId);
-        if(config != null) throw new Exception("duplicate adapter-id ["+data.adapterId+"]");
-        else {
-            data.config.adapterId = data.adapterId;
-            adapters.put(data.config.adapterId, data.config);
-        }
-    }
-
-    public static void create(String configPath) throws Exception {
-        JSONObject config = new JSONObject(file2string(configPath));
-        logger.info("CREATING CONFIG FILE FROM: \n"+config.toString(2));
-        JSONObject credentials = config.getJSONObject(CREDENTIALS_KEY);
-        agentId = credentials.getString(AGENT_ID_KEY);
-        password = credentials.getString(PASSWORD_KEY);
-
-        gatewayAPIEndpoint = config.getString(GATEWAY_API_ENDPOINT_KEY);
-
-        JSONArray adaptersArray = config.getJSONArray(ADAPTERS_KEY);
         Iterator<Object> i = adaptersArray.iterator();
-        while(i.hasNext()){
-            JSONObject adapterConfig = (JSONObject)i.next();
+        while (i.hasNext()) {
+            JSONObject adapterConfig = (JSONObject) i.next();
             AdapterConfig ac = AdapterConfig.create(adapterConfig);
-            adaptersList.add(ac);
-        }
-        if(adaptersList.size() == 0) throw new Exception("There are no adapters!!");
-
-        if(config.has(EVENTS_KEY)){
-            JSONObject events = config.getJSONObject(EVENTS_KEY);
-            if(events.has(OPEN_EVENT_CHANNELS_KEY)){
-                JSONArray channelsArray = events.getJSONArray(OPEN_EVENT_CHANNELS_KEY);
-                Iterator<Object> it = channelsArray.iterator();
-                while(it.hasNext()){
-                    JSONObject obj = (JSONObject)it.next();
-                    EventChannel c = EventChannel.create(obj);
-                    eventChannels.add(c);
-                }
+            if(config.adapters.get(ac.adapterId) != null){
+                throw new Exception("duplicate adapter-id ["+ac.adapterId+"] in agent ["+config.agentId+"]!");
             }
-
-            if(events.has(SUBSCRIBE_EVENT_CHANNELS_KEY)){
-                JSONArray channelsArray = events.getJSONArray(SUBSCRIBE_EVENT_CHANNELS_KEY);
-                Iterator<Object> it = channelsArray.iterator();
-                while(it.hasNext()){
-                    JSONObject obj = (JSONObject)it.next();
-                    EventChannelSubscription c = EventChannelSubscription.create(obj);
-                    eventSubscriptions.add(c);
-                }
-            }
-
+            config.adapters.put(ac.adapterId, ac);
         }
-
+        return config;
     }
 
-    public static String asString(int indent) {
+    public String toString(int indent) {
         Dump dump = new Dump();
 
         dump.add("AGENT CONFIG: ", indent);
@@ -118,34 +58,15 @@ public class AgentConfig {
         dump.add("Credentials: ", (indent + 1));
         dump.add("agent-id: [" + agentId + "]", (indent + 2));
         dump.add("password: [" + password + "]", (indent + 2));
-        dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, (indent + 1));
-        dump.add("Adapters: ", (indent + 1));
-        dump.add("List: "+adaptersList.size(), (indent + 2));
-        for(AdapterConfig ac : adaptersList){
-            dump.add(ac.asString(indent + 3));
-        }
-        dump.add("Map: ", (indent + 2));
+        dump.add("Adapters: "+adapters.keySet().size(), (indent + 1));
         for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
             String id = entry.getKey();
             AdapterConfig ac = entry.getValue();
-            dump.add("mapped key: "+id, (indent + 3));
-            dump.add(ac.asString(indent + 4));
-        }
-
-        dump.add("Event channels to open: "+eventChannels.size(), (indent + 1));
-        for(EventChannel c : eventChannels){
-            dump.add(c.asString(indent + 2));
-        }
-
-        dump.add("Event channels to subscribe: "+eventSubscriptions.size(), (indent + 1));
-        for(EventChannelSubscription c : eventSubscriptions){
-            dump.add(c.asString(indent + 2));
+            dump.add("adapter-id: "+id, (indent + 3));
+            dump.add(ac.toString(indent + 4));
         }
 
         return dump.toString();
-    }
-    public static String asString() {
-        return asString(0);
     }
 
 }

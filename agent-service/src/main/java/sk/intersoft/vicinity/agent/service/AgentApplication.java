@@ -41,26 +41,26 @@ public class AgentApplication extends Application {
         apiRouter.attach(ALIVE, AliveResource.class);
         apiRouter.attach(ALIVE+"/", AliveResource.class);
 
-        apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
-        apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
-
-        apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
-        apiRouter.attach(OBJECT_PROPERTY+"/", ObjectPropertyResource.class);
-
-        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
-        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);
-
-        apiRouter.attach(OBJECT_EVENT_OPEN, OpenObjectEventResource.class);
-        apiRouter.attach(OBJECT_EVENT_OPEN+"/", OpenObjectEventResource.class);
-
-        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE, SubscribeObjectEventResource.class);
-        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE+"/", SubscribeObjectEventResource.class);
-
-        apiRouter.attach(OBJECT_EVENT_PUBLISH, PublishObjectEventResource.class);
-        apiRouter.attach(OBJECT_EVENT_PUBLISH+"/", PublishObjectEventResource.class);
-
-        apiRouter.attach(OBJECT_EVENT, ObjectEventResource.class);
-        apiRouter.attach(OBJECT_EVENT+"/", ObjectEventResource.class);
+//        apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
+//        apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
+//
+//        apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
+//        apiRouter.attach(OBJECT_PROPERTY+"/", ObjectPropertyResource.class);
+//
+//        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
+//        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);
+//
+//        apiRouter.attach(OBJECT_EVENT_OPEN, OpenObjectEventResource.class);
+//        apiRouter.attach(OBJECT_EVENT_OPEN+"/", OpenObjectEventResource.class);
+//
+//        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE, SubscribeObjectEventResource.class);
+//        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE+"/", SubscribeObjectEventResource.class);
+//
+//        apiRouter.attach(OBJECT_EVENT_PUBLISH, PublishObjectEventResource.class);
+//        apiRouter.attach(OBJECT_EVENT_PUBLISH+"/", PublishObjectEventResource.class);
+//
+//        apiRouter.attach(OBJECT_EVENT, ObjectEventResource.class);
+//        apiRouter.attach(OBJECT_EVENT+"/", ObjectEventResource.class);
 
 
         return apiRouter;

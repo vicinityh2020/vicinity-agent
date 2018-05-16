@@ -51,7 +51,7 @@ public class InteractionPattern {
             throw new Exception("Missing or wrong configuration of read_link/write_link in: "+patternJSON.toString());
         }
     }
-    public static InteractionPattern createProperty(JSONObject patternJSON, boolean isConfiguration) throws Exception {
+    public static InteractionPattern createProperty(JSONObject patternJSON) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
         pattern.id = JSONUtil.getString(PID_KEY, patternJSON);
@@ -65,7 +65,7 @@ public class InteractionPattern {
 
     }
 
-    public static InteractionPattern createAction(JSONObject patternJSON, boolean isConfiguration) throws Exception {
+    public static InteractionPattern createAction(JSONObject patternJSON) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
         pattern.id = JSONUtil.getString(AID_KEY, patternJSON);
@@ -79,7 +79,7 @@ public class InteractionPattern {
 
     }
 
-    public static InteractionPattern createEvent(JSONObject patternJSON, boolean isConfiguration) throws Exception {
+    public static InteractionPattern createEvent(JSONObject patternJSON) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
 

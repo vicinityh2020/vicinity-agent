@@ -1,10 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.thing.DataSchema;
-import sk.intersoft.vicinity.agent.thing.ThingDescriptions;
-import sk.intersoft.vicinity.agent.thing.ThingsProcessor;
 
 import java.io.File;
 import java.util.Scanner;

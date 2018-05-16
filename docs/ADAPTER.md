@@ -1,4 +1,11 @@
+# CHANGELOG:
+Agent is actually in heavy refactoring to enable multi-agent client node.
+Here are actual important changes, please, adjust your adapter implementation according to it.
+
+[Click to see the CHANGELOG](docs/ADAPTER_CHANGELOG.md)
+
 # Adapter for integrators
+
 
 Adapter is the first step into interoperability in VICINITY. Its main purpose is to serve as the translator
 between infrastructure specific language and VICINITY language. Adapter is kind of software *driver*
