@@ -203,11 +203,11 @@ Each DataSchema must provide following properties:
 | type | string | yes | Enumerator, one of simple data types: [boolean, integer, double, string] or one of complex types [object, array]. |
 | description | string | no | Human readable description of the DataSchema. |
 
-####DataSchema "type": simple data type
+#### DataSchema "type": simple data type
 No additional fields are provided. Payload is simple data type.
 
 
-####DataSchema "type": "object"
+#### DataSchema "type": "object"
 If DataSchema is object, there must be provided the set of its properties.
 Object properties are provided in additional **field** array. Each **field** stands for one property.
 
