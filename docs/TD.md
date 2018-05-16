@@ -225,7 +225,6 @@ Fast example of object with two fields:
 * **person-name**: string value of the name
 * **address**: object with street and city information
 ```
-#!json
 {
     "type": "object",
     "description": "person name and address",
