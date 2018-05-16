@@ -284,7 +284,7 @@ Thus, array item description is in additional property **item**.
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
-| items | DataSchema | yes | The specification of array items structure. |
+| item | DataSchema | yes | The specification of array items structure. |
 
 
 Fast example of array of integers:
@@ -294,7 +294,7 @@ Fast example of array of integers:
 {
     "type": "array",
     "description": "array of integers",
-    "items": {
+    "item": {
         "type": "integer"
     }
 }
@@ -306,6 +306,50 @@ Fast example of expected payload for array  above:
 #!json
 [1, 2, 3, 4, 5]
 ```
+
+Fast example of array of objects:
+
+```
+#!json
+{
+    "type": "array",
+    "description": "array of objects with name and age",
+    "item": {
+        "type": "object",
+        "field": [
+            {
+                "name": "name",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "age",
+                "schema": {
+                    "type": "integer"
+                }
+            }
+        ]
+    }
+}
+```
+
+Fast example of expected payload for array  above:
+
+```
+#!json
+[
+    {
+        "name": "some name",
+        "age": 27
+    },
+    {
+        "name": "another name",
+        "age": 42
+    }
+]
+```
+
 
 ## Serialization of Thing Descriptions
 
