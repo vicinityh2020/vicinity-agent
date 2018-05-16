@@ -127,6 +127,8 @@ If **"endpoint"** is missing and **"active-discovery"** is missing, **"active-di
 
 ## Specification of "input"/"output" in thing desc. links (and event) are now mandatory
 
-DataSchema specifying the payload of "input"/"output" has to be defined.
+DataSchema specifying the payload of "input"/"output" schema had to be defined.
+The purpose is to enable the Agora.
+
 Now, "input"/"output" in links (and "output" in event) must be provided, not empty and
 must be valid according specification [see DataSchema specs](docs/TD.md#data-schema).
