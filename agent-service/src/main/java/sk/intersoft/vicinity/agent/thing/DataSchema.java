@@ -58,39 +58,46 @@ public class DataSchema {
         return isObject(type) || isArray(type) || isSimpleType(type);
     }
 
-    public static DataSchema create(JSONObject schemaJSON) throws Exception {
+    public static DataSchema create(JSONObject schemaJSON,
+                                    ThingValidator validator) throws Exception {
         DataSchema schema = new DataSchema();
-        schema.type = JSONUtil.getString(TYPE_KEY, schemaJSON);
-        if(schema.type == null) {
-            throw new Exception("DataSchema: Missing ["+TYPE_KEY+"] in: "+schemaJSON.toString());
+        try{
+            schema.type = JSONUtil.getString(TYPE_KEY, schemaJSON);
+            if(schema.type == null) {
+                validator.error("Missing ["+TYPE_KEY+"] in data-schema: "+schemaJSON.toString());
+            }
+
+            if(!isCorrectType(schema.type)){
+                validator.error("Unknown ["+TYPE_KEY+" : "+schema.type+"] in  data-schema: "+schemaJSON.toString());
+            }
+
+            schema.description = JSONUtil.getString(DESCRIPTION_KEY, schemaJSON);
+
+            if(schema.isObject()){
+                List<JSONObject> field = JSONUtil.getObjectArray(FIELD_KEY, schemaJSON);
+                if(field == null) {
+                    validator.error("Missing ["+FIELD_KEY+"] in data-schema: "+schemaJSON.toString());
+                }
+                if(field.isEmpty()) {
+                    validator.error("Empty ["+FIELD_KEY+"] array in data-schema: "+schemaJSON.toString());
+                }
+
+                for(JSONObject f : field){
+                    schema.field.add(DataSchemaField.create(f, validator));
+                }
+
+            }
+            else if(schema.isArray()){
+                JSONObject item = JSONUtil.getObject(ITEM_KEY, schemaJSON);
+                if(item == null) {
+                    validator.error("Missing ["+ITEM_KEY+"] in data-schema: "+schemaJSON.toString());
+                }
+                schema.item = DataSchema.create(item, validator);
+            }
+
         }
-
-        if(!isCorrectType(schema.type)){
-            throw new Exception("DataSchema: Unknown ["+TYPE_KEY+" : "+schema.type+"] in: "+schemaJSON.toString());
-        }
-
-        schema.description = JSONUtil.getString(DESCRIPTION_KEY, schemaJSON);
-
-        if(schema.isObject()){
-            List<JSONObject> field = JSONUtil.getObjectArray(FIELD_KEY, schemaJSON);
-            if(field == null) {
-                throw new Exception("DataSchema: Missing ["+FIELD_KEY+"] in: "+schemaJSON.toString());
-            }
-            if(field.isEmpty()) {
-                throw new Exception("DataSchema: Empty ["+FIELD_KEY+"] array in: "+schemaJSON.toString());
-            }
-
-            for(JSONObject f : field){
-                schema.field.add(DataSchemaField.create(f));
-            }
-
-        }
-        else if(schema.isArray()){
-            JSONObject item = JSONUtil.getObject(ITEM_KEY, schemaJSON);
-            if(item == null) {
-                throw new Exception("DataSchema: Missing ["+ITEM_KEY+"] in: "+schemaJSON.toString());
-            }
-            schema.item = DataSchema.create(item);
+        catch(Exception e){
+            validator.error("Unable to process data-schema " + schemaJSON.toString());
         }
 
         return schema;

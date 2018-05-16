@@ -5,16 +5,16 @@
 	"type": "device-type",
 	"properties": [
 	{
-		"pid": "device-1-pid-1",
+		"pidx": "device-1-pid-1",
 		"monitors": "AmbientTemperature",
-		"read_link": {
+		"read_linkx": {
 			"href": "/custom/{oid}/x",
 			"output": {
 			    "type": "integer"
 			}
 		},
 		"write_link": {
-  			"href": "/custom-set/{oid}/y",
+  			"hrefx": "/custom-set/{oid}/y",
 			"output": {
 			    "type": "integer"
 			},
@@ -31,9 +31,9 @@
 	],
 	"actions": [
 	{
-		"aid": "device-1-aid-1",
+		"aidx": "device-1-aid-1",
 		"affects": "AmbientTemperature",
-		"write_link": {
+		"write_linkx": {
 			"href": "/custom-post/{oid}/z",
 			"output": {
 			    "type": "integer"
@@ -45,7 +45,7 @@
 		"read_link": {
 			"href": "/objects/{oid}/actions/{aid}",
 			"output": {
-			    "type": "integer"
+			    "type": "integerx"
 			},
 		}
 

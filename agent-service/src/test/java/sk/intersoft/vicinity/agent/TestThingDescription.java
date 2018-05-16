@@ -1,8 +1,8 @@
 package sk.intersoft.vicinity.agent;
 
 import org.json.JSONObject;
-import sk.intersoft.vicinity.agent.thing.DataSchema;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
+import sk.intersoft.vicinity.agent.thing.ThingValidator;
 
 import java.io.File;
 import java.util.Scanner;
@@ -22,7 +22,10 @@ public class TestThingDescription {
     public void process() throws Exception{
         JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
 
-        System.out.println(ThingDescription.create(in).toString(0));
+        ThingValidator validator = new ThingValidator(false);
+        System.out.println(ThingDescription.create(in, validator).toString(0));
+        System.out.println("FAILED: " +validator.failed());
+        System.out.println(validator.failure().toString(2));
 
     }
 

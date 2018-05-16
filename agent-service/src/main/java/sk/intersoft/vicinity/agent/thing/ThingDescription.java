@@ -35,7 +35,7 @@ public class ThingDescription {
 
 
 
-    public static ThingDescription create(JSONObject thingJSON) throws Exception {
+    public static ThingDescription create(JSONObject thingJSON, ThingValidator validator) throws Exception {
         logger.debug("PROCESSING THING DESCRIPTION FROM: \n"+thingJSON.toString(2));
 
 
@@ -43,14 +43,15 @@ public class ThingDescription {
         ThingDescription thing = new ThingDescription();
 
         try{
+
             thing.oid = JSONUtil.getString(OID_KEY, thingJSON);
-            if(thing.oid == null) throw new Exception("Missing thing [oid]");
+            if(thing.oid == null) validator.error("Missing thing [oid].");
 
             thing.type = JSONUtil.getString(TYPE_KEY, thingJSON);
-            if(thing.type == null) throw new Exception("Missing thing [type]");
+            if(thing.type == null) validator.error("Missing thing [type].");
 
             thing.name = JSONUtil.getString(NAME_KEY, thingJSON);
-            if(thing.name == null) throw new Exception("Missing thing [name]");
+            if(thing.name == null) validator.error("Missing thing [name].");
 
             List<JSONObject> properties = JSONUtil.getObjectArray(PROPERTIES_KEY, thingJSON);
             List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
@@ -58,28 +59,35 @@ public class ThingDescription {
 
             if(properties != null){
                 for(JSONObject property : properties){
-                    InteractionPattern pattern = InteractionPattern.createProperty(property);
+                    InteractionPattern pattern = InteractionPattern.createProperty(property, validator);
                     thing.properties.put(pattern.id, pattern);
                 }
             }
             if(actions != null){
                 for(JSONObject action : actions){
-                    InteractionPattern pattern = InteractionPattern.createAction(action);
+                    InteractionPattern pattern = InteractionPattern.createAction(action, validator);
                     thing.actions.put(pattern.id, pattern);
                 }
             }
 
             if(events != null){
                 for(JSONObject event : events){
-                    InteractionPattern pattern = InteractionPattern.createEvent(event);
+                    InteractionPattern pattern = InteractionPattern.createEvent(event, validator);
                     thing.events.put(pattern.id, pattern);
                 }
             }
 
+            if(validator.failed()){
+                String msg = thingJSON.toString();
+                if(thing.oid != null) msg = thing.oid;
+                validator.error("Unable to process thing: "+msg);
+            }
         }
         catch(Exception e) {
             logger.error("", e);
-            throw new Exception(e.getMessage() + " ..unable to process thing: "+thingJSON.toString());
+            String msg = thingJSON.toString();
+            if(thing.oid != null) msg = thing.oid;
+            validator.error("Unable to process thing: "+msg);
         }
 
         return thing;

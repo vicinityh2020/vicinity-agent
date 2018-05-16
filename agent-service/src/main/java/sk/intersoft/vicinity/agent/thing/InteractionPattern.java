@@ -38,60 +38,77 @@ public class InteractionPattern {
 
 
 
-    public static void createLinks(InteractionPattern pattern, JSONObject patternJSON) throws Exception {
+    public static void createLinks(InteractionPattern pattern,
+                                   JSONObject patternJSON,
+                                   ThingValidator validator) throws Exception {
         JSONObject read = JSONUtil.getObject(READ_LINK_KEY, patternJSON);
         JSONObject write = JSONUtil.getObject(WRITE_LINK_KEY, patternJSON);
 
 
         if(read != null || write != null){
-            pattern.readEndpoint = InteractionPatternEndpoint.create(read, InteractionPatternEndpoint.READ);
-            pattern.writeEndpoint = InteractionPatternEndpoint.create(write, InteractionPatternEndpoint.WRITE);
+            pattern.readEndpoint = InteractionPatternEndpoint.create(read, InteractionPatternEndpoint.READ, validator);
+            pattern.writeEndpoint = InteractionPatternEndpoint.create(write, InteractionPatternEndpoint.WRITE, validator);
         }
         else {
-            throw new Exception("Missing or wrong configuration of read_link/write_link in: "+patternJSON.toString());
+            validator.error("At least one of read_link/write_link must be defined in: "+patternJSON.toString());
         }
     }
-    public static InteractionPattern createProperty(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createProperty(JSONObject patternJSON, ThingValidator validator) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
-        pattern.id = JSONUtil.getString(PID_KEY, patternJSON);
-        if(pattern.id == null) throw new Exception("Missing ["+PID_KEY+"] in: "+patternJSON.toString());
+        try{
+            pattern.id = JSONUtil.getString(PID_KEY, patternJSON);
+            if(pattern.id == null) validator.error("Missing ["+PID_KEY+"] in property: "+patternJSON.toString());
 
-        pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
-        if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
+            pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
+            if(pattern.refersTo == null) validator.error("Missing ["+MONITORS_KEY+"] in property: "+patternJSON.toString());
 
-        createLinks(pattern, patternJSON);
+            createLinks(pattern, patternJSON, validator);
+        }
+        catch(Exception e){
+            validator.error("Unable to process property: "+patternJSON.toString());
+        }
         return pattern;
 
     }
 
-    public static InteractionPattern createAction(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createAction(JSONObject patternJSON, ThingValidator validator) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
-        pattern.id = JSONUtil.getString(AID_KEY, patternJSON);
-        if(pattern.id == null) throw new Exception("Missing ["+AID_KEY+"] in: "+patternJSON.toString());
+        try{
+            pattern.id = JSONUtil.getString(AID_KEY, patternJSON);
+            if(pattern.id == null) validator.error("Missing ["+AID_KEY+"] in action: "+patternJSON.toString());
 
-        pattern.refersTo = JSONUtil.getString(AFFECTS_KEY, patternJSON);
-        if(pattern.refersTo == null) throw new Exception("Missing ["+AFFECTS_KEY+"] in: "+patternJSON.toString());
+            pattern.refersTo = JSONUtil.getString(AFFECTS_KEY, patternJSON);
+            if(pattern.refersTo == null) validator.error("Missing ["+AFFECTS_KEY+"] in action: "+patternJSON.toString());
 
-        createLinks(pattern, patternJSON);
+            createLinks(pattern, patternJSON, validator);
+        }
+        catch(Exception e){
+            validator.error("Unable to process action: "+patternJSON.toString());
+        }
+
         return pattern;
 
     }
 
-    public static InteractionPattern createEvent(JSONObject patternJSON) throws Exception {
+    public static InteractionPattern createEvent(JSONObject patternJSON, ThingValidator validator) throws Exception {
         InteractionPattern pattern = new InteractionPattern();
 
+        try{
+            pattern.id = JSONUtil.getString(EID_KEY, patternJSON);
+            if(pattern.id == null) validator.error("Missing ["+EID_KEY+"] in event: "+patternJSON.toString());
 
-        pattern.id = JSONUtil.getString(EID_KEY, patternJSON);
-        if(pattern.id == null) throw new Exception("Missing ["+EID_KEY+"] in: "+patternJSON.toString());
+            pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
+            if(pattern.refersTo == null) validator.error("Missing ["+MONITORS_KEY+"] in event: "+patternJSON.toString());
 
-        pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
-        if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
-
-        JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, patternJSON);
-        if(output == null) throw new Exception("Missing ["+DataSchema.OUTPUT_KEY+"] in: "+patternJSON.toString());
-        pattern.output = DataSchema.create(output);
+            JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, patternJSON);
+            if(output == null) validator.error("Missing ["+DataSchema.OUTPUT_KEY+"] in event: "+patternJSON.toString());
+            pattern.output = DataSchema.create(output, validator);
+        }
+        catch(Exception e){
+            validator.error("Unable to process event: "+patternJSON.toString());
+        }
 
         return pattern;
 

@@ -12,18 +12,25 @@ public class DataSchemaField {
     public static final String NAME_KEY = "name";
     public static final String SCHEMA_KEY = "schema";
 
-    public static DataSchemaField create(JSONObject fieldJSON) throws Exception {
+    public static DataSchemaField create(JSONObject fieldJSON,
+                                         ThingValidator validator) throws Exception {
         DataSchemaField field = new DataSchemaField();
-        field.name = JSONUtil.getString(NAME_KEY, fieldJSON);
-        if (field.name == null) {
-            throw new Exception("DataSchemaField: Missing [" + NAME_KEY + "] in: " + fieldJSON.toString());
-        }
+        try{
+            field.name = JSONUtil.getString(NAME_KEY, fieldJSON);
+            if (field.name == null) {
+                validator.error("Missing [" + NAME_KEY + "] in data-schema-field: " + fieldJSON.toString());
+            }
 
-        JSONObject schema = JSONUtil.getObject(SCHEMA_KEY, fieldJSON);
-        if(schema == null) {
-            throw new Exception("DataSchemaField: Missing ["+SCHEMA_KEY+"] in: "+fieldJSON.toString());
+            JSONObject schema = JSONUtil.getObject(SCHEMA_KEY, fieldJSON);
+            if(schema == null) {
+                validator.error("Missing ["+SCHEMA_KEY+"] in  in data-schema-field: "+fieldJSON.toString());
+            }
+            field.schema = DataSchema.create(schema, validator);
+
         }
-        field.schema = DataSchema.create(schema);
+        catch(Exception e){
+            validator.error("unable to process data-schema-field: "+fieldJSON.toString());
+        }
 
         return field;
     }

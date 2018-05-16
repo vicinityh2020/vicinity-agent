@@ -37,7 +37,7 @@
                                         {
                                             "name": "subff",
                                             "schema": {
-                                                "type": string
+                                                "type": "stringx"
                                             }
                                         }
                                     ]

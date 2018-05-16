@@ -20,21 +20,29 @@ public class InteractionPatternEndpoint {
 
 
 
-    public static InteractionPatternEndpoint create(JSONObject linkJSON, String linkType) throws Exception {
+    public static InteractionPatternEndpoint create(JSONObject linkJSON,
+                                                    String linkType,
+                                                    ThingValidator validator) throws Exception {
         if(linkJSON != null){
             InteractionPatternEndpoint endpoint = new InteractionPatternEndpoint();
+            try {
+                endpoint.href = JSONUtil.getString(HREF_KEY, linkJSON);
+                if (endpoint.href == null) validator.error("Missing [" + HREF_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
 
-            endpoint.href = JSONUtil.getString(HREF_KEY, linkJSON);
-            if(endpoint.href == null) throw new Exception("Missing ["+HREF_KEY+"] in: "+linkJSON.toString());
+                JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, linkJSON);
+                if (output == null)
+                    validator.error("Missing [" + DataSchema.OUTPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
+                endpoint.output = DataSchema.create(output, validator);
 
-            JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, linkJSON);
-            if(output == null) throw new Exception("Missing ["+DataSchema.OUTPUT_KEY+"] in: "+linkJSON.toString());
-            endpoint.output = DataSchema.create(output);
-
-            if(linkType.equals(InteractionPatternEndpoint.WRITE)){
-                JSONObject input = JSONUtil.getObject(DataSchema.INPUT_KEY, linkJSON);
-                if(input == null) throw new Exception("Missing ["+DataSchema.INPUT_KEY+"] in: "+linkJSON.toString());
-                endpoint.input = DataSchema.create(input);
+                if (linkType.equals(InteractionPatternEndpoint.WRITE)) {
+                    JSONObject input = JSONUtil.getObject(DataSchema.INPUT_KEY, linkJSON);
+                    if (input == null)
+                        validator.error("Missing [" + DataSchema.INPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
+                    endpoint.input = DataSchema.create(input, validator);
+                }
+            }
+            catch(Exception e){
+                validator.error("Unable to process link: "+linkJSON.toString());
             }
             return endpoint;
         }

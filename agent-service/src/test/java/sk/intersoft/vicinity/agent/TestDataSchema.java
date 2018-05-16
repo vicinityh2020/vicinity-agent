@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent;
 
 import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.thing.DataSchema;
+import sk.intersoft.vicinity.agent.thing.ThingValidator;
 
 import java.io.File;
 import java.util.Scanner;
@@ -23,9 +24,18 @@ public class TestDataSchema {
         JSONObject in2 = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/schema/test-object.json"));
         JSONObject in3 = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/schema/test-array.json"));
 
-        System.out.println(DataSchema.create(in1).toString(0));
-        System.out.println(DataSchema.create(in2).toString(0));
-        System.out.println(DataSchema.create(in3).toString(0));
+        ThingValidator validator = new ThingValidator(true);
+        System.out.println(DataSchema.create(in1, validator).toString(0));
+        System.out.println(DataSchema.create(in2, validator).toString(0));
+
+        ThingValidator validatorAll = new ThingValidator(true);
+        try{
+
+            System.out.println(DataSchema.create(in3, validatorAll).toString(0));
+        }
+        catch(Exception e) {
+        }
+        System.out.println(validatorAll.failure().toString(2));
 
     }
 
