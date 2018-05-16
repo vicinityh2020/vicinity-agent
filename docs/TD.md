@@ -264,7 +264,48 @@ Fast example of object with two fields:
 }
 ```
 
+Fast example of expected payload for object above:
 
+```
+#!json
+{
+    "person-name": "some person name",
+    "address": {
+        "street": "some street",
+        "country": "some country",
+    }
+}
+```
+
+#### DataSchema "type": "array"
+If DataSchema is array, there must be provided the description, how will be the
+the structure or array items. We restrict the array only to objects of similar type.
+Thus, array item description is in additional property **item**.
+
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| items | DataSchema | yes | The specification of array items structure. |
+
+
+Fast example of array of integers:
+
+```
+#!json
+{
+    "type": "array",
+    "description": "array of integers",
+    "items": {
+        "type": "integer"
+    }
+}
+```
+
+Fast example of expected payload for array  above:
+
+```
+#!json
+[1, 2, 3, 4, 5]
+```
 
 ## Serialization of Thing Descriptions
 
