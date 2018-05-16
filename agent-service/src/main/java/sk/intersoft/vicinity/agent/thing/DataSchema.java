@@ -24,6 +24,10 @@ public class DataSchema {
                     Arrays.asList(BOOLEAN, INTEGER, DOUBLE, STRING));
 
     // JSON KEYS
+    public static final String INPUT_KEY = "input";
+    public static final String OUTPUT_KEY = "output";
+
+
     public static final String TYPE_KEY = "type";
     public static final String DESCRIPTION_KEY = "description";
     public static final String FIELD_KEY = "field";

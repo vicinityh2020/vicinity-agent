@@ -10,7 +10,7 @@ public class InteractionPattern {
 
     public String id = null;
     public String refersTo = null;
-    public InteractionPatternParameter output = null;
+    public DataSchema output = null;
     public InteractionPatternEndpoint readEndpoint = null;
     public InteractionPatternEndpoint writeEndpoint = null;
 
@@ -89,10 +89,9 @@ public class InteractionPattern {
         pattern.refersTo = JSONUtil.getString(MONITORS_KEY, patternJSON);
         if(pattern.refersTo == null) throw new Exception("Missing ["+MONITORS_KEY+"] in: "+patternJSON.toString());
 
-        JSONObject output = JSONUtil.getObject(InteractionPatternParameter.OUTPUT_KEY, patternJSON);
-//        if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+patternJSON.toString());
-        if(output == null) output =  new JSONObject();
-        pattern.output = InteractionPatternParameter.create(output);
+        JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, patternJSON);
+        if(output == null) throw new Exception("Missing ["+DataSchema.OUTPUT_KEY+"] in: "+patternJSON.toString());
+        pattern.output = DataSchema.create(output);
 
         return pattern;
 
@@ -103,15 +102,12 @@ public class InteractionPattern {
 
         dump.add("INTERACTION PATTERN:", indent);
         dump.add("id: "+id, (indent + 1));
-        dump.add("refers-to: "+refersTo, (indent + 1));
+        dump.add("refers-to (monitors/affects): "+refersTo, (indent + 1));
 
 
         if(output != null){
             dump.add("OUTPUT: ", (indent + 1));
             dump.add(output.toString(indent + 2));
-        }
-        else {
-            dump.add("OUTPUT: unset", (indent + 1));
         }
 
         dump.add("ENDPOINTS: ", (indent + 1));

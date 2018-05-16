@@ -8,8 +8,8 @@ import java.util.List;
 
 public class InteractionPatternEndpoint {
     public String href = null;
-    public InteractionPatternParameter output = null;
-    public InteractionPatternParameter input = null;
+    public DataSchema output = null;
+    public DataSchema input = null;
 
     // JSON keys
     public static final String HREF_KEY = "href";
@@ -27,17 +27,14 @@ public class InteractionPatternEndpoint {
             endpoint.href = JSONUtil.getString(HREF_KEY, linkJSON);
             if(endpoint.href == null) throw new Exception("Missing ["+HREF_KEY+"] in: "+linkJSON.toString());
 
-            JSONObject output = JSONUtil.getObject(InteractionPatternParameter.OUTPUT_KEY, linkJSON);
-//            if(output == null) throw new Exception("Missing ["+InteractionPatternParameter.OUTPUT_KEY+"] in: "+linkJSON.toString());
-            if(output == null) output = new JSONObject();
-            System.out.println("OUTPUT: "+output);
-            endpoint.output = InteractionPatternParameter.create(output);
+            JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, linkJSON);
+            if(output == null) throw new Exception("Missing ["+DataSchema.OUTPUT_KEY+"] in: "+linkJSON.toString());
+            endpoint.output = DataSchema.create(output);
 
             if(linkType.equals(InteractionPatternEndpoint.WRITE)){
-                JSONObject input = JSONUtil.getObject(InteractionPatternParameter.INPUT_KEY, linkJSON);
-//                if(input == null) throw new Exception("Missing ["+InteractionPatternParameter.INPUT_KEY+"] in: "+linkJSON.toString());
-                if(input == null) input = new JSONObject();
-                endpoint.input = InteractionPatternParameter.create(input);
+                JSONObject input = JSONUtil.getObject(DataSchema.INPUT_KEY, linkJSON);
+                if(input == null) throw new Exception("Missing ["+DataSchema.INPUT_KEY+"] in: "+linkJSON.toString());
+                endpoint.input = DataSchema.create(input);
             }
             return endpoint;
         }

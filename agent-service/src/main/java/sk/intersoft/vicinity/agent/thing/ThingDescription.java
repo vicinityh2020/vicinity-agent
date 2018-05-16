@@ -3,8 +3,6 @@ package sk.intersoft.vicinity.agent.thing;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
-import sk.intersoft.vicinity.agent.thing.persistence.PersistedThing;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -16,12 +14,12 @@ public class ThingDescription {
     final static Logger logger = LoggerFactory.getLogger(ThingDescription.class.getName());
 
     public String oid = null;
-    public String AgentInfrastructureID = null;
+    public String infrastructureId = null;
+    public String name = null;
     public String adapterId = null;
-    public String adapterThingId = null;
+    public String agentId = null;
     public String password = null;
     public String type;
-    public String jsonString;
 
     public Map<String, InteractionPattern> properties = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
@@ -29,8 +27,7 @@ public class ThingDescription {
 
     // JSON keys
     public static String OID_KEY = "oid";
-    public static String AGENT_INFRASTRUCTURE_ID_KEY = "infrastructure-id";
-    public static String PASSWORD_KEY = "password";
+    public static String NAME_KEY = "name";
     public static String TYPE_KEY = "type";
     public static String PROPERTIES_KEY = "properties";
     public static String ACTIONS_KEY = "actions";
@@ -38,9 +35,52 @@ public class ThingDescription {
 
 
 
-    public static ThingDescription create(JSONObject thingJSON, AdapterConfig adapterConfig) throws Exception {
+    public static ThingDescription create(JSONObject thingJSON) throws Exception {
+        logger.debug("PROCESSING THING DESCRIPTION FROM: \n"+thingJSON.toString(2));
+
+
 
         ThingDescription thing = new ThingDescription();
+
+        try{
+            thing.oid = JSONUtil.getString(OID_KEY, thingJSON);
+            if(thing.oid == null) throw new Exception("Missing thing [oid]");
+
+            thing.type = JSONUtil.getString(TYPE_KEY, thingJSON);
+            if(thing.type == null) throw new Exception("Missing thing [type]");
+
+            thing.name = JSONUtil.getString(NAME_KEY, thingJSON);
+            if(thing.name == null) throw new Exception("Missing thing [name]");
+
+            List<JSONObject> properties = JSONUtil.getObjectArray(PROPERTIES_KEY, thingJSON);
+            List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
+            List<JSONObject> events = JSONUtil.getObjectArray(EVENTS_KEY, thingJSON);
+
+            if(properties != null){
+                for(JSONObject property : properties){
+                    InteractionPattern pattern = InteractionPattern.createProperty(property);
+                    thing.properties.put(pattern.id, pattern);
+                }
+            }
+            if(actions != null){
+                for(JSONObject action : actions){
+                    InteractionPattern pattern = InteractionPattern.createAction(action);
+                    thing.actions.put(pattern.id, pattern);
+                }
+            }
+
+            if(events != null){
+                for(JSONObject event : events){
+                    InteractionPattern pattern = InteractionPattern.createEvent(event);
+                    thing.events.put(pattern.id, pattern);
+                }
+            }
+
+        }
+        catch(Exception e) {
+            logger.error("", e);
+            throw new Exception(e.getMessage() + " ..unable to process thing: "+thingJSON.toString());
+        }
 
         return thing;
     }
@@ -50,11 +90,11 @@ public class ThingDescription {
 
         dump.add("THING :", indent);
         dump.add("oid: "+oid, (indent + 1));
-        dump.add("agent-infrastructure-id: "+ AgentInfrastructureID, (indent + 1));
-        dump.add("adapter-thing-id: "+ adapterThingId, (indent + 1));
+        dump.add("type: "+type, (indent + 1));
+        dump.add("name: "+name, (indent + 1));
+        dump.add("agent-id: "+ agentId, (indent + 1));
         dump.add("adapter-id: "+ adapterId, (indent + 1));
         dump.add("password: "+password, (indent + 1));
-        dump.add("type: "+type, (indent + 1));
         dump.add("credentials: ", (indent + 1));
         dump.add("PROPERTIES: "+properties.size(), (indent + 1));
         for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
@@ -87,6 +127,6 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+ AgentInfrastructureID +"][PWD: "+password+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][PWD: "+password+"] ";
     }
 }
