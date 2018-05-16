@@ -228,12 +228,6 @@ Fast example of object with two fields:
 ```
 #!json
 {
-    "test": "here"
-}
-
-```
-#!json
-{
     "type": "object",
     "description": "person name and address",
     "field": [
