@@ -1,0 +1,52 @@
+{
+    "type": "array",
+    "description": "array of objects with name and age",
+    "item": {
+        "type": "object",
+        "field": [
+            {
+                "name": "name",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "age",
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            {
+                "name": "list",
+                "schema": {
+                    "type": "array",
+                    "item": {
+                        "type": "object",
+                        "field": [
+                            {
+                                "name": "ff1",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "name": "ff2",
+                                "schema": {
+                                    "type": "object",
+                                    "field": [
+                                        {
+                                            "name": "subff",
+                                            "schema": {
+                                                "type": string
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

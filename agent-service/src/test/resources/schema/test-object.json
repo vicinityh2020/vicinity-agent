@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "description": "person name and address",
+    "field": [
+        {
+            "name": "person-name",
+            "description": "person name",
+            "schema": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "address",
+            "description": "person address",
+            "schema": {
+                "type": "object",
+                "field": [
+                    {
+                        "name": "street",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "country",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
