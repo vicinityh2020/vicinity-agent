@@ -142,7 +142,42 @@ It was necessary to move inputs/outputs into links, because different link may p
 Links for writing must contain mandatory **input** field. **input** describes the schema of payload required to set the property or execute the action.
 
 ### Data schema
-See [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section)
+DataSchema describes the payload for input or  output of the link or event in human readable way.
+DataSchema enables the developer to understand, what payload to expect, how the payload will look like
+and how to process/interpret it. It has only informal purposes for developers using the
+interaction patterns.
+
+DataSchema is based on [W3C Thing Description typed system](https://www.w3.org/TR/wot-thing-description/#type-system-section).
+W3C working specification enables the ambiguous DataSchema interpretation.
+As it must be possible to unambiguously transform the DataSchema into semantic representation,
+we provide the set of restrictions (and updates) to it.
+
+**!!IMPORTANT!!!**
+Root DataSchema attached to input/output must always have **"type": "object" or "array"**.
+It is to ensure, that payload will be the valid JSON (not just simple type)!
+
+DataSchema is always the simple type, object of array. Definition is recursive.
+The base properties for data schema are the **type** and **description**.
+Depending of the type, the schema may have different structure.
+
+Each DataSchema must provide following properties:
+
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | string | yes | Enumerator, one of simple data types: [boolean, integer, double, string] or one of complex types [object, array]. |
+| description | string | no | Human readable description of the DataSchema. |
+
+####DataSchema "type": simple data type
+No additional fields are provided. Payload is simple data type.
+
+
+####DataSchema "type": "object"
+If DataSchema is object, there must be provided the set of its properties.
+Object properties are provided in additional **field** array. Each **field** stands for one property.
+
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| field | array | yes | . |
 
 
 ## Serialization of Thing Descriptions
