@@ -122,7 +122,7 @@ is **adapter -> agent**. In this case, agent can not speak to adapter and
 discovery must be invoked by adapter.
 
 For this reason, **"active-discovery"** must be set to **true**.
-If **"active-discovery"** is missing, it is set to **true** by default.
+If **"endpoint"** is missing and **"active-discovery"** is missing, **"active-discovery"** is set to **true** by default.
 
 
 ## Specification of "input"/"output" in thing desc. links (and event) are now mandatory
