@@ -1,0 +1,25 @@
+[
+
+{
+    "oid": "test",
+    "name": "brainless fuckfish",
+    "type": "Lightbulb",
+    "properties": [
+        {
+            "pid": "p",
+            "monitors": "Luminance",
+            "read_link": {
+                "href": "/objects/{oid}/properties/{pid}",
+                "output": {
+                }
+            },
+            "write_link": {
+                "href": "/objects/{oid}/properties/{pid}",
+                "input": {},
+                "output": {}
+            }
+        }
+    ]
+}
+
+]

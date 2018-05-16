@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVER_PORT=9997
-CONFIG_FILE=config/test-config.json
+CONFIG_FILE=config/simulate-config.json
 LOGS_FOLDER=logs
 
 # ==============================
