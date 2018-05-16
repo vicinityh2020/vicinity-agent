@@ -62,37 +62,50 @@ public class DataSchema {
                                     ThingValidator validator) throws Exception {
         DataSchema schema = new DataSchema();
         try{
+            boolean fail = false;
+
             schema.type = JSONUtil.getString(TYPE_KEY, schemaJSON);
             if(schema.type == null) {
-                validator.error("Missing ["+TYPE_KEY+"] in data-schema: "+schemaJSON.toString());
+                fail = validator.error("Missing ["+TYPE_KEY+"] in data-schema: "+schemaJSON.toString());
             }
 
             if(!isCorrectType(schema.type)){
-                validator.error("Unknown ["+TYPE_KEY+" : "+schema.type+"] in  data-schema: "+schemaJSON.toString());
+                fail = validator.error("Unknown ["+TYPE_KEY+" : "+schema.type+"] in  data-schema: "+schemaJSON.toString());
             }
 
             schema.description = JSONUtil.getString(DESCRIPTION_KEY, schemaJSON);
 
+
             if(schema.isObject()){
                 List<JSONObject> field = JSONUtil.getObjectArray(FIELD_KEY, schemaJSON);
                 if(field == null) {
-                    validator.error("Missing ["+FIELD_KEY+"] in data-schema: "+schemaJSON.toString());
+                    fail = validator.error("Missing ["+FIELD_KEY+"] in data-schema: "+schemaJSON.toString());
                 }
                 if(field.isEmpty()) {
-                    validator.error("Empty ["+FIELD_KEY+"] array in data-schema: "+schemaJSON.toString());
+                    fail = validator.error("Empty ["+FIELD_KEY+"] array in data-schema: "+schemaJSON.toString());
                 }
 
                 for(JSONObject f : field){
-                    schema.field.add(DataSchemaField.create(f, validator));
+                    DataSchemaField processed = DataSchemaField.create(f, validator);
+                    if(processed == null) fail = true;
+                    else {
+                        schema.field.add(processed);
+                    }
                 }
 
             }
             else if(schema.isArray()){
                 JSONObject item = JSONUtil.getObject(ITEM_KEY, schemaJSON);
                 if(item == null) {
-                    validator.error("Missing ["+ITEM_KEY+"] in data-schema: "+schemaJSON.toString());
+                    fail = validator.error("Missing ["+ITEM_KEY+"] in data-schema: "+schemaJSON.toString());
                 }
                 schema.item = DataSchema.create(item, validator);
+                if(schema.item == null) fail = true;
+            }
+
+            if(fail){
+                validator.error("Unable to process data-schema: "+schemaJSON.toString());
+                return null;
             }
 
         }

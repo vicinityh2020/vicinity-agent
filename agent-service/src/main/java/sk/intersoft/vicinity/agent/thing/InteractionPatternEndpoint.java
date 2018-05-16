@@ -24,22 +24,32 @@ public class InteractionPatternEndpoint {
                                                     String linkType,
                                                     ThingValidator validator) throws Exception {
         if(linkJSON != null){
+            boolean fail = false;
+
             InteractionPatternEndpoint endpoint = new InteractionPatternEndpoint();
             try {
                 endpoint.href = JSONUtil.getString(HREF_KEY, linkJSON);
-                if (endpoint.href == null) validator.error("Missing [" + HREF_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
+                if (endpoint.href == null) fail = validator.error("Missing [" + HREF_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
 
                 JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, linkJSON);
                 if (output == null)
-                    validator.error("Missing [" + DataSchema.OUTPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
+                    fail = validator.error("Missing [" + DataSchema.OUTPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
                 endpoint.output = DataSchema.create(output, validator);
+                if(endpoint.output == null) fail = true;
 
                 if (linkType.equals(InteractionPatternEndpoint.WRITE)) {
                     JSONObject input = JSONUtil.getObject(DataSchema.INPUT_KEY, linkJSON);
                     if (input == null)
-                        validator.error("Missing [" + DataSchema.INPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
+                        fail = validator.error("Missing [" + DataSchema.INPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
                     endpoint.input = DataSchema.create(input, validator);
+                    if(endpoint.input == null) fail = true;
                 }
+
+                if(fail){
+                    validator.error("Unable to process ["+linkType+"] link: "+linkJSON.toString());
+                    return null;
+                }
+
             }
             catch(Exception e){
                 validator.error("Unable to process link: "+linkJSON.toString());

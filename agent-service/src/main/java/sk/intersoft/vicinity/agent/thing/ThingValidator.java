@@ -15,10 +15,16 @@ public class ThingValidator {
         this.failOnError = failOnError;
     }
 
-    public void error(String error) throws Exception {
+    public String identify(String id, JSONObject object) {
+        if(id != null) return "["+id+"]";
+        return object.toString();
+    }
+
+    public boolean error(String error) throws Exception {
         String encode = error.replaceAll("\"", "\'");
         errors.add(encode);
         if(failOnError) throw new Exception(encode);
+        return true;
     }
 
     public boolean failed(){

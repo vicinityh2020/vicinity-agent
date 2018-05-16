@@ -44,14 +44,16 @@ public class ThingDescription {
 
         try{
 
+            boolean fail = false;
+
             thing.oid = JSONUtil.getString(OID_KEY, thingJSON);
-            if(thing.oid == null) validator.error("Missing thing [oid].");
+            if(thing.oid == null) fail = validator.error("Missing thing [oid].");
 
             thing.type = JSONUtil.getString(TYPE_KEY, thingJSON);
-            if(thing.type == null) validator.error("Missing thing [type].");
+            if(thing.type == null) fail = validator.error("Missing thing [type].");
 
             thing.name = JSONUtil.getString(NAME_KEY, thingJSON);
-            if(thing.name == null) validator.error("Missing thing [name].");
+            if(thing.name == null) fail = validator.error("Missing thing [name].");
 
             List<JSONObject> properties = JSONUtil.getObjectArray(PROPERTIES_KEY, thingJSON);
             List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
@@ -60,34 +62,40 @@ public class ThingDescription {
             if(properties != null){
                 for(JSONObject property : properties){
                     InteractionPattern pattern = InteractionPattern.createProperty(property, validator);
-                    thing.properties.put(pattern.id, pattern);
+                    if(pattern == null)
+                        fail = true;
+                    else
+                        thing.properties.put(pattern.id, pattern);
                 }
             }
             if(actions != null){
                 for(JSONObject action : actions){
                     InteractionPattern pattern = InteractionPattern.createAction(action, validator);
-                    thing.actions.put(pattern.id, pattern);
+                    if(pattern == null)
+                        fail = true;
+                    else
+                        thing.actions.put(pattern.id, pattern);
                 }
             }
 
             if(events != null){
                 for(JSONObject event : events){
                     InteractionPattern pattern = InteractionPattern.createEvent(event, validator);
-                    thing.events.put(pattern.id, pattern);
+                    if(pattern == null)
+                        fail = true;
+                    else
+                        thing.events.put(pattern.id, pattern);
                 }
             }
 
-            if(validator.failed()){
-                String msg = thingJSON.toString();
-                if(thing.oid != null) msg = thing.oid;
-                validator.error("Unable to process thing: "+msg);
+            if(fail){
+                validator.error("Unable to process thing: "+validator.identify(thing.oid, thingJSON));
+                return null;
             }
         }
         catch(Exception e) {
             logger.error("", e);
-            String msg = thingJSON.toString();
-            if(thing.oid != null) msg = thing.oid;
-            validator.error("Unable to process thing: "+msg);
+            validator.error("Unable to process thing: "+validator.identify(thing.oid, thingJSON));
         }
 
         return thing;

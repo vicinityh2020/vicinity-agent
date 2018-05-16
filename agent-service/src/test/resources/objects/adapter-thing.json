@@ -5,7 +5,7 @@
 	"type": "device-type",
 	"properties": [
 	{
-		"pidx": "device-1-pid-1",
+		"pid": "device-1-pid-1",
 		"monitors": "AmbientTemperature",
 		"read_linkx": {
 			"href": "/custom/{oid}/x",
@@ -31,7 +31,7 @@
 	],
 	"actions": [
 	{
-		"aidx": "device-1-aid-1",
+		"aid": "device-1-aid-1",
 		"affects": "AmbientTemperature",
 		"write_linkx": {
 			"href": "/custom-post/{oid}/z",
