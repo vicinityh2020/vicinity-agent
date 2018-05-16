@@ -216,6 +216,7 @@ Object properties are provided in additional **field** array. Each **field** sta
 | field | array | yes | Array of object properties. Field must be array also if only one property is provided. |
 
 Field structure:
+
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | yes | The name of the property. |
@@ -225,6 +226,13 @@ Fast example of object with two fields:
 * **person-name**: string value of the name
 * **address**: object with street and city information
 ```
+#!json
+{
+    "test": "here"
+}
+
+```
+#!json
 {
     "type": "object",
     "description": "person name and address",
