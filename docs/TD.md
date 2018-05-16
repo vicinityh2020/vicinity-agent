@@ -213,7 +213,55 @@ Object properties are provided in additional **field** array. Each **field** sta
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | array | yes | . |
+| field | array | yes | Array of object properties. Field must be array also if only one property is provided. |
+
+Field structure:
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | yes | The name of the property. |
+| schema | DataSchema | yes | Specification of property structure. |
+
+Fast example of object with two fields:
+* **person-name**: string value of the name
+* **address**: object with street and city information
+```
+#!json
+{
+    "type": "object",
+    "description": "person name and address",
+    "field": [
+        {
+            "name": "person-name",
+            "description": "person name",
+            "schema": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "address",
+            "description": "person address",
+            "schema": {
+                "type": "object",
+                "field": [
+                    {
+                        "name": "street",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "country",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
 
 
 ## Serialization of Thing Descriptions
