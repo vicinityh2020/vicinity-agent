@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.agent.thing;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -99,6 +100,37 @@ public class ThingDescription {
         }
 
         return thing;
+    }
+
+
+    public static JSONObject toJSON(ThingDescription thing) throws Exception {
+        JSONObject object = new JSONObject();
+        JSONArray jsonProperties = new JSONArray();
+        JSONArray jsonActions = new JSONArray();
+        JSONArray jsonEvents = new JSONArray();
+
+        object.put(PROPERTIES_KEY, jsonProperties);
+        object.put(ACTIONS_KEY, jsonActions);
+        object.put(EVENTS_KEY, jsonEvents);
+
+        object.put(OID_KEY, thing.oid);
+        object.put(TYPE_KEY, thing.type);
+        object.put(NAME_KEY, thing.name);
+
+        for (Map.Entry<String, InteractionPattern> entry : thing.properties.entrySet()) {
+            InteractionPattern pattern = entry.getValue();
+            jsonProperties.put(InteractionPattern.propertyJSON(pattern));
+        }
+        for (Map.Entry<String, InteractionPattern> entry : thing.actions.entrySet()) {
+            InteractionPattern pattern = entry.getValue();
+            jsonActions.put(InteractionPattern.actionJSON(pattern));
+        }
+        for (Map.Entry<String, InteractionPattern> entry : thing.events.entrySet()) {
+            InteractionPattern pattern = entry.getValue();
+            jsonEvents.put(InteractionPattern.eventJSON(pattern));
+        }
+
+        return object;
     }
 
     public String toString(int indent){

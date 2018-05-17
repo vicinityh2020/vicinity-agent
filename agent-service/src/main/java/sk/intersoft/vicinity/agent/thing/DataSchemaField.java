@@ -35,6 +35,14 @@ public class DataSchemaField {
         return field;
     }
 
+    public static JSONObject toJSON(DataSchemaField field) {
+        JSONObject object = new JSONObject();
+
+        object.put(NAME_KEY, field.name);
+        object.put(SCHEMA_KEY, DataSchema.toJSON(field.schema));
+        return object;
+    }
+
     public String toString(int indent) {
         Dump dump = new Dump();
 

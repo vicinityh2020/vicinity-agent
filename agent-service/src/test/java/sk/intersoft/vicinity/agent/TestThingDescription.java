@@ -24,7 +24,12 @@ public class TestThingDescription {
 
         ThingValidator validator = new ThingValidator(true);
         try{
-            System.out.println(ThingDescription.create(in, validator).toString(0));
+            ThingDescription t = ThingDescription.create(in, validator);
+            System.out.println(t.toString(0));
+            System.out.println(validator.failure().toString(2));
+            System.out.println(ThingDescription.toJSON(t).toString(2));
+
+
         }
         catch(Exception e){}
         System.out.println("FAILED: " +validator.failed());

@@ -29,8 +29,6 @@ public class InteractionPattern {
     public static final String MONITORS_KEY = "monitors";
     public static final String AFFECTS_KEY = "affects";
 
-    public static final String OUTPUT_KEY = "output";
-
     public static final String READ_LINK_KEY = "read_link";
     public static final String WRITE_LINK_KEY = "write_link";
 
@@ -145,6 +143,44 @@ public class InteractionPattern {
 
         return pattern;
 
+    }
+
+    public static void addLinks(InteractionPattern pattern, JSONObject object) throws Exception  {
+        if(pattern.readEndpoint != null){
+            object.put(READ_LINK_KEY, InteractionPatternEndpoint.readJSON(pattern.readEndpoint));
+        }
+        if(pattern.writeEndpoint != null){
+            object.put(WRITE_LINK_KEY, InteractionPatternEndpoint.writeJSON(pattern.writeEndpoint));
+        }
+    }
+
+    public static JSONObject propertyJSON(InteractionPattern pattern) throws Exception  {
+        JSONObject object = new JSONObject();
+
+        object.put(PID_KEY, pattern.id);
+        object.put(MONITORS_KEY, pattern.refersTo);
+        addLinks(pattern, object);
+
+        return object;
+    }
+    public static JSONObject actionJSON(InteractionPattern pattern) throws Exception  {
+        JSONObject object = new JSONObject();
+
+        object.put(AID_KEY, pattern.id);
+        object.put(AFFECTS_KEY, pattern.refersTo);
+        addLinks(pattern, object);
+
+        return object;
+    }
+
+    public static JSONObject eventJSON(InteractionPattern pattern) throws Exception  {
+        JSONObject object = new JSONObject();
+
+        object.put(EID_KEY, pattern.id);
+        object.put(MONITORS_KEY, pattern.refersTo);
+        object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(pattern.output));
+
+        return object;
     }
 
     public String toString(int indent) {

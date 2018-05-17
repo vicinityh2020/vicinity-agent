@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.agent.thing;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
@@ -114,6 +115,30 @@ public class DataSchema {
         }
 
         return schema;
+    }
+
+    public static JSONObject toJSON(DataSchema schema) {
+        JSONObject object = new JSONObject();
+
+        object.put(TYPE_KEY, schema.type);
+        if(schema.description != null) {
+            object.put(DESCRIPTION_KEY, schema.description);
+        }
+
+        if(schema.isObject()){
+            JSONArray fields = new JSONArray();
+
+            for(DataSchemaField f : schema.field){
+                fields.put(DataSchemaField.toJSON(f));
+            }
+            object.put(FIELD_KEY, fields);
+
+        }
+        else if (schema.isArray()){
+            object.put(ITEM_KEY, DataSchema.toJSON(schema.item));
+        }
+
+        return object;
     }
 
     public String toString(int indent) {

@@ -11,6 +11,8 @@ public class InteractionPatternEndpoint {
     public DataSchema output = null;
     public DataSchema input = null;
 
+    public String linkType = null;
+
     // JSON keys
     public static final String HREF_KEY = "href";
 
@@ -45,6 +47,7 @@ public class InteractionPatternEndpoint {
                     if(endpoint.input == null) fail = true;
                 }
 
+                endpoint.linkType = linkType;
                 if(fail){
                     validator.error("Unable to process ["+linkType+"] link: "+linkJSON.toString());
                     return null;
@@ -59,6 +62,24 @@ public class InteractionPatternEndpoint {
         else return null;
     }
 
+    public static JSONObject readJSON(InteractionPatternEndpoint endpoint) throws Exception  {
+        JSONObject object = new JSONObject();
+
+        object.put(HREF_KEY, endpoint.href);
+        object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(endpoint.output));
+
+        return object;
+    }
+
+    public static JSONObject writeJSON(InteractionPatternEndpoint endpoint) throws Exception  {
+        JSONObject object = new JSONObject();
+
+        object.put(HREF_KEY, endpoint.href);
+        object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(endpoint.output));
+        object.put(DataSchema.INPUT_KEY, DataSchema.toJSON(endpoint.input));
+
+        return object;
+    }
 
     public String toString(int indent) {
         Dump dump = new Dump();
