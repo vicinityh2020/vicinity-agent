@@ -33,11 +33,11 @@ public class Configuration {
     public static void create(String configFile, String configFolder) throws Exception {
 
 
-        logger.info("CREATING CONFIG FROM FILE : "+configFile);
+        logger.debug("CREATING CONFIG FROM FILE : "+configFile);
         JSONObject configSource = new JSONObject(file2string(new File(configFile)));
         gatewayAPIEndpoint = configSource.getString(GATEWAY_API_ENDPOINT_KEY);
 
-        logger.info("CONFIGURING AGENTS FROM FOLDER: "+configFolder);
+        logger.debug("CONFIGURING AGENTS FROM FOLDER: "+configFolder);
         File folder = new File(configFolder);
         File[] files = folder.listFiles();
         if(files.length == 0){
@@ -45,7 +45,7 @@ public class Configuration {
         }
         for(File f : files){
             String source = file2string(f);
-            logger.info("config file: "+f.getAbsolutePath());
+            logger.debug("config file: "+f.getAbsolutePath());
             try{
                 AgentConfig config = AgentConfig.create(source);
                 if(agents.get(config.agentId) != null){

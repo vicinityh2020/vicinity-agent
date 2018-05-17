@@ -15,6 +15,20 @@ public class ThingValidator {
         this.failOnError = failOnError;
     }
 
+    public ThingDescription create(JSONObject object) {
+        try{
+            ThingDescription thing = ThingDescription.create(object, this);
+            if(!failed()){
+                this.thing = thing;
+                return thing;
+            }
+        }
+        catch(Exception e){
+
+        }
+        return null;
+    }
+
     public String identify(String id, JSONObject object) {
         if(id != null) return "["+id+"]";
         return object.toString();
@@ -31,7 +45,7 @@ public class ThingValidator {
         return (errors.size() > 0);
     }
 
-    public JSONObject failure() {
+    public JSONObject failureMessage() {
         JSONObject out = new JSONObject();
         JSONArray list = new JSONArray();
         for(String error : errors) {

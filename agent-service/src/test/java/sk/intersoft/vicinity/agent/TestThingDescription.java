@@ -40,14 +40,14 @@ public class TestThingDescription {
             t.events.values().iterator().next().jsonExtension.put("e-key-1", "e-val-1");
             t.events.values().iterator().next().jsonExtension.put("e-key-2", "e-val-2");
 
-            System.out.println(validator.failure().toString(2));
+            System.out.println(validator.failureMessage().toString(2));
             System.out.println(ThingDescription.toJSON(t).toString(2));
 
 
         }
         catch(Exception e){}
         System.out.println("FAILED: " +validator.failed());
-        System.out.println(validator.failure().toString(2));
+        System.out.println(validator.failureMessage().toString(2));
 
     }
 

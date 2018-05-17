@@ -16,9 +16,9 @@ public class ThingDescription {
 
     public String oid = null;
     public String infrastructureId = null;
+    public String adapterInfrastructureID = null;
+
     public String name = null;
-    public String adapterId = null;
-    public String agentId = null;
     public String password = null;
     public String type;
 
@@ -98,7 +98,6 @@ public class ThingDescription {
             }
         }
         catch(Exception e) {
-            logger.error("", e);
             validator.error("Unable to process thing: "+validator.identify(thing.oid, thingJSON));
             return null;
         }
@@ -154,10 +153,7 @@ public class ThingDescription {
         dump.add("oid: "+oid, (indent + 1));
         dump.add("type: "+type, (indent + 1));
         dump.add("name: "+name, (indent + 1));
-        dump.add("agent-id: "+ agentId, (indent + 1));
-        dump.add("adapter-id: "+ adapterId, (indent + 1));
         dump.add("password: "+password, (indent + 1));
-        dump.add("credentials: ", (indent + 1));
         dump.add("PROPERTIES: "+properties.size(), (indent + 1));
         for (Map.Entry<String, InteractionPattern> entry : properties.entrySet()) {
             String id = entry.getKey();
@@ -189,6 +185,6 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][PWD: "+password+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
     }
 }

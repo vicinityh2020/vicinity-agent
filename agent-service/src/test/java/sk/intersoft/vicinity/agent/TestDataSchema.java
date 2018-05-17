@@ -35,7 +35,7 @@ public class TestDataSchema {
         }
         catch(Exception e) {
         }
-        System.out.println(validatorAll.failure().toString(2));
+        System.out.println(validatorAll.failureMessage().toString(2));
 
     }
 

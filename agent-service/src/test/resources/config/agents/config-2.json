@@ -1,13 +1,12 @@
 {
     "credentials": {
-        "agent-id": "4aaf6042-9888-4cd1-bc56-f42a84204101-x",
+        "agent-id": "b38d6487-afd6-4189-807e-d662f09fbcf9",
         "password": "test"
     },
     "adapters": [
         {
             "adapter-id": "adapter-3",
             "endpoint": "http://localhost:9995/adapter",
-            "active-discovery": true,
         },
         {
             "adapter-id": "adapter-4",

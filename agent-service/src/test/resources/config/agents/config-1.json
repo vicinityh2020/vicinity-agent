@@ -6,8 +6,7 @@
     "adapters": [
         {
             "adapter-id": "adapter-1",
-            "endpoint": "http://localhost:9995/adapter",
-            "active-discovery": true,
+            "endpoint": "http://localhost:9995/adapter"
         },
         {
             "adapter-id": "adapter-2",
