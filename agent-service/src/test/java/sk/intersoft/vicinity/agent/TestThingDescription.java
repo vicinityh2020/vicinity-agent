@@ -20,9 +20,10 @@ public class TestThingDescription {
     }
 
     public void process() throws Exception{
-        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
+//        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
+        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-1.json"));
 
-        ThingValidator validator = new ThingValidator(true);
+        ThingValidator validator = new ThingValidator(false);
         try{
             ThingDescription t = ThingDescription.create(in, validator);
             System.out.println(t.toString(0));

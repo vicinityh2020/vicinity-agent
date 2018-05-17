@@ -100,6 +100,7 @@ public class ThingDescription {
         catch(Exception e) {
             logger.error("", e);
             validator.error("Unable to process thing: "+validator.identify(thing.oid, thingJSON));
+            return null;
         }
 
         return thing;

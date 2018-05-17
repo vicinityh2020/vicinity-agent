@@ -1,4 +1,4 @@
-# 2018-05-16
+# 2018-05-17
 
 ## Agent service now accepts multiple agent configs
 
@@ -132,3 +132,12 @@ The purpose is to enable the Agora.
 
 Now, "input"/"output" in links (and "output" in event) must be provided, not empty and
 must be valid according specification [see DataSchema specs](docs/TD.md#data-schema).
+
+
+## Ontology annotations must be used with prefix
+
+Semantic annotation without prefix (if i ever knew, whose idea that was!) are totally
+ambiguous. Full semantic annotation must used. Used annotations:
+* Thing **type** (refer to core:Device or core:Service class)
+* property/event **monitors** (refer to ssn:Property individuals)
+* action **affects** (refer to ssn:Property individuals)

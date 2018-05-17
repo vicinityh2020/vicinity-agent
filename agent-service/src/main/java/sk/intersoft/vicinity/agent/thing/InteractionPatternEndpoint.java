@@ -4,7 +4,9 @@ import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InteractionPatternEndpoint {
     public String href = null;
@@ -12,6 +14,8 @@ public class InteractionPatternEndpoint {
     public DataSchema input = null;
 
     public String linkType = null;
+
+    public Map<String, String> jsonExtension = new HashMap<String, String>();
 
     // JSON keys
     public static final String HREF_KEY = "href";
@@ -34,17 +38,23 @@ public class InteractionPatternEndpoint {
                 if (endpoint.href == null) fail = validator.error("Missing [" + HREF_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
 
                 JSONObject output = JSONUtil.getObject(DataSchema.OUTPUT_KEY, linkJSON);
-                if (output == null)
+                if (output == null){
                     fail = validator.error("Missing [" + DataSchema.OUTPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
-                endpoint.output = DataSchema.create(output, validator);
-                if(endpoint.output == null) fail = true;
+                }
+                else {
+                    endpoint.output = DataSchema.create(output, validator);
+                    if(endpoint.output == null) fail = true;
+                }
 
                 if (linkType.equals(InteractionPatternEndpoint.WRITE)) {
                     JSONObject input = JSONUtil.getObject(DataSchema.INPUT_KEY, linkJSON);
-                    if (input == null)
+                    if (input == null){
                         fail = validator.error("Missing [" + DataSchema.INPUT_KEY + "] in ["+linkType+"] link: " + linkJSON.toString());
-                    endpoint.input = DataSchema.create(input, validator);
-                    if(endpoint.input == null) fail = true;
+                    }
+                    else {
+                        endpoint.input = DataSchema.create(input, validator);
+                        if(endpoint.input == null) fail = true;
+                    }
                 }
 
                 endpoint.linkType = linkType;
@@ -55,7 +65,8 @@ public class InteractionPatternEndpoint {
 
             }
             catch(Exception e){
-                validator.error("Unable to process link: "+linkJSON.toString());
+                validator.error("Unable to process link: " + linkJSON.toString());
+                return null;
             }
             return endpoint;
         }
@@ -68,6 +79,8 @@ public class InteractionPatternEndpoint {
         object.put(HREF_KEY, endpoint.href);
         object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(endpoint.output));
 
+        ThingDescription.addExtension(endpoint.jsonExtension, object);
+
         return object;
     }
 
@@ -77,6 +90,8 @@ public class InteractionPatternEndpoint {
         object.put(HREF_KEY, endpoint.href);
         object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(endpoint.output));
         object.put(DataSchema.INPUT_KEY, DataSchema.toJSON(endpoint.input));
+
+        ThingDescription.addExtension(endpoint.jsonExtension, object);
 
         return object;
     }

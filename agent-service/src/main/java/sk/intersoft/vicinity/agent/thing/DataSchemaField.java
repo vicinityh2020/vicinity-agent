@@ -25,11 +25,14 @@ public class DataSchemaField {
             if(schema == null) {
                 validator.error("Missing ["+SCHEMA_KEY+"] in  in data-schema-field: "+fieldJSON.toString());
             }
-            field.schema = DataSchema.create(schema, validator);
+            else {
+                field.schema = DataSchema.create(schema, validator);
+            }
 
         }
         catch(Exception e){
             validator.error("unable to process data-schema-field: "+fieldJSON.toString());
+            return null;
         }
 
         return field;

@@ -82,16 +82,21 @@ public class DataSchema {
                 if(field == null) {
                     fail = validator.error("Missing ["+FIELD_KEY+"] in data-schema: "+schemaJSON.toString());
                 }
-                if(field.isEmpty()) {
-                    fail = validator.error("Empty ["+FIELD_KEY+"] array in data-schema: "+schemaJSON.toString());
-                }
-
-                for(JSONObject f : field){
-                    DataSchemaField processed = DataSchemaField.create(f, validator);
-                    if(processed == null) fail = true;
-                    else {
-                        schema.field.add(processed);
+                else {
+                    if(field.isEmpty()) {
+                        fail = validator.error("Empty ["+FIELD_KEY+"] array in data-schema: "+schemaJSON.toString());
                     }
+                    else {
+                        for(JSONObject f : field){
+                            DataSchemaField processed = DataSchemaField.create(f, validator);
+                            if(processed == null) fail = true;
+                            else {
+                                schema.field.add(processed);
+                            }
+                        }
+
+                    }
+
                 }
 
             }
@@ -100,8 +105,10 @@ public class DataSchema {
                 if(item == null) {
                     fail = validator.error("Missing ["+ITEM_KEY+"] in data-schema: "+schemaJSON.toString());
                 }
-                schema.item = DataSchema.create(item, validator);
-                if(schema.item == null) fail = true;
+                else {
+                    schema.item = DataSchema.create(item, validator);
+                    if(schema.item == null) fail = true;
+                }
             }
 
             if(fail){
@@ -112,6 +119,7 @@ public class DataSchema {
         }
         catch(Exception e){
             validator.error("Unable to process data-schema " + schemaJSON.toString());
+            return null;
         }
 
         return schema;
