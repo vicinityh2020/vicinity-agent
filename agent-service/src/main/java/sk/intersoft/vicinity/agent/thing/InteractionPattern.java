@@ -4,7 +4,9 @@ import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InteractionPattern {
 
@@ -14,6 +16,7 @@ public class InteractionPattern {
     public InteractionPatternEndpoint readEndpoint = null;
     public InteractionPatternEndpoint writeEndpoint = null;
 
+    public Map<String, String> jsonExtension = new HashMap<String, String>();
 
     // PATTERN TYPES
     public static final String PROPERTY = "property";
@@ -154,12 +157,16 @@ public class InteractionPattern {
         }
     }
 
+
+
     public static JSONObject propertyJSON(InteractionPattern pattern) throws Exception  {
         JSONObject object = new JSONObject();
 
         object.put(PID_KEY, pattern.id);
         object.put(MONITORS_KEY, pattern.refersTo);
         addLinks(pattern, object);
+
+        ThingDescription.addExtension(pattern.jsonExtension, object);
 
         return object;
     }
@@ -170,6 +177,8 @@ public class InteractionPattern {
         object.put(AFFECTS_KEY, pattern.refersTo);
         addLinks(pattern, object);
 
+        ThingDescription.addExtension(pattern.jsonExtension, object);
+
         return object;
     }
 
@@ -179,6 +188,8 @@ public class InteractionPattern {
         object.put(EID_KEY, pattern.id);
         object.put(MONITORS_KEY, pattern.refersTo);
         object.put(DataSchema.OUTPUT_KEY, DataSchema.toJSON(pattern.output));
+
+        ThingDescription.addExtension(pattern.jsonExtension, object);
 
         return object;
     }

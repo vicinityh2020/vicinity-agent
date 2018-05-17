@@ -26,6 +26,19 @@ public class TestThingDescription {
         try{
             ThingDescription t = ThingDescription.create(in, validator);
             System.out.println(t.toString(0));
+
+            t.jsonExtension.put("t-key-1", "t-val-1");
+            t.jsonExtension.put("t-key-2", "t-val-2");
+
+            t.properties.values().iterator().next().jsonExtension.put("p-key-1", "p-val-1");
+            t.properties.values().iterator().next().jsonExtension.put("p-key-2", "p-val-2");
+
+            t.actions.values().iterator().next().jsonExtension.put("a-key-1", "a-val-1");
+            t.actions.values().iterator().next().jsonExtension.put("a-key-2", "a-val-2");
+
+            t.events.values().iterator().next().jsonExtension.put("e-key-1", "e-val-1");
+            t.events.values().iterator().next().jsonExtension.put("e-key-2", "e-val-2");
+
             System.out.println(validator.failure().toString(2));
             System.out.println(ThingDescription.toJSON(t).toString(2));
 

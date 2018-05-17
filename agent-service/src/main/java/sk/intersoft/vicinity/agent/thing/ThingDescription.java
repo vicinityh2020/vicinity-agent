@@ -26,6 +26,9 @@ public class ThingDescription {
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> events = new HashMap<String, InteractionPattern>();
 
+    public Map<String, String> jsonExtension = new HashMap<String, String>();
+
+
     // JSON keys
     public static String OID_KEY = "oid";
     public static String NAME_KEY = "name";
@@ -102,6 +105,14 @@ public class ThingDescription {
         return thing;
     }
 
+    public static void addExtension(Map<String, String> extension, JSONObject object){
+        for (Map.Entry<String, String> entry : extension.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            object.put(key, value);
+        }
+
+    }
 
     public static JSONObject toJSON(ThingDescription thing) throws Exception {
         JSONObject object = new JSONObject();
@@ -129,6 +140,8 @@ public class ThingDescription {
             InteractionPattern pattern = entry.getValue();
             jsonEvents.put(InteractionPattern.eventJSON(pattern));
         }
+
+        addExtension(thing.jsonExtension, object);
 
         return object;
     }
