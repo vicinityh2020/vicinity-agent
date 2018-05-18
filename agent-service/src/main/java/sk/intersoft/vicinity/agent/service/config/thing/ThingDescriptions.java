@@ -7,19 +7,27 @@ import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ThingDescriptions {
     final static Logger logger = LoggerFactory.getLogger(ThingDescriptions.class.getName());
 
-    public Map<String, ThingDescription> byOID = new HashMap<String, ThingDescription>();
-    public Map<String, ThingDescription> byInfrastructureID = new HashMap<String, ThingDescription>();
+    public Map<String, ThingDescription> byAdapterOID = new HashMap<String, ThingDescription>();
+    public Map<String, ThingDescription> byAdapterInfrastructureID = new HashMap<String, ThingDescription>();
 
-    public void add(ThingDescription thing) {
-        if(thing.oid != null) {
-            byOID.put(thing.oid, thing);
+    public void add(ThingDescription thing) throws Exception {
+
+        if(thing.adapterOID != null && !thing.adapterOID.equals("")){
+            if(byAdapterOID.get(thing.adapterOID) != null){
+                throw new Exception("Duplicate thing with identifier ["+thing.adapterOID+"] exists!");
+            }
+            byAdapterOID.put(thing.oid, thing);
         }
-        if(thing.adapterInfrastructureID != null) {
-            byInfrastructureID.put(thing.adapterInfrastructureID, thing);
+        if(thing.adapterInfrastructureID != null && !thing.adapterInfrastructureID.equals("")){
+            if(byAdapterInfrastructureID.get(thing.adapterInfrastructureID) != null){
+                throw new Exception("Duplicate thing with identifier ["+thing.adapterInfrastructureID+"] exists!");
+            }
+            byAdapterInfrastructureID.put(thing.adapterInfrastructureID, thing);
         }
     }
 
@@ -28,15 +36,15 @@ public class ThingDescriptions {
 
         dump.add("THING DESCRIPTIONS:", indent);
 
-        dump.add("BY OID: "+byOID.keySet().size(), (indent + 1));
-        for (Map.Entry<String, ThingDescription> entry : byOID.entrySet()) {
+        dump.add("BY ADAPTER-OID: "+byAdapterOID.keySet().size(), (indent + 1));
+        for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
             String id = entry.getKey();
             dump.add("mapped-id: "+id, (indent + 2));
             dump.add(entry.getValue().toSimpleString());
         }
 
-        dump.add("BY INFRASTRUCTURE ID: "+byInfrastructureID.keySet().size(), (indent + 1));
-        for (Map.Entry<String, ThingDescription> entry : byInfrastructureID.entrySet()) {
+        dump.add("BY ADAPTER-INFRASTRUCTURE ID: "+byAdapterInfrastructureID.keySet().size(), (indent + 1));
+        for (Map.Entry<String, ThingDescription> entry : byAdapterInfrastructureID.entrySet()) {
             String id = entry.getKey();
             dump.add("mapped-id: "+id, (indent + 2));
             dump.add(entry.getValue().toSimpleString());

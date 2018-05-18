@@ -16,6 +16,8 @@ public class ThingDescription {
 
     public String oid = null;
     public String infrastructureId = null;
+    public String adapterId = null;
+    public String adapterOID = null;
     public String adapterInfrastructureID = null;
 
     public String name = null;
@@ -31,6 +33,7 @@ public class ThingDescription {
 
     // JSON keys
     public static String OID_KEY = "oid";
+    public static String ADAPTER_ID_KEY = "adapter-id";
     public static String NAME_KEY = "name";
     public static String TYPE_KEY = "type";
     public static String PROPERTIES_KEY = "properties";
@@ -38,6 +41,16 @@ public class ThingDescription {
     public static String EVENTS_KEY = "events";
 
 
+    public static String identifier(String id, String adapterId) {
+        return adapterId + "---!---"+id;
+    }
+    public void toInfrastructure(){
+        infrastructureId = oid;
+        oid = null;
+
+        adapterInfrastructureID = adapterOID;
+        adapterOID = null;
+    }
 
     public static ThingDescription create(JSONObject thingJSON, ThingValidator validator) throws Exception {
         logger.debug("PROCESSING THING DESCRIPTION FROM: \n"+thingJSON.toString(2));
@@ -52,12 +65,21 @@ public class ThingDescription {
 
             thing.oid = JSONUtil.getString(OID_KEY, thingJSON);
             if(thing.oid == null) fail = validator.error("Missing thing [oid].");
+            if(thing.oid.equals("")) fail = validator.error("Empty thing [oid].");
+
+            thing.adapterId = JSONUtil.getString(ADAPTER_ID_KEY, thingJSON);
+            if(thing.adapterId == null) fail = validator.error("Missing thing [adapter-id].");
+            if(thing.adapterId .equals("")) fail = validator.error("Empty thing [adapter-id].");
+
+            thing.adapterOID = identifier(thing.oid, thing.adapterId);
+
 
             thing.type = JSONUtil.getString(TYPE_KEY, thingJSON);
             if(thing.type == null) fail = validator.error("Missing thing [type].");
 
             thing.name = JSONUtil.getString(NAME_KEY, thingJSON);
             if(thing.name == null) fail = validator.error("Missing thing [name].");
+
 
             List<JSONObject> properties = JSONUtil.getObjectArray(PROPERTIES_KEY, thingJSON);
             List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
@@ -126,6 +148,7 @@ public class ThingDescription {
 
         object.put(OID_KEY, thing.oid);
         object.put(TYPE_KEY, thing.type);
+        object.put(ADAPTER_ID_KEY, thing.adapterId);
         object.put(NAME_KEY, thing.name);
 
         for (Map.Entry<String, InteractionPattern> entry : thing.properties.entrySet()) {
@@ -151,6 +174,10 @@ public class ThingDescription {
 
         dump.add("THING :", indent);
         dump.add("oid: "+oid, (indent + 1));
+        dump.add("infrastructure-id: "+infrastructureId, (indent + 1));
+        dump.add("adapter-id: "+adapterId, (indent + 1));
+        dump.add("adapter-oid: "+adapterOID, (indent + 1));
+        dump.add("adapter-infrastructure-id: "+adapterInfrastructureID, (indent + 1));
         dump.add("type: "+type, (indent + 1));
         dump.add("name: "+name, (indent + 1));
         dump.add("password: "+password, (indent + 1));

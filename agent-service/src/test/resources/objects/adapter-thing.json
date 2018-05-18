@@ -1,6 +1,7 @@
 
 {
 	"oid": "device-1",
+	"adapter-id": "some adapter",
 	"name": "my thing",
 	"type": "device-type",
 	"properties": [

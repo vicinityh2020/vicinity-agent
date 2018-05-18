@@ -6,7 +6,7 @@
     "adapters": [
         {
             "adapter-id": "adapter-3",
-            "endpoint": "http://localhost:9995/adapter",
+            "endpoint": "http://localhost:9996/adapter",
         },
         {
             "adapter-id": "adapter-4",

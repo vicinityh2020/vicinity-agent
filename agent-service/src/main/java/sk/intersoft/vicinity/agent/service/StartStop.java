@@ -1,48 +1,78 @@
 package sk.intersoft.vicinity.agent.service;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
-import sk.intersoft.vicinity.agent.gateway.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
-import sk.intersoft.vicinity.agent.service.config.thing.ThingProcessor;
-import sk.intersoft.vicinity.agent.thing.ThingDescription;
-import sk.intersoft.vicinity.agent.thing.ThingValidator;
+import sk.intersoft.vicinity.agent.service.config.ConfigurationMappings;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class StartStop {
     final static Logger logger = LoggerFactory.getLogger(StartStop.class.getName());
 
 
+    public static void configureAgents() {
+        logger.info("ACQUIRING ACTUAL AGENT CONFIGURATIONS FROM NeighbourhoodManager");
+        for (AgentConfig agent : Configuration.mappings.agents.values()) {
+            boolean configured = agent.configure();
+            if(configured){
+                Configuration.agents.put(agent.agentId, agent);
+                for (Map.Entry<String, AdapterConfig> entry : agent.adapters.entrySet()) {
+                    AdapterConfig adapter = entry.getValue();
+                    Configuration.adapters.put(adapter.adapterId, adapter);
+                }
+
+            }
+        }
+
+        logger.info("CONFIGURED AGENTS: " + Configuration.agents.size());
+        for(AgentConfig ac : Configuration.agents.values()){
+            logger.info(ac.toSimpleString());
+
+        }
+        logger.info("CONFIGURED ADAPTERS: " + Configuration.agents.size());
+        for(AdapterConfig ac : Configuration.adapters.values()){
+            logger.info(ac.toSimpleString());
+
+        }
+
+    }
+
+    private static void discoverPassiveAdapters() throws Exception {
+        logger.info("DISCOVERING PASSIVE ADAPTERS");
+        for (Map.Entry<String, AdapterConfig> entry : Configuration.adapters.entrySet()) {
+            AdapterConfig adapter = entry.getValue();
+            if(!adapter.activeDiscovery){
+                logger.info("passive discovery for: ["+adapter.adapterId+"]");
+                boolean success = adapter.discover();
+                if(!success) {
+                    throw new Exception("PASSIVE DISCOVERY FAILED!");
+                }
+            }
+            else {
+                logger.info("active passive discovery for: ["+adapter.adapterId+"] .. skipping");
+            }
+
+        }
+    }
 
     public static void start() {
         logger.info("Launching starting sequence!");
         try{
             // START SEQUENCE:
 
+            // 1. read config mappings
             logger.info("READING CONFIGURATION!");
-            Configuration.create(System.getProperty("service.config"), System.getProperty("agents.config"));
+            Configuration.create();
             logger.info(Configuration.toString(0));
 
-            logger.info("ACQUIRING ACTUAL AGENT CONFIGURATIONS FROM NeighbourhoodManager");
-            List<AgentConfig> configuredAgents = new ArrayList<AgentConfig>();
-            for (AgentConfig agent : Configuration.agents.values()) {
-                boolean configured = agent.configure();
-                if(configured){
-                    configuredAgents.add(agent);
-                }
-            }
+            // 2. configure agents from NM
+            configureAgents();
 
-            logger.info("CONFIGURED AGENTS: "+configuredAgents.size());
-            for(AgentConfig ac : configuredAgents){
-                logger.info(ac.toSimpleString());
-
-            }
+            // 3. discover passive adapters
+            discoverPassiveAdapters();
 
             logger.info("STARTUP SEQUENCE COMPLETED!");
 

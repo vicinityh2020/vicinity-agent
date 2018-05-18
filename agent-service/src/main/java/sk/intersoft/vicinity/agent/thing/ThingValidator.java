@@ -18,13 +18,12 @@ public class ThingValidator {
     public ThingDescription create(JSONObject object) {
         try{
             ThingDescription thing = ThingDescription.create(object, this);
-            if(!failed()){
+            if(!failed() && thing != null){
                 this.thing = thing;
                 return thing;
             }
         }
         catch(Exception e){
-
         }
         return null;
     }

@@ -1,0 +1,16 @@
+{
+    "credentials": {
+        "agent-id": "chuj",
+        "password": "test"
+    },
+    "adapters": [
+        {
+            "adapter-id": "adapter-5",
+            "endpoint": "http://localhost:9995/adapter",
+        },
+        {
+            "adapter-id": "adapter-5",
+        }
+    ]
+}
+

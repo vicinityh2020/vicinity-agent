@@ -1,4 +1,4 @@
-package sk.intersoft.vicinity.agent.gateway;
+package sk.intersoft.vicinity.agent.clients;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
@@ -7,29 +7,26 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
-import sk.intersoft.vicinity.agent.service.resource.ResourceResponse;
 
 public class GatewayAPIClient {
     final static Logger logger = LoggerFactory.getLogger(GatewayAPIClient.class.getName());
 
 
     // ENDPOINTS:
-    public static final String LOGIN = "/objects/login";
-    public static final String LOGOUT = "/objects/logout";
+    public static final String LOGIN_ENDPOINT = "/objects/login";
+    public static final String LOGOUT_ENDPOINT = "/objects/logout";
 
     // interactions:
-    public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
-    public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
-    public static final String OBJECT_EVENT = "/objects/{oid}/events/{eid}";
+    public static final String OBJECT_PROPERTY_ENDPOINT = "/objects/{oid}/properties/{pid}";
+    public static final String OBJECT_ACTION_ENDPOINT = "/objects/{oid}/actions/{aid}";
+    public static final String OBJECT_EVENT_ENDPOINT = "/objects/{oid}/events/{eid}";
 
     // configuration:
     public static String configurationEndpoint(String agentId) {
@@ -69,7 +66,12 @@ public class GatewayAPIClient {
 
     public static void login(String login, String password) throws Exception {
         logger.info("doing login: ["+login+"]["+password+"]");
-        get(LOGIN, login, password);
+        get(LOGIN_ENDPOINT, login, password);
+    }
+
+    public static void logout(String login, String password) throws Exception {
+        logger.info("doing logout: ["+login+"]["+password+"]");
+        get(LOGOUT_ENDPOINT, login, password);
     }
 
     public static String get(String path, String login, String password) throws Exception {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER_PORT=9996
+SERVER_PORT=9995
 JAR=testing-adapter.jar
 
 OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json

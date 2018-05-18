@@ -10,7 +10,7 @@ public class TestDisco {
     public void test() throws Exception {
         String file = new File("").getAbsolutePath() + "/agent-service/src/test/resources/config/service.json";
         String folder = new File("").getAbsolutePath() + "/agent-service/src/test/resources/config/agents";
-        Configuration.create(file, folder);
+        Configuration.create();
         System.out.println(Configuration.toString(0));
 
 //        Discovery.fire();

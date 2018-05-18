@@ -43,7 +43,7 @@ public class JSONUtil {
 
     public static String getString(String key, JSONObject object) throws Exception {
         List<String> array = getStringArray(key, object);
-        if(array != null && array.size() == 1) return array.get(0);
+        if(array != null && array.size() == 1 && array.get(0) != null) return array.get(0);
         else if(array == null) return null;
         else throw new Exception("Missing or incorrect ["+key+"] in: "+object.toString());
     }
@@ -100,7 +100,7 @@ public class JSONUtil {
 
     public static JSONObject getObject(String key, JSONObject object) throws Exception {
         List<JSONObject> array = getObjectArray(key, object);
-        if(array != null && array.size() == 1) return array.get(0);
+        if(array != null && array.size() == 1 && array.get(0) != null) return array.get(0);
         else if(array == null) return null;
         else throw new Exception("Missing or incorrect ["+key+"] in: "+object.toString());
     }

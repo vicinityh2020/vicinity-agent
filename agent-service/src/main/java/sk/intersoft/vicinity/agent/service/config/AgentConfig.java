@@ -4,13 +4,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.gateway.GatewayAPIClient;
-import sk.intersoft.vicinity.agent.gateway.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
+import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.service.config.thing.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.thing.ThingProcessor;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
+import sk.intersoft.vicinity.agent.utils.FileUtil;
+import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 import java.io.File;
 import java.util.*;
@@ -31,54 +33,90 @@ public class AgentConfig {
 
     public ThingDescriptions configurationThings = new ThingDescriptions();
 
-    public boolean configure(){
+    private boolean configurationRunning = false;
+
+    public boolean configure() {
+        if (isRunning()) {
+            logger.info("NOT CONFIGURING AGENT: [" + agentId + "] .. another process is actually using this configuration!");
+            return false;
+        }
+
+        start();
+        boolean success = configureAgent();
+        stop();
+
+        return success;
+    }
+
+    private void updateLastConfiguration() throws Exception {
+        logger.info("ACQUIRE LAST CONFIGURATION");
+
+        String configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
+        logger.debug("Configuration raw response: \n" + configData);
+        List<JSONObject> objects = ThingProcessor.processConfiguration(configData);
+
+        List<JSONObject> unprocessed = new ArrayList<JSONObject>();
+
+        logger.debug("parsing things ... ");
+        for (JSONObject object : objects) {
+            logger.debug(object.toString());
+            ThingValidator validator = new ThingValidator(true);
+            ThingDescription thing = validator.create(object);
+            if (thing != null) {
+                logger.debug("processed thing: " + thing.oid);
+                // ADD PERSISTENCE HERE
+                try {
+                    configurationThings.add(thing);
+                } catch (Exception e) {
+                    logger.debug("duplicate thing [" + thing.oid + "]! remove!");
+                    unprocessed.add(object);
+                }
+            } else {
+                logger.debug("unprocessed thing! validator errors: \n" + validator.failureMessage().toString(2));
+                unprocessed.add(object);
+            }
+        }
+
+        if (unprocessed.size() > 0) {
+            logger.info("removing unparsed things: " + unprocessed.size());
+
+            List<String> unprocessedOIDs = new ArrayList<String>();
+            logger.info("extracting OIDs ...");
+            for (JSONObject o : unprocessed) {
+                try {
+                    String oid = JSONUtil.getString(ThingDescription.OID_KEY, o);
+                    if (!oid.equals("")) {
+                        logger.debug("OID marked for removal: [" + oid + "]");
+                        unprocessedOIDs.add(oid);
+                    }
+                } catch (Exception e) {
+                    logger.debug("unable event to get OID from thing! " + o.toString());
+                }
+            }
+
+
+            logger.info("removing unparsed things: " + unprocessedOIDs);
+            JSONObject payload = NeighbourhoodManager.deletePayload(unprocessedOIDs, agentId);
+            logger.info("delete payload: \n" + payload);
+
+            String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, password);
+            logger.info("delete raw response: \n" + deleteResponse);
+        }
+
+
+        logger.info("CONFIGURATION THINGS: \n" + configurationThings.toString(0));
+
+    }
+
+
+
+    private boolean configureAgent(){
         try{
             logger.info("CONFIGURING AGENT: ["+agentId+"]");
             logger.info("LOG IN P2P");
             GatewayAPIClient.login(agentId, password);
 
-            logger.info("ACQUIRE LAST CONFIGURATION");
-
-            String configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
-            logger.debug("Configuration raw response: \n" + configData);
-            List<JSONObject> objects = ThingProcessor.processConfiguration(configData);
-
-            List<String> unprocessed = new ArrayList<String>();
-
-            logger.debug("parsing things ... ");
-            for(JSONObject object : objects){
-                logger.debug(object.toString());
-                ThingValidator validator = new ThingValidator(true);
-                ThingDescription thing = validator.create(object);
-                if(thing != null){
-                    logger.debug("processed thing: "+thing.oid);
-                    configurationThings.add(thing);
-                }
-                else {
-                    logger.debug("unprocessed! validator errors: \n"+validator.failureMessage().toString(2));
-                    try{
-                        String oid = object.getString(ThingDescription.OID_KEY);
-                        logger.debug("OID marked for removal: ["+oid+"]");
-                        unprocessed.add(oid);
-                    }
-                    catch(Exception e){
-                        logger.debug("unable event to get OID from that thing!");
-                    }
-                }
-            }
-
-            if(unprocessed.size() > 0){
-                logger.info("removing unparsed things: "+unprocessed);
-                JSONObject payload = NeighbourhoodManager.deletePayload(unprocessed, agentId);
-                logger.info("delete payload: \n"+payload);
-
-                String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, password);
-                logger.info("delete raw response: \n"+deleteResponse);
-            }
-
-
-            logger.info("CONFIGURATION THINGS: \n" + configurationThings.toString(0));
-
+            updateLastConfiguration();
 
             logger.info("DONE CONFIGURING AGENT: ["+agentId+"]");
 
@@ -88,13 +126,23 @@ public class AgentConfig {
             logger.info("ERROR DURING AGENT CONFIGURATION : ["+agentId+"]");
             logger.error("", e);
         }
-
         return false;
     }
 
+    private void start() {
+        configurationRunning = true;
+    }
+    private void stop() {
+        configurationRunning = false;
+    }
+    private boolean isRunning() {
+        return configurationRunning;
+    }
 
-    public static AgentConfig create(String source) throws Exception {
+    public static AgentConfig create(File configFile) throws Exception {
         AgentConfig config = new AgentConfig();
+
+        String source = FileUtil.file2string(configFile);
 
         JSONObject json = new JSONObject(source);
         logger.info("CREATING AGENT CONFIG FROM: " + json.toString(2));
@@ -111,7 +159,7 @@ public class AgentConfig {
         Iterator<Object> i = adaptersArray.iterator();
         while (i.hasNext()) {
             JSONObject adapterConfig = (JSONObject) i.next();
-            AdapterConfig ac = AdapterConfig.create(adapterConfig);
+            AdapterConfig ac = AdapterConfig.create(adapterConfig, config);
             if (config.adapters.get(ac.adapterId) != null) {
                 throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "]!");
             }

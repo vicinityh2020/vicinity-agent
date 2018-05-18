@@ -1,8 +1,7 @@
-package sk.intersoft.vicinity.agent.gateway;
+package sk.intersoft.vicinity.agent.clients;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 
 import java.util.List;
 
