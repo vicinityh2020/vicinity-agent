@@ -55,7 +55,7 @@ and which adapter belongs to which agent.
 **adapter-id must be specific for whole agent service. Just ensure, it is unique!**
 
 Generate **adapter-id** as **unique hash code** and **store it in your adapter code**.
-It will be possibly required, when talking to agent, if there will be ambiguity in
+It will be required, when talking to agent, if there will be ambiguity in
 object identifiers (case, when different adapters contain objects with
 identical infrastructure-id.
 
