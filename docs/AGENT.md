@@ -1,4 +1,4 @@
-# Agent for integrators
+# (Multi) Agent Service for integrators
 
 
 VICINITY Agent serves as the interface between VICINITY GateWay and VICINITY Adapter.
@@ -12,7 +12,7 @@ and VICINITY identifiers (**oid**).
  how they are described in Thing Descriptions
 * translating Adapter requests for consumption/event services into common VICINITY services (implemented in GTW API), with proper credentials
 
-Agent component was adjusted to handle multiple client nodes, so it was enhanced from agent to multi-agent.
+Agent Service was adjusted to handle multiple client nodes, so it was enhanced from agent to multi-agent.
 Agent is now service able to manage multiple agent configurations.
 The purpose was to, again, make life of adapter developers easier. The main trigger was,
 that if some service provider must run multiple client nodes (e.g. in the cloud), for
