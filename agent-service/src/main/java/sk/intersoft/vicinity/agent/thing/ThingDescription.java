@@ -33,6 +33,7 @@ public class ThingDescription {
 
     // JSON keys
     public static String OID_KEY = "oid";
+    public static String INFRASTRUCTURE_KEY = "infrastructure-id";
     public static String ADAPTER_ID_KEY = "adapter-id";
     public static String NAME_KEY = "name";
     public static String TYPE_KEY = "type";
@@ -51,6 +52,12 @@ public class ThingDescription {
         adapterInfrastructureID = adapterOID;
         adapterOID = null;
     }
+    public void updateCredentials(ThingDescription configThing) {
+        oid = configThing.oid;
+        adapterOID = configThing.adapterOID;
+        password = configThing.password;
+    }
+
 
     public static ThingDescription create(JSONObject thingJSON, ThingValidator validator) throws Exception {
         logger.debug("PROCESSING THING DESCRIPTION FROM: \n"+thingJSON.toString(2));
@@ -212,6 +219,6 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][ADAPTER-ID: "+adapterId+"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
     }
 }

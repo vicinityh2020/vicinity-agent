@@ -5,8 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
-import sk.intersoft.vicinity.agent.service.config.thing.ThingDescriptions;
-import sk.intersoft.vicinity.agent.service.config.thing.ThingProcessor;
+import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingsDiff;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
@@ -34,6 +36,8 @@ public class AdapterConfig {
 
     ThingDescriptions things = new ThingDescriptions();
 
+
+
     public void login(){
         logger.debug("log-out all things");
         for(ThingDescription thing : things.byAdapterOID.values()){
@@ -60,6 +64,41 @@ public class AdapterConfig {
             }
 
         }
+    }
+
+
+    public boolean executeDisco(ThingDescriptions configThings, ThingDescriptions adapterThings) throws Exception {
+        logger.debug("EXECUTING DISCO: ");
+        logger.debug("MAKING DIFF: ");
+        logger.debug("CONFIG: ");
+        logger.debug("\n" + configThings.toString(0));
+        logger.debug("ADAPTER: ");
+        logger.debug("\n" + adapterThings.toString(0));
+
+        ThingsDiff diff = ThingsDiff.fire(configThings, adapterThings);
+        logger.info(diff.toString(0));
+
+        // HANDLE DELETE
+        logger.info("HANDLING DELETE: ");
+        List<ThingDescription> toDelete = ThingDescriptions.toList(diff.delete.byAdapterOID);
+        if(toDelete.size() > 0){
+            NeighbourhoodManager.delete(NeighbourhoodManager.deleteThingsPayload(toDelete, agent.agentId), agent);
+        }
+        else{
+            logger.info("..nothing to delete");
+        }
+
+        // ANDLE CREATE
+        logger.info("HANDLING CREATE: ");
+        List<ThingDescription> toCreate = ThingDescriptions.toList(diff.create.byAdapterInfrastructureID);
+        if(toCreate.size() > 0){
+            String createData = NeighbourhoodManager.create(NeighbourhoodManager.createThingsPayload(toCreate, agent.agentId), agent);
+        }
+        else{
+            logger.info("..nothing to create");
+        }
+
+        return true;
     }
 
     public boolean discover() {
@@ -92,7 +131,12 @@ public class AdapterConfig {
 
 
             logger.debug("DISCOVERED THINGS: "+things.byAdapterInfrastructureID.keySet().size());
-            logger.debug("\n"+things.toString(0));
+            logger.debug("\n" + things.toString(0));
+
+            ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
+
+            executeDisco(configurationThings, things);
+
 
             return true;
         }

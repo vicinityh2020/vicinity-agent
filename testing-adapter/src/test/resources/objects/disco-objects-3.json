@@ -4,11 +4,11 @@
         {
             "oid": "test",
             "name": "human reads my name here",
-            "type": "Lightbulb",
+            "type": "adapters:HumiditySensor",
             "properties": [
                 {
                     "pid": "brightness1",
-                    "monitors": "Luminance",
+                    "monitors": "adapters:ValvePosition",
                     "read_link": {
                         "href": "/device/{oid}/property/{pid}",
                         "output": {
@@ -56,8 +56,12 @@
                     }
                 }
             ]
+        },
+        {
+            "oid": "test1",
+            "name": "human reads my name here",
+            "type": "adapters:Battery"
         }
-
     ]
 }
 

@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
-import sk.intersoft.vicinity.agent.service.config.thing.ThingDescriptions;
-import sk.intersoft.vicinity.agent.service.config.thing.ThingProcessor;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
@@ -34,6 +34,23 @@ public class AgentConfig {
     public ThingDescriptions configurationThings = new ThingDescriptions();
 
     private boolean configurationRunning = false;
+
+    public ThingDescriptions configurationThingsForAdapter(String adapterId){
+        ThingDescriptions ts = new ThingDescriptions();
+        Set<ThingDescription> adapterThings = configurationThings.byAdapterID.get(adapterId);
+        if(adapterThings != null){
+            for(ThingDescription t : adapterThings){
+                try{
+                    ts.add(t);
+                }
+                catch(Exception e){
+                    logger.error("", e);
+                }
+            }
+        }
+
+        return ts;
+    }
 
     public boolean configure() {
         if (isRunning()) {
@@ -96,11 +113,8 @@ public class AgentConfig {
 
 
             logger.info("removing unparsed things: " + unprocessedOIDs);
-            JSONObject payload = NeighbourhoodManager.deletePayload(unprocessedOIDs, agentId);
-            logger.info("delete payload: \n" + payload);
+            NeighbourhoodManager.delete(NeighbourhoodManager.deletePayload(unprocessedOIDs, agentId), this);
 
-            String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, password);
-            logger.info("delete raw response: \n" + deleteResponse);
         }
 
 

@@ -1,4 +1,4 @@
-package sk.intersoft.vicinity.agent.service.config.thing;
+package sk.intersoft.vicinity.agent.service.config.processor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
@@ -62,6 +63,13 @@ public class StartStop {
         logger.info("Launching starting sequence!");
         try{
             // START SEQUENCE:
+
+            // 0. init persistence for case that it does not exist yet
+            // 1. INITIALIZE PERSISTENCE
+            PersistedThing.createTable();
+            logger.info("Initialized persistence");
+            PersistedThing.list();
+
 
             // 1. read config mappings
             logger.info("READING CONFIGURATION!");
