@@ -21,7 +21,7 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | --- | --- | --- | --- |
 | oid | string | yes | Infrastructure specific unique identifier of the object |
 | name | string | yes | Human readable name of object visible in Neighbourhood manager |
-| type | string | yes | Ontology annotation: the class in VICINITY semantic model (currently one of classes in hierarchy for core:Device). **The ontology class is always provided without prefix!** e.g. use **Device**, instead of **core:Device**. See [hierarchy of devices and services](http://iot.linkeddata.es/def/core/) |
+| type | string | yes | [Ontology annotation](#ontology-annotation) |
 | version | string | yes |Defines the version of the service. It is possible to have registered different version of the services |
 | properties | array of objects | no | The array of property interaction patterns [see Property](#property) |
 | actions | array of objects | no | The array of action interaction patterns [see Action](#action) |
@@ -58,7 +58,7 @@ actual energy consumption of appliance, actual value observed by sensor, etc.
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | pid | string | yes | Unique identifier of the property. Used by all VICINITY components as specified here. |
-| monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| monitors | string | yes | Specification of what is monitored. [Ontology annotation](#ontology-annotation) |
 | read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
 | write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
 
@@ -80,7 +80,7 @@ In VICINITY Gateway API, ongoing actions are modelled as task resources, which a
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | aid | string | yes | Unique identifier of the action. Used by all VICINITY components as specified here. |
-| affects | string | yes | Specification of what is affected by action. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| affects | string | yes | Specification of what is affected by action. [Ontology annotation](#ontology-annotation) |
 | read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
 | write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
 
@@ -104,7 +104,7 @@ In VICINITY, eventing is implemented as publish/subscribe pattern.
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | eid | string | yes | Unique identifier of the event. Used by all VICINITY components as specified here. |
-| monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| monitors | string | yes | Specification of what is monitored. [Ontology annotation](#ontology-annotation) |
 | output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
 
 **Validity**
@@ -174,7 +174,7 @@ Each required interaction resource is specified by the interaction pattern fragm
 ##### Event requirement
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitors | string | yes | Specification of what is monitored. Ontology annotation: the individual in VICINITY semantic model (currently one of individuals in hierarchy for ssn:Property). **The ontology individual is always provided without prefix!** e.g. use **Motion**, instead of **core:Motion**. See [hierarchy of properties](http://iot.linkeddata.es/def/core/). |
+| monitors | string | yes | Specification of what is monitored. [Ontology annotation](#ontology-annotation) |
 | output | object | yes | Definition of event payload. [see Data schema](#data-schema) |
 
 ### Data schema
@@ -387,3 +387,15 @@ as new Adapter and in discovery process, it re-creates all objects in it and cre
 This means, objects are treated as new, so all friendships in Neighbourhood Manager of former objects will be lost.
 So, just generate some hash code for each Adapter and don't change it.
 
+
+## Ontology annotation
+
+Ontology annotation is the pointer to class or individual.
+Currently the classes are used to annotate device/service types and properties,
+that are monitored/affected by properties/events/actions.
+
+**The ontology annotation is always provided WITH prefix!** e.g. **core:Device**.
+This prevents from possible ambiguity, when importing external models. These may possibly
+use the same names of classes or individuals, but with different prefix (domain namespace).
+
+See the actual [hierarchy of devices and services](http://iot.linkeddata.es/def/adapters/)
