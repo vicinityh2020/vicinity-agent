@@ -128,6 +128,8 @@ was created. Set the endpoint to GTW API. Add the list of Adapters to be handled
 
 One agent component may manage multiple adapters, **each adapter must provide its unique identifier**.
 
+#### adapter-id
+
 **adapter-id must be specific for whole agent service. Just ensure, it is unique!**
 Agent service must be able to unambiguously decide, which object belongs to which adapter
 and which adapter belongs to which agent.
