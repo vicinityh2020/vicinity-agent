@@ -139,6 +139,8 @@ It will be required, when talking to agent, this prevents the ambiguity in
 object identifiers (case, when different adapters contain objects with
 identical infrastructure-id).
 
+#### active-discovery
+
 Discovery may be triggered by agent, but now, also by adapter proactively.
 If you want your adapter to trigger the discovery, in agent config "adapters", use property
 **"active-discovery": true/false**.
@@ -150,6 +152,8 @@ If set to false, agent will invoke discovery when started.
 When running node, agent must be started as last component!
 
 Default is : **"active-discovery": false**.
+
+#### endpoint
 
 **endpoint** parameter is optional.
 When **endpoint** is not provided, that means, that only possible communication
