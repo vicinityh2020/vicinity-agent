@@ -11,7 +11,7 @@
                 }
             },
             {
-                "name": "age",
+                "name": "agex",
                 "schema": {
                     "type": "integer"
                 }
