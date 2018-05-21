@@ -14,22 +14,26 @@ public class PersistedThing {
     // DB KEYS
     private static final String TABLE = "things";
     private static final String OID = "oid";
+    private static final String ADAPTER_ID = "adapter_id";
     private static final String ADAPTER_INFRASTRUCTURE_ID = "adapter_infrastructure_id";
     private static final String PASSWORD = "password";
 
 
     public String oid = null;
+    public String adapterId = null;
     public String adapterInfrastructureId = null;
     public String password = null;
 
-    public PersistedThing(String oid, String infrastructureId, String password){
+    public PersistedThing(String oid, String adapterId, String adapterInfrastructureId, String password){
         this.oid = oid;
+        this.adapterId = adapterId;
         this.adapterInfrastructureId = adapterInfrastructureId;
         this.password = password;
     }
 
     public PersistedThing(ThingDescription thing){
         this.oid = thing.oid;
+        this.adapterId = thing.adapterId;
         this.adapterInfrastructureId = thing.adapterInfrastructureID;
         this.password = thing.password;
     }
@@ -38,13 +42,14 @@ public class PersistedThing {
     private static final String createTableQuery(){
         return "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 OID+" varchar(255), "+
+                ADAPTER_ID+" varchar(255), " +
                 ADAPTER_INFRASTRUCTURE_ID+" varchar(255), " +
                 PASSWORD+" varchar(255)" +
                 ")";
     }
 
-    private static final String clearQuery(){
-        return "DELETE FROM "+TABLE;
+    private static final String clearAdapterQuery(String adapterId){
+        return "DELETE FROM "+TABLE+" WHERE "+ADAPTER_ID+"='"+adapterId+"'";
     }
 
     private static final String listQuery(){
@@ -52,8 +57,9 @@ public class PersistedThing {
     }
 
     private String insertQuery(){
-        return "INSERT INTO "+TABLE+" ("+OID+", "+ADAPTER_INFRASTRUCTURE_ID+", "+PASSWORD+") VALUES (" +
+        return "INSERT INTO "+TABLE+" ("+OID+", "+ADAPTER_ID+", "+ADAPTER_INFRASTRUCTURE_ID+", "+PASSWORD+") VALUES (" +
                 "'"+oid+"', "+
+                "'"+adapterId+"', "+
                 "'"+adapterInfrastructureId+"', "+
                 "'"+password+"'"+
                 ")";
@@ -64,8 +70,13 @@ public class PersistedThing {
         return "SELECT * FROM "+TABLE+" WHERE "+OID+"='"+oid+"'";
     }
 
-    public static void clear() {
-        execute(clearQuery());
+    private static String getByAdapterIDQuery(String adapterId){
+        return "SELECT * FROM "+TABLE+" WHERE "+ADAPTER_ID+"='"+adapterId+"'";
+    }
+
+
+    public static void clearAdapter(String adapterId) {
+        execute(clearAdapterQuery(adapterId));
     }
 
     public static void list()  {
@@ -134,7 +145,7 @@ public class PersistedThing {
                 Statement statement = conn.createStatement();
                 ResultSet result = statement.executeQuery(query);
                 if(result.next()){
-                    thing = new PersistedThing(result.getString(OID), result.getString(ADAPTER_INFRASTRUCTURE_ID), result.getString(PASSWORD));
+                    thing = new PersistedThing(result.getString(OID), result.getString(ADAPTER_ID), result.getString(ADAPTER_INFRASTRUCTURE_ID), result.getString(PASSWORD));
                 }
                 result.close();
                 conn.close();
@@ -154,6 +165,10 @@ public class PersistedThing {
         return get(getByOIDQuery(oid));
     }
 
+    public static PersistedThing getByAdapterID(String adapterId) {
+        logger.debug("GET BY ADAPTER: " + adapterId);
+        return get(getByAdapterIDQuery(adapterId));
+    }
 
     public static boolean save(ThingDescription thing) {
         logger.debug("SAVING: " + thing.toSimpleString());

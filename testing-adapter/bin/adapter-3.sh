@@ -3,7 +3,7 @@
 SERVER_PORT=9996
 JAR=testing-adapter.jar
 
-OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-3.json
+OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-3.json
 
 COMMAND=$1
 

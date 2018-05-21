@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -81,11 +82,16 @@ public class AgentConfig {
             ThingDescription thing = validator.create(object);
             if (thing != null) {
                 logger.debug("processed thing: " + thing.oid);
-                // ADD PERSISTENCE HERE
                 try {
-                    configurationThings.add(thing);
+                    PersistedThing persisted = PersistedThing.getByOID(thing.oid);
+                    if(persisted != null){
+                        thing.updatePersistence(persisted);
+                        configurationThings.add(thing);
+                    }
+                    else throw new Exception("credentials for thing ["+ thing.oid +"] were lost .. must remove it!");
                 } catch (Exception e) {
-                    logger.debug("duplicate thing [" + thing.oid + "]! remove!");
+                    logger.error("", e);
+                    logger.debug("unprocessed thing [" + thing.oid + "]! remove!");
                     unprocessed.add(object);
                 }
             } else {

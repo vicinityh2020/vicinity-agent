@@ -42,6 +42,12 @@ public class ThingDescriptions {
         byAdapterID.put(thing.adapterId, adapterThings);
     }
 
+    public void add(List<ThingDescription> things) throws Exception {
+        for(ThingDescription t : things) {
+            add(t);
+        }
+    }
+
     public String toString(int indent) {
         Dump dump = new Dump();
 

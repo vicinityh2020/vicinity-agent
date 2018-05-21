@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Tryout {
-    String dbFile = "/home/kostelni/work/eu-projekty/vicinity/unikl-workspace/vicinity-agent/hsqldb-test/src/test/resources/data/test.db";
+    String dbFile = "/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/hsqldb-test/src/test/resources/data/test.db";
 
     public void dropTable() throws Exception {
         System.out.println("TRYING DB DROP TABLE: "+dbFile);

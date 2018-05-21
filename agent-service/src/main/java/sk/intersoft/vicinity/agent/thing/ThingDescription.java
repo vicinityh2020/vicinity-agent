@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -34,6 +35,7 @@ public class ThingDescription {
     // JSON keys
     public static String OID_KEY = "oid";
     public static String INFRASTRUCTURE_KEY = "infrastructure-id";
+    public static String PASSWORD_KEY = "password";
     public static String ADAPTER_ID_KEY = "adapter-id";
     public static String NAME_KEY = "name";
     public static String TYPE_KEY = "type";
@@ -56,6 +58,15 @@ public class ThingDescription {
         oid = configThing.oid;
         adapterOID = configThing.adapterOID;
         password = configThing.password;
+    }
+    public void updatePersistence(PersistedThing persisted) {
+        adapterInfrastructureID = persisted.adapterInfrastructureId;
+        password = persisted.password;
+    }
+    public void updateCreatedData(String oid, String password) {
+        this.oid = oid;
+        this.adapterOID = identifier(oid, adapterId);
+        this.password = password;
     }
 
 

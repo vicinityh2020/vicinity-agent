@@ -8,14 +8,43 @@ import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class NeighbourhoodManager {
     final static Logger logger = LoggerFactory.getLogger(NeighbourhoodManager.class.getName());
 
-    public static final String AGID_KEY = "agid";
+    public static final String AGID_KEY = "adid";
     public static final String THING_DESCRIPTIONS_KEY = "thingDescriptions";
     public static final String OIDS_KEY = "oids";
+
+
+    public static JSONArray getConfigurationThings(String data) throws Exception {
+        JSONObject root = new JSONObject(data);
+        JSONArray results = root.getJSONArray("message");
+        JSONArray extraction = new JSONArray();
+        Iterator<Object> i = results.iterator();
+        while(i.hasNext()){
+            JSONObject item = (JSONObject)i.next();
+            extraction.put(item.getJSONObject("id").getJSONObject("info"));
+        }
+        return extraction;
+    }
+
+    public static List<JSONObject> getCreateResults(String data) throws Exception {
+        JSONObject root = new JSONObject(data);
+        JSONArray results = root.getJSONArray("message");
+
+        List<JSONObject> extraction = new ArrayList<JSONObject>();
+
+        Iterator<Object> i = results.iterator();
+        while(i.hasNext()){
+            JSONObject item = (JSONObject)i.next();
+            extraction.add(item);
+        }
+        return extraction;
+    }
+
 
     public static JSONObject deletePayload(JSONArray oids, String agentId) {
         JSONObject payload = new JSONObject();
@@ -57,8 +86,8 @@ public class NeighbourhoodManager {
             JSONObject json = ThingDescription.toJSON(thing);
             if(create){
                 json.remove(ThingDescription.OID_KEY);
-                json.put(ThingDescription.INFRASTRUCTURE_KEY, thing.infrastructureId);
             }
+            json.put(ThingDescription.INFRASTRUCTURE_KEY, thing.adapterInfrastructureID);
             thingsArray.put(json);
         }
 
@@ -89,5 +118,15 @@ public class NeighbourhoodManager {
         logger.info("create raw response: \n" + createResponse);
 
         return createResponse;
+    }
+
+
+    public static String update(JSONObject payload, AgentConfig agent) throws Exception {
+        logger.info("update payload: \n" + payload.toString(2));
+
+        String updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        logger.info("update raw response: \n" + updateResponse);
+
+        return updateResponse;
     }
 }

@@ -78,8 +78,19 @@ public class ThingDiff {
         logger.debug(Dump.indent("DOING DIFF", 0));
         logger.debug(Dump.indent("Thing 1: "+thing.toSimpleString(), 0));
         logger.debug(Dump.indent("Thing 2: "+other.toSimpleString(), 0));
+
+        if(!thing.oid.equalsIgnoreCase(other.oid)){
+            logger.debug(Dump.indent("Thing [oid] diff: ["+thing.oid+"] -> ["+other.oid+"]", 1));
+            return false;
+        }
+
         if(!thing.type.equalsIgnoreCase(other.type)){
             logger.debug(Dump.indent("Thing [type] diff: ["+thing.type+"] -> ["+other.type+"]", 1));
+            return false;
+        }
+
+        if(!thing.name.equalsIgnoreCase(other.name)){
+            logger.debug(Dump.indent("Thing [name] diff: ["+thing.name+"] -> ["+other.name+"]", 1));
             return false;
         }
 

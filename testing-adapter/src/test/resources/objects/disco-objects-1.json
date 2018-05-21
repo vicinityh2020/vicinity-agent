@@ -2,13 +2,13 @@
     "adapter-id": "adapter-1",
     "thing-descriptions": [
         {
-            "oid": "testx",
-            "name": "human reads my name here",
-            "type": "",
+            "oid": "test",
+            "name": "human reads my name here x",
+            "type": "core:Device",
             "properties": [
                 {
                     "pid": "brightness1",
-                    "monitors": "ValvePosition",
+                    "monitors": "adapters:ValvePosition",
                     "read_link": {
                         "href": "/device/{oid}/property/{pid}",
                         "output": {

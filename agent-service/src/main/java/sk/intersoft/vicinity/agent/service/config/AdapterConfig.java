@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.service.config.processor.Discovery;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingsDiff;
@@ -14,6 +16,7 @@ import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class AdapterConfig {
@@ -67,38 +70,16 @@ public class AdapterConfig {
     }
 
 
-    public boolean executeDisco(ThingDescriptions configThings, ThingDescriptions adapterThings) throws Exception {
-        logger.debug("EXECUTING DISCO: ");
-        logger.debug("MAKING DIFF: ");
-        logger.debug("CONFIG: ");
-        logger.debug("\n" + configThings.toString(0));
-        logger.debug("ADAPTER: ");
-        logger.debug("\n" + adapterThings.toString(0));
-
-        ThingsDiff diff = ThingsDiff.fire(configThings, adapterThings);
-        logger.info(diff.toString(0));
-
-        // HANDLE DELETE
-        logger.info("HANDLING DELETE: ");
-        List<ThingDescription> toDelete = ThingDescriptions.toList(diff.delete.byAdapterOID);
-        if(toDelete.size() > 0){
-            NeighbourhoodManager.delete(NeighbourhoodManager.deleteThingsPayload(toDelete, agent.agentId), agent);
+    public void updatePersistence(ThingDescriptions things) throws Exception {
+        PersistedThing.clearAdapter(adapterId);
+        logger.debug("persistence cleared");
+        for (Map.Entry<String, ThingDescription> entry : things.byAdapterOID.entrySet()) {
+            ThingDescription thing = entry.getValue();
+            PersistedThing.save(thing);
         }
-        else{
-            logger.info("..nothing to delete");
-        }
+        logger.debug("persistence updated");
+        PersistedThing.list();
 
-        // ANDLE CREATE
-        logger.info("HANDLING CREATE: ");
-        List<ThingDescription> toCreate = ThingDescriptions.toList(diff.create.byAdapterInfrastructureID);
-        if(toCreate.size() > 0){
-            String createData = NeighbourhoodManager.create(NeighbourhoodManager.createThingsPayload(toCreate, agent.agentId), agent);
-        }
-        else{
-            logger.info("..nothing to create");
-        }
-
-        return true;
     }
 
     public boolean discover() {
@@ -107,10 +88,13 @@ public class AdapterConfig {
         things = new ThingDescriptions();
         logger.debug("things cleared!");
 
+
+        ThingDescriptions adapterThings = new ThingDescriptions();
+
         try{
             String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
             List<JSONObject> objects = ThingProcessor.processAdapter(data, adapterId);
-            logger.debug("parsing things ... ");
+            logger.debug("parsing adapter things ... ");
             for (JSONObject object : objects) {
                 logger.debug(object.toString());
                 ThingValidator validator = new ThingValidator(true);
@@ -121,24 +105,26 @@ public class AdapterConfig {
                     // TRANSFORM OID -> INFRASTRUCTURE
                     thing.toInfrastructure();
 
-                    things.add(thing);
+                    adapterThings.add(thing);
                 }
                 else {
                     logger.debug("unprocessed thing! validator errors: \n" + validator.failureMessage().toString(2));
-                    throw new Exception("unprocessed thing adapter: "+toSimpleString());
+                    throw new Exception("unprocessed adapter thing: "+toSimpleString());
                 }
             }
 
 
-            logger.debug("DISCOVERED THINGS: "+things.byAdapterInfrastructureID.keySet().size());
-            logger.debug("\n" + things.toString(0));
+            logger.debug("EXPOSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
+            logger.debug("\n" + adapterThings.toString(0));
 
             ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
 
-            executeDisco(configurationThings, things);
+            ThingDescriptions discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
 
+            updatePersistence(discoveredThings);
 
             return true;
+
         }
         catch(Exception e){
             logger.error("DISCOVERY FAILED FOR: "+toSimpleString(), e);

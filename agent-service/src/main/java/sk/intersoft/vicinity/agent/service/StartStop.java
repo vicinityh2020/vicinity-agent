@@ -41,15 +41,15 @@ public class StartStop {
 
     }
 
-    private static void discoverPassiveAdapters() throws Exception {
-        logger.info("DISCOVERING PASSIVE ADAPTERS");
+    private static void discoverPassiveAdapters()  {
+        logger.info("DISCOVERING PASSIVE ADAPTERS : "+Configuration.adapters);
         for (Map.Entry<String, AdapterConfig> entry : Configuration.adapters.entrySet()) {
             AdapterConfig adapter = entry.getValue();
             if(!adapter.activeDiscovery){
                 logger.info("passive discovery for: ["+adapter.adapterId+"]");
                 boolean success = adapter.discover();
                 if(!success) {
-                    throw new Exception("PASSIVE DISCOVERY FAILED!");
+                    logger.error("PASSIVE DISCOVERY FAILED FOR ADAPTER ["+adapter.adapterId+"]!");
                 }
             }
             else {

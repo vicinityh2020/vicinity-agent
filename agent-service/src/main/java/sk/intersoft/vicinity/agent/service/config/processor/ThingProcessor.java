@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent.service.config.processor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -11,21 +12,10 @@ import java.util.List;
 
 public class ThingProcessor {
 
-    public static JSONArray getConfigurationThings(String data) throws Exception {
-        JSONObject root = new JSONObject(data);
-        JSONArray results = root.getJSONArray("message");
-        JSONArray extraction = new JSONArray();
-        Iterator<Object> i = results.iterator();
-        while(i.hasNext()){
-            JSONObject item = (JSONObject)i.next();
-            extraction.put(item.getJSONObject("id").getJSONObject("info"));
-        }
-        return extraction;
-    }
 
     public static List<JSONObject> processConfiguration(String data) throws Exception {
         List<JSONObject> things = new ArrayList<JSONObject>();
-        JSONArray array = getConfigurationThings(data);
+        JSONArray array = NeighbourhoodManager.getConfigurationThings(data);
         Iterator i = array.iterator();
         while (i.hasNext()) {
             JSONObject object = (JSONObject) i.next();

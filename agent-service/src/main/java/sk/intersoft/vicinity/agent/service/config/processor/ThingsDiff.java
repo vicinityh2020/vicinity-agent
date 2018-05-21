@@ -18,6 +18,8 @@ public class ThingsDiff {
     public static ThingsDiff fire(ThingDescriptions config, ThingDescriptions adapter) {
         ThingsDiff diff = new ThingsDiff();
 
+        logger.debug("MAKING DIFF ... ");
+
         // always look at infrastructure-id .. it was attached to config from database when thing was created
 
         // find things to create:
