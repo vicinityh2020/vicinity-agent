@@ -82,11 +82,23 @@ public class AdapterConfig {
 
     }
 
+    public void clearThings(){
+        logger.debug("CLEARING THINGS FOR ADAPTER "+toSimpleString());
+        things = new ThingDescriptions();
+        Configuration.things.remove(adapterId);
+    }
+
+    public void exposeThings(ThingDescriptions discoveredThings){
+        logger.debug("EXPOSING THINGS FOR ADAPTER "+toSimpleString());
+        things = discoveredThings;
+        Configuration.things.put(adapterId, discoveredThings);
+    }
+
     public boolean discover() {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
         logout();
-        things = new ThingDescriptions();
-        logger.debug("things cleared!");
+
+        clearThings();
 
 
         ThingDescriptions adapterThings = new ThingDescriptions();
@@ -122,6 +134,8 @@ public class AdapterConfig {
             ThingDescriptions discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
 
             updatePersistence(discoveredThings);
+
+            exposeThings(discoveredThings);
 
             return true;
 
@@ -162,6 +176,19 @@ public class AdapterConfig {
         dump.add("adapter-id: [" + adapterId + "]", (indent + 1));
         dump.add("endpoint: " + endpoint, (indent + 1));
         dump.add("active disco: " + activeDiscovery, (indent + 1));
+
+        return dump.toString();
+    }
+
+    public String toStatusString(int indent) {
+        Dump dump = new Dump();
+
+        dump.add("ADAPTER CONFIG: ["+adapterId+"]", indent);
+
+        List<ThingDescription> list = ThingDescriptions.toList(things.byAdapterOID);
+        for(ThingDescription t : list){
+            dump.add(t.toSimpleString(), (indent + 1));
+        }
 
         return dump.toString();
     }

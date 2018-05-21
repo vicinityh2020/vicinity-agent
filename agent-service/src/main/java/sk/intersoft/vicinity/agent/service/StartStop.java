@@ -59,6 +59,7 @@ public class StartStop {
         }
     }
 
+
     public static void start() {
         logger.info("Launching starting sequence!");
         try{
@@ -81,6 +82,9 @@ public class StartStop {
 
             // 3. discover passive adapters
             discoverPassiveAdapters();
+
+            // 4. list status of processed components
+            logger.info("FINAL CONFIGURATION STATUS: \n"+Configuration.toStatusString(0));
 
             logger.info("STARTUP SEQUENCE COMPLETED!");
 

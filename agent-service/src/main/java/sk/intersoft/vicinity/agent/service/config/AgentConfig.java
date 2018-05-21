@@ -210,4 +210,17 @@ public class AgentConfig {
     public String toSimpleString() {
         return "[AGENT: " + agentId + "]";
     }
+
+    public String toStatusString(int indent) {
+        Dump dump = new Dump();
+
+        dump.add("AGENT CONFIG: ["+agentId+"]", indent);
+        dump.add("ACTIVE ADAPTERS: "+adapters.values().size(), (indent + 1));
+
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            dump.add(entry.getValue().toStatusString(indent + 1));
+        }
+
+        return dump.toString();
+    }
 }

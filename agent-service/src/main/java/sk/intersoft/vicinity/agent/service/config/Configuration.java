@@ -3,6 +3,8 @@ package sk.intersoft.vicinity.agent.service.config;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
+import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.FileUtil;
 
@@ -20,6 +22,7 @@ public class Configuration {
 
     public static Map<String, AgentConfig> agents = new HashMap<String, AgentConfig>();
     public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
+    public static Map<String, ThingDescriptions> things = new HashMap<String, ThingDescriptions>();
 
 //    public static boolean configureAgent(String agentId) {
 //        try{
@@ -64,10 +67,34 @@ public class Configuration {
     public static String toString(int indent) {
         Dump dump = new Dump();
 
-        dump.add("AGENT-SERVICE CONFIGURATION: ", indent);
+        dump.add("AGENT-SERVICE CONFIGURATION STATUS: ", indent);
 
         dump.add("GatewayAPI Endpoint: " + gatewayAPIEndpoint, indent);
         dump.add(mappings.toString(indent));
+
+        return dump.toString();
+    }
+
+    public static String toStatusString(int indent) {
+        Dump dump = new Dump();
+
+        dump.add("AGENT-SERVICE CONFIGURATION SUMMARY (all maps): ", indent);
+
+        dump.add("EXPOSED AGENTS: " + agents.values().size(), indent);
+        for (Map.Entry<String, AgentConfig> entry : agents.entrySet()) {
+            dump.add(entry.getValue().toStatusString(indent + 1));
+        }
+
+        dump.add("ALL EXPOSED ADAPTERS: " + adapters.values().size(), indent);
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            dump.add(entry.getValue().toStatusString(indent + 1));
+        }
+
+        dump.add("ALL EXPOSED THINGS: " + things.values().size(), indent);
+        for (Map.Entry<String, ThingDescriptions> entry : things.entrySet()) {
+            dump.add("for adapter: " + adapters.get(entry.getKey()).adapterId, (indent + 1));
+            dump.add(entry.getValue().toStatusString(indent + 2));
+        }
 
         return dump.toString();
     }

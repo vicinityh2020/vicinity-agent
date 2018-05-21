@@ -81,4 +81,16 @@ public class ThingDescriptions {
         return dump.toString();
     }
 
+    public String toStatusString(int indent) {
+        Dump dump = new Dump();
+
+        dump.add("THING DESCRIPTIONS: "+byAdapterOID.keySet().size(), indent);
+
+        for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
+            String id = entry.getKey();
+            dump.add(entry.getValue().toSimpleString(), (indent + 1));
+        }
+
+        return dump.toString();
+    }
 }
