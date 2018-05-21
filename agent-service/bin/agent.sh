@@ -1,7 +1,9 @@
 #!/bin/bash
 
 SERVER_PORT=9997
-CONFIG_FILE=config/simulate-config.json
+CONFIG_FILE=config/service-config.json
+AGENT_CONFIG_FOLDER=config/agents
+
 LOGS_FOLDER=logs
 
 # ==============================
@@ -45,7 +47,8 @@ else
         rm $DEFAULT_LOG;
 
         nohup java \
-            -Dconfig.file=$CONFIG_FILE \
+            -Dservice.config=$CONFIG_FILE \
+            -Dagents.config=$AGENT_CONFIG_FOLDER \
             -Dserver.port=$SERVER_PORT \
             -Dpersistence.file=$PERSISTENCE_FILE \
             -Dlogs.folder=$LOGS_FOLDER \

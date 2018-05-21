@@ -18,21 +18,25 @@ public class ObjectsResource extends ServerResource {
         }
     }
 
-    @Get("json")
-    public String getPropertyValue()  {
+    public static String getObjects(){
         try{
-
             System.out.println("getting objects");
-            getLogger().info("GETTING OBJECTS FROM: "+System.getProperty("objects.file"));
+            System.out.println("GETTING OBJECTS FROM: "+System.getProperty("objects.file"));
 
             return file2string(System.getProperty("objects.file"));
 
         }
         catch(Exception e){
             System.out.println("no objects");
-            getLogger().info("NO OBJECTS FILE .. return empty");
+            System.out.println("NO OBJECTS FILE .. return empty");
             return "[]";
         }
+
+    }
+
+    @Get("json")
+    public String getPropertyValue()  {
+        return getObjects();
     }
 
 }

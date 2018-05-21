@@ -29,6 +29,10 @@ public class ThingProcessor {
 
         JSONObject descriptions = new JSONObject(data);
         String adapterId = JSONUtil.getString("adapter-id", descriptions);
+        if(adapterId == null && adapterId.equals("")){
+            throw new Exception("Missing [adapter-id] in agent discovery data!");
+        }
+
         if(adapterId != null && !adapterId.equals("")){
 
             if(!adapterId.equals(matchAdapterId)) {
@@ -36,6 +40,9 @@ public class ThingProcessor {
             }
 
             List<JSONObject> objects = JSONUtil.getObjectArray("thing-descriptions", descriptions);
+            if(objects == null){
+                throw new Exception("Missing [thing-descriptions] in agent discovery data!");
+            }
             for(JSONObject o : objects) {
                 o.put(ThingDescription.ADAPTER_ID_KEY, adapterId);
                 things.add(o);

@@ -33,4 +33,11 @@ public class ResourceResponse {
         response.put(REASON, exception.getMessage());
         return response;
     }
+
+    public static JSONObject failure(Object result){
+        JSONObject response = new JSONObject();
+        response.put(STATUS, FAILURE);
+        response.put(REASON, result);
+        return response;
+    }
 }

@@ -39,6 +39,7 @@ public class AdapterConfig {
 
     ThingDescriptions things = new ThingDescriptions();
 
+    private boolean configurationRunning = false;
 
 
     public void login(){
@@ -94,7 +95,43 @@ public class AdapterConfig {
         Configuration.things.put(adapterId, discoveredThings);
     }
 
+
+    private void start() {
+        configurationRunning = true;
+    }
+    private void stop() {
+        configurationRunning = false;
+    }
+    private boolean isRunning() {
+        return configurationRunning;
+    }
+
+    public boolean discover(String data) {
+        if (isRunning()) {
+            logger.info("NOT DISCOVERING ADAPTER: [" + adapterId + "] .. another process is actually using this configuration!");
+            return false;
+        }
+
+        start();
+        boolean success = discoverAdapter(data);
+        stop();
+
+        return success;
+    }
+
     public boolean discover() {
+        try{
+            logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. getting data from adapter");
+            String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
+            return discover(data);
+        }
+        catch(Exception e){
+            logger.error("DISCOVERY FAILED FOR: "+toSimpleString(), e);
+        }
+        return false;
+    }
+
+    public boolean discoverAdapter(String data) {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
         logout();
 
@@ -104,7 +141,6 @@ public class AdapterConfig {
         ThingDescriptions adapterThings = new ThingDescriptions();
 
         try{
-            String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
             List<JSONObject> objects = ThingProcessor.processAdapter(data, adapterId);
             logger.debug("parsing adapter things ... ");
             for (JSONObject object : objects) {

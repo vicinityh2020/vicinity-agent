@@ -3,9 +3,9 @@
         "agent-id": "4aaf6042-9888-4cd1-bc56-f42a84204101",
         "password": "test"
     },
-    "gateway-api-endpoint": "http://localhost:8181/api",
     "adapters": [
         {
+            "adapter-id": "adapter-1",
             "endpoint": "http://localhost:9995/adapter"
         }
     ]

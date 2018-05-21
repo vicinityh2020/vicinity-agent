@@ -9,6 +9,7 @@ import sk.intersoft.vicinity.adapter.testing.service.resource.*;
 
 public class TestingAdapterApplication extends Application {
     public static final String OBJECTS = "/objects";
+    public static final String DISCO = "/disco";
 
     public static final String GET_PROPERTY = "/objects/{oid}/properties/{pid}";
     public static final String GET_CUSTOM_PROPERTY = "/custom/{oid}/x";
@@ -38,6 +39,7 @@ public class TestingAdapterApplication extends Application {
         Router apiRouter = new Router(getContext());
         apiRouter.attach(OBJECTS, ObjectsResource.class);
         apiRouter.attach(OBJECTS+"/", ObjectsResource.class);
+        apiRouter.attach(DISCO, DiscoResource.class);
         apiRouter.attach(GET_PROPERTY, GetSetPropertyResource.class);
         apiRouter.attach(POST_ACTION, ActionResource.class);
         apiRouter.attach(GET_CUSTOM_PROPERTY, GetCustomPropertyResource.class);
