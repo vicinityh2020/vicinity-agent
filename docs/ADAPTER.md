@@ -37,16 +37,31 @@ One of the most important responsibilities of Client node is ability to describe
 This is the responsibility of Adapter. Adapter must be able to provide the **list of object descriptions** that are
 exposed to VICINITY.
 
-For this purpose, Adapter **must** implement the service:
+This list of thing descriptions is exposed by Adapter in [VICINITY Common Thing Description format](TD.md).
+See [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
+Lets call it **Adapter discovery data**.
+
+Discovery of Adapter object can be:
+* **passive** - Agent asks Adapter for discovery data
+* **active** - Adapter triggers the discovery process itself by calling specific Agent service
+
+The choice, if discovery is passive or active is configured in related agent configuration file (see [Configuration of adapters in Agent](../AGENT.md#configuration-of-adapters)).
+
+### Passive discovery
+
+Passive discovery is triggered by Agent. When Agent service starts, it configures all
+included Agent components and their Adapters. Part of configuration is the discovery
+of objects inside the adapters.
+
+If Adapter is configured for passive discovery, Agent proactively asks Adapter for
+discovery data. For this purpose, Adapter must implement the following service, where
+discovery data will be available:
 
 ```
-GET /objects
+GET: /objects
 ```
 
-This service returns the list of thing descriptions exposed by this Adapter in [VICINITY Common Thing Description format](TD.md).
-Depending of case if single or multiple adapters are used in same client node, the output of this service may differ, see [Serialization of Thing Descriptions](TD.md#serialization-of-thing-descriptions).
-
-
+### Active discovery
 
 ## Interaction patterns
 
