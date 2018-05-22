@@ -45,7 +45,8 @@ Discovery of Adapter object can be:
 * **passive** - Agent asks Adapter for discovery data
 * **active** - Adapter triggers the discovery process itself by calling specific Agent service
 
-The choice, if discovery is passive or active is configured in related agent configuration file (see [Configuration of adapters in Agent](../AGENT.md#configuration-of-adapters)).
+The choice, if discovery is passive or active is configured in related agent configuration
+file (see [Configuration of adapters in Agent](AGENT.md#configuration-of-adapters)).
 
 ### Passive discovery
 
