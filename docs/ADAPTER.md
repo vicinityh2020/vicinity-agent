@@ -2,7 +2,7 @@
 Agent is actually in heavy refactoring to enable multi-agent client node.
 Here are actual important changes, please, adjust your adapter implementation according to it.
 
-[Click to see the CHANGELOG](docs/ADAPTER_CHANGELOG.md)
+[Click to see the CHANGELOG](ADAPTER_CHANGELOG.md)
 
 # Adapter for integrators
 
@@ -215,6 +215,6 @@ Adapter implements following services:
 * **mandatory**: endpoints with [prescribed http method](#http-methods-for-interaction-patterns) provided in **read/write_link** in thing descriptions
 * optional: **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
 
-All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](../AGENT.md).
+All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](AGENT.md).
 Use it.
 

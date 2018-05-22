@@ -285,7 +285,7 @@ PUT : /objects/{oid}/properties/{pid}
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
 When Agent receive the property consumption request, it translates this requests into corresponding Adapter endpoints and execute it.
-This process is described in details in [Adapter interaction patterns](docs/ADAPTER.md#interaction-patterns)
+This process is described in details in [Adapter interaction patterns](ADAPTER.md#interaction-patterns)
 
 ## Object actions
 

@@ -131,7 +131,7 @@ DataSchema specifying the payload of "input"/"output" schema had to be defined.
 The purpose is to enable the Agora.
 
 Now, "input"/"output" in links (and "output" in event) must be provided, not empty and
-must be valid according specification [see DataSchema specs](docs/TD.md#data-schema).
+must be valid according specification [see DataSchema specs](TD.md#data-schema).
 
 
 ## Ontology annotations must be used with prefix
