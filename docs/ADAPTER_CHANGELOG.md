@@ -42,7 +42,6 @@ Update **agent.sh** script to latest version enabling this feature.
 **agent.sh** script will enable to specify the both service configuration file
 and folder with agent configurations.
 
-See [Agent deployment](AGENT.md#deployment-and-re-deployment).
 
 ## agent-id is now mandatory
 
@@ -90,7 +89,6 @@ update **objects/** service response to:
 }
 ```
 
-See [Agent configuration](AGENT.md#configuration).
 
 ## Agent service allows active discovery of objects triggered by adapter
 
@@ -117,7 +115,6 @@ Default is : **"active-discovery": false**.
     ]
 ```
 
-See [Agent configuration](AGENT.md#configuration).
 
 ## Agent service allows to miss "endpoint" in agent config / "adapters"
 
@@ -128,7 +125,6 @@ discovery must be invoked by adapter.
 For this reason, **"active-discovery"** must be set to **true**.
 If **"endpoint"** is missing and **"active-discovery"** is missing, **"active-discovery"** is set to **true** by default.
 
-See [Agent configuration](AGENT.md#configuration).
 
 ## Specification of "input"/"output" in thing desc. links (and event) are now mandatory
 
