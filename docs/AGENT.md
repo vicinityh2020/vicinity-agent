@@ -201,6 +201,8 @@ Failure:
 }
 ```
 
+The only exception is the access to remote objects or receiving the events. In those cases,
+the response from GTW API is forwarded as it was received without touching it.
 
 # Auto discovery/configuration
 
