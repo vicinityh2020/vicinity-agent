@@ -4,6 +4,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
@@ -47,5 +49,40 @@ public class AdapterClient {
         }
 
     }
+
+    public static String put(String endpoint, String payload) throws Exception {
+        try{
+            logger.info("PUT ENDPOINT: " + endpoint);
+            logger.info("PUT DATA: \n"+payload);
+
+            HttpClient client = getClient();
+
+            HttpPut request = new HttpPut(endpoint);
+
+            request.addHeader("Accept", "application/json");
+            request.addHeader("Content-Type", "application/json");
+
+            StringEntity data = new StringEntity(payload);
+
+            request.setEntity(data);
+
+            HttpResponse response = client.execute(request);
+
+            int status = response.getStatusLine().getStatusCode();
+            String content = EntityUtils.toString(response.getEntity());
+
+            logger.info("agent PUT status: " + status);
+            logger.info("agent PUT response: " + content);
+
+            return content;
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
 
 }

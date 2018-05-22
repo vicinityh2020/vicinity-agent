@@ -51,11 +51,13 @@ public class AgentApplication extends Application {
         apiRouter.attach(OBJECTS, DiscoverAdapterResource.class);
         apiRouter.attach(OBJECTS+"/", DiscoverAdapterResource.class);
 
-//        apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
-//        apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
+        apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
+        apiRouter.attach(OBJECT_PROPERTY+"/", ObjectPropertyResource.class);
+
+        apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
+        apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
 //
-//        apiRouter.attach(OBJECT_PROPERTY, ObjectPropertyResource.class);
-//        apiRouter.attach(OBJECT_PROPERTY+"/", ObjectPropertyResource.class);
+
 //
 //        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
 //        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);

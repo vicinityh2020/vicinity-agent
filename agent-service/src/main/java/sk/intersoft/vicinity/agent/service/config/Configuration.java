@@ -23,6 +23,7 @@ public class Configuration {
     public static Map<String, AgentConfig> agents = new HashMap<String, AgentConfig>();
     public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
     public static Map<String, ThingDescriptions> things = new HashMap<String, ThingDescriptions>();
+    public static Map<String, ThingDescription> thingsByOID = new HashMap<String, ThingDescription>();
 
     public static void create() throws Exception {
 
@@ -59,10 +60,15 @@ public class Configuration {
             dump.add(entry.getValue().toStatusString(indent + 1));
         }
 
-        dump.add("ALL EXPOSED THINGS: " + things.values().size(), indent);
+        dump.add("ALL EXPOSED THINGS BY ADAPTER: " + things.values().size(), indent);
         for (Map.Entry<String, ThingDescriptions> entry : things.entrySet()) {
             dump.add("for adapter: " + adapters.get(entry.getKey()).adapterId, (indent + 1));
             dump.add(entry.getValue().toStatusString(indent + 2));
+        }
+
+        dump.add("ALL EXPOSED THINGS BY OID: " + thingsByOID.values().size(), indent);
+        for (Map.Entry<String, ThingDescription> entry : thingsByOID.entrySet()) {
+            dump.add(entry.getValue().toSimpleString());
         }
 
         return dump.toString();
@@ -73,10 +79,12 @@ public class Configuration {
         JSONArray agentsArray = new JSONArray();
         JSONArray adaptersArray = new JSONArray();
         JSONArray thingsArray = new JSONArray();
+        JSONArray thingsOIDArray = new JSONArray();
 
         object.put("agents", agentsArray);
         object.put("adapters", adaptersArray);
-        object.put("things", thingsArray);
+        object.put("things-by-adapter", thingsArray);
+        object.put("things-by-oid", thingsOIDArray);
 
         for (Map.Entry<String, AgentConfig> entry : agents.entrySet()) {
             agentsArray.put(entry.getValue().toJSON());
@@ -92,6 +100,10 @@ public class Configuration {
             at.put("for-adapter", adapters.get(entry.getKey()).adapterId);
             at.put("adapter-things", entry.getValue().toStatusJSON());
             thingsArray.put(at);
+        }
+
+        for (Map.Entry<String, ThingDescription> entry : thingsByOID.entrySet()) {
+            thingsOIDArray.put(entry.getValue().toStatusJSON());
         }
 
         return object;

@@ -86,8 +86,16 @@ public class AdapterConfig {
         logger.debug("CLEANUP FOR ADAPTER "+toSimpleString());
         logout();
 
-        if(Configuration.things.get(adapterId) != null){
+        ThingDescriptions toRemove = Configuration.things.get(adapterId);
+        if(toRemove != null){
             Configuration.things.remove(adapterId);
+            for (Map.Entry<String, ThingDescription> entry : toRemove.byAdapterOID.entrySet()) {
+                ThingDescription t = entry.getValue();
+                if(Configuration.thingsByOID.get(t.oid) != null){
+                    Configuration.thingsByOID.remove(t.oid);
+                }
+            }
+
             logger.debug("ADAPTER ["+adapterId+"] things removed from configuration");
         }
         logger.debug("CLEANUP FOR ADAPTER "+toSimpleString()+ ": DONE");
@@ -97,6 +105,11 @@ public class AdapterConfig {
         logger.debug("UPDATING MAPPINGS FOR ADAPTER "+toSimpleString());
         things = discoveredThings;
         Configuration.things.put(adapterId, discoveredThings);
+        for (Map.Entry<String, ThingDescription> entry : discoveredThings.byAdapterOID.entrySet()) {
+            ThingDescription t = entry.getValue();
+            Configuration.thingsByOID.put(t.oid, t);
+        }
+
     }
 
 

@@ -2,7 +2,7 @@
     "adapter-id": "adapter-1",
     "thing-descriptions": [
         {
-            "oid": "test",
+            "oid": "test1",
             "name": "human reads my name here x",
             "type": "core:Device",
             "properties": [

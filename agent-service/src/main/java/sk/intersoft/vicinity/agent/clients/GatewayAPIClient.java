@@ -46,6 +46,9 @@ public class GatewayAPIClient {
         return "/agents/"+agentId+"/objects/delete";
     }
 
+    public static String getInteractionEndpoint(String endpoint, String oid, String patternId) {
+        return endpoint.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId);
+    }
 
 
     public static HttpClient getClient(String login, String password) {

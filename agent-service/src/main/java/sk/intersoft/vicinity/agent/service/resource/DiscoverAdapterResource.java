@@ -5,8 +5,6 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.adapter.AdapterEndpoint;
-import sk.intersoft.vicinity.agent.adapter.AgentAdapter;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;

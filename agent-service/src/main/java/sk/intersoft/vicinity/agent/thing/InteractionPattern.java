@@ -38,7 +38,6 @@ public class InteractionPattern {
 
 
 
-
     public static boolean createLinks(InteractionPattern pattern,
                                    JSONObject patternJSON,
                                    ThingValidator validator) throws Exception {

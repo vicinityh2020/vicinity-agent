@@ -45,6 +45,27 @@ public class ThingDescription {
     public static String EVENTS_KEY = "events";
 
 
+    public InteractionPattern getInteractionPattern(String patternID, String patternType) throws Exception {
+        if(patternID == null) throw new Exception("Missing Interaction pattern ID");
+
+
+        InteractionPattern pattern = null;
+        if(patternType.equals(InteractionPattern.PROPERTY)){
+            pattern = properties.get(patternID);
+        }
+        else if(patternType.equals(InteractionPattern.ACTION)){
+            pattern = actions.get(patternID);
+        }
+        else if(patternType.equals(InteractionPattern.EVENT)){
+            pattern = events.get(patternID);
+        }
+
+        if(pattern == null) throw new Exception("Missing interaction pattern ["+patternType+"] for [OID: "+oid+"] [PATTERN-ID: "+patternID+"]");
+
+        return pattern;
+
+    }
+
     public static String identifier(String id, String adapterId) {
         return adapterId + "---!---"+id;
     }

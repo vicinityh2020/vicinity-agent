@@ -5,21 +5,21 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="redesign of discovery adapter process">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ConfigurationResource.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/ConfigurationMappings.java" afterPath="" />
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/adapter/AgentAdapter.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/adapter/AdapterEndpoint.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/InteractionPattern.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/InteractionPattern.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json" afterPath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/bin/config/agents/config-1.json" afterPath="$PROJECT_DIR$/agent-service/bin/config/agents/config-1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/test/resources/config/agents/config-1.json" afterPath="$PROJECT_DIR$/agent-service/src/test/resources/config/agents/config-1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/bin/config/agents/config-2.json" afterPath="$PROJECT_DIR$/agent-service/bin/config/agents/config-2.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" afterPath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -49,70 +49,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java">
+      <file leaf-file-name="ThingDescription.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1308" max-vertical-offset="2090">
-              <caret line="86" column="50" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="5786">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThingDescriptions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java">
+      <file leaf-file-name="ObjectPropertyResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1726" max-vertical-offset="2354">
-              <caret line="102" column="53" selection-start-line="102" selection-start-column="53" selection-end-line="102" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2442" max-vertical-offset="7568">
-              <caret line="128" column="10" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2090">
+              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
               <folding>
-                <element signature="e#1474#1475#0" expanded="true" />
-                <element signature="e#1517#1518#0" expanded="true" />
-                <element signature="e#1543#1544#0" expanded="true" />
-                <element signature="e#1587#1588#0" expanded="true" />
-                <element signature="e#1621#1622#0" expanded="true" />
-                <element signature="e#1664#1665#0" expanded="true" />
-                <element signature="e#11797#11798#0" expanded="true" />
-                <element signature="e#11846#11847#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config-1.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
+      <file leaf-file-name="active-disco-objects.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="484">
-              <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config-2.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/config/agents/config-2.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="506">
-              <caret line="2" column="57" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config-2.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/work/config-2.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="1518">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -121,38 +84,68 @@
       <file leaf-file-name="disco-objects-1.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="1540">
-              <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
+              <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="active-disco-objects.json" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json">
+      <file leaf-file-name="AgentApplication.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63221884" vertical-offset="860" max-vertical-offset="1518">
-              <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="2090">
+              <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdapterConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
+      <file leaf-file-name="RemoteObjectPropertyResource.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.296296" vertical-offset="2909" max-vertical-offset="5412">
-              <caret line="174" column="44" selection-start-line="174" selection-start-column="44" selection-end-line="174" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.76899225" vertical-offset="868" max-vertical-offset="1738">
+              <caret line="73" column="76" selection-start-line="73" selection-start-column="76" selection-end-line="73" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config-2.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/test/resources/config/agents/config-2.json">
+      <file leaf-file-name="GatewayAPIClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="484">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="4334">
+              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdapterClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="1804">
+              <caret line="74" column="34" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdapterEndpoint.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="733" max-vertical-offset="1386">
+              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="1474">
+              <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -171,11 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java" />
-        <option value="$PROJECT_DIR$/utils/src/main/java/sk/intersoft/vicinity/agent/utils/JSONUtil.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/gateway/GatewayAPIClient.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/example-thing.json" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/thing/ThingProcessor.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/thing/ThingDescriptions.java" />
@@ -191,11 +179,9 @@
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-3.sh" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedThing.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDiff.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java" />
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-2.sh" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverResource.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ResourceResponse.java" />
         <option value="$PROJECT_DIR$/agent-service/bin/agent.sh" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingProcessor.java" />
@@ -207,21 +193,28 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/NeighbourhoodManager.java" />
         <option value="$PROJECT_DIR$/agent-service/src/test/resources/config/agents/config-2.json" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-2.json" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ConfigurationResource.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java" />
         <option value="$PROJECT_DIR$/agent-service/src/test/resources/config/agents/config-1.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/config/agents/config-1.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/config/agents/config-2.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-2.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/InteractionPattern.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java" />
+        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java" />
       </list>
     </option>
   </component>
@@ -1167,36 +1160,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="clients" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vicinity-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vicinity-agent" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-service" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2507,14 +2470,18 @@
       <created>1526984848333</created>
       <updated>1526984848334</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="redesign of discovery adapter process ..added active discovery">
+      <created>1526991006664</created>
+      <updated>1526991006664</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="35" width="1920" height="1045" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2414163" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2414163" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31759655" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2559,7 +2526,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="properties consumption updated .. divided to special endpoints for remote and local objects" />
     <MESSAGE value="eventing preparation: ready for integration!" />
     <MESSAGE value="readme update" />
     <MESSAGE value="automatic event channel open + subscribe in agent startup sequence" />
@@ -2584,7 +2550,8 @@
     <MESSAGE value="active discovery core prepared" />
     <MESSAGE value="updated to new NM create data with semantic validation errors" />
     <MESSAGE value="completely refactored agent/adapter/thing configuration .. delete/create is now handled by discovery, update operation now updates the content in ontology" />
-    <option name="LAST_COMMIT_MESSAGE" value="completely refactored agent/adapter/thing configuration .. delete/create is now handled by discovery, update operation now updates the content in ontology" />
+    <MESSAGE value="redesign of discovery adapter process ..added active discovery" />
+    <option name="LAST_COMMIT_MESSAGE" value="redesign of discovery adapter process ..added active discovery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2596,52 +2563,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="1298">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestDisco.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="616">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/resources/config/add-on-fly/config-3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="484">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="1760">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestStartSequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="528">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20160212/json-20160212.jar!/org/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3457792" vertical-offset="997" max-vertical-offset="3784">
           <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1232">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -2736,25 +2661,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="528" max-vertical-offset="4268">
-          <caret line="64" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="946">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ResourceResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1012">
           <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2866,52 +2777,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1606">
-          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="2046">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ConfigurationResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
           <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4748" max-vertical-offset="5324">
-          <caret line="236" column="30" selection-start-line="236" selection-start-column="30" selection-end-line="236" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1726" max-vertical-offset="2354">
-          <caret line="102" column="53" selection-start-line="102" selection-start-column="53" selection-end-line="102" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1308" max-vertical-offset="2090">
-          <caret line="86" column="50" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -2981,26 +2850,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.296296" vertical-offset="2909" max-vertical-offset="5412">
-          <caret line="174" column="44" selection-start-line="174" selection-start-column="44" selection-end-line="174" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1144" max-vertical-offset="2354">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#789#810#0" expanded="true" />
+            <element signature="e#1081#1107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="94" max-vertical-offset="1210">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json">
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="1540">
-          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2354">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2760" max-vertical-offset="5698">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1562">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/InteractionPattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="438" max-vertical-offset="5016">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="733" max-vertical-offset="1386">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/active-disco-objects.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63221884" vertical-offset="860" max-vertical-offset="1518">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1518">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="1804">
+          <caret line="74" column="34" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2090">
+          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="5786">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="4334">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="2090">
+          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
+          <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="1474">
+          <caret line="65" column="52" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76899225" vertical-offset="868" max-vertical-offset="1738">
+          <caret line="73" column="76" selection-start-line="73" selection-start-column="76" selection-end-line="73" selection-end-column="76" />
           <folding />
         </state>
       </provider>

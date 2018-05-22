@@ -10,7 +10,7 @@
                     "pid": "brightness1",
                     "monitors": "adapters:ValvePosition",
                     "read_link": {
-                        "href": "/device/{oid}/property/{pid}/update3",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output": {
                             "type": "object",
                             "field": [
@@ -30,7 +30,7 @@
                         }
                     },
                     "write_link": {
-                        "href": "/bulb/set-brightness/{oid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "input": {
                             "type": "object",
                             "field": [
