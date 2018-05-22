@@ -10,7 +10,7 @@ Agent service is configured from file:
 agent/config/service-config.json
 ```
 
-Agetn service configuration file now contains only endpoint to GTW-API:
+Agent service configuration file now contains only endpoint to GTW-API:
 
 ```
 service-config.json:
@@ -42,6 +42,7 @@ Update **agent.sh** script to latest version enabling this feature.
 **agent.sh** script will enable to specify the both service configuration file
 and folder with agent configurations.
 
+See [Agent configuration](AGENT.md#configuration).
 
 ## agent-id is now mandatory
 
@@ -89,6 +90,8 @@ update **objects/** service response to:
 }
 ```
 
+See [Agent configuration](AGENT.md#configuration).
+
 ## Agent service allows active discovery of objects triggered by adapter
 
 Discovery may be triggered by agent, but now, also by adapter proactively.
@@ -114,6 +117,7 @@ Default is : **"active-discovery": false**.
     ]
 ```
 
+See [Agent configuration](AGENT.md#configuration).
 
 ## Agent service allows to miss "endpoint" in agent config / "adapters"
 
@@ -124,6 +128,7 @@ discovery must be invoked by adapter.
 For this reason, **"active-discovery"** must be set to **true**.
 If **"endpoint"** is missing and **"active-discovery"** is missing, **"active-discovery"** is set to **true** by default.
 
+See [Agent configuration](AGENT.md#configuration).
 
 ## Specification of "input"/"output" in thing desc. links (and event) are now mandatory
 
