@@ -42,7 +42,7 @@ Update **agent.sh** script to latest version enabling this feature.
 **agent.sh** script will enable to specify the both service configuration file
 and folder with agent configurations.
 
-See [Agent configuration](AGENT.md#configuration).
+See [Agent configuration](AGENT.md#deployment-and-re-deployment).
 
 ## agent-id is now mandatory
 
