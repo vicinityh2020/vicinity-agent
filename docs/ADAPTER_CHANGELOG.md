@@ -1,6 +1,9 @@
 # 2018-05-17
 
-## Agent service now accepts multiple agent configs
+## (Multi) Agent service now accepts multiple agent configs
+
+We have switched from Agent to multi-agent. Multiple agents (client nodes) are now managed by
+single instalation of the Agent Sevice+GTW-API.
 
 Agent service now has one GTW-API endpoint shared by all included agents.
 GTW-API endpoint is no more used in agent configs.
