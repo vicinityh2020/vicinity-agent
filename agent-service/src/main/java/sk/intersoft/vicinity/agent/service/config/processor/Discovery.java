@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.agent.service.config.processor;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +23,20 @@ public class Discovery {
         List<JSONObject> pairs = NeighbourhoodManager.getCreateResults(data);
         logger.debug("PROCESSING CREATED OID->INFRA-ID PAIRS");
         for(JSONObject pair : pairs) {
+            String infrastructureId = JSONUtil.getString(ThingDescription.INFRASTRUCTURE_KEY, pair);
+            if(infrastructureId == null) throw new Exception("Missing ["+ThingDescription.INFRASTRUCTURE_KEY+"] in: "+pair.toString());
+
+            if(pair.has("error")){
+                Object err = pair.get("error");
+                if(err instanceof JSONArray){
+                    throw new Exception("SEMANTIC VALIDATION ERRORS FOR THING ["+infrastructureId+"]: "+((JSONArray)err).toString()) ;
+                }
+            }
+
+
             String oid = JSONUtil.getString(ThingDescription.OID_KEY, pair);
             if(oid == null) throw new Exception("Missing ["+ThingDescription.OID_KEY+"] in: "+pair.toString());
 
-            String infrastructureId = JSONUtil.getString(ThingDescription.INFRASTRUCTURE_KEY, pair);
-            if(infrastructureId == null) throw new Exception("Missing ["+ThingDescription.INFRASTRUCTURE_KEY+"] in: "+pair.toString());
 
             String password = JSONUtil.getString(ThingDescription.PASSWORD_KEY, pair);
             if(password == null) throw new Exception("Missing ["+ThingDescription.PASSWORD_KEY+"] in: "+pair.toString());

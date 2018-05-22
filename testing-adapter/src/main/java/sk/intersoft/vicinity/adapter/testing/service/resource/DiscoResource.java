@@ -14,7 +14,7 @@ import org.restlet.resource.ServerResource;
 
 public class DiscoResource extends ServerResource {
 
-    public static void post(String agentEndpoint, String objects) {
+    public static String post(String agentEndpoint, String objects) {
         try{
 
             HttpClient client = HttpClientBuilder.create().build();
@@ -43,12 +43,14 @@ public class DiscoResource extends ServerResource {
 
             String responseContent = EntityUtils.toString(response.getEntity());
             System.out.println("response: " + responseContent);
+            return responseContent;
 
         }
         catch(Exception e){
             e.printStackTrace();
         }
 
+        return "failed";
     }
 
 
@@ -61,9 +63,18 @@ public class DiscoResource extends ServerResource {
             System.out.println("active disco");
             System.out.println("posting objects to: "+agentEndpoint);
 
-            post(agentEndpoint, ObjectsResource.getObjects());
+            String response = post(agentEndpoint, ObjectsResource.getObjects());
 
-            return "{\"status\": \"executed\"}";
+            JSONObject out = new JSONObject();
+            out.put("disco", "executed");
+
+            try{
+                out.put("response", new JSONObject(response));
+            }
+            catch(Exception e){
+                out.put("response", response);
+            }
+            return out.toString(2);
         }
         catch(Exception e){
             return "{}";
