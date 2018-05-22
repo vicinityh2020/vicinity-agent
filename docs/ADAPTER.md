@@ -64,6 +64,28 @@ GET: /objects
 
 ### Active discovery
 
+Active discovery is triggered by Adapter itself. It is useful in case, when Adapter
+does not have the endpoint (e.g. running on mobile phone) or when Adapter just needs
+to reconfigure itself (refresh the list of exposed objects).
+
+Active discovery is performed by calling the Agent service:
+
+```
+POST: /objects
+```
+
+The payload of the post is the same discovery data, as if it was provided by passive
+discovery.
+
+Agent reconfigures the objects exposed by Adapter.
+
+**If Adapter is configured for active discovery, it is mandatory to call this service on Agent.
+Agent will not perform the discovery of this Adapter.**
+
+However, Adapter may perform active discovery anytime it needs, Agent will refresh the
+actual Adapter content, does not matter how it is configured.
+
+
 ## Interaction patterns
 
 Adapter provides the information, which endpoints are implemented to interact with objects in their thing descriptions.
@@ -189,7 +211,7 @@ will be included in the event payload. Event payload structure is yet TBD.
 # Adapter API requirements summarized
 
 Adapter implements following services:
-* **mandatory**: **GET /objects** - object discovery service
+* **GET /objects** - object discovery service - **mandatory** if adapter is configured for passive discovery
 * **mandatory**: endpoints with [prescribed http method](#http-methods-for-interaction-patterns) provided in **read/write_link** in thing descriptions
 * optional: **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
 
