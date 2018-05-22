@@ -14,13 +14,14 @@ import org.restlet.resource.ServerResource;
 
 public class DiscoResource extends ServerResource {
 
-    public static String post(String agentEndpoint, String objects) {
+    public static String post() {
         try{
 
             HttpClient client = HttpClientBuilder.create().build();
 
-            String callEndpoint = agentEndpoint + "/objects";
-            
+            String callEndpoint = System.getProperty("agent.endpoint") + "/objects";
+            String objects = ObjectsResource.file2string(System.getProperty("active.objects.file"));
+
             System.out.println("DISCO POST:");
             System.out.println("endpoint: " + callEndpoint);
             System.out.println("payload: " + objects);
@@ -58,12 +59,10 @@ public class DiscoResource extends ServerResource {
     public String disco(Representation entity)  {
         try{
 
-            String agentEndpoint = System.getProperty("agent.endpoint");
 
             System.out.println("active disco");
-            System.out.println("posting objects to: "+agentEndpoint);
 
-            String response = post(agentEndpoint, ObjectsResource.getObjects());
+            String response = post();
 
             JSONObject out = new JSONObject();
             out.put("disco", "executed");

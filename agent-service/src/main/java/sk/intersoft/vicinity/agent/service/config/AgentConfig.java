@@ -36,6 +36,57 @@ public class AgentConfig {
 
     private boolean configurationRunning = false;
 
+    private void start() {
+        configurationRunning = true;
+    }
+    private void stop() {
+        configurationRunning = false;
+    }
+    private boolean isRunning() {
+        return configurationRunning;
+    }
+
+    public void login() {
+        try{
+            logger.info("LOG-IN AGENT ["+agentId+"]");
+            GatewayAPIClient.login(agentId, password);
+        }
+        catch(Exception e){
+            logger.error("UNABLE TO LOG-IN AGENT ["+agentId+"]", e);
+        }
+    }
+    public void logout() {
+        try{
+            logger.info("LOG-OUT AGENT ["+agentId+"]");
+            GatewayAPIClient.logout(agentId, password);
+        }
+        catch(Exception e){
+            logger.error("UNABLE TO LOG-OUT AGENT ["+agentId+"]", e);
+        }
+    }
+
+    public void clearMappings(){
+        logger.info("CLEANUP FOR AGENT: ["+agentId+"]");
+
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            String id = entry.getKey();
+            AdapterConfig ac = entry.getValue();
+            ac.clearMappings();
+        }
+
+        if(Configuration.agents.get(agentId) != null){
+            Configuration.agents.remove(agentId);
+        }
+        logger.info("AGENT ["+agentId+"] removed from configuration");
+        logout();
+        logger.info("CLEANUP FOR AGENT ["+agentId+"]: DONE");
+    }
+
+    private void updateMappings() {
+        logger.info("UPDATING CONFIGURATION MAPPINGS FOR AGENT: [" + agentId + "]");
+        Configuration.agents.put(agentId, this);
+    }
+
     public ThingDescriptions configurationThingsForAdapter(String adapterId){
         ThingDescriptions ts = new ThingDescriptions();
         Set<ThingDescription> adapterThings = configurationThings.byAdapterID.get(adapterId);
@@ -53,9 +104,10 @@ public class AgentConfig {
         return ts;
     }
 
+
     public boolean configure() {
         if (isRunning()) {
-            logger.info("NOT CONFIGURING AGENT: [" + agentId + "] .. another process is actually using this configuration!");
+            logger.info("NOT CONFIGURING AGENT: [" + agentId + "].. another process is actually using this configuration!");
             return false;
         }
 
@@ -68,6 +120,7 @@ public class AgentConfig {
 
     private void updateLastConfiguration() throws Exception {
         logger.info("ACQUIRE LAST CONFIGURATION");
+        configurationThings = new ThingDescriptions();
 
         String configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
         logger.debug("Configuration raw response: \n" + configData);
@@ -128,16 +181,34 @@ public class AgentConfig {
 
     }
 
+    private void discoverPassiveAdapters()  {
+        logger.info("DISCOVERING PASSIVE ADAPTERS FOR AGENT: "+toSimpleString());
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            AdapterConfig adapter = entry.getValue();
+            if(!adapter.activeDiscovery){
+                logger.info("passive discovery for: ["+adapter.adapterId+"]");
+                boolean success = adapter.discover();
+                if(!success) {
+                    logger.error("PASSIVE DISCOVERY FAILED FOR ADAPTER ["+adapter.adapterId+"]!");
+                }
+            }
+            else {
+                logger.info("active passive discovery for: ["+adapter.adapterId+"] .. skipping");
+            }
+
+        }
+    }
 
 
     private boolean configureAgent(){
         try{
-            logger.info("CONFIGURING AGENT: ["+agentId+"]");
-            logger.info("LOG IN P2P");
-            GatewayAPIClient.login(agentId, password);
+            logger.info("CONFIGURING AGENT: ["+agentId+"] ");
+            login();
 
             updateLastConfiguration();
+            discoverPassiveAdapters();
 
+            updateMappings();
             logger.info("DONE CONFIGURING AGENT: ["+agentId+"]");
 
             return true;
@@ -149,43 +220,73 @@ public class AgentConfig {
         return false;
     }
 
-    private void start() {
-        configurationRunning = true;
-    }
-    private void stop() {
-        configurationRunning = false;
-    }
-    private boolean isRunning() {
-        return configurationRunning;
-    }
 
-    public static AgentConfig create(File configFile) throws Exception {
-        AgentConfig config = new AgentConfig();
+    public static boolean configure(File configFile)  {
+        logger.info("CONFIGURING AGENT CONFIG FROM: " + configFile.getAbsolutePath());
 
-        String source = FileUtil.file2string(configFile);
-
-        JSONObject json = new JSONObject(source);
-        logger.info("CREATING AGENT CONFIG FROM: " + json.toString(2));
-        JSONObject credentials = json.getJSONObject(CREDENTIALS_KEY);
-        config.agentId = credentials.getString(AGENT_ID_KEY);
-        config.password = credentials.getString(PASSWORD_KEY);
-
-
-        JSONArray adaptersArray = json.getJSONArray(ADAPTERS_KEY);
-        if (adaptersArray.length() == 0) {
-            throw new Exception("no adapters in agent config [" + config.agentId + "]");
-        }
-
-        Iterator<Object> i = adaptersArray.iterator();
-        while (i.hasNext()) {
-            JSONObject adapterConfig = (JSONObject) i.next();
-            AdapterConfig ac = AdapterConfig.create(adapterConfig, config);
-            if (config.adapters.get(ac.adapterId) != null) {
-                throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "]!");
+        AgentConfig config = create(configFile);
+        if(config != null){
+            AgentConfig existing = Configuration.agents.get(config.agentId);
+            if(existing != null) {
+                existing.clearMappings();
             }
-            config.adapters.put(ac.adapterId, ac);
+            else{
+                logger.info("AGENT IS NEW .. NO CLEANUP");
+            }
+
+            return config.configure();
         }
-        return config;
+
+        return false;
+    }
+
+    public static AgentConfig create(File configFile)  {
+        AgentConfig config = new AgentConfig();
+        logger.info("READING AGENT CONFIG FROM: " + configFile.getAbsolutePath());
+
+        try{
+            String source = FileUtil.file2string(configFile);
+
+            JSONObject json = new JSONObject(source);
+            JSONObject credentials = JSONUtil.getObject(CREDENTIALS_KEY, json);
+            if(credentials == null){
+                throw new Exception("Missing ["+CREDENTIALS_KEY+"] in agent config!");
+            }
+
+            config.agentId = JSONUtil.getString(AGENT_ID_KEY, credentials);
+            if(config.agentId == null){
+                throw new Exception("Missing ["+AGENT_ID_KEY+"] in agent config!");
+            }
+            config.password = JSONUtil.getString(PASSWORD_KEY, credentials);
+            if(config.password == null){
+                throw new Exception("Missing ["+PASSWORD_KEY+"] in agent config!");
+            }
+
+            if(json.has(ADAPTERS_KEY)){
+                List<JSONObject> adaptersArray = JSONUtil.getObjectArray(ADAPTERS_KEY, json);
+                if(adaptersArray == null){
+                    throw new Exception("Missing ["+ADAPTERS_KEY+"] in agent config!");
+                }
+                if (adaptersArray.size() == 0) {
+                    throw new Exception("no adapters in agent config [" + config.agentId + "]");
+                }
+                for(JSONObject adapterConfig: adaptersArray) {
+                    AdapterConfig ac = AdapterConfig.create(adapterConfig, config);
+                    if (config.adapters.get(ac.adapterId) != null) {
+                        throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "]!");
+                    }
+                    config.adapters.put(ac.adapterId, ac);
+                }
+
+            }
+
+            return config;
+
+        }
+        catch(Exception e){
+            logger.error("UNABLE TO READ AGENT CONFIG FROM: "+configFile.getAbsolutePath());
+        }
+        return null;
     }
 
     public String toString(int indent) {

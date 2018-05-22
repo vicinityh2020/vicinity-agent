@@ -43,11 +43,11 @@ public class AdapterConfig {
 
 
     public void login(){
-        logger.debug("log-out all things");
+        logger.debug("log-in all things of adapter "+toSimpleString());
         for(ThingDescription thing : things.byAdapterOID.values()){
-            logger.debug("log-out: ["+thing.oid+"]");
+            logger.debug("log-in: ["+thing.oid+"]");
             try{
-                GatewayAPIClient.logout(thing.oid, thing.password);
+                GatewayAPIClient.login(thing.oid, thing.password);
             }
             catch(Exception e) {
                 logger.error("log-out error for ["+thing.oid+"]!", e);
@@ -57,7 +57,7 @@ public class AdapterConfig {
     }
 
     public void logout(){
-        logger.debug("log-out all things");
+        logger.debug("log-out all things of adapter "+toSimpleString());
         for(ThingDescription thing : things.byAdapterOID.values()){
             logger.debug("log-out: ["+thing.oid+"]");
             try{
@@ -73,26 +73,36 @@ public class AdapterConfig {
 
     public void updatePersistence(ThingDescriptions things) throws Exception {
         PersistedThing.clearAdapter(adapterId);
-        logger.debug("persistence cleared");
+        logger.debug("persistence cleared for adapter : "+toSimpleString());
         for (Map.Entry<String, ThingDescription> entry : things.byAdapterOID.entrySet()) {
             ThingDescription thing = entry.getValue();
             PersistedThing.save(thing);
         }
-        logger.debug("persistence updated");
+        logger.debug("persistence updated for adapter "+toSimpleString());
         PersistedThing.list();
 
     }
 
-    public void clearThings(){
-        logger.debug("CLEARING THINGS FOR ADAPTER "+toSimpleString());
-        things = new ThingDescriptions();
-        Configuration.things.remove(adapterId);
+    public void clearMappings(){
+        logger.debug("CLEANUP FOR ADAPTER "+toSimpleString());
+        logout();
+
+        if(Configuration.things.get(adapterId) != null){
+            Configuration.things.remove(adapterId);
+            logger.debug("ADAPTER ["+adapterId+"] things removed from configuration");
+        }
+        if(Configuration.adapters.get(adapterId) != null){
+            Configuration.adapters.remove(adapterId);
+            logger.debug("ADAPTER ["+adapterId+"] removed from configuration");
+        }
+        logger.debug("CLEANUP FOR ADAPTER "+toSimpleString()+ ": DONE");
     }
 
-    public void exposeThings(ThingDescriptions discoveredThings){
-        logger.debug("EXPOSING THINGS FOR ADAPTER "+toSimpleString());
+    public void updateMappings(ThingDescriptions discoveredThings){
+        logger.debug("UPDATING MAPPINGS FOR ADAPTER "+toSimpleString());
         things = discoveredThings;
         Configuration.things.put(adapterId, discoveredThings);
+        Configuration.adapters.put(adapterId, this);
     }
 
 
@@ -131,38 +141,42 @@ public class AdapterConfig {
         return false;
     }
 
+    public ThingDescriptions getAdapterThings(String data) throws Exception {
+        ThingDescriptions adapterThings = new ThingDescriptions();
+        List<JSONObject> objects = ThingProcessor.processAdapter(data, adapterId);
+        logger.debug("parsing adapter things ... ");
+        for (JSONObject object : objects) {
+            logger.debug(object.toString());
+            ThingValidator validator = new ThingValidator(true);
+            ThingDescription thing = validator.create(object);
+            if (thing != null) {
+                logger.debug("processed thing: " + thing.oid);
+
+                // TRANSFORM OID -> INFRASTRUCTURE
+                thing.toInfrastructure();
+
+                adapterThings.add(thing);
+            }
+            else {
+                logger.debug("unprocessed thing! validator errors: \n" + validator.failureMessage().toString(2));
+                throw new Exception("unprocessed adapter thing: "+toSimpleString());
+            }
+        }
+        return adapterThings;
+    }
+
     public boolean discoverAdapter(String data) {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
         logout();
 
-        clearThings();
+        clearMappings();
 
 
-        ThingDescriptions adapterThings = new ThingDescriptions();
 
         try{
-            List<JSONObject> objects = ThingProcessor.processAdapter(data, adapterId);
-            logger.debug("parsing adapter things ... ");
-            for (JSONObject object : objects) {
-                logger.debug(object.toString());
-                ThingValidator validator = new ThingValidator(true);
-                ThingDescription thing = validator.create(object);
-                if (thing != null) {
-                    logger.debug("processed thing: " + thing.oid);
+            ThingDescriptions adapterThings = getAdapterThings(data);
 
-                    // TRANSFORM OID -> INFRASTRUCTURE
-                    thing.toInfrastructure();
-
-                    adapterThings.add(thing);
-                }
-                else {
-                    logger.debug("unprocessed thing! validator errors: \n" + validator.failureMessage().toString(2));
-                    throw new Exception("unprocessed adapter thing: "+toSimpleString());
-                }
-            }
-
-
-            logger.debug("EXPOSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
+            logger.debug("PROCESSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
             logger.debug("\n" + adapterThings.toString(0));
 
             ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
@@ -171,7 +185,9 @@ public class AdapterConfig {
 
             updatePersistence(discoveredThings);
 
-            exposeThings(discoveredThings);
+            updateMappings(discoveredThings);
+
+            login();
 
             return true;
 

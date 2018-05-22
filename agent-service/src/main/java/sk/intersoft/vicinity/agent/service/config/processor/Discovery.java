@@ -17,7 +17,7 @@ public class Discovery {
     final static Logger logger = LoggerFactory.getLogger(Discovery.class.getName());
 
     public static List<ThingDescription> processCreatedThings(String data,
-                                                              Map<String, ThingDescription> lookup) throws Exception {
+                                                              ThingDescriptions lookup) throws Exception {
         List<ThingDescription> result = new ArrayList<ThingDescription>();
 
         List<JSONObject> pairs = NeighbourhoodManager.getCreateResults(data);
@@ -43,7 +43,7 @@ public class Discovery {
 
             logger.debug("PAIR: [oid: "+oid+"][infra-id: "+infrastructureId+"][password: "+password+"]");
 
-            ThingDescription thing = lookup.get(infrastructureId);
+            ThingDescription thing = lookup.byAdapterInfrastructureID.get(infrastructureId);
             if(thing != null){
                 thing.updateCreatedData(oid, password);
                 logger.debug("RELATED THING UPDATE: \n"+thing.toSimpleString());
@@ -51,6 +51,39 @@ public class Discovery {
                 result.add(thing);
             }
             else throw new Exception("UNABLE TO FIND THING FOR INFRA-ID ["+infrastructureId+"] IN DIFF DATA TO CREATE!");
+
+        }
+
+        return result;
+    }
+
+    public static List<ThingDescription> processUpdatedThings(String data,
+                                                              ThingDescriptions lookup) throws Exception {
+        List<ThingDescription> result = new ArrayList<ThingDescription>();
+
+        List<JSONObject> objects = NeighbourhoodManager.getCreateResults(data);
+        logger.debug("PROCESSING UPDATED DATA");
+        for(JSONObject o : objects) {
+
+            String oid = JSONUtil.getString(ThingDescription.OID_KEY, o);
+            if(oid == null) throw new Exception("Missing ["+ThingDescription.OID_KEY+"] in: "+o.toString());
+
+            if(o.has("error")){
+                Object err = o.get("error");
+                if(err instanceof JSONArray){
+                    throw new Exception("SEMANTIC VALIDATION ERRORS FOR THING ["+oid+"]: "+((JSONArray)err).toString()) ;
+                }
+            }
+
+
+            logger.debug("THING DATA: [oid: "+oid+"]");
+
+            ThingDescription thing = lookup.byAdapterOID.get(oid);
+            if(thing != null){
+                logger.debug("RELATED THING UPDATE: \n"+thing.toSimpleString());
+                result.add(thing);
+            }
+            else throw new Exception("UNABLE TO FIND THING FOR OID ["+oid+"] IN DIFF DATA TO UPDATE!");
 
         }
 
@@ -92,7 +125,7 @@ public class Discovery {
                                             toCreateList,
                                             adapter.agent.agentId),
                                     adapter.agent),
-                            diff.create.byAdapterInfrastructureID));
+                            diff.create));
         }
         else{
             logger.info("..nothing to create");
@@ -100,31 +133,22 @@ public class Discovery {
 
 
         // HANDLE UPDATE
-        logger.info("HANDLING UPDATE: ");
-        List<ThingDescription> toUpdateList = ThingDescriptions.toList(diff.update.byAdapterOID);
+        logger.info("HANDLING UPDATE of content of unchanged things: ");
+        List<ThingDescription> toUpdateList = ThingDescriptions.toList(diff.unchanged.byAdapterOID);
         if(toUpdateList.size() > 0){
             result.add(
-                    processCreatedThings(
+                    processUpdatedThings(
                             NeighbourhoodManager.update(
                                     NeighbourhoodManager.updateThingsPayload(
                                             toUpdateList,
                                             adapter.agent.agentId),
                                     adapter.agent),
-                            diff.update.byAdapterInfrastructureID));
+                            diff.unchanged));
         }
         else{
             logger.info("..nothing to update");
         }
 
-        // HANDLE UNCHANGED
-        logger.info("HANDLING UNCHANGED: ");
-        List<ThingDescription> toUnchangedList = ThingDescriptions.toList(diff.unchanged.byAdapterOID);
-        if(toUnchangedList.size() > 0){
-            result.add(toUnchangedList);
-        }
-        else{
-            logger.info("..nothing unchanged to handle");
-        }
 
 
         logger.info("FINAL DISCOVERED THINGS FOR: "+adapter.toSimpleString()+"\n"+result.toString(0));

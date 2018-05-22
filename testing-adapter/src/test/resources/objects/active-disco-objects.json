@@ -1,10 +1,10 @@
 {
-    "adapter-id": "adapter-2",
+    "adapter-id": "adapter-1",
     "thing-descriptions": [
         {
             "oid": "test",
-            "name": "human reads my name here",
-            "type": "adapters:HumiditySensor",
+            "name": "human reads my name here x",
+            "type": "core:Device",
             "properties": [
                 {
                     "pid": "brightness1",
@@ -56,12 +56,8 @@
                     }
                 }
             ]
-        },
-        {
-            "oid": "test1",
-            "name": "human reads my name here",
-            "type": "core:Device"
         }
+
     ]
 }
 

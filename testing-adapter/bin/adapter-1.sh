@@ -5,6 +5,7 @@ JAR=testing-adapter.jar
 
 AGENT_ENDPOINT=http://localhost:9997/agent
 OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
+ACTIVE_OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/active-disco-objects.json
 
 COMMAND=$1
 
@@ -30,7 +31,7 @@ else
     if [[ "" !=  "$PID" ]]; then
       echo "adapter is running"
     else
-        nohup java -Dagent.endpoint=$AGENT_ENDPOINT -Dobjects.file=$OBJECTS_FILE -Dserver.port=$SERVER_PORT -jar ../target/$JAR  &
+        nohup java -Dagent.endpoint=$AGENT_ENDPOINT -Dobjects.file=$OBJECTS_FILE -Dactive.objects.file=$ACTIVE_OBJECTS_FILE -Dserver.port=$SERVER_PORT -jar ../target/$JAR  &
         echo "adapter started"
     fi
 

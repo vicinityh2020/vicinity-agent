@@ -11,7 +11,6 @@ public class ThingsDiff {
     final static Logger logger = LoggerFactory.getLogger(ThingsDiff.class.getName());
 
     public ThingDescriptions create = new ThingDescriptions();
-    public ThingDescriptions update = new ThingDescriptions();
     public ThingDescriptions delete = new ThingDescriptions();
     public ThingDescriptions unchanged = new ThingDescriptions();
 
@@ -80,7 +79,8 @@ public class ThingsDiff {
                         diff.unchanged.add(adapterThing);
                     }
                     else{
-                        diff.update.add(adapterThing);
+                        diff.delete.add(adapterThing);
+                        diff.create.add(adapterThing);
                     }
                 }
                 catch(Exception e){
@@ -102,9 +102,6 @@ public class ThingsDiff {
 
         dump.add("CREATE: ", indent);
         dump.add(create.toString(indent + 1));
-
-        dump.add("UPDATE: ", indent);
-        dump.add(update.toString(indent + 1));
 
         dump.add("UNCHANGED: ", indent);
         dump.add(unchanged.toString(indent + 1));
