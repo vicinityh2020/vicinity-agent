@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.agent.service.config;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +66,35 @@ public class Configuration {
         }
 
         return dump.toString();
+    }
+
+    public static JSONObject toJSON() {
+        JSONObject object = new JSONObject();
+        JSONArray agentsArray = new JSONArray();
+        JSONArray adaptersArray = new JSONArray();
+        JSONArray thingsArray = new JSONArray();
+
+        object.put("agents", agentsArray);
+        object.put("adapters", adaptersArray);
+        object.put("things", thingsArray);
+
+        for (Map.Entry<String, AgentConfig> entry : agents.entrySet()) {
+            agentsArray.put(entry.getValue().toJSON());
+        }
+
+
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            adaptersArray.put(entry.getValue().toJSON());
+        }
+
+        for (Map.Entry<String, ThingDescriptions> entry : things.entrySet()) {
+            JSONObject at = new JSONObject();
+            at.put("for-adapter", adapters.get(entry.getKey()).adapterId);
+            at.put("adapter-things", entry.getValue().toStatusJSON());
+            thingsArray.put(at);
+        }
+
+        return object;
     }
 
 }

@@ -1,16 +1,15 @@
 package sk.intersoft.vicinity.agent.service.config;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
-import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.processor.Discovery;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
-import sk.intersoft.vicinity.agent.service.config.processor.ThingsDiff;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
@@ -91,10 +90,6 @@ public class AdapterConfig {
             Configuration.things.remove(adapterId);
             logger.debug("ADAPTER ["+adapterId+"] things removed from configuration");
         }
-        if(Configuration.adapters.get(adapterId) != null){
-            Configuration.adapters.remove(adapterId);
-            logger.debug("ADAPTER ["+adapterId+"] removed from configuration");
-        }
         logger.debug("CLEANUP FOR ADAPTER "+toSimpleString()+ ": DONE");
     }
 
@@ -102,7 +97,6 @@ public class AdapterConfig {
         logger.debug("UPDATING MAPPINGS FOR ADAPTER "+toSimpleString());
         things = discoveredThings;
         Configuration.things.put(adapterId, discoveredThings);
-        Configuration.adapters.put(adapterId, this);
     }
 
 
@@ -167,7 +161,6 @@ public class AdapterConfig {
 
     public boolean discoverAdapter(String data) {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
-        logout();
 
         clearMappings();
 
@@ -179,6 +172,7 @@ public class AdapterConfig {
             logger.debug("PROCESSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
             logger.debug("\n" + adapterThings.toString(0));
 
+            agent.updateLastConfiguration();
             ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
 
             ThingDescriptions discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
@@ -243,6 +237,22 @@ public class AdapterConfig {
         }
 
         return dump.toString();
+    }
+
+    public JSONObject toJSON() {
+        JSONObject object = new JSONObject();
+        JSONArray thingsArray = new JSONArray();
+
+        object.put("adapter-id", adapterId);
+        object.put("things", thingsArray);
+
+
+        List<ThingDescription> list = ThingDescriptions.toList(things.byAdapterOID);
+        for(ThingDescription t : list){
+            thingsArray.put(t.toStatusJSON());
+        }
+
+        return object;
     }
 
     public String toSimpleString() {

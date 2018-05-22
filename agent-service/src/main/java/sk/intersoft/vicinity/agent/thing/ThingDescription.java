@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
@@ -232,4 +233,17 @@ public class ThingDescription {
     public String toSimpleString(){
         return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][ADAPTER-ID: "+adapterId+"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
     }
+
+    public JSONObject toStatusJSON() {
+        JSONObject object = new JSONObject();
+
+        object.put("oid", oid);
+        object.put("infra-id", infrastructureId);
+        object.put("adapter-oid", adapterOID);
+        object.put("adapter-infra-id", adapterInfrastructureID);
+        object.put("password", password);
+
+        return object;
+    }
+
 }

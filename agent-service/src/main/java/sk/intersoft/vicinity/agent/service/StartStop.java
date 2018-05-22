@@ -6,7 +6,6 @@ import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
-import sk.intersoft.vicinity.agent.service.config.ConfigurationMappings;
 
 import java.io.File;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class StartStop {
 
 
     public static void start() {
-        logger.info("Launching starting sequence!");
+        logger.info("LAUNCHING START SEQUENCE!");
         try{
             // START SEQUENCE:
 
@@ -66,18 +65,28 @@ public class StartStop {
 
         }
         catch(Exception e){
-            logger.error("STARTUP SEQUENCE FAILED!", e);
+            logger.error("START SEQUENCE FAILED!", e);
         }
     }
 
     public static void stop() {
         try{
-            logger.info("Launching shutdown sequence!");
+            logger.info("LAUNCHING SHUTDOWN SEQUENCE!");
+            logger.info("LOGOUT ALL THINGS:");
+            for (Map.Entry<String, AdapterConfig> entry : Configuration.adapters.entrySet()) {
+                AdapterConfig a = entry.getValue();
+                a.logout();
+            }
 
+            logger.info("LOGOUT AGENTS:");
+            for (Map.Entry<String, AgentConfig> entry : Configuration.agents.entrySet()) {
+                AgentConfig a = entry.getValue();
+                a.logout();
+            }
+            logger.info("SHUTDOWN SEQUENCE COMPLETED!");
         }
         catch(Exception e){
-            logger.error("", e);
-            logger.error("shutdown sequence failed!");
+            logger.error("SHUTDOWN SEQUENCE FAILED", e);
         }
     }
 

@@ -10,7 +10,7 @@
                     "pid": "brightness1",
                     "monitors": "adapters:ValvePosition",
                     "read_link": {
-                        "href": "/device/{oid}/property/{pid}",
+                        "href": "/device/{oid}/property/{pid}/xxl",
                         "output": {
                             "type": "object",
                             "field": [
@@ -57,7 +57,6 @@
                 }
             ]
         }
-
     ]
 }
 

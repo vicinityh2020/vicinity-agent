@@ -13,6 +13,8 @@ public class AgentApplication extends Application {
     final static Logger logger = LoggerFactory.getLogger(AgentApplication.class.getName());
 
     public static final String ALIVE = "/alive";
+    public static final String CONFIGURATION = "/configuration";
+
     public static final String OBJECTS = "/objects";
 
     public static final String REMOTE_OBJECT_PROPERTY = "/remote/objects/{oid}/properties/{pid}";
@@ -42,6 +44,9 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(ALIVE, AliveResource.class);
         apiRouter.attach(ALIVE+"/", AliveResource.class);
+
+        apiRouter.attach(CONFIGURATION, ConfigurationResource.class);
+        apiRouter.attach(CONFIGURATION+"/", ConfigurationResource.class);
 
         apiRouter.attach(OBJECTS, DiscoverAdapterResource.class);
         apiRouter.attach(OBJECTS+"/", DiscoverAdapterResource.class);

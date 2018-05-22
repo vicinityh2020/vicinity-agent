@@ -23,7 +23,7 @@ public class DiscoverAdapterResource extends  AgentResource {
 
         try{
 
-            logger.info("DISCOVER ADAPTER: ");
+            logger.info("DISCOVER ADAPTER SERVICE: ");
 
             if(entity == null) {
                 throw new Exception("Empty payload!");

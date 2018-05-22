@@ -77,6 +77,10 @@ public class AgentConfig {
         if(Configuration.agents.get(agentId) != null){
             Configuration.agents.remove(agentId);
         }
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            AdapterConfig ac = entry.getValue();
+            Configuration.adapters.remove(ac.adapterId);
+        }
         logger.info("AGENT ["+agentId+"] removed from configuration");
         logout();
         logger.info("CLEANUP FOR AGENT ["+agentId+"]: DONE");
@@ -85,6 +89,10 @@ public class AgentConfig {
     private void updateMappings() {
         logger.info("UPDATING CONFIGURATION MAPPINGS FOR AGENT: [" + agentId + "]");
         Configuration.agents.put(agentId, this);
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            AdapterConfig ac = entry.getValue();
+            Configuration.adapters.put(ac.adapterId, ac);
+        }
     }
 
     public ThingDescriptions configurationThingsForAdapter(String adapterId){
@@ -118,7 +126,7 @@ public class AgentConfig {
         return success;
     }
 
-    private void updateLastConfiguration() throws Exception {
+    public void updateLastConfiguration() throws Exception {
         logger.info("ACQUIRE LAST CONFIGURATION");
         configurationThings = new ThingDescriptions();
 
@@ -257,6 +265,10 @@ public class AgentConfig {
             if(config.agentId == null){
                 throw new Exception("Missing ["+AGENT_ID_KEY+"] in agent config!");
             }
+            if(Configuration.agents.get(config.agentId) != null){
+                throw new Exception("Duplicate ["+AGENT_ID_KEY+"] .. agent already exists!");
+            }
+
             config.password = JSONUtil.getString(PASSWORD_KEY, credentials);
             if(config.password == null){
                 throw new Exception("Missing ["+PASSWORD_KEY+"] in agent config!");
@@ -272,7 +284,7 @@ public class AgentConfig {
                 }
                 for(JSONObject adapterConfig: adaptersArray) {
                     AdapterConfig ac = AdapterConfig.create(adapterConfig, config);
-                    if (config.adapters.get(ac.adapterId) != null) {
+                    if (config.adapters.get(ac.adapterId) != null || Configuration.adapters.get(ac.adapterId) != null) {
                         throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "]!");
                     }
                     config.adapters.put(ac.adapterId, ac);
@@ -284,7 +296,7 @@ public class AgentConfig {
 
         }
         catch(Exception e){
-            logger.error("UNABLE TO READ AGENT CONFIG FROM: "+configFile.getAbsolutePath());
+            logger.error("UNABLE TO READ AGENT CONFIG FROM: "+configFile.getAbsolutePath(), e);
         }
         return null;
     }
@@ -324,4 +336,20 @@ public class AgentConfig {
 
         return dump.toString();
     }
+
+    public JSONObject toJSON() {
+        JSONObject object = new JSONObject();
+        JSONArray adaptersArray = new JSONArray();
+
+        object.put("agent-id", agentId);
+        object.put("adapters", adaptersArray);
+
+
+        for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
+            adaptersArray.put(entry.getValue().toJSON());
+        }
+
+        return object;
+    }
+
 }

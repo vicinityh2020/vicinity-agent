@@ -1,5 +1,7 @@
 package sk.intersoft.vicinity.agent.service.config.processor;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -14,7 +16,7 @@ public class ThingDescriptions {
     public Map<String, ThingDescription> byAdapterInfrastructureID = new HashMap<String, ThingDescription>();
     public Map<String, Set<ThingDescription>> byAdapterID = new HashMap<String, Set<ThingDescription>>();
 
-    public static List<ThingDescription> toList(Map<String, ThingDescription> map){
+    public static List<ThingDescription> toList(Map<String, ThingDescription> map) {
         List<ThingDescription> things = new ArrayList<ThingDescription>();
         for (Map.Entry<String, ThingDescription> entry : map.entrySet()) {
             things.add(entry.getValue());
@@ -43,7 +45,7 @@ public class ThingDescriptions {
     }
 
     public void add(List<ThingDescription> things) throws Exception {
-        for(ThingDescription t : things) {
+        for (ThingDescription t : things) {
             add(t);
         }
     }
@@ -84,7 +86,7 @@ public class ThingDescriptions {
     public String toStatusString(int indent) {
         Dump dump = new Dump();
 
-        dump.add("THING DESCRIPTIONS: "+byAdapterOID.keySet().size(), indent);
+        dump.add("THING DESCRIPTIONS: " + byAdapterOID.keySet().size(), indent);
 
         for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
             String id = entry.getKey();
@@ -93,4 +95,15 @@ public class ThingDescriptions {
 
         return dump.toString();
     }
+
+    public JSONArray toStatusJSON() {
+        JSONArray array = new JSONArray();
+
+        for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
+            array.put(entry.getValue().toStatusJSON());
+        }
+
+        return array;
+    }
+
 }
