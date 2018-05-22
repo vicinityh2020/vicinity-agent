@@ -136,6 +136,8 @@ must be valid according specification [see DataSchema specs](TD.md#data-schema).
 
 ## Ontology annotations must be used with prefix
 
+Use semantic annotation in form **prefix:ClassOrIndividual**, e.g. **core:Device** instead of just **Device**.
+
 Semantic annotation without prefix (if i ever knew, whose idea that was!) are totally
 ambiguous. Full semantic annotation must used. Used annotations:
 * Thing **type** (refer to core:Device or core:Service class)
