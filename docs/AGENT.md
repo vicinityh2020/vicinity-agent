@@ -54,7 +54,6 @@ Once any content in this folder is manually removed or edited, local configurati
 this node may be treated as new. This leads to dropping whole configuration also in Neighbourhood manager, including
 friendships and permissions.
 
-**[DOWNLOAD MOST RECENT AGENT SERVICE](../agent-service/build): SKELETON (structure above) and last working agent.jar**
 
 Run the agent:
 ```
@@ -71,6 +70,11 @@ Stop the agent:
 ```
 
 To redeploy the Agent, simply stop the agent, replace the **agent.jar** file and run it again.
+
+## Download
+
+Agent skeleton (folder structure above) and most recent **agent.jar** are now
+**[available here](../agent-service/build)**.
 
 
 ## Configuration
