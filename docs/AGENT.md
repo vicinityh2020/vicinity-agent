@@ -54,6 +54,7 @@ Once any content in this folder is manually removed or edited, local configurati
 this node may be treated as new. This leads to dropping whole configuration also in Neighbourhood manager, including
 friendships and permissions.
 
+[DOWNLOAD AGENT SKELETON (structure above)](../agent-service/build)
 
 Run the agent:
 ```
