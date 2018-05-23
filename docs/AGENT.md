@@ -22,6 +22,8 @@ becomes critical (for each client node, there physically run three software comp
 Switch to multi-agent concept enables to run only one physical deployment for as many client
 nodes as needed.
 
+See also [details of auto discovery/configuration](DISCO.md) process.
+
 Now, in details.
 
 # Installation guide
@@ -208,29 +210,6 @@ Failure:
 The only exception is the access to remote objects or receiving the events. In those cases,
 the response from GTW API is forwarded as it was received without touching it.
 
-# Auto discovery/configuration
-
-Agent always holds the actual configuration of objects behind its Adapter(s).
-The configuration always contains the actual list of objects presented by Adapter and their services (consumption/eventing).
-For each object, there is specified unique mapping between object's **infrastructure-id** and VICINITY **oid**.
-Agent also holds the object's credentials, that are **mandatory** for interaction between any pair of objects in VICINITY.
-
-Auto Discovery process is launched, when Agent starts (by default) and is composed of following steps:
-1. read the last active configuration of node from Neighbourhood Manager
-2. read the actual thing descriptions from all its Adapters
-3. make DIFF. Last active configuration and actual list of objects is compared, the result is
-    * the list of missing objects to delete
-    * the list of new objects to create
-    * the list of objects to update; update is the change of any of mandatory properties and is interpreted as the violence to contract, thus the update is in Neighbourhood Manager executed as: delete/create object + drop all friendships; the result of update operation is the brand new object with new **oid** and credentials
-    * the list of unchanged objects
-4. the CRUD dance with Neighbourhood Manager, delete/create/update objects and their semantic models
-5. actualize the actual configuration
-6. log in all objects into P2P network
-7. open channels to publish events
-8. subscribe to channels to receive events
-
-The result of auto discovery is the list of all active objects with actual credentials and their consumption/eventing services.
-Using the actual configuration, the Agent can translate between common VICINITY services and Adapter services, using the proper credentials.
 
 
 

@@ -47,6 +47,7 @@ object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its 
 
 # Working documents
 * [Agent](docs/AGENT.md)
+* [Agent auto discovery/configuration process](docs/DISCO.md)
 * [Adapter](docs/ADAPTER.md)
 * [Common Thing Description Format](docs/TD.md)
 * [Thing Description Examples](docs/TDExamples.md)
