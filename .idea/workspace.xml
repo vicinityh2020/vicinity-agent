@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" afterPath="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/DISCO.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/img/agent-service.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vicinity-agent.iws" />
@@ -35,16 +36,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="disco-objects-1.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
-              <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RemoteObjectPropertyResource.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -78,8 +69,18 @@
       <file leaf-file-name="AGENT.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6296296" vertical-offset="6108" max-vertical-offset="9218">
-              <caret line="287" column="81" selection-start-line="287" selection-start-column="78" selection-end-line="287" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3894" max-vertical-offset="9306">
+              <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DISCO.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/DISCO.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0668693" vertical-offset="0" max-vertical-offset="658">
+              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -115,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ADAPTER_CHANGELOG.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ADAPTER_CHANGELOG.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9288026" vertical-offset="2726" max-vertical-offset="3432">
-              <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="3410">
+              <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -148,7 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/ThingDiff.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/thing/ThingDiff.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-3.json" />
         <option value="$PROJECT_DIR$/agent-service/src/test/resources/schema/test-array.json" />
@@ -197,8 +197,9 @@
         <option value="$PROJECT_DIR$/agent-service/bin/build4deployment.sh" />
         <option value="$PROJECT_DIR$/agent-service/bin/make-build.sh" />
         <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
-        <option value="$PROJECT_DIR$/docs/AGENT.md" />
         <option value="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/docs/AGENT.md" />
+        <option value="$PROJECT_DIR$/docs/DISCO.md" />
       </list>
     </option>
   </component>
@@ -666,6 +667,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vicinity-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vicinity-agent" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2528,7 +2547,31 @@
       <created>1527000631351</created>
       <updated>1527000631351</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="docs update">
+      <created>1527000661356</created>
+      <updated>1527000661356</updated>
+    </task>
+    <task id="LOCAL-00195" summary="docs update">
+      <created>1527000709541</created>
+      <updated>1527000709541</updated>
+    </task>
+    <task id="LOCAL-00196" summary="docs update">
+      <created>1527000727198</created>
+      <updated>1527000727198</updated>
+    </task>
+    <task id="LOCAL-00197" summary="docs update">
+      <created>1527000796213</created>
+      <updated>1527000796213</updated>
+    </task>
+    <task id="LOCAL-00198" summary="docs update">
+      <created>1527000966730</created>
+      <updated>1527000966730</updated>
+    </task>
+    <task id="LOCAL-00199" summary="docs update">
+      <created>1527001096670</created>
+      <updated>1527001096670</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2617,13 +2660,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/resources/schema/test-array.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="1276">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hsqldb-test/src/main/java/sk/intersoft/vicinity/hsqldbtest/HSQL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="418">
@@ -3012,14 +3048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6296296" vertical-offset="6108" max-vertical-offset="9218">
-          <caret line="287" column="81" selection-start-line="287" selection-start-column="78" selection-end-line="287" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/TD.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.888889" vertical-offset="0" max-vertical-offset="8932">
@@ -3038,8 +3066,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9288026" vertical-offset="2726" max-vertical-offset="3432">
-          <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="3410">
+          <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3894" max-vertical-offset="9306">
+          <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/DISCO.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0668693" vertical-offset="0" max-vertical-offset="658">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
           <folding />
         </state>
       </provider>
