@@ -3,7 +3,7 @@
 Agent service always holds the actual configuration of all objects behind it.
 The agent service is designed to handle multiple client nodes, that means, it
 is able to manage multiple agent configurations. For each agent, there may be defined the
-set of adapter, each adapter exposes the set of objects.
+set of adapters, each adapter exposes the set of objects.
 
 The whole structure is illustrated here:
 
