@@ -4,7 +4,7 @@
         {
             "oid": "test",
             "name": "human reads my name here x",
-            "type": "core:Device",
+            "type": "core:Service",
             "properties": [
                 {
                     "pid": "brightness1",
