@@ -35,6 +35,48 @@ public class Configuration {
 
     }
 
+    public static File[] getAgentConfigFiles() throws Exception {
+        String configFolder = System.getProperty("agents.config");
+        File folder = new File(configFolder);
+        File[] files = folder.listFiles();
+        if(files.length == 0){
+            throw new Exception("no agent config files found in ["+configFolder+"]!");
+        }
+        return files;
+    }
+
+    public static File findAgentConfigFile(String agentId){
+        try{
+            File[] files = getAgentConfigFiles();
+            for(File f : files){
+                AgentConfig ac = AgentConfig.create(f, false);
+                if(ac.agentId.equals(agentId)){
+                    return f;
+                }
+            }
+        }
+        catch(Exception e) {
+            logger.error("", e);
+        }
+        return null;
+    }
+
+    public static void configureAgents() throws Exception {
+        logger.info("ACQUIRING ACTUAL AGENT CONFIGURATIONS");
+
+        logger.debug("CONFIGURING AGENTS FROM FOLDER: "+System.getProperty("agents.config"));
+        File[] files = getAgentConfigFiles();
+        for(File f : files){
+            boolean success = AgentConfig.configure(f, true);
+            if(!success){
+                logger.error("UNABLE TO CONFIGURE AGENT FROM: "+f.getAbsolutePath());
+            }
+        }
+
+
+    }
+
+
     public static String toString(int indent) {
         Dump dump = new Dump();
 

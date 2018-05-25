@@ -14,24 +14,6 @@ public class StartStop {
     final static Logger logger = LoggerFactory.getLogger(StartStop.class.getName());
 
 
-    public static void configureAgents() throws Exception {
-        logger.info("ACQUIRING ACTUAL AGENT CONFIGURATIONS");
-        String configFolder = System.getProperty("agents.config");
-        logger.debug("CONFIGURING AGENTS FROM FOLDER: "+configFolder);
-        File folder = new File(configFolder);
-        File[] files = folder.listFiles();
-        if(files.length == 0){
-            throw new Exception("no agent config files found in ["+configFolder+"]!");
-        }
-        for(File f : files){
-            boolean success = AgentConfig.configure(f);
-            if(!success){
-                logger.error("UNABLE TO CONFIGURE AGENT FROM: "+f.getAbsolutePath());
-            }
-        }
-
-
-    }
 
 
 
@@ -53,7 +35,7 @@ public class StartStop {
             logger.info(Configuration.toString(0));
 
             // 2. configure agents config by config, getting last configuration from NM
-            configureAgents();
+            Configuration.configureAgents();
 
 
             // 4. list status of processed components

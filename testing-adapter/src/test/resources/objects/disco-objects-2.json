@@ -61,6 +61,11 @@
             "oid": "test1",
             "name": "human reads my name here",
             "type": "core:Device"
+        },
+        {
+            "oid": "testx",
+            "name": "human reads my name here",
+            "type": "core:Service"
         }
     ]
 }

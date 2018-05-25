@@ -14,6 +14,7 @@ public class AgentApplication extends Application {
 
     public static final String ALIVE = "/alive";
     public static final String CONFIGURATION = "/configuration";
+    public static final String CONFIGURE_AGENT = "/agents/{agid}/configure";
 
     public static final String OBJECTS = "/objects";
 
@@ -47,6 +48,10 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(CONFIGURATION, ConfigurationResource.class);
         apiRouter.attach(CONFIGURATION+"/", ConfigurationResource.class);
+
+
+        apiRouter.attach(CONFIGURE_AGENT, ConfigureAgentResource.class);
+        apiRouter.attach(CONFIGURE_AGENT+"/", ConfigureAgentResource.class);
 
         apiRouter.attach(OBJECTS, DiscoverAdapterResource.class);
         apiRouter.attach(OBJECTS+"/", DiscoverAdapterResource.class);

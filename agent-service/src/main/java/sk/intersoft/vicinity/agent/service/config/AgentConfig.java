@@ -17,6 +17,7 @@ import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 import java.io.File;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 public class AgentConfig {
     final static Logger logger = LoggerFactory.getLogger(AgentConfig.class.getName());
@@ -42,7 +43,7 @@ public class AgentConfig {
     private void stop() {
         configurationRunning = false;
     }
-    private boolean isRunning() {
+    public boolean isRunning() {
         return configurationRunning;
     }
 
@@ -124,6 +125,33 @@ public class AgentConfig {
         stop();
 
         return success;
+    }
+
+    public static boolean configure(File configFile, boolean checkDuplicates)  {
+        logger.info("CONFIGURING AGENT CONFIG FROM: " + configFile.getAbsolutePath());
+
+        try{
+            AgentConfig config = create(configFile, checkDuplicates);
+            if(config != null){
+
+
+                AgentConfig existing = Configuration.agents.get(config.agentId);
+                if(existing != null) {
+                    existing.clearMappings();
+                }
+                else{
+                    logger.info("AGENT IS NEW .. NO CLEANUP");
+                }
+
+                return config.configure();
+            }
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+        }
+
+        return false;
     }
 
     public void updateLastConfiguration() throws Exception {
@@ -208,6 +236,7 @@ public class AgentConfig {
     }
 
 
+
     private boolean configureAgent(){
         try{
             logger.info("CONFIGURING AGENT: ["+agentId+"] ");
@@ -229,26 +258,8 @@ public class AgentConfig {
     }
 
 
-    public static boolean configure(File configFile)  {
-        logger.info("CONFIGURING AGENT CONFIG FROM: " + configFile.getAbsolutePath());
 
-        AgentConfig config = create(configFile);
-        if(config != null){
-            AgentConfig existing = Configuration.agents.get(config.agentId);
-            if(existing != null) {
-                existing.clearMappings();
-            }
-            else{
-                logger.info("AGENT IS NEW .. NO CLEANUP");
-            }
-
-            return config.configure();
-        }
-
-        return false;
-    }
-
-    public static AgentConfig create(File configFile)  {
+    public static AgentConfig create(File configFile, boolean checkDuplicates)  {
         AgentConfig config = new AgentConfig();
         logger.info("READING AGENT CONFIG FROM: " + configFile.getAbsolutePath());
 
@@ -265,7 +276,8 @@ public class AgentConfig {
             if(config.agentId == null){
                 throw new Exception("Missing ["+AGENT_ID_KEY+"] in agent config!");
             }
-            if(Configuration.agents.get(config.agentId) != null){
+
+            if(checkDuplicates && Configuration.agents.get(config.agentId) != null){
                 throw new Exception("Duplicate ["+AGENT_ID_KEY+"] .. agent already exists!");
             }
 
@@ -284,8 +296,14 @@ public class AgentConfig {
                 }
                 for(JSONObject adapterConfig: adaptersArray) {
                     AdapterConfig ac = AdapterConfig.create(adapterConfig, config);
-                    if (config.adapters.get(ac.adapterId) != null || Configuration.adapters.get(ac.adapterId) != null) {
+
+                    if(config.adapters.get(ac.adapterId) != null){
                         throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "]!");
+                    }
+
+                    AdapterConfig existing = Configuration.adapters.get(ac.adapterId);
+                    if(existing != null && !existing.agent.agentId.equals(config.agentId)){
+                        throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "] .. adapter id is already used in another agent ["+existing.agent.agentId+"]!");
                     }
                     config.adapters.put(ac.adapterId, ac);
                 }
