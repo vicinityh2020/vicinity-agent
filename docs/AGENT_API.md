@@ -222,10 +222,10 @@ provided in thing description of requested remote object.
 
 ### Accessing the property of local object
 
-The reverse as accessing of remote objects. If some remote object accesses the
+The reverse to accessing of remote objects. If some remote object accesses the
 property of some of local objects within this Agent Service. Basically, if
-remote object wants to access local object in Agent Service, it must use the
-remote object access using its Agent Service, as described above.
+remote object wants to access local object available via **this** Agent Service, it must use the
+remote object access using **its** Agent Service, as described above.
 
 If request is received, the local object with requested VICINITY **oid**
 is found and the request is translated to call of related Adapter
