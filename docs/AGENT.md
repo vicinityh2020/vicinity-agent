@@ -1,6 +1,5 @@
 # (Multi) Agent Service for integrators
 
-
 VICINITY Agent serves as the interface between VICINITY GateWay and VICINITY Adapter.
 Agent is the functional extension of Adapter. The role of Agent is to make the life of Adapter developers easier.
 
@@ -23,6 +22,8 @@ Switch to multi-agent concept enables to run only one physical deployment for as
 nodes as needed.
 
 See also [details of auto discovery/configuration](DISCO.md) process.
+
+The full [Agent Service API](AGENT_API.md)
 
 Now, in details.
 
