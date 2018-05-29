@@ -14,6 +14,8 @@ import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +32,9 @@ public class AdapterConfig {
     private static final String ADAPTER_ID_KEY = "adapter-id";
     private static final String ENDPOINT_KEY = "endpoint";
     private static final String ACTIVE_DISCOVERY_KEY = "active-discovery";
+    private static final String EVENTS_KEY = "events";
+    private static final String OPEN_EVENT_CHANNELS_KEY = "channels";
+    private static final String SUBSCRIBE_EVENT_CHANNELS_KEY = "subscriptions";
 
 
     public String adapterId = "";
@@ -37,6 +42,9 @@ public class AdapterConfig {
     public boolean activeDiscovery = false;
 
     ThingDescriptions things = new ThingDescriptions();
+
+    public static List<EventChannel> eventChannels = new ArrayList<EventChannel>();
+    public static List<EventChannelSubscription> eventSubscriptions = new ArrayList<EventChannelSubscription>();
 
     private boolean configurationRunning = false;
 
@@ -223,6 +231,30 @@ public class AdapterConfig {
             config.activeDiscovery = true;
         }
 
+        if(json.has(EVENTS_KEY)){
+            JSONObject events = json.getJSONObject(EVENTS_KEY);
+            if(events.has(OPEN_EVENT_CHANNELS_KEY)){
+                JSONArray channelsArray = events.getJSONArray(OPEN_EVENT_CHANNELS_KEY);
+                Iterator<Object> it = channelsArray.iterator();
+                while(it.hasNext()){
+                    JSONObject obj = (JSONObject)it.next();
+                    EventChannel c = EventChannel.create(obj, config);
+                    eventChannels.add(c);
+                }
+            }
+
+            if(events.has(SUBSCRIBE_EVENT_CHANNELS_KEY)){
+                JSONArray channelsArray = events.getJSONArray(SUBSCRIBE_EVENT_CHANNELS_KEY);
+                Iterator<Object> it = channelsArray.iterator();
+                while(it.hasNext()){
+                    JSONObject obj = (JSONObject)it.next();
+                    EventChannelSubscription c = EventChannelSubscription.create(obj, config);
+                    eventSubscriptions.add(c);
+                }
+            }
+
+        }
+
 
         return config;
     }
@@ -244,9 +276,19 @@ public class AdapterConfig {
 
         dump.add("ADAPTER CONFIG: ["+adapterId+"]", indent);
 
+        dump.add("ADAPTER THINGS: ", (indent + 1));
         List<ThingDescription> list = ThingDescriptions.toList(things.byAdapterOID);
         for(ThingDescription t : list){
-            dump.add(t.toSimpleString(), (indent + 1));
+            dump.add(t.toSimpleString(), (indent + 2));
+        }
+
+        dump.add("OPEN CHANNELS: ", (indent + 1));
+        for(EventChannel e : eventChannels){
+            dump.add(e.toString(), (indent + 2));
+        }
+        dump.add("SUBSCRIBE CHANNELS: ", (indent + 1));
+        for(EventChannelSubscription e : eventSubscriptions){
+            dump.add(e.toString(), (indent + 2));
         }
 
         return dump.toString();
@@ -255,14 +297,25 @@ public class AdapterConfig {
     public JSONObject toJSON() {
         JSONObject object = new JSONObject();
         JSONArray thingsArray = new JSONArray();
+        JSONArray channelsArray = new JSONArray();
+        JSONArray subscriptionsArray = new JSONArray();
 
         object.put("adapter-id", adapterId);
         object.put("things", thingsArray);
+        object.put("open-channels", channelsArray);
+        object.put("subscribe-channels", subscriptionsArray);
 
 
         List<ThingDescription> list = ThingDescriptions.toList(things.byAdapterOID);
         for(ThingDescription t : list){
             thingsArray.put(t.toStatusJSON());
+        }
+
+        for(EventChannel e : eventChannels){
+            channelsArray.put(e.toJSON());
+        }
+        for(EventChannelSubscription e : eventSubscriptions){
+            subscriptionsArray.put(e.toJSON());
         }
 
         return object;
