@@ -113,7 +113,7 @@ Agent service search for configuration file containing the agent component with 
 parameter. For adding the new agent, just place the new agent config file into
 agents config folder (by default */config/agents/*) and call configuration service.
 
-**IMPORTANT NOTE: ** The first thing the Agent Service does is the complete
+**IMPORTANT NOTE:** The first thing the Agent Service does is the complete
 clearance of existing mappings for agent with {agid}, including clearance
 of attached adapter components and their things. If anything in agent configuration
 fails (parsing errors, unavailable adapters, ...), the mapping for this agent remains empty, until the configuration
@@ -135,7 +135,7 @@ POST: /objects
 The payload is the [Adapter discovery data](TD.md#serialization-of-thing-descriptions).
 
 
-**IMPORTANT NOTE: ** The first thing the Agent Service does is the complete
+**IMPORTANT NOTE:** The first thing the Agent Service does is the complete
 clearance of existing mappings for adapter and its things. If anything in adapter (re)configuration
 fails (parsing errors, unavailable adapters, ...), the mapping for this adapter remains empty, until the configuration
 runs correctly.
