@@ -186,7 +186,7 @@ This request is forwarded to GTW API with proper VICINITY credentials of request
 The response is passed back to GTW API, forwarded into Agent Service, which returns it
 as response to this request, without touching it. The response payload should
 follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
-provided in thing description.
+provided in thing description of requested remote object.
 
 
 #### Set remote object property
@@ -210,14 +210,14 @@ Request headers:
 * **adapter-id** identifier of adapter for this object
 
 Payload is the JSON object, which should follow
-the specification of the [DataSchema](TD.md#data-schema) of property *input* provided in thing description.
+the specification of the [DataSchema](TD.md#data-schema) of property *input* provided in thing description of requested remote object.
 
 
 This request is forwarded to GTW API with proper VICINITY credentials of requesting object.
 The response is passed back to GTW API, forwarded into Agent Service, which returns it
 as response to this request, without touching it. The response payload should
 follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
-provided in thing description.
+provided in thing description of requested remote object.
 
 
 ### Accessing the property of local object
