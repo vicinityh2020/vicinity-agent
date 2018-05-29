@@ -229,7 +229,7 @@ remote object access using **its** Agent Service, as described above.
 
 If request is received, the local object with requested VICINITY **oid**
 is found and the request is translated to call of related Adapter
-(responsible this local object) using the proper Adapter endpoint.
+(responsible for this local object) using the proper Adapter endpoint.
 
 #### Read local object property
 
