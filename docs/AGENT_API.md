@@ -176,16 +176,15 @@ Parameters:
 
 To access the remote object, it is mandatory to provide identifier of object,
 which is requesting this data. This is always object in concrete Adapter,
-identified by its internal ID. Request headers:
+identified by its internal ID.
 
-```
-infrastucture-id=infrastructure-id of requesting object
-adapter-id=identifier of adapter for this object
-```
+Request headers:
+* **infrastructure-id** infrastructure-id of requesting object
+* **adapter-id** identifier of adapter for this object
 
 This request is forwarded to GTW API with proper VICINITY credentials of requesting object.
-The response is passed back GTW API, is forwarded to Agent Service, which passes it
-as response to the request as is, without touching it. The response payload should
+The response is passed back to GTW API, forwarded into Agent Service, which returns it
+as response to this request, without touching it. The response payload should
 follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
 provided in thing description.
 
@@ -204,19 +203,71 @@ Parameters:
 
 To access the remote object, it is mandatory to provide identifier of object,
 which is requesting this data. This is always object in concrete Adapter,
-identified by its internal ID. Request headers:
+identified by its internal ID.
 
-```
-infrastucture-id=infrastructure-id of requesting object
-adapter-id=identifier of adapter for this object
-```
+Request headers:
+* **infrastructure-id** infrastructure-id of requesting object
+* **adapter-id** identifier of adapter for this object
 
 Payload is the JSON object, which should follow
 the specification of the [DataSchema](TD.md#data-schema) of property *input* provided in thing description.
 
 
 This request is forwarded to GTW API with proper VICINITY credentials of requesting object.
-The response is passed back GTW API, is forwarded to Agent Service, which passes it
-as response to the request as is, without touching it. The response payload should
+The response is passed back to GTW API, forwarded into Agent Service, which returns it
+as response to this request, without touching it. The response payload should
 follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
 provided in thing description.
+
+
+### Accessing the property of local objects
+
+The reverse as accessing of remote objects. If some remote object accesses the
+property of some of local objects within this Agent Service. Basically, if
+remote object wants to access local object in Agent Service, it must use the
+remote object access described above.
+
+If request is received, the local object with requested VICINITY **oid**
+is found and the request is translated to call of related Adapter
+(responsible this local object) using the proper Adapter endpoint.
+
+#### Read local object property
+
+Endpoint:
+
+```
+GET: /objects/{oid}/properties/{pid}
+```
+
+Parameters:
+* **oid** - VICINITY oid of requested object
+* **pid** - the property identifier
+
+The call is translated into proper call on Adapter responsible for this object.
+
+The response payload should
+follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
+provided in thing description of requested local object.
+
+
+#### Set local object property
+
+Endpoint:
+
+```
+PUT: /objects/{oid}/properties/{pid}
+```
+
+Parameters:
+* **oid** - VICINITY oid of requested object
+* **pid** - the property identifier
+
+The call is translated into proper call on Adapter responsible for this object.
+
+The payload into service should
+follow the specification of the [DataSchema](TD.md#data-schema) of property *input*
+provided in thing description of requested local object.
+
+The response payload should
+follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
+provided in thing description of requested local object.
