@@ -106,26 +106,25 @@ config/agents/any-agent-config.json:
         {
             "adapter-id": "unique id of adapter"
             "active-discovery": true/false
-            "endpoint": "http://localhost:9995/adapter"
+            "endpoint": "http://localhost:9995/adapter",
+            "events": {
+                "channels": [
+                    {
+                        "infrastructure-id": "internal identifier of object publishing the event",
+                        "eid": "object event identifier",
+                    }
+                ],
+                "subscriptions": [
+                    {
+                        "infrastructure-id": "internal identifier of object subscribing for the event",
+                        "oid": "VICINITY object id",
+                        "eid": "object event identifier",
+                    }
+                ]
+            }
+
         }
-    ],
-    "events": {
-        "channels": [
-            {
-                "infrastructure-id": "internal identifier of object publishing the event",
-                "adapter-id": "adapter identifier of this object",
-                "eid": "object event identifier",
-            }
-        ],
-        "subscriptions": [
-            {
-                "oid": "VICINITY object id",
-                "infrastructure-id": "internal identifier of object subscribing for the event",
-                "adapter-id": "adapter identifier of subscriber object",
-                "eid": "object event identifier",
-            }
-        ]
-    }
+    ]
 }
 ```
 
@@ -290,31 +289,37 @@ concrete event and publish data into it. Once the channel is open, other objects
 Adapter of this object will receive events from this channel, when they appear.
 
 Opening the channels and subscriptions may be done statically, using Agent configuration file; or dynamically on the fly.
+Events are configured per each Adapter separately (as event publisher or subscriber must always be the concrete object)
 
 ### Static channel management
 
-Opening the channels and subscriptions may be declared in Agent configuration file, field **events**.
+Opening the channels and subscriptions may be declared in Agent configuration file, field **adapters/events**.
 ```
 #!json
-    "events": {
-        "channels": [
-            {
-                "infrastructure-id": "internal identifier of object publishing the event",
-                "adapter-id": "adapter identifier of this object",
-                "eid": "object event identifier",
-            }
-        ],
-        "subscriptions": [
-            {
-                "oid": "VICINITY object id producing event",
-                "eid": "object event to listen subscribe",
+{
+    ...
+    "adapters": [
+        {
+            "adapter-id": "guess what",
+            "events": {
+                "channels": [
+                    {
+                        "infrastructure-id": "internal identifier of object publishing the event",
+                        "eid": "object event identifier",
+                    }
+                ],
+                "subscriptions": [
+                    {
+                        "oid": "VICINITY object id producing event",
+                        "eid": "object event to listen subscribe",
 
-                "infrastructure-id": "internal identifier of object subscribing for the event",
-                "adapter-id": "adapter identifier of subscriber object",
+                        "infrastructure-id": "internal identifier of object subscribing for the event",
+                    }
+                ]
             }
-        ]
-    }
-
+        }
+    ]
+}
 ```
 
 Field **channels** contains the array of declarations, for which object and its event the channel should be open.
