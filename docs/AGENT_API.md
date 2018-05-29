@@ -156,7 +156,7 @@ runs correctly.
 
 ## Accessing object properties
 
-### Accessing the property of remote objects
+### Accessing the property of remote object
 
 Accessing the object property is always triggered by concrete object behind
 the concrete adapter. Remote objects are those, which are in another Client Node as
@@ -220,7 +220,7 @@ follow the specification of the [DataSchema](TD.md#data-schema) of property *out
 provided in thing description.
 
 
-### Accessing the property of local objects
+### Accessing the property of local object
 
 The reverse as accessing of remote objects. If some remote object accesses the
 property of some of local objects within this Agent Service. Basically, if
