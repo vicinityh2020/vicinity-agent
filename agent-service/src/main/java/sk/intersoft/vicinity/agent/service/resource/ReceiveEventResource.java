@@ -20,7 +20,7 @@ public class ReceiveEventResource extends AgentResource {
 
 
     @Put()
-    public String setPropertyValue(Representation entity) {
+    public String receiveEvent(Representation entity) {
         try {
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);

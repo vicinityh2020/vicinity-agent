@@ -15,7 +15,7 @@ public class PublishEventResource extends AgentResource {
     private static String EVENT_ID = "eid";
 
     @Put()
-    public String setPropertyValue(Representation entity) {
+    public String publishEvent(Representation entity) {
         try {
             String eid = getAttribute(EVENT_ID);
 
