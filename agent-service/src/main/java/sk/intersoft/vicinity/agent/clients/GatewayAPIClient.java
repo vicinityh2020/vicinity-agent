@@ -29,6 +29,7 @@ public class GatewayAPIClient {
     public static final String OBJECT_ACTION_ENDPOINT = "/objects/{oid}/actions/{aid}";
     public static final String OBJECT_EVENT_ENDPOINT = "/objects/{oid}/events/{eid}";
 
+
     // configuration:
     public static String configurationEndpoint(String agentId) {
       return "/agents/"+agentId+"/objects";
@@ -50,6 +51,15 @@ public class GatewayAPIClient {
         return endpoint.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId);
     }
 
+    public static String getOpenEventChannelEndpoint(String eventId) {
+        return "/events/"+eventId;
+    }
+    public static String getSubscribeEventChannelEndpoint(String oid, String eventId) {
+        return "/objects/"+oid+"/events/"+eventId;
+    }
+    public static String getPublishEventEndpoint(String eventId) {
+        return "/events/"+eventId;
+    }
 
     public static HttpClient getClient(String login, String password) {
 

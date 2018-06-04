@@ -7,9 +7,20 @@
         {
             "adapter-id": "adapter-1",
             "endpoint": "http://localhost:9995/adapter"
-        },
-        {
-            "adapter-id": "adapter-4"
+            "events": {
+                "channels" : [
+                    {
+                        "infrastructure-id": "internal identifier of object publishing the event",
+                        "eid": "object event identifier",
+                    }
+                ],
+                "subscriptions" : [
+                    {
+                        "infrastructure-id": "internal identifier of object publishing the event",
+                        "oid": "OID GO HERE",
+                        "eid": "object event identifier",
+                    }
+                ]
         }
     ]
 }

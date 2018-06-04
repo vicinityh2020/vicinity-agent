@@ -22,10 +22,8 @@ public class AgentApplication extends Application {
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
 
-    public static final String OBJECT_EVENT_OPEN = "/objects/{infrastructure-id}/events/{eid}/open";
-    public static final String OBJECT_EVENT_SUBSCRIBE = "/objects/{oid}/events/{eid}/subscribe";
-    public static final String OBJECT_EVENT_PUBLISH = "/objects/{infrastructure-id}/events/{eid}/publish";
-    public static final String OBJECT_EVENT = "/objects/{oid}/events/{eid}";
+    public static final String OBJECT_EVENT_PUBLISH = "/events/{eid}";
+    public static final String OBJECT_EVENT_RECEIVE = "/objects/{oid}/events/{eid}";
 
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
@@ -61,24 +59,12 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
         apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
-//
 
-//
-//        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
-//        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);
-//
-//        apiRouter.attach(OBJECT_EVENT_OPEN, OpenObjectEventResource.class);
-//        apiRouter.attach(OBJECT_EVENT_OPEN+"/", OpenObjectEventResource.class);
-//
-//        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE, SubscribeObjectEventResource.class);
-//        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE+"/", SubscribeObjectEventResource.class);
-//
-//        apiRouter.attach(OBJECT_EVENT_PUBLISH, PublishObjectEventResource.class);
-//        apiRouter.attach(OBJECT_EVENT_PUBLISH+"/", PublishObjectEventResource.class);
-//
-//        apiRouter.attach(OBJECT_EVENT, ObjectEventResource.class);
-//        apiRouter.attach(OBJECT_EVENT+"/", ObjectEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_PUBLISH, PublishEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_PUBLISH+"/", PublishEventResource.class);
 
+        apiRouter.attach(OBJECT_EVENT_RECEIVE, ReceiveEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_RECEIVE+"/", ReceiveEventResource.class);
 
         return apiRouter;
     }

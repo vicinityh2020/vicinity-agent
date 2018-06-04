@@ -6,10 +6,22 @@
     "adapters": [
         {
             "adapter-id": "adapter-1",
-            "endpoint": "http://localhost:9995/adapter"
-        },
-        {
-            "adapter-id": "adapter-4"
+            "endpoint": "http://localhost:9995/adapter",
+            "events": {
+                "channels" : [
+                    {
+                        "infrastructure-id": "test",
+                        "eid": "test-event"
+                    }
+                ],
+                "subscriptions" : [
+                    {
+                        "infrastructure-id": "test",
+                        "oid": "OID_GO_HERE",
+                        "eid": "object_event_identifier"
+                    }
+                ]
+            }
         }
     ]
 }

@@ -30,7 +30,7 @@ public class EventChannel {
     }
 
     public String toString() {
-        return "["+adapter.adapterId+":"+infrastructureId+" :: "+eventId+"]";
+        return "["+adapter.adapterId+":"+infrastructureId+" :: event:"+eventId+"]";
     }
 
     public String toString(int indent) {

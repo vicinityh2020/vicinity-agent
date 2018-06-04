@@ -10,6 +10,8 @@ import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.processor.Discovery;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
+import sk.intersoft.vicinity.agent.service.resource.AgentResource;
+import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
@@ -121,6 +123,58 @@ public class AdapterConfig {
     }
 
 
+    public static void openEventChannel(ThingDescription thing, String eventId) throws Exception {
+        InteractionPattern event = thing.getInteractionPattern(eventId, InteractionPattern.EVENT);
+        GatewayAPIClient.post(GatewayAPIClient.getOpenEventChannelEndpoint(eventId), null, thing.oid, thing.password);
+
+    }
+
+    private void openEventChannels(){
+        logger.debug("OPENING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
+
+        for(EventChannel e : eventChannels){
+            logger.debug("OPENING EVENT CHANNEL: "+e.toString());
+            try{
+                ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
+                if(thing != null){
+                    logger.debug("PUBLISHER THING: "+thing.toSimpleString());
+                    openEventChannel(thing, e.eventId);
+                }
+                else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
+            }
+            catch (Exception ex){
+                logger.error("unable to open channel: "+e.toString(), ex);
+            }
+        }
+
+    }
+
+    public static void subscribeEventChannel(ThingDescription thing, String oid, String eventId) throws Exception {
+        GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password);
+
+    }
+
+    private void subscribeEventChannels(){
+        logger.debug("SUBSCRIBING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
+
+        for(EventChannelSubscription e : eventSubscriptions){
+            logger.debug("SUBSCRIBING TO EVENT CHANNEL: "+e.toString());
+            try{
+                ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
+                if(thing != null){
+                    logger.debug("SUBSCRIBING THING: "+thing.toSimpleString());
+                    subscribeEventChannel(thing, e.oid, e.eventId);
+                }
+                else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
+            }
+            catch (Exception ex){
+                logger.error("unable to subscribe to channel: "+e.toString(), ex);
+            }
+        }
+
+    }
+
+
     private void start() {
         configurationRunning = true;
     }
@@ -202,7 +256,11 @@ public class AdapterConfig {
 
             updateMappings(discoveredThings);
 
+
             login();
+
+            openEventChannels();
+            subscribeEventChannels();
 
             return true;
 

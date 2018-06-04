@@ -55,6 +55,23 @@
                         }
                     }
                 }
+            ],
+            "events": [
+                {
+                    "eid": "test-event",
+                    "monitors": "adapters:ValvePosition",
+                    "output": {
+                        "type": "object",
+                        "field": [
+                            {
+                                "name": "value",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    }
+                }
             ]
         }
 
