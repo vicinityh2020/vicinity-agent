@@ -271,3 +271,61 @@ provided in thing description of requested local object.
 The response payload should
 follow the specification of the [DataSchema](TD.md#data-schema) of property *output*
 provided in thing description of requested local object.
+
+
+## Events
+
+### Publish the event
+
+Endpoint:
+
+```
+PUT: /events/{eid}
+```
+
+Parameters:
+* **eid** - the event identifier
+
+It is mandatory to provide identifier of object,
+which is publishing the event. This is always object in concrete Adapter,
+identified by its internal ID.
+
+Request headers:
+* **infrastructure-id** infrastructure-id of event publishing object
+* **adapter-id** identifier of adapter for this object
+
+Payload is the JSON object, which should follow
+the specification of the [DataSchema](TD.md#data-schema) of event *output* provided in thing description of event publishing object.
+
+
+This request is forwarded to GTW API with proper VICINITY credentials of requesting object.
+
+
+### Consume the event
+
+Endpoint:
+
+```
+PUT: /objects/{oid}/events/{eid}
+```
+
+Parameters:
+* **oid** - the VICINITY identifier of event receiving object (object, which was subscribed for event channel)
+* **eid** - the event identifier
+
+Payload is the JSON object, which should follow
+the specification of the [DataSchema](TD.md#data-schema) of event *output* provided in thing description of event publishing object.
+
+
+The object with **oid** is found and the request is forwarder to the related Adapter. The receiving Adapter is responsible for further management of this event.
+If Adapter wants to receive the events, it must implement the following endpoint:
+
+```
+PUT: /objects/{infrastructure-id}/events/{eid}
+```
+
+Parameters:
+* **infrastructure-id** - the internal identifier of object, which is subscribed to event (receiver)
+* **eid** - the event identifier
+
+The **oid** of object, that produced the event, will be attached into event payload.

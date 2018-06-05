@@ -334,7 +334,7 @@ The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/
 
 Using this declaration, the Agent will create and subscribe to channels when it starts.
 
-### Dynamic channel management
+### Dynamic channel management: To be done!
 
 In some cases, some object in Adapter needs to open or subscribe to channel on the fly (depending on its internal logic).
 
