@@ -382,12 +382,11 @@ Agent translates this request into proper GTW API call, using credentials for ob
 
 Object, for which the channel is opened may publish data into this channel by using Agent service:
 ```
-PUT /objects/{infrastructure-id}/events/{eid}/publish
+PUT /events/{eid}
 headers:
+infrastructure-id=internal id of object publishing the event
 adapter-id=adapter for this object
 ```
-**infrastructure-id** in request is the identifier of local object publishing the event.
-
 
 Body of this request must be JSON payload with published event data.
 
