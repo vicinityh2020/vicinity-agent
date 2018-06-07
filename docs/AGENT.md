@@ -272,7 +272,7 @@ This process is described in details in [Adapter interaction patterns](ADAPTER.m
 
 ## Object actions
 
-TBD
+TBD .. waiting for GTW API implementation
 
 # Eventing
 
@@ -334,7 +334,7 @@ The object with **infrastructure-id** is subscribed to channel **/objects/{oid}/
 
 Using this declaration, the Agent will create and subscribe to channels when it starts.
 
-### Dynamic channel management: To be done!
+### Dynamic channel management
 
 In some cases, some object in Adapter needs to open or subscribe to channel on the fly (depending on its internal logic).
 
@@ -376,9 +376,8 @@ The body of this request must be empty.
 
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
-## Event management
 
-### Publishing the event
+## Publishing the event
 
 Object, for which the channel is opened may publish data into this channel by using Agent service:
 ```
@@ -393,7 +392,7 @@ Body of this request must be JSON payload with published event data.
 Agent translates this request into proper GTW API call, using credentials for object with **infrastructure-id**.
 
 
-### Consuming the event
+## Consuming the event
 
 Agent automatically pass the events into Adapter, as they appear. If Adapter needs to listen to events, Adapter
 must implement the service for event consumption (see [Adapter docs on event consumption](ADAPTER.md#consumption-of-events))
