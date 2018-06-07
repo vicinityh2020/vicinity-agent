@@ -6,10 +6,12 @@ import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 public class DataSchemaField {
     public String name;
+    public String predicate;
     public DataSchema schema;
 
     // JSON KEYS
     public static final String NAME_KEY = "name";
+    public static final String PREDICATE_KEY = "predicate";
     public static final String SCHEMA_KEY = "schema";
 
     public static DataSchemaField create(JSONObject fieldJSON,
@@ -29,6 +31,14 @@ public class DataSchemaField {
                 field.schema = DataSchema.create(schema, validator);
             }
 
+            field.predicate = JSONUtil.getString(PREDICATE_KEY, fieldJSON);
+            if (field.predicate != null) {
+                if(!field.schema.isSimpleType()){
+                    validator.error("Ontology annotation for field predicate must [" + PREDICATE_KEY + "] must point to simple type: " + fieldJSON.toString());
+                }
+            }
+
+
         }
         catch(Exception e){
             validator.error("unable to process data-schema-field: "+fieldJSON.toString());
@@ -42,6 +52,9 @@ public class DataSchemaField {
         JSONObject object = new JSONObject();
 
         object.put(NAME_KEY, field.name);
+        if(field.predicate != null){
+            object.put(PREDICATE_KEY, field.predicate);
+        }
         object.put(SCHEMA_KEY, DataSchema.toJSON(field.schema));
         return object;
     }
@@ -51,6 +64,9 @@ public class DataSchemaField {
 
         dump.add("field:", indent);
         dump.add("name: "+name, (indent + 2));
+        if(predicate != null) {
+            dump.add("predicate: " + predicate, (indent + 2));
+        }
         dump.add("schema: ", (indent + 2));
         dump.add(schema.toString(indent + 3));
         return dump.toString();

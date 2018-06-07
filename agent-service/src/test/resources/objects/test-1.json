@@ -1,30 +1,49 @@
 {
     "oid": "test3",
+    "adapter-id": "test",
     "name": "human reads my name here",
     "type": "Lightbulb",
     "properties": [
         {
             "pid": "brightness",
-            "monitorsx": "Luminance",
+            "monitors": "Luminance",
             "read_link": {
                 "href": "/device/{oid}/property/{pid}",
-                "outputx": {
+                "output": {
                     "type": "object",
+                    "description": "person name and address",
                     "field": [
                         {
-                            "name": "property",
+                            "name": "person-name",
+                            "description": "person name",
                             "schema": {
                                 "type": "string"
                             }
                         },
                         {
-                            "name": "value",
+                            "name": "address",
+                            "description": "person address",
                             "schema": {
-                                "type": "integer"
+                                "type": "object",
+                                "field": [
+                                    {
+                                        "name": "street",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    {
+                                        "name": "country",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
                 }
+
             },
             "write_link": {
                 "href": "/bulb/set-brightness/{oid}",
@@ -33,6 +52,7 @@
                     "field": [
                         {
                             "name": "brightness-level",
+                            "predicate": "x",
                             "schema": {
                                 "type": "integer"
                             }

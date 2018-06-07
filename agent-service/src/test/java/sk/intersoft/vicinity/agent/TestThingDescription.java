@@ -20,8 +20,8 @@ public class TestThingDescription {
     }
 
     public void process() throws Exception{
-        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
-//        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-1.json"));
+//        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
+        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-1.json"));
 
         ThingValidator validator = new ThingValidator(false);
         try{
@@ -51,9 +51,31 @@ public class TestThingDescription {
 
     }
 
+    public void predicate() throws Exception{
+//        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
+        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-1.json"));
+
+        ThingValidator validator = new ThingValidator(false);
+        try{
+            ThingDescription t = ThingDescription.create(in, validator);
+            System.out.println(t.toString(0));
+
+            System.out.println(validator.failureMessage().toString(2));
+            System.out.println(ThingDescription.toJSON(t).toString(2));
+            System.out.println(t.toString(2));
+
+
+        }
+        catch(Exception e){}
+        System.out.println("FAILED: " +validator.failed());
+        System.out.println(validator.failureMessage().toString(2));
+
+    }
+
     public static void main(String[] args) throws Exception {
         TestThingDescription p = new TestThingDescription();
-        p.process();
+//        p.process();
+        p.predicate();
     }
 
 }
