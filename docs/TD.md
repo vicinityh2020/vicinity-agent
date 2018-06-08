@@ -24,14 +24,13 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | type | string | yes | [Ontology annotation](#ontology-annotation) |
 | version | string | yes |Defines the version of the service. It is possible to have registered different version of the services |
 | keywords | array of strings | yes |Describes the service key features - products. Keywords are used to search service in VICINITY Platform.|
-| properties | array of objects | no | The array of property interaction patterns [see Property](#property) |
-| actions | array of objects | no | The array of action interaction patterns [see Action](#action) |
-| events | array of objects | no | The array of event interaction patterns [see Event](#event)|
+| properties | array of objects | yes | The array of property interaction patterns [see Property](#property) |
+| actions | array of objects | yes | The array of action interaction patterns [see Action](#action) |
+| events | array of objects | yes | The array of event interaction patterns [see Event](#event)|
 | requirements | object | no | The requirement object [see Requirements](#requirements)|
 
 **Validity**
-* Specification tells, that object interaction patterns are not mandatory.
-But, object must contain at least one interaction pattern (of any type).
+* Object interaction patterns are mandatory, but can be empty arrays.
 * Field **type** must contain the existing semantic annotation in VICINITY ontology.
 
 

@@ -123,7 +123,10 @@ public class ThingDescription {
             List<JSONObject> actions = JSONUtil.getObjectArray(ACTIONS_KEY, thingJSON);
             List<JSONObject> events = JSONUtil.getObjectArray(EVENTS_KEY, thingJSON);
 
-            if(properties != null){
+            if(properties == null) {
+                fail = validator.error("Missing thing [properties].");
+            }
+            else{
                 for(JSONObject property : properties){
                     InteractionPattern pattern = InteractionPattern.createProperty(property, validator);
                     if(pattern == null)
@@ -132,7 +135,10 @@ public class ThingDescription {
                         thing.properties.put(pattern.id, pattern);
                 }
             }
-            if(actions != null){
+            if(actions == null) {
+                fail = validator.error("Missing thing [actions].");
+            }
+            else{
                 for(JSONObject action : actions){
                     InteractionPattern pattern = InteractionPattern.createAction(action, validator);
                     if(pattern == null)
@@ -142,7 +148,10 @@ public class ThingDescription {
                 }
             }
 
-            if(events != null){
+            if(events == null){
+                fail = validator.error("Missing thing [events].");
+            }
+            else{
                 for(JSONObject event : events){
                     InteractionPattern pattern = InteractionPattern.createEvent(event, validator);
                     if(pattern == null)
