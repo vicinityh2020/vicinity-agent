@@ -340,8 +340,9 @@ In some cases, some object in Adapter needs to open or subscribe to channel on t
 
 To **open channel**, Agent provides the service:
 ```
-POST /objects/{infrastructure-id}/events/{eid}/open
+POST /events/{eid}
 headers:
+infrastructure-id=internal id of object publishing the event
 adapter-id=adapter for this object
 ```
 
@@ -360,7 +361,7 @@ opened the channel by itself.
 
 To **subscribe to channel**, Agent provides the service:
 ```
-POST /objects/{oid}/events/{eid}/subscribe
+POST /objects/{oid}/events/{eid}
 headers:
 infrastructure-id=internal object id
 adapter-id=adapter for this object
