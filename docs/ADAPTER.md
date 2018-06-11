@@ -125,8 +125,9 @@ If needed, **read/write_link** may contain properties, which Agent automatically
 
 
 ### OID confusions
-* **oid** in Adapter thing description is always the internal, infrastructure specific, identifier of object behind the Adapter
-* **oid** on level of GTW API (or VICINITY) is always the VICINITY specific object id
+From Adapter point of view:
+* **oid** of objects inside of Adapter: always the internal id of object behind the Adapter is used. Adapter does not (and does not need to) know the VICINITY identifiers of its own objects.
+* **oid** of remote objects (objects outside of Adapter): always VICINITY oid is used. Adapter can not know internal identifiers of objects behind other Adapters.
 
 Adapter always uses the internal, infrastructure specific, identifiers of objects it manages. The only exception is, when
 some of Adapter objects needs to interact with remote object (from another VICINITY node). For example,
