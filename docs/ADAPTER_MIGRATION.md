@@ -1,4 +1,4 @@
-# 2018-05-17
+# Agent -> Multi-Agent Migration guide
 
 ## (Multi) Agent service now accepts multiple agent configs
 

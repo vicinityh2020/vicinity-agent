@@ -1,8 +1,8 @@
-# CHANGELOG:
+# Agent -> Multi-Agent migration:
 Agent is actually in heavy refactoring to enable multi-agent client node.
 Here are actual important changes, please, adjust your adapter implementation according to it.
 
-[Click to see the CHANGELOG](ADAPTER_CHANGELOG.md)
+[Click to see the Migration Guide](ADAPTER_MIGRATION.md)
 
 # Adapter for integrators
 

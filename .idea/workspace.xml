@@ -6,7 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AGENT.md" afterPath="$PROJECT_DIR$/docs/AGENT.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" afterPath="$PROJECT_DIR$/docs/ADAPTER_MIGRATION.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ADAPTER.md" afterPath="$PROJECT_DIR$/docs/ADAPTER.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/agent-service.iml" afterPath="$PROJECT_DIR$/agent-service/agent-service.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vicinity-agent.iws" />
@@ -35,16 +37,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DISCO.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/DISCO.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="1892">
-              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TD.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/TD.md">
           <provider selected="true" editor-type-id="text-editor">
@@ -105,21 +97,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AGENT.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AGENT.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8148148" vertical-offset="7458" max-vertical-offset="8954">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7458" max-vertical-offset="8954">
               <caret line="363" column="32" selection-start-line="363" selection-start-column="32" selection-end-line="363" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSchema.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/DataSchema.java">
+      <file leaf-file-name="ADAPTER.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1100" max-vertical-offset="3938">
-              <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4994">
+              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ADAPTER_MIGRATION.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/ADAPTER_MIGRATION.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3410">
+              <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -165,8 +167,6 @@
         <option value="$PROJECT_DIR$/agent-service/bin/build-skeleton.sh" />
         <option value="$PROJECT_DIR$/agent-service/bin/build4deployment.sh" />
         <option value="$PROJECT_DIR$/agent-service/bin/make-build.sh" />
-        <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
-        <option value="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" />
         <option value="$PROJECT_DIR$/docs/DISCO.md" />
         <option value="$PROJECT_DIR$/agent-service/bin/agent-skeleton/config/service-config.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/config/service-config.json" />
@@ -199,6 +199,8 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
         <option value="$PROJECT_DIR$/docs/TD.md" />
         <option value="$PROJECT_DIR$/docs/AGENT.md" />
+        <option value="$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
       </list>
     </option>
   </component>
@@ -2677,14 +2679,26 @@
       <created>1528458083957</created>
       <updated>1528458083957</updated>
     </task>
-    <option name="localTasksCounter" value="227" />
+    <task id="LOCAL-00227" summary="updated docs">
+      <created>1528702632486</created>
+      <updated>1528702632486</updated>
+    </task>
+    <task id="LOCAL-00228" summary="publishing new build">
+      <created>1528703732187</created>
+      <updated>1528703732187</updated>
+    </task>
+    <task id="LOCAL-00229" summary="updated docs">
+      <created>1528705361292</created>
+      <updated>1528705361293</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="35" width="1920" height="1045" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23819743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23819743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31759655" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2693,11 +2707,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12032086" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42424244" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42381975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20213903" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32618025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2706,7 +2721,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32618025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -2729,7 +2743,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="added thin2json serialization" />
     <MESSAGE value="prepared thing2json to be added additional semantic annotations when exporting ontology2thing" />
     <MESSAGE value="imrovement of thing parser/validator" />
     <MESSAGE value="added agent auto-configuration from NM" />
@@ -2751,10 +2764,11 @@
     <MESSAGE value="added eventing part to adapter config .. just create / dump .. no execution, waiting for martin!" />
     <MESSAGE value="prepared the events core .. ready for testing" />
     <MESSAGE value="build actualized" />
-    <MESSAGE value="updated docs" />
     <MESSAGE value="added agora predicate annotation to data schema field" />
     <MESSAGE value="updated thing validator, interaction patterns are now mandatory, but can be empty" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated thing validator, interaction patterns are now mandatory, but can be empty" />
+    <MESSAGE value="publishing new build" />
+    <MESSAGE value="updated docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated docs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2820,20 +2834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.7777777" vertical-offset="186" max-vertical-offset="3080">
           <caret line="18" column="32" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/ADAPTER_CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="3410">
-          <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="45.62963" vertical-offset="1320" max-vertical-offset="4972">
-          <caret line="4" column="49" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -3143,8 +3143,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8148148" vertical-offset="7458" max-vertical-offset="8954">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7458" max-vertical-offset="8954">
           <caret line="363" column="32" selection-start-line="363" selection-start-column="32" selection-end-line="363" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4994">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/ADAPTER_MIGRATION.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3410">
+          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
           <folding />
         </state>
       </provider>
