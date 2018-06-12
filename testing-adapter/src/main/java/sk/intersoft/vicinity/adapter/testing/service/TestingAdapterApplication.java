@@ -20,6 +20,7 @@ public class TestingAdapterApplication extends Application {
     public static final String POST_CUSTOM_ACTION = "/custom-post/{oid}/z";
 
     public static final String EVENT_LISTENER = "/objects/{oid}/events/{eid}";
+    public static final String EVENT_PUBLISHER = "/objects/{iid}/events/{eid}/publish";
 
     public static final String ADAPTER_ID = "adapter-1";
 
@@ -46,6 +47,7 @@ public class TestingAdapterApplication extends Application {
         apiRouter.attach(SET_CUSTOM_PROPERTY, SetCustomPropertyResource.class);
         apiRouter.attach(POST_CUSTOM_ACTION, CustomActionResource.class);
         apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
+        apiRouter.attach(EVENT_PUBLISHER, EventPublisherResource.class);
 
         return apiRouter;
     }

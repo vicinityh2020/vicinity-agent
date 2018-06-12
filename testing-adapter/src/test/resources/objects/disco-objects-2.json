@@ -4,7 +4,7 @@
         {
             "oid": "test",
             "name": "human reads my name here",
-            "type": "adapters:HumiditySensor",
+            "type": "core:Service",
             "actions": [],
             "events": [],
 

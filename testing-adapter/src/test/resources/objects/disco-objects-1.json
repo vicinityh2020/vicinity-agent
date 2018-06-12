@@ -4,7 +4,7 @@
         {
             "oid": "test",
             "name": "human reads my name here x",
-            "type": "core:Service",
+            "type": "core:Device",
             "actions": [],
             "properties": [
                 {
