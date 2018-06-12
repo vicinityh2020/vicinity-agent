@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.AdapterEndpoint;
+import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
+import sk.intersoft.vicinity.agent.service.config.Configuration;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.InteractionPatternEndpoint;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -25,7 +27,7 @@ public class ReceiveEventResource extends AgentResource {
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);
 
-            logger.info("RECEIVING FOR: ");
+            logger.info("RECEIVING EVENT FOR: ");
             logger.info("SUBSCRIBER OID: " + oid);
             logger.info("EID: " + eid);
 
@@ -37,9 +39,16 @@ public class ReceiveEventResource extends AgentResource {
             logger.info("PAYLOAD: " + rawPayload);
 
             ThingDescription thing = getThingByOID(oid);
-            logger.info("ADAPTER THING FOR OID [" + oid + "]: " + thing.toSimpleString());
+            logger.info("THING FOR OID [" + oid + "]: " + thing.toSimpleString());
 
-            String endpoint = AdapterEndpoint.getReceiveEventEndpoint(thing.infrastructureId, eid);
+            AdapterConfig adapter = Configuration.adapters.get(thing.adapterId);
+            if(adapter == null) {
+                throw new Exception("MISSING EVENT RECEIVING ADAPTER FOR THING: "+thing.toSimpleString());
+            }
+            logger.info("ADAPTER FOR THING [" + oid + "]: " + thing.toSimpleString());
+            logger.info("\n" + adapter.toSimpleString());
+
+            String endpoint = adapter.endpoint + AdapterEndpoint.getReceiveEventEndpoint(thing.infrastructureId, eid);
 
             logger.info("PASS EVENT TO ADAPTER ENDPOINT: [" + endpoint + "]");
 
