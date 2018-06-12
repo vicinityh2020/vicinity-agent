@@ -68,6 +68,11 @@ public class Configuration {
         File[] files = getAgentConfigFiles();
         for(File f : files){
             boolean success = AgentConfig.configure(f, true);
+
+            logger.debug("CONFIGURATION AFTER PARTIAL AGENT: "+f.getAbsolutePath());
+            logger.debug("\n"+toString(0));
+            logger.debug("\n"+toStatusString(0));
+
             if(!success){
                 logger.error("UNABLE TO CONFIGURE AGENT FROM: "+f.getAbsolutePath());
             }

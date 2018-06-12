@@ -5,6 +5,7 @@
             "oid": "test",
             "name": "human reads my name here x",
             "type": "core:Service",
+            "actions": [],
             "properties": [
                 {
                     "pid": "brightness1",

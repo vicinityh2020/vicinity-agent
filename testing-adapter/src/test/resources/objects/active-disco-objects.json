@@ -5,6 +5,24 @@
             "oid": "test1",
             "name": "human reads my name here x",
             "type": "core:Device",
+            "actions": [],
+            "events": [
+                {
+                    "eid": "test-event",
+                    "monitors": "adapters:ValvePosition",
+                    "output": {
+                        "type": "object",
+                        "field": [
+                            {
+                                "name": "value",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
             "properties": [
                 {
                     "pid": "brightness1",

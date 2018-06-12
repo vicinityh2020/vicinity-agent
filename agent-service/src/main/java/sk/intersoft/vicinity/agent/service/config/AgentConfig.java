@@ -124,6 +124,8 @@ public class AgentConfig {
         boolean success = configureAgent();
         stop();
 
+        logger.info("AGENT [" + agentId + "] CONFIGURED:\n"+toStatusString(0));
+
         return success;
     }
 
@@ -306,6 +308,10 @@ public class AgentConfig {
                         throw new Exception("duplicate adapter-id [" + ac.adapterId + "] in agent [" + config.agentId + "] .. adapter id is already used in another agent ["+existing.agent.agentId+"]!");
                     }
                     config.adapters.put(ac.adapterId, ac);
+
+                    logger.debug("ADAPTER CONFIG ADDED TO AGENT: \n"+config.toStatusString(0));
+                    logger.debug("WHOLE CONFIG: \n"+Configuration.toStatusString(0));
+
                 }
 
             }

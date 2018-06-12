@@ -5,7 +5,7 @@ JAR=testing-adapter.jar
 
 AGENT_ENDPOINT=http://localhost:9997/agent
 OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
-ACTIVE_OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/active-disco-objects.json
+ACTIVE_OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
 
 COMMAND=$1
 

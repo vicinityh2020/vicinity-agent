@@ -5,6 +5,9 @@
             "oid": "test",
             "name": "human reads my name here",
             "type": "adapters:HumiditySensor",
+            "actions": [],
+            "events": [],
+
             "properties": [
                 {
                     "pid": "brightness1",
@@ -56,16 +59,6 @@
                     }
                 }
             ]
-        },
-        {
-            "oid": "test1",
-            "name": "human reads my name here",
-            "type": "core:Device"
-        },
-        {
-            "oid": "testx",
-            "name": "human reads my name here",
-            "type": "core:Service"
         }
     ]
 }
