@@ -132,20 +132,20 @@ public class AdapterConfig {
     private void openEventChannels(){
         logger.debug("OPENING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
 
-//        for(EventChannel e : eventChannels){
-//            logger.debug("OPENING EVENT CHANNEL: "+e.toString());
-//            try{
-//                ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
-//                if(thing != null){
-//                    logger.debug("PUBLISHER THING: "+thing.toSimpleString());
-//                    openEventChannel(thing, e.eventId);
-//                }
-//                else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
-//            }
-//            catch (Exception ex){
-//                logger.error("unable to open channel: "+e.toString(), ex);
-//            }
-//        }
+        for(EventChannel e : eventChannels){
+            logger.debug("OPENING EVENT CHANNEL: "+e.toString());
+            try{
+                ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
+                if(thing != null){
+                    logger.debug("PUBLISHER THING: "+thing.toSimpleString());
+                    openEventChannel(thing, e.eventId);
+                }
+                else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
+            }
+            catch (Exception ex){
+                logger.error("unable to open channel: "+e.toString(), ex);
+            }
+        }
 
     }
 
@@ -260,8 +260,8 @@ public class AdapterConfig {
 
             login();
 
-//            openEventChannels();
-//            subscribeEventChannels();
+            openEventChannels();
+            subscribeEventChannels();
 
             return true;
 
