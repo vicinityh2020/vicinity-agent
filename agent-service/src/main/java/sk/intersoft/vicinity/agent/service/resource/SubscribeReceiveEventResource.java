@@ -1,25 +1,51 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
-import org.json.JSONObject;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.AdapterEndpoint;
+import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
-import sk.intersoft.vicinity.agent.thing.InteractionPatternEndpoint;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
-public class ReceiveEventResource extends AgentResource {
-    final static Logger logger = LoggerFactory.getLogger(ReceiveEventResource.class.getName());
+public class SubscribeReceiveEventResource extends AgentResource {
+    final static Logger logger = LoggerFactory.getLogger(SubscribeReceiveEventResource.class.getName());
 
     private static String OBJECT_ID = "oid";
     private static String EVENT_ID = "eid";
 
+
+    @Post()
+    public String subscribeEventChannel() {
+        try {
+            String oid = getAttribute(OBJECT_ID);
+            String eid = getAttribute(EVENT_ID);
+
+            logger.info("SUBSCRIBING EVENT CHANNEL FOR: ");
+            logger.info("PUBLISHER OID: " + oid);
+            logger.info("EID: " + eid);
+
+            ThingDescription thing = getCallerObject();
+            logger.info("CALLER THING: " + thing.toSimpleString());
+
+            String endpoint = GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eid);
+
+            String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+            logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
+
+            return gtwResponse;
+
+        }
+        catch (Exception e) {
+            logger.error("SUBSCRIBE EVENT CHANNEL FAILURE! ", e);
+            return ResourceResponse.failure(e).toString();
+        }
+    }
 
     @Put()
     public String receiveEvent(Representation entity) {
@@ -59,7 +85,7 @@ public class ReceiveEventResource extends AgentResource {
 
         }
         catch (Exception e) {
-            logger.error("SET OBJECT PROPERTY FAILURE! ", e);
+            logger.error("RECEIVE EVENT FAILURE! ", e);
             return ResourceResponse.failure(e).toString();
         }
     }

@@ -22,8 +22,8 @@ public class AgentApplication extends Application {
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
 
-    public static final String OBJECT_EVENT_PUBLISH = "/events/{eid}";
-    public static final String OBJECT_EVENT_RECEIVE = "/objects/{oid}/events/{eid}";
+    public static final String OBJECT_EVENT_OPEN_PUBLISH = "/events/{eid}";
+    public static final String OBJECT_EVENT_SUBSCRIBE_RECEIVE = "/objects/{oid}/events/{eid}";
 
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
@@ -60,11 +60,11 @@ public class AgentApplication extends Application {
         apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
         apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
 
-        apiRouter.attach(OBJECT_EVENT_PUBLISH, PublishEventResource.class);
-        apiRouter.attach(OBJECT_EVENT_PUBLISH+"/", PublishEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_OPEN_PUBLISH, OpenPublishEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_OPEN_PUBLISH+"/", OpenPublishEventResource.class);
 
-        apiRouter.attach(OBJECT_EVENT_RECEIVE, ReceiveEventResource.class);
-        apiRouter.attach(OBJECT_EVENT_RECEIVE+"/", ReceiveEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE_RECEIVE, SubscribeReceiveEventResource.class);
+        apiRouter.attach(OBJECT_EVENT_SUBSCRIBE_RECEIVE+"/", SubscribeReceiveEventResource.class);
 
         return apiRouter;
     }
