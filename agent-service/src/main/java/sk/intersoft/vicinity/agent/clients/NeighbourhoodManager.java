@@ -26,7 +26,9 @@ public class NeighbourhoodManager {
         Iterator<Object> i = results.iterator();
         while(i.hasNext()){
             JSONObject item = (JSONObject)i.next();
-            extraction.put(item.getJSONObject("id").getJSONObject("info"));
+            if(item.has("id") && item.getJSONObject("id").has("info")){
+                extraction.put(item.getJSONObject("id").getJSONObject("info"));
+            }
         }
         return extraction;
     }

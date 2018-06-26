@@ -1,0 +1,12 @@
+{
+   "credentials": {
+       "agent-id": "2767620a-7d4b-42a0-b1f4-392baf096b2c",
+       "password": "12345"
+   },
+   "adapters": [
+       {
+           "adapter-id": "AdapterMissEmily",
+           "active-discovery": true
+       }
+   ]
+}

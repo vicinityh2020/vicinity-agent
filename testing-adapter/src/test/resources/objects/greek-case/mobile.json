@@ -1,0 +1,107 @@
+{
+    "adapter-id": "AdapterMissEmily",
+    "thing-descriptions": [{
+            "oid": "bloodpressure-26062018",
+            "name": "ForaBloodPressureMonitor-26062018",
+            "properties": [{
+                    "read_link": {
+                        "href": "/objects/{oid}/properties/{pid}",
+                        "mediaType": "application/json",
+                        "output": {
+                            "field": [{
+                                    "name": "value",
+                                    "schema": {
+                                        "units": "mmHg",
+                                        "type": "integer"
+                                    }
+                                }, {
+                                    "name": "timestamp",
+                                    "schema": {
+                                        "units": "datetime",
+                                        "type": "string"
+                                    }
+                                }
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "monitors": "adapters:SystolicBloodPressure",
+                    "pid": "systolic"
+                }, {
+                    "read_link": {
+                        "href": "/objects/{oid}/properties/{pid}",
+                        "mediaType": "application/json",
+                        "output": {
+                            "field": [{
+                                    "name": "value",
+                                    "schema": {
+                                        "units": "mmHg",
+                                        "type": "integer"
+                                    }
+                                }, {
+                                    "name": "timestamp",
+                                    "schema": {
+                                        "units": "datetime",
+                                        "type": "string"
+                                    }
+                                }
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "monitors": "adapters:DiastolicBloodPressure",
+                    "pid": "diastolic"
+                }, {
+                    "read_link": {
+                        "href": "/objects/{oid}/properties/{pid}",
+                        "mediaType": "application/json",
+                        "output": {
+                            "field": [{
+                                    "name": "value",
+                                    "schema": {
+                                        "units": "bpm",
+                                        "type": "integer"
+                                    }
+                                }, {
+                                    "name": "timestamp",
+                                    "schema": {
+                                        "units": "datetime",
+                                        "type": "string"
+                                    }
+                                }
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "monitors": "adapters:HeartRate",
+                    "pid": "pulse"
+                }
+            ],
+            "actions": [],
+            "events": [{
+                    "monitors": "adapters:SystolicBloodPressure",
+                    "eid": "eventSystolic",
+                    "output": {
+                        "field": [{
+                                "name": "value",
+                                "schema": {
+                                    "units": "mmHg",
+                                    "type": "integer"
+                                }
+                            }, {
+                                "name": "timestamp",
+                                "schema": {
+                                    "units": "datetime",
+                                    "type": "string"
+                                }
+                            }
+                        ],
+                        "type": "object"
+                    }
+                }
+            ],
+            "type": "adapters:BloodPressureMonitor",
+            "version": "0.0.1"
+        }
+    ]
+}

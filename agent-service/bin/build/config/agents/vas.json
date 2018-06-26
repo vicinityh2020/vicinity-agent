@@ -1,0 +1,13 @@
+{
+   "credentials": {
+       "agent-id": "d8369ae3-5a84-4dea-9eef-06c0ae339a10",
+       "password": "pilea"
+   },
+   "adapters": [
+       {
+           "adapter-id": "gnomon-gdpr-adapter",
+           "active-discovery": false,
+           "endpoint": "http://vicinity.gnomon.com.gr"
+       }
+   ]
+}
