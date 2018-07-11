@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
+import org.restlet.data.ClientInfo;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
 import org.slf4j.Logger;

@@ -21,7 +21,6 @@ public class StartStop {
         logger.info("LAUNCHING START SEQUENCE!");
         try{
             // START SEQUENCE:
-
             // 0. init persistence for case that it does not exist yet
             // 1. INITIALIZE PERSISTENCE
             PersistedThing.createTable();

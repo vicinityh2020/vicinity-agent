@@ -200,15 +200,62 @@ public class AdapterConfig {
 
     public boolean discover() {
         try{
-            logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. getting data from adapter");
-            String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
-            return discover(data);
+            logger.debug("DISCOVERING ADAPTER ["+adapterId+"]");
+            if(activeDiscovery){
+                logger.debug("ACTIVE DISCOVERY! .. recovering last configuration");
+                return recover();
+            }
+            else {
+                logger.debug("PASSIVE DISCOVERY! .. fetching data from adapter");
+                String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
+                return discover(data);
+            }
+
         }
         catch(Exception e){
             logger.error("DISCOVERY FAILED FOR: "+toSimpleString(), e);
         }
         return false;
     }
+
+    public ThingDescriptions recoverAdapterThings(String data)  {
+        ThingDescriptions recoveredThings = new ThingDescriptions();
+        try{
+            List<JSONObject> objects = ThingProcessor.processRecoveryData(data, adapterId);
+            logger.debug("parsing adapter recovery things: " +objects.size());
+            for (JSONObject object : objects) {
+                logger.debug("parsing: \n"+object.toString());
+                ThingValidator validator = new ThingValidator(true);
+                ThingDescription thing = validator.create(object);
+                if (thing != null) {
+                    logger.debug("processed thing: \n" + thing.toString(0));
+                    boolean success = thing.updateRecoveredData(object);
+                    logger.debug("updated thing: \n" + thing.toString(0));
+
+
+                    if(success){
+                        recoveredThings.add(thing);
+                    }
+                }
+                else {
+                    logger.debug("unprocessed thing! validator errors: \n" + validator.failureMessage().toString(2));
+                }
+            }
+
+        }
+        catch(Exception e){
+            logger.error("RECOVERY FAILED FOR: "+toSimpleString(), e);
+        }
+
+        logger.info("RECOVERED THING FOR ADAPTER: "+adapterId);
+        List<ThingDescription> ts = ThingDescriptions.toList(recoveredThings.byAdapterOID);
+        for (ThingDescription t : ts){
+            logger.info("\n"+t.toString(0));
+        }
+
+        return recoveredThings;
+    }
+
 
     public ThingDescriptions getAdapterThings(String data) throws Exception {
         ThingDescriptions adapterThings = new ThingDescriptions();
@@ -234,26 +281,39 @@ public class AdapterConfig {
         return adapterThings;
     }
 
-    public boolean discoverAdapter(String data) {
+    public boolean discoverAdapter(String data, boolean recover) {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
+        logger.debug("RECOVERY: "+recover);
 
         clearMappings();
 
 
 
         try{
-            ThingDescriptions adapterThings = getAdapterThings(data);
+            ThingDescriptions discoveredThings = null;
+            if(!recover){
+                ThingDescriptions adapterThings = getAdapterThings(data);
 
-            logger.debug("PROCESSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
-            logger.debug("\n" + adapterThings.toString(0));
+                logger.debug("PROCESSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
+                logger.debug("\n" + adapterThings.toString(0));
 
-            agent.updateLastConfiguration();
-            ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
-            logger.debug("CONFIGURATION THINGS FOR ADAPTER: \n"+configurationThings.toString(0));
+                agent.updateLastConfiguration();
+                ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
+                logger.debug("CONFIGURATION THINGS FOR ADAPTER: \n"+configurationThings.toString(0));
 
-            ThingDescriptions discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
+                discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
 
-            updatePersistence(discoveredThings);
+                updatePersistence(discoveredThings);
+            }
+            else {
+                logger.debug("RECOVERING ADAPTER THINGS FOR: "+adapterId);
+                String recoveryData = PersistedThing.getRecoveryDataByAdapterID(adapterId);
+                logger.debug("RECOVERY DATA FOR ADAPTER: "+adapterId);
+                logger.debug(""+recoveryData);
+
+                discoveredThings = recoverAdapterThings(recoveryData);
+            }
+
 
             updateMappings(discoveredThings);
 
@@ -263,6 +323,30 @@ public class AdapterConfig {
             openEventChannels();
             subscribeEventChannels();
 
+            if(activeDiscovery && !recover){
+                logger.debug("DISCOVERED ADAPTER ["+adapterId+"] IS ACTIVE AND THIS IS NOT RECOVERY .. SAVING CONFIGURATION FOR DISCOVERY");
+                logger.info("SAVING ADAPTER ["+adapterId+"] FINAL DISCOVERED THINGS: \n"+discoveredThings.toString(0));
+                logger.info("RECOVERY DATA: "+adapterId);
+                JSONArray recovery = new JSONArray();
+                List<ThingDescription> ts = ThingDescriptions.toList(discoveredThings.byAdapterOID);
+                for (ThingDescription t : ts){
+                    logger.info("\n"+t.toString(0));
+                    logger.info("\n"+ThingDescription.toRecoveryJSON(t).toString(2));
+                    JSONObject json = ThingDescription.toRecoveryJSON(t);
+                    recovery.put(json);
+                }
+                logger.info("RECOVERY DATA JSON: "+adapterId+"\n"+recovery.toString(2));
+                PersistedThing.clearRecoveryAdapter(adapterId);
+                PersistedThing.saveRecovery(adapterId, recovery.toString());
+
+                logger.info("PERSISTENCE: ");
+                PersistedThing.listRecovery();
+
+            }
+            else{
+                logger.debug("DISCOVERED ADAPTER ["+adapterId+"] IS PASSIVE OR THIS IS RECOVERY.. NOT SAVING CONFIGURATION FOR DISCOVERY");
+            }
+
             return true;
 
         }
@@ -270,6 +354,14 @@ public class AdapterConfig {
             logger.error("DISCOVERY FAILED FOR: "+toSimpleString(), e);
         }
         return false;
+    }
+
+    public boolean discoverAdapter(String data) {
+        return discoverAdapter(data, false);
+    }
+
+    public boolean recover() {
+        return discoverAdapter(null, true);
     }
 
     public static AdapterConfig create(JSONObject json, AgentConfig agentConfig) throws Exception {

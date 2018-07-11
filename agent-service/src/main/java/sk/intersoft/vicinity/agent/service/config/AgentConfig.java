@@ -219,19 +219,14 @@ public class AgentConfig {
 
     }
 
-    private void discoverPassiveAdapters()  {
-        logger.info("DISCOVERING PASSIVE ADAPTERS FOR AGENT: "+toSimpleString());
+    private void discoverAdapters()  {
+        logger.info("DISCOVERING ADAPTERS FOR AGENT: "+toSimpleString());
         for (Map.Entry<String, AdapterConfig> entry : adapters.entrySet()) {
             AdapterConfig adapter = entry.getValue();
-            if(!adapter.activeDiscovery){
-                logger.info("passive discovery for: ["+adapter.adapterId+"]");
-                boolean success = adapter.discover();
-                if(!success) {
-                    logger.error("PASSIVE DISCOVERY FAILED FOR ADAPTER ["+adapter.adapterId+"]!");
-                }
-            }
-            else {
-                logger.info("active passive discovery for: ["+adapter.adapterId+"] .. skipping");
+            logger.info("discovery for adapter: ["+adapter.adapterId+"]");
+            boolean success = adapter.discover();
+            if(!success) {
+                logger.error("DISCOVERY FAILED FOR ADAPTER ["+adapter.adapterId+"]!");
             }
 
         }
@@ -245,7 +240,7 @@ public class AgentConfig {
             login();
 
             updateLastConfiguration();
-            discoverPassiveAdapters();
+            discoverAdapters();
 
             updateMappings();
             logger.info("DONE CONFIGURING AGENT: ["+agentId+"]");

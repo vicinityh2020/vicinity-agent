@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
 
+import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
 
@@ -66,13 +67,12 @@ public class TestConfig {
     }
 
 
-
     public static void main(String[] args) throws Exception {
         TestConfig c = new TestConfig();
 //        c.testLogin();
-        c.configure();
+//        c.configure();
 //        c.multiConfigureAgent();
-        c.addAgent();
+//        c.addAgent();
     }
 
 }

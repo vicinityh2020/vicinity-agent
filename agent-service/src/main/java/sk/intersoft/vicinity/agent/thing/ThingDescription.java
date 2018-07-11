@@ -91,6 +91,19 @@ public class ThingDescription {
         this.password = password;
     }
 
+    public boolean updateRecoveredData(JSONObject object) {
+        try{
+            infrastructureId = object.getString(INFRASTRUCTURE_KEY);
+            adapterInfrastructureID = identifier(infrastructureId, adapterId);
+            password = object.getString(PASSWORD_KEY);
+            return true;
+        }
+        catch(Exception e){
+            logger.error("Unable to update recovered thing!", e);
+            return false;
+        }
+    }
+
 
     public static ThingDescription create(JSONObject thingJSON, ThingValidator validator) throws Exception {
         logger.debug("PROCESSING THING DESCRIPTION FROM: \n"+thingJSON.toString(2));
@@ -214,6 +227,13 @@ public class ThingDescription {
         addExtension(thing.jsonExtension, object);
 
         return object;
+    }
+
+    public static JSONObject toRecoveryJSON(ThingDescription thing) throws Exception {
+        JSONObject o = toJSON(thing);
+        o.put(INFRASTRUCTURE_KEY, thing.infrastructureId);
+        o.put(PASSWORD_KEY, thing.password);
+        return o;
     }
 
     public String toString(int indent){
