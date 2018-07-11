@@ -5,17 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="added recovery for active adapters .. after agent restart, the last remembered configuration for active adapters is applied, so they do not have to push discovery each time agent is down">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/agent-service/bin/build/config/agents/mobile.json" afterPath="$PROJECT_DIR$/agent-service/bin/build/config/backup/mobile.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/agent-service/bin/build/config/agents/vas.json" afterPath="$PROJECT_DIR$/agent-service/bin/build/config/backup/vas.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/DiscoverAdapterResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedThing.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedThing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java" afterPath="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingProcessor.java" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingProcessor.java" />
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/build/agent-skeleton.zip" afterPath="$PROJECT_DIR$/agent-service/build/agent-skeleton.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-service/build/agent.jar" afterPath="$PROJECT_DIR$/agent-service/build/agent.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vicinity-agent.iws" />
@@ -2803,7 +2795,11 @@
       <created>1531313312284</created>
       <updated>1531313312284</updated>
     </task>
-    <option name="localTasksCounter" value="239" />
+    <task id="LOCAL-00239" summary="added recovery for active adapters .. after agent restart, the last remembered configuration for active adapters is applied, so they do not have to push discovery each time agent is down">
+      <created>1531321517542</created>
+      <updated>1531321517542</updated>
+    </task>
+    <option name="localTasksCounter" value="240" />
     <servers />
   </component>
   <component name="ToolWindowManager">
