@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <restlet.version>2.3.9</restlet.version>
+        <restlet.version>2.3.12</restlet.version>
     </properties>
 
     <repositories>

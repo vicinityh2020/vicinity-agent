@@ -8,6 +8,8 @@ import org.restlet.security.ChallengeAuthenticator;
 import sk.intersoft.vicinity.adapter.testing.service.resource.*;
 
 public class TestingAdapterApplication extends Application {
+    public static final String TEST = "/test";
+
     public static final String OBJECTS = "/objects";
     public static final String DISCO = "/disco";
 
@@ -38,6 +40,7 @@ public class TestingAdapterApplication extends Application {
 
     public Router createApiRouter() {
         Router apiRouter = new Router(getContext());
+        apiRouter.attach(TEST, TestResource.class);
         apiRouter.attach(OBJECTS, ObjectsResource.class);
         apiRouter.attach(OBJECTS+"/", ObjectsResource.class);
         apiRouter.attach(DISCO, DiscoResource.class);

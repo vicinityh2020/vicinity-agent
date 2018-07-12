@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
+import org.restlet.data.ClientInfo;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Put;
@@ -27,6 +28,14 @@ public class ObjectPropertyResource extends AgentResource {
             logger.info("GETTING LOCAL PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
+
+            ClientInfo info = getClientInfo();
+            logger.info("client: "+info);
+            if(info != null){
+                logger.info("addr: "+info.getAddress());
+                logger.info("addrs: "+info.getForwardedAddresses());
+                logger.info("port: "+info.getPort());
+            }
 
             ThingDescription thing = getThingByOID(oid);
             logger.info("ADAPTER THING FOR OID [" + oid + "]: " + thing.toSimpleString());
@@ -59,6 +68,15 @@ public class ObjectPropertyResource extends AgentResource {
             logger.info("SETTING LOCAL PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
+
+
+            ClientInfo info = getClientInfo();
+            logger.info("client: "+info);
+            if(info != null){
+                logger.info("addr: "+info.getAddress());
+                logger.info("addrs: "+info.getForwardedAddresses());
+                logger.info("port: "+info.getPort());
+            }
 
             if(entity == null) {
                 throw new Exception("Empty payload!");

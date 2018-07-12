@@ -24,6 +24,8 @@ public class DiscoverAdapterResource extends  AgentResource {
 
             logger.info("DISCOVER ADAPTER SERVICE: ");
 
+            logger.debug("IS GATEWAY REQUEST: "+isGatewayRequest());
+
             if(entity == null) {
                 throw new Exception("Empty payload!");
             }

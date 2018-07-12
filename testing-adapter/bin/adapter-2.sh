@@ -6,6 +6,8 @@ JAR=testing-adapter.jar
 ADAPTER_ID=adapter-2
 
 AGENT_ENDPOINT=http://localhost:9997/agent
+#AGENT_ENDPOINT=http://1c9adfbd.ngrok.io/agent
+
 OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-2.json
 ACTIVE_OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-2.json
 

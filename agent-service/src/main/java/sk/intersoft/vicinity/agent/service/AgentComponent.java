@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent.service;
 
 import org.restlet.Component;
+import org.restlet.Server;
 import org.restlet.data.Protocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,9 @@ public class AgentComponent extends Component {
 
     public AgentComponent() throws Exception {
 
-        getServers().add(Protocol.HTTP, Integer.parseInt(System.getProperty("server.port")));
+        Server s = new Server(Protocol.HTTP, Integer.parseInt(System.getProperty("server.port")), this);
+        getServers().add(s);
+        s.getContext().getParameters().add("useForwardedForHeader", "true");
         // Attach the application to the default virtual host
         getDefaultHost().attach("/agent", new AgentApplication());
     }

@@ -1,6 +1,11 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
+import org.restlet.Context;
+import org.restlet.Response;
+import org.restlet.data.ChallengeResponse;
 import org.restlet.data.Header;
+import org.restlet.data.Reference;
+import org.restlet.resource.Resource;
 import org.restlet.resource.ServerResource;
 import org.restlet.util.Series;
 import org.slf4j.Logger;
@@ -67,6 +72,77 @@ public class AgentResource extends ServerResource {
         }
 
         return thing;
+    }
+
+    private boolean isLocalhost(String d){
+        return (d.equals("localhost") || d.equals("127.0.0.1"));
+    }
+
+    private boolean sameDomain(String d1, String d2){
+        if(isLocalhost(d1) && isLocalhost(d2)){
+            return true;
+        }
+        else if(d1.equals(d2)){
+            return true;
+        }
+        else return false;
+    }
+
+    protected boolean isGatewayRequest() {
+        logger.debug("CHECKING IF THIS IS REQUEST FROM GATEWAY");
+        try{
+            Reference gtw = new Reference(Configuration.gatewayAPIEndpoint);
+            String gtwDomain = gtw.getHostDomain();
+            int gtwPort = gtw.getHostPort();
+            String gtwScheme = gtw.getScheme();
+
+            Reference requestRef = getRequest().getHostRef();
+            String rDomain = requestRef.getHostDomain();
+            int rPort = requestRef.getHostPort();
+            String rScheme = requestRef.getScheme();
+
+
+            logger.debug("domain: "+rDomain);
+            logger.debug("port: "+rPort);
+            logger.debug("scheme: "+rScheme);
+
+            logger.debug("GATEWAY: ");
+            logger.debug("domain: "+gtwDomain);
+            logger.debug("port: "+gtwPort);
+            logger.debug("scheme: "+gtwScheme);
+
+            return false;
+
+
+//            if(sameDomain(gtwDomain, rDomain)){
+//                logger.debug("same domain");
+//                if(gtwPort == rPort){
+//                    logger.debug("same port");
+//                    if(gtwScheme.equals(rScheme)){
+//                        logger.debug("same scheme");
+//                        logger.debug("IS GATEWAY REQUEST!!");
+//                        return true;
+//                    }
+//                    else {
+//                        logger.debug("different scheme ...fail");
+//                        return false;
+//                    }
+//                }
+//                else {
+//                    logger.debug("different port ...fail");
+//                    return false;
+//                }
+//            }
+//            else {
+//                logger.debug("different domain ...fail");
+//                return false;
+//            }
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+        }
+        return false;
     }
 
 }
