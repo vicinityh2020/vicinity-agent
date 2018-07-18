@@ -3,7 +3,9 @@ package sk.intersoft.vicinity.agent.clients;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -26,6 +28,30 @@ public class AdapterClient {
 
     }
 
+    public static String delete(String endpoint) throws Exception {
+        try{
+            logger.info("DELETE ENDPOINT: " + endpoint);
+            HttpClient client = getClient();
+
+            HttpDelete request = new HttpDelete(endpoint);
+            HttpResponse response = client.execute(request);
+
+            int status = response.getStatusLine().getStatusCode();
+            String content = EntityUtils.toString(response.getEntity());
+
+            logger.info("agent DELETEGET status: " + status);
+            logger.info("agent DELETE response: " + content);
+
+            return content;
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
     public static String get(String endpoint) throws Exception {
         try{
             logger.info("GET ENDPOINT: " + endpoint);
@@ -39,6 +65,40 @@ public class AdapterClient {
 
             logger.info("agent GET status: " + status);
             logger.info("agent GET response: " + content);
+
+            return content;
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
+    public static String post(String endpoint, String payload) throws Exception {
+        try{
+            logger.info("POST ENDPOINT: " + endpoint);
+            logger.info("POST DATA: \n"+payload);
+
+            HttpClient client = getClient();
+
+            HttpPost request = new HttpPost(endpoint);
+
+            request.addHeader("Accept", "application/json");
+            request.addHeader("Content-Type", "application/json");
+
+            StringEntity data = new StringEntity(payload);
+
+            request.setEntity(data);
+
+            HttpResponse response = client.execute(request);
+
+            int status = response.getStatusLine().getStatusCode();
+            String content = EntityUtils.toString(response.getEntity());
+
+            logger.info("agent POST status: " + status);
+            logger.info("agent POST response: " + content);
 
             return content;
 
@@ -83,6 +143,5 @@ public class AdapterClient {
         }
 
     }
-
 
 }

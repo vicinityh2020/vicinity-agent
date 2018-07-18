@@ -20,7 +20,11 @@ public class AgentApplication extends Application {
 
     public static final String REMOTE_OBJECT_PROPERTY = "/remote/objects/{oid}/properties/{pid}";
     public static final String OBJECT_PROPERTY = "/objects/{oid}/properties/{pid}";
+
+    public static final String REMOTE_OBJECT_ACTION = "/remote/objects/{oid}/actions/{aid}";
+    public static final String REMOTE_OBJECT_ACTION_TASK = "/remote/objects/{oid}/actions/{aid}/tasks/{tid}";
     public static final String OBJECT_ACTION = "/objects/{oid}/actions/{aid}";
+    public static final String OBJECT_ACTION_UPDATE = "/actions/{aid}";
 
     public static final String OBJECT_EVENT_OPEN_PUBLISH = "/events/{eid}";
     public static final String OBJECT_EVENT_SUBSCRIBE_RECEIVE = "/objects/{oid}/events/{eid}";
@@ -59,6 +63,18 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(REMOTE_OBJECT_PROPERTY, RemoteObjectPropertyResource.class);
         apiRouter.attach(REMOTE_OBJECT_PROPERTY+"/", RemoteObjectPropertyResource.class);
+
+        apiRouter.attach(OBJECT_ACTION, ObjectActionResource.class);
+        apiRouter.attach(OBJECT_ACTION+"/", ObjectActionResource.class);
+
+        apiRouter.attach(OBJECT_ACTION_UPDATE, ObjectUpdateActionResource.class);
+        apiRouter.attach(OBJECT_ACTION_UPDATE+"/", ObjectUpdateActionResource.class);
+
+        apiRouter.attach(REMOTE_OBJECT_ACTION, RemoteObjectActionResource.class);
+        apiRouter.attach(REMOTE_OBJECT_ACTION+"/", RemoteObjectActionResource.class);
+
+        apiRouter.attach(REMOTE_OBJECT_ACTION_TASK, RemoteObjectActionTaskResource.class);
+        apiRouter.attach(REMOTE_OBJECT_ACTION_TASK+"/", RemoteObjectActionTaskResource.class);
 
         apiRouter.attach(OBJECT_EVENT_OPEN_PUBLISH, OpenPublishEventResource.class);
         apiRouter.attach(OBJECT_EVENT_OPEN_PUBLISH+"/", OpenPublishEventResource.class);

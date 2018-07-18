@@ -5,7 +5,37 @@
             "oid": "test",
             "name": "human reads my name here x",
             "type": "core:Device",
-            "actions": [],
+            "actions": [
+                {
+                    "aid": "test-action",
+                    "affects": "adapters:ValvePosition",
+                    "write_link": {
+                        "href": "/objects/{oid}/actions/{aid}",
+                        "input": {
+                            "type": "object",
+                            "field": [
+                                {
+                                    "name": "brightness-level",
+                                    "schema": {
+                                        "type": "integer"
+                                    }
+                                }
+                            ]
+                        },
+                        "output": {
+                            "type": "object",
+                            "field": [
+                                {
+                                    "name": "success",
+                                    "schema": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
             "properties": [
                 {
                     "pid": "brightness1",

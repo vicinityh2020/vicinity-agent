@@ -2,10 +2,7 @@ package sk.intersoft.vicinity.adapter.testing.service.resource;
 
 import org.json.JSONObject;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
-import org.restlet.resource.Post;
-import org.restlet.resource.Put;
-import org.restlet.resource.ServerResource;
+import org.restlet.resource.*;
 
 public class ActionResource extends ServerResource {
 
@@ -33,6 +30,26 @@ public class ActionResource extends ServerResource {
         }
     }
 
+    @Delete()
+    public String cancelAction()  {
+        try{
+
+            System.out.println("cancel action");
+
+            String oid = getAttribute("oid");
+            String aid = getAttribute("aid");
+
+            JSONObject out = new JSONObject();
+            out.put("echo", "cancel action");
+            out.put("oid", oid);
+            out.put("aid", aid);
+
+            return out.toString();
+        }
+        catch(Exception e){
+            return "{}";
+        }
+    }
 
     @Get()
     public String getActionStatus(Representation entity)  {

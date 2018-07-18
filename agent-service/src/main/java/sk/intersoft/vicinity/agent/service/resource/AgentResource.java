@@ -23,6 +23,7 @@ public class AgentResource extends ServerResource {
 
     String CALLER_ID_HEADER = "infrastructure-id";
     String ADAPTER_ID_HEADER = "adapter-id";
+    String STATUS_HEADER = "status";
 
     private String getHeader(String name) {
         try{
@@ -50,6 +51,14 @@ public class AgentResource extends ServerResource {
         ThingDescription thing = Configuration.thingsByOID.get(oid);
         if(thing == null) throw new Exception("Unknown thing for OID: ["+oid+"]");
         return thing;
+    }
+
+    protected String getStatusHeader() throws Exception {
+        String status = getHeader(STATUS_HEADER);
+        if(status == null || status.trim().equals("")){
+            throw new Exception("Missing ["+STATUS_HEADER+"] header!");
+        }
+        return status;
     }
 
     protected ThingDescription getCallerObject() throws Exception {

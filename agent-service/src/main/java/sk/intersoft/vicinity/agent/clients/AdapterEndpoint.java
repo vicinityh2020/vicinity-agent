@@ -59,7 +59,7 @@ public class AdapterEndpoint {
             throw new Exception("Thing ["+thing.oid+"] does not have endpoint for ["+patternType+"]["+patternId+"]["+operation+"] .. empty href!");
         }
 
-        String thingEndpoint = process(link, thing.oid, patternId);
+        String thingEndpoint = process(link, thing.infrastructureId, patternId);
         return adapterEndpoint + thingEndpoint;
 
     }

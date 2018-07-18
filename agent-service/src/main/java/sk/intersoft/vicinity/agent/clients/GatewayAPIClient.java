@@ -5,6 +5,7 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -27,7 +28,7 @@ public class GatewayAPIClient {
     // interactions:
     public static final String OBJECT_PROPERTY_ENDPOINT = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION_ENDPOINT = "/objects/{oid}/actions/{aid}";
-    public static final String OBJECT_EVENT_ENDPOINT = "/objects/{oid}/events/{eid}";
+    public static final String OBJECT_ACTION_TASK_ENDPOINT = "/objects/{oid}/actions/{aid}/tasks/{tid}";
 
 
     // configuration:
@@ -47,8 +48,12 @@ public class GatewayAPIClient {
         return "/agents/"+agentId+"/objects/delete";
     }
 
+    public static String getInteractionEndpoint(String endpoint, String oid, String patternId, String taskId) {
+        return endpoint.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId).replaceAll("\\{tid\\}", taskId);
+    }
+
     public static String getInteractionEndpoint(String endpoint, String oid, String patternId) {
-        return endpoint.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId);
+        return getInteractionEndpoint(endpoint, oid, patternId, "");
     }
 
     public static String getOpenEventChannelEndpoint(String eventId) {
@@ -112,6 +117,44 @@ public class GatewayAPIClient {
 
             int status = response.getStatusLine().getStatusCode();
             logger.info("GET status: " + status);
+
+            String responseContent = EntityUtils.toString(response.getEntity());
+            logger.info("GTW API response: " + responseContent);
+
+
+            return responseContent;
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
+    public static String delete(String path, String login, String password) throws Exception {
+        try{
+
+
+            String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+
+            logger.info("GTW API DELETE:");
+            logger.info("path: " + path);
+            logger.info("endpoint: " + callEndpoint);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
+
+
+            HttpClient client = getClient(login, password);
+
+            HttpDelete request = new HttpDelete(callEndpoint);
+
+            request.addHeader("Content-Type", "application/json");
+
+            HttpResponse response = client.execute(request);
+
+            int status = response.getStatusLine().getStatusCode();
+            logger.info("DELETE status: " + status);
 
             String responseContent = EntityUtils.toString(response.getEntity());
             logger.info("GTW API response: " + responseContent);
