@@ -224,7 +224,7 @@ Otherwise this interaction will be rejected on level of GTW API.
 
 
 
-### Consuming property of remote object (from another VICINITY node)
+### Consuming property of remote object (at another VICINITY node)
 
 **Consuming of remote object property is always invoked by object behind the Adapter.** Thus, object must
 have permissions to consume the remote object property and proper VICINITY credentials
@@ -256,14 +256,14 @@ this request into corresponding GTW API call, setting the proper VICINITY creden
 
 ### How agent processes the consumption of local object property (in this VICINITY node)
 
-To read local object property value, the Agent implements the endpoint:
+To read local object property value, the Agent implements the endpoint provided in *read_link* of object:
 ```
-GET : /objects/{oid}/properties/{pid}
+GET : read_link endpoint for object property
 ```
 
-To set local object property value, the Agent implements the endpoint:
+To set local object property value, the Agent implements the endpoint provided in *write_link* of object:
 ```
-PUT : /objects/{oid}/properties/{pid}
+PUT : write_link endpoint for object property
 ```
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
@@ -272,7 +272,109 @@ This process is described in details in [Adapter interaction patterns](ADAPTER.m
 
 ## Object actions
 
-TBD .. waiting for GTW API implementation
+### Executing action on remote object (at another VICINITY node)
+
+**Executing of action on remote object is always invoked by object behind the Adapter.** Thus, object must
+have permissions to execute the action and proper VICINITY credentials
+of this object must be provided.
+
+To execute remote object action, Agent implements the endpoint:
+```
+POST: /remote/objects/{oid}/actions/{aid}
+```
+
+POST operation requires the payload with data structure specified in thing description for this action input. Action input represents the input parameters for this action.
+
+
+If **object from this infrastructure** (for which this Agent runs) wants to execute of **remote object** (another VICINITY node),
+in both calls, **the request header must contain key-value pairs**:
+```
+infrastucture-id=infrastructure-id of requesting object
+adapter-id=identifier of adapter for this object
+```
+
+Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
+this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
+
+The Gateway response for this call is always the payload:
+
+```
+#!json
+{
+    "error": "false"
+    "message": [
+        {
+            "startAction": "success"
+        },
+        {
+            "taskID": "d4d0ae7d-275f-40d0-a4d9-704535166ae7"
+        }
+    ]
+}
+```
+
+The action is now being executed on the remote object. Any further
+attempt to start this action will result in tasks, that are queued, but
+not executed yet, until the previous one is finished (max number of
+tasks in queue as well as their expiration time is configurable on the
+gateway closest to the object providing the action).
+
+This payload is passed back to Adapter, which is responsible to pass it to object that triggered the action.
+It is important to remember the *taskID* attached to action execution. It will be required, if
+there is need to read the status of action execution or to cancel the running task.
+
+### How agent processes the execution of action on target object
+
+To execute the local object action, the Agent implements the endpoint provided in *write_link* of object action:
+```
+POST : write_link endpoint for object action providing the property
+```
+
+When Agent receive the action execution request, it translates this requests into corresponding Adapter endpoints and execute it.
+
+### Updating the status of the task
+
+The object, that is executing the task, is capable of updating its
+status. Note that it does not need to know the task ID, which is used
+only for gateway's internal representation and management of incomming
+requests. When a request for action execution comes,
+the object starts executing it. When it is done, it sends
+a result back to agent, which passes it back to gateway. The gateway's internal logic protects the
+object from being overwhelmed by requests by assigning a
+task ID to each request, queuing them and keeping the return values of
+already finished tasks.
+
+The object updates the status of action by calling Agent endpoint:
+
+```
+PUT: /actions/{aid}
+```
+
+To identify, which object is updating status of the task, the request headers must be set:
+```
+infrastucture-id=infrastructure-id of requesting object
+adapter-id=identifier of adapter for this object
+status=identifier of status
+```
+
+**Status header** must be one of following values:
+* **running** - use this status to keep the action running. For example when
+you want to periodically update currently running task with preliminary
+return values, or a percentage of progress or whatever, you use this one.
+* **finished** - use this when action was finished with satisfactory results.
+This status will cause the gateway to move on to the next task in the
+queue, so expect that another action will be requested under a second
+(if there are tasks in the queue).
+* **failed** - use this to indicate that the action was interrupted by error.
+This status will cause the gateway to move on to the next task in the
+queue, so expect that another action will be requested under a second
+(if there are tasks in the queue).
+
+
+Request body must not be empty, it can contain the result of action exectution data, information about
+progress, etc.
+
+This request is translated to proper Gateway call with object VICINITY **oid** and credentials.
 
 # Eventing
 
