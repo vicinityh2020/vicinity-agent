@@ -256,12 +256,12 @@ this request into corresponding GTW API call, setting the proper VICINITY creden
 
 ### How agent processes the consumption of local object property (in this VICINITY node)
 
-To read local object property value, the Agent implements the endpoint provided in *read_link* of object:
+To read local object property value, the Agent calls the endpoint provided in *read_link* of object:
 ```
 GET : read_link endpoint for object property
 ```
 
-To set local object property value, the Agent implements the endpoint provided in *write_link* of object:
+To set local object property value, the Agent calls the endpoint provided in *write_link* of object:
 ```
 PUT : write_link endpoint for object property
 ```
@@ -287,7 +287,7 @@ POST operation requires the payload with data structure specified in thing descr
 
 
 If **object from this infrastructure** (for which this Agent runs) wants to execute of **remote object** (another VICINITY node),
-in both calls, **the request header must contain key-value pairs**:
+**the request header must contain key-value pairs** identifying the object requesting the information:
 ```
 infrastucture-id=infrastructure-id of requesting object
 adapter-id=identifier of adapter for this object
@@ -325,7 +325,7 @@ there is need to read the status of action execution or to cancel the running ta
 
 ### How agent processes the execution of action on target object
 
-To execute the local object action, the Agent implements the endpoint provided in *write_link* of object action:
+To execute the local object action, the Agent calls the endpoint provided in *write_link* of object action:
 ```
 POST : write_link endpoint for object action providing the property
 ```
@@ -375,6 +375,84 @@ Request body must not be empty, it can contain the result of action exectution d
 progress, etc.
 
 This request is translated to proper Gateway call with object VICINITY **oid** and credentials.
+
+### Getting the status of the task
+
+After object executed the action on remote object, the **taskID** is returned to it in response.
+Using this **taskID** it is possible to track the status of the action exectution.
+The
+status you receive can be one of the following:
+
+* **finished** - the task was finished successfully
+* **failed** - the task encountered an error during execution
+* **running** - the task is currently runnning
+* **pending** - the task is awaiting previous task on this action to finish
+* **unknown** - if you see this, file a bug report to Martin.
+
+To get the action status, Agent implements the endpoint:
+
+```
+GET: /remote/objects/{oid}/actions/{aid}/task/{tid}
+```
+
+**The request header must contain key-value pairs** identifying the object requesting the information:
+```
+infrastucture-id=infrastructure-id of requesting object
+adapter-id=identifier of adapter for this object
+```
+
+Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
+this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
+
+The Gateway response for this call is always the payload:
+
+```
+#!json
+{
+    "error": "false"
+    "message": [
+        {
+            "taskStatus": "success"
+        },
+        {
+            "returnValue": "{\n\t\"value\": \"42\"\n}"
+        }
+    ]
+}
+```
+
+The return value is the payload attached to *update action status* service by object, that updated its action status.
+
+### Canceling a task
+
+A task on a remote object can be cancelled, if it is either in the
+'running' or 'pending' status.
+
+To cancel the task, Agent provides the endpoint:
+```
+GET: /remote/objects/{oid}/actions/{aid}/task/{tid}
+```
+
+**The request header must contain key-value pairs** identifying the object requesting the information:
+```
+infrastucture-id=infrastructure-id of requesting object
+adapter-id=identifier of adapter for this object
+```
+
+Agent finds the corresponding **oid** for requesting object matching **infrastructure-id** in header and translates
+this request into corresponding GTW API call, setting the proper VICINITY credentials for requesting object.
+
+The status of the task is then changed to **finshed** and removed from execution queue on Gateway.
+
+### How agent processes the canceling of task on target object
+
+To cancel the local object running action, the Agent calls the endpoint provided in *write_link* of object action:
+```
+DELETE : write_link endpoint for object action providing the property
+```
+
+When Agent receive the action execution request, it translates this requests into corresponding Adapter endpoints and execute it.
+
 
 # Eventing
 
