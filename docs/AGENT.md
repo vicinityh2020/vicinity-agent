@@ -261,10 +261,17 @@ To read local object property value, the Agent calls the endpoint provided in *r
 GET : read_link endpoint for object property
 ```
 
+**Adapter must implement this endpoint.***
+
+
 To set local object property value, the Agent calls the endpoint provided in *write_link* of object:
 ```
 PUT : write_link endpoint for object property
 ```
+
+**Adapter must implement this endpoint.***
+
+
 PUT operation requires the payload with data structure specified in thing description for this property input to set the value.
 
 When Agent receive the property consumption request, it translates this requests into corresponding Adapter endpoints and execute it.
@@ -329,6 +336,9 @@ To execute the local object action, the Agent calls the endpoint provided in *wr
 ```
 POST : write_link endpoint for object action providing the property
 ```
+
+**Adapter must implement this endpoint.***
+
 
 When Agent receive the action execution request, it translates this requests into corresponding Adapter endpoints and execute it.
 
@@ -450,6 +460,8 @@ To cancel the local object running action, the Agent calls the endpoint provided
 ```
 DELETE : write_link endpoint for object action providing the property
 ```
+
+**Adapter must implement this endpoint.***
 
 When Agent receive the action execution request, it translates this requests into corresponding Adapter endpoints and execute it.
 
