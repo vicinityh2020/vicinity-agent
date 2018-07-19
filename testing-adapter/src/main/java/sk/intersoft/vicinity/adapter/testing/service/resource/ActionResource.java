@@ -10,12 +10,16 @@ public class ActionResource extends ServerResource {
     public String postAction(Representation entity)  {
         try{
 
+            String txt = entity.getText();
             System.out.println("exec action");
+            System.out.println("received e: "+entity);
+            System.out.println("received cs: "+entity.getCharacterSet());
+            System.out.println("received txt: "+txt);
 
             String oid = getAttribute("oid");
             String aid = getAttribute("aid");
 
-            JSONObject input = new JSONObject(entity.getText());
+            JSONObject input = new JSONObject(txt);
 
             JSONObject out = new JSONObject();
             out.put("echo", "exec action");
@@ -26,6 +30,7 @@ public class ActionResource extends ServerResource {
             return out.toString();
         }
         catch(Exception e){
+            e.printStackTrace();
             return "{}";
         }
     }

@@ -118,6 +118,9 @@ public class NeighbourhoodManager {
 
         String createResponse = GatewayAPIClient.post(GatewayAPIClient.createEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
         logger.info("create raw response: \n" + createResponse);
+//        String createResponse = GatewayAPIClient.fakepost("https://vicinity.bavenir.eu:3000/commServer/items/register", payload.toString(), agent.agentId, agent.password);
+//        String test = GatewayAPIClient.fakepost("http://localhost:9995/adapter/objects/x/actions/y", payload.toString(), agent.agentId, agent.password);
+//        logger.info("test response: \n" + test);
 
         return createResponse;
     }

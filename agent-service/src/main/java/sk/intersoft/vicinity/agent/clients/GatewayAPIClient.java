@@ -111,7 +111,7 @@ public class GatewayAPIClient {
 
             HttpGet request = new HttpGet(callEndpoint);
 
-            request.addHeader("Content-Type", "application/json");
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
 
             HttpResponse response = client.execute(request);
 
@@ -182,6 +182,7 @@ public class GatewayAPIClient {
             logger.info("credentials: ");
             logger.info("login: " + login);
             logger.info("password: " + password);
+            logger.info("headers set to [application/json; charset=utf-8]");
 
 
 
@@ -191,10 +192,10 @@ public class GatewayAPIClient {
 
             HttpPost request = new HttpPost(callEndpoint);
 
-            request.addHeader("Content-Type", "application/json");
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
 
             if(payload != null){
-                StringEntity data = new StringEntity(payload);
+                StringEntity data = new StringEntity(payload, "utf-8");
                 request.setEntity(data);
             }
 
@@ -230,6 +231,7 @@ public class GatewayAPIClient {
             logger.info("credentials: ");
             logger.info("login: " + login);
             logger.info("password: " + password);
+            logger.info("headers set to [application/json; charset=utf-8]");
 
 
 
@@ -239,10 +241,10 @@ public class GatewayAPIClient {
 
             HttpPut request = new HttpPut(callEndpoint);
 
-            request.addHeader("Content-Type", "application/json");
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
 
             if(payload != null){
-                StringEntity data = new StringEntity(payload);
+                StringEntity data = new StringEntity(payload, "utf-8");
                 request.setEntity(data);
             }
 
@@ -264,4 +266,56 @@ public class GatewayAPIClient {
         }
 
     }
+
+
+    public static String fakepost(String path, String payload, String login, String password) throws Exception {
+        try{
+
+
+            String callEndpoint = path;
+
+            logger.info("GTW API POST:");
+            logger.info("path: " + path);
+            logger.info("endpoint: " + callEndpoint);
+            logger.info("payload: " + payload);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
+            logger.info("headers set to [application/json; charset=utf-8]");
+            logger.info("entity encoded as utf-8");
+
+
+
+
+            HttpClient client = getClient(login, password);
+
+
+            HttpPost request = new HttpPost(callEndpoint);
+
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
+
+            if(payload != null){
+                StringEntity data = new StringEntity(payload, "utf-8");
+                request.setEntity(data);
+            }
+
+
+            HttpResponse response = client.execute(request);
+
+            int status = response.getStatusLine().getStatusCode();
+            logger.info("POST status: " + status);
+
+            String responseContent = EntityUtils.toString(response.getEntity());
+            logger.info("GTW API response: " + responseContent);
+
+
+            return responseContent;
+        }
+        catch(Exception e){
+            logger.error("", e);
+            throw e;
+        }
+
+    }
+
 }

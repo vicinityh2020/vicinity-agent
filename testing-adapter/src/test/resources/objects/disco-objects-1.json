@@ -3,7 +3,7 @@
     "thing-descriptions": [
         {
             "oid": "test",
-            "name": "human reads my name here x",
+            "name": "test me: αβγ 你好",
             "type": "core:Device",
             "actions": [
                 {

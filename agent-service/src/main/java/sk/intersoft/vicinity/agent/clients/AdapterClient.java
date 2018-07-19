@@ -39,7 +39,7 @@ public class AdapterClient {
             int status = response.getStatusLine().getStatusCode();
             String content = EntityUtils.toString(response.getEntity());
 
-            logger.info("agent DELETEGET status: " + status);
+            logger.info("agent DELETE status: " + status);
             logger.info("agent DELETE response: " + content);
 
             return content;
@@ -58,6 +58,7 @@ public class AdapterClient {
             HttpClient client = getClient();
 
             HttpGet request = new HttpGet(endpoint);
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
@@ -88,7 +89,7 @@ public class AdapterClient {
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
 
-            StringEntity data = new StringEntity(payload);
+            StringEntity data = new StringEntity(payload, "utf-8");
 
             request.setEntity(data);
 
@@ -122,7 +123,7 @@ public class AdapterClient {
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
 
-            StringEntity data = new StringEntity(payload);
+            StringEntity data = new StringEntity(payload, "utf-8");
 
             request.setEntity(data);
 
