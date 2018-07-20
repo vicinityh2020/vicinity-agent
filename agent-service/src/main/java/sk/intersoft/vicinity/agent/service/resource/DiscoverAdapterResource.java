@@ -24,13 +24,13 @@ public class DiscoverAdapterResource extends  AgentResource {
 
             logger.info("DISCOVER ADAPTER SERVICE: ");
 
-            logger.debug("IS GATEWAY REQUEST: "+isGatewayRequest());
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
             }
             String rawPayload = entity.getText();
             logger.info("PAYLOAD: " + rawPayload);
+            logger.info("PAYLOAD encoding: " + entity.getCharacterSet());
 
             JSONObject object = new JSONObject(rawPayload);
             String adapterId = JSONUtil.getString(ADAPTER_ID, object);

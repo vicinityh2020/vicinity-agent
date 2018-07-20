@@ -220,8 +220,12 @@ public class AdapterConfig {
 
     public ThingDescriptions recoverAdapterThings(String data)  {
         ThingDescriptions recoveredThings = new ThingDescriptions();
+        if(data == null){
+            logger.debug("no recovery data .. ");
+            return recoveredThings;
+        }
         try{
-            List<JSONObject> objects = ThingProcessor.processRecoveryData(data, adapterId);
+            List<JSONObject> objects = ThingProcessor.processRecoveryData(data);
             logger.debug("parsing adapter recovery things: " +objects.size());
             for (JSONObject object : objects) {
                 logger.debug("parsing: \n"+object.toString());

@@ -52,7 +52,7 @@ public class ThingProcessor {
         return things;
     }
 
-    public static List<JSONObject> processRecoveryData(String data, String matchAdapterId) throws Exception {
+    public static List<JSONObject> processRecoveryData(String data) throws Exception {
         List<JSONObject> things = new ArrayList<JSONObject>();
 
         JSONArray descriptions = new JSONArray(data);
