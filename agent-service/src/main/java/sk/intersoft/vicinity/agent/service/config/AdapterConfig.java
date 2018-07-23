@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class AdapterConfig {
@@ -45,8 +46,8 @@ public class AdapterConfig {
 
     ThingDescriptions things = new ThingDescriptions();
 
-    public List<EventChannel> eventChannels = new ArrayList<EventChannel>();
-    public List<EventChannelSubscription> eventSubscriptions = new ArrayList<EventChannelSubscription>();
+    public List<EventChannel> eventChannels = new CopyOnWriteArrayList<EventChannel>();
+    public List<EventChannelSubscription> eventSubscriptions = new CopyOnWriteArrayList<EventChannelSubscription>();
 
     private boolean configurationRunning = false;
 

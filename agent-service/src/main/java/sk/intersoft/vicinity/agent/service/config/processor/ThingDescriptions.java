@@ -8,13 +8,14 @@ import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ThingDescriptions {
     final static Logger logger = LoggerFactory.getLogger(ThingDescriptions.class.getName());
 
-    public Map<String, ThingDescription> byAdapterOID = new HashMap<String, ThingDescription>();
-    public Map<String, ThingDescription> byAdapterInfrastructureID = new HashMap<String, ThingDescription>();
-    public Map<String, Set<ThingDescription>> byAdapterID = new HashMap<String, Set<ThingDescription>>();
+    public Map<String, ThingDescription> byAdapterOID = new ConcurrentHashMap<String, ThingDescription>();
+    public Map<String, ThingDescription> byAdapterInfrastructureID = new ConcurrentHashMap<String, ThingDescription>();
+    public Map<String, Set<ThingDescription>> byAdapterID = new ConcurrentHashMap<String, Set<ThingDescription>>();
 
     public static List<ThingDescription> toList(Map<String, ThingDescription> map) {
         List<ThingDescription> things = new ArrayList<ThingDescription>();

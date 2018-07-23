@@ -12,6 +12,7 @@ import sk.intersoft.vicinity.agent.utils.FileUtil;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Configuration {
     final static Logger logger = LoggerFactory.getLogger(Configuration.class.getName());
@@ -20,10 +21,10 @@ public class Configuration {
 
     public static String gatewayAPIEndpoint = "";
 
-    public static Map<String, AgentConfig> agents = new HashMap<String, AgentConfig>();
-    public static Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
-    public static Map<String, ThingDescriptions> things = new HashMap<String, ThingDescriptions>();
-    public static Map<String, ThingDescription> thingsByOID = new HashMap<String, ThingDescription>();
+    public static Map<String, AgentConfig> agents = new ConcurrentHashMap<String, AgentConfig>();
+    public static Map<String, AdapterConfig> adapters = new ConcurrentHashMap<String, AdapterConfig>();
+    public static Map<String, ThingDescriptions> things = new ConcurrentHashMap<String, ThingDescriptions>();
+    public static Map<String, ThingDescription> thingsByOID = new ConcurrentHashMap<String, ThingDescription>();
 
     public static void create() throws Exception {
 

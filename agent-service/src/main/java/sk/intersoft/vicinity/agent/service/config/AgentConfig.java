@@ -17,6 +17,7 @@ import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
 import java.io.File;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class AgentConfig {
@@ -31,7 +32,7 @@ public class AgentConfig {
     public String agentId = "";
     public String password = "";
 
-    public Map<String, AdapterConfig> adapters = new HashMap<String, AdapterConfig>();
+    public Map<String, AdapterConfig> adapters = new ConcurrentHashMap<String, AdapterConfig>();
 
     public ThingDescriptions configurationThings = new ThingDescriptions();
 
