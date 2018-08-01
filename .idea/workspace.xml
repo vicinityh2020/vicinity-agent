@@ -6,8 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="testing push tag to github">
-      <change afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,12 +54,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
+          <entry key="java" value="22" />
           <entry key="txt" value="70" />
           <entry key="xml" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="JAVA" value="22" />
           <entry key="PLAIN_TEXT" value="71" />
           <entry key="XML" value="48" />
         </counts>
@@ -120,8 +121,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="66">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -178,6 +179,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -655,13 +659,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00204" summary="just testing update for core:Service type">
-      <created>1527231371855</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1527231371855</updated>
-    </task>
     <task id="LOCAL-00205" summary="added on the fly agent configuration (configure new, reconfigure existing)">
       <created>1527250887271</created>
       <option name="number" value="00205" />
@@ -998,13 +995,21 @@
       <option name="project" value="LOCAL" />
       <updated>1533123855235</updated>
     </task>
-    <option name="localTasksCounter" value="253" />
+    <task id="LOCAL-00253" summary="testing push tag to github">
+      <created>1533123944412</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1533123944412</updated>
+    </task>
+    <option name="localTasksCounter" value="254" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="39" width="1920" height="1045" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20427808" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20427808" />
       <window_info id="Structure" order="1" weight="0.24973261" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1018,7 +1023,7 @@
       <window_info anchor="bottom" id="Changes" order="7" visible="true" weight="0.23768736" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.3286638" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.3286638" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32939914" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.31759655" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1033,6 +1038,32 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sh" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.json" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1430,8 +1461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state relative-caret-position="66">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
