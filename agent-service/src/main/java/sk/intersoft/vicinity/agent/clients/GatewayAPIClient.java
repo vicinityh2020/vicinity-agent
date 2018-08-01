@@ -59,6 +59,9 @@ public class GatewayAPIClient {
     public static String getOpenEventChannelEndpoint(String eventId) {
         return "/events/"+eventId;
     }
+    public static String getEventChannelStatusEndpoint(String oid, String eventId) {
+        return "/objects/"+oid+"/events/"+eventId;
+    }
     public static String getSubscribeEventChannelEndpoint(String oid, String eventId) {
         return "/objects/"+oid+"/events/"+eventId;
     }

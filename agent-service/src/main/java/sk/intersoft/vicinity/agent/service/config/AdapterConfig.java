@@ -129,6 +129,12 @@ public class AdapterConfig {
         GatewayAPIClient.post(GatewayAPIClient.getOpenEventChannelEndpoint(eventId), null, thing.oid, thing.password);
 
     }
+    public static String getEventChannelStatus(ThingDescription thing, String eventId) throws Exception {
+        logger.debug("GETTING EVENT CHANNEL STATUS: "+thing.toSimpleString() + " / EID: "+eventId);
+        InteractionPattern event = thing.getInteractionPattern(eventId, InteractionPattern.EVENT);
+        return GatewayAPIClient.get(GatewayAPIClient.getEventChannelStatusEndpoint(thing.oid, eventId), thing.oid, thing.password);
+
+    }
 
     private void openEventChannels(){
         logger.debug("OPENING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
@@ -138,8 +144,10 @@ public class AdapterConfig {
             try{
                 ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
                 if(thing != null){
-                    logger.debug("PUBLISHER THING: "+thing.toSimpleString());
+                    logger.debug("THING OPENING THE CHANNEL ["+e.toString()+"]: "+thing.toSimpleString());
                     openEventChannel(thing, e.eventId);
+                    String channelStatus = getEventChannelStatus(thing, e.eventId);
+                    logger.debug("THING-CHANNEL STATUS: ["+thing.toSimpleString()+"]["+e.toString()+"]: "+channelStatus);
                 }
                 else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
             }
