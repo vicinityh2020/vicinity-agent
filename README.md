@@ -46,6 +46,7 @@ and vice versa, when objects behind Adapter needs to interact with remote object
 object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its Agent -> object of its Adapter
 
 # Working documents
+* [Agent Changelog by Version](docs/AGENT_CHANGELOG.md)
 * [Agent](docs/AGENT.md)
 * [Agent auto discovery/configuration process](docs/DISCO.md)
 * [Full Agent API](docs/AGENT_API.md)
