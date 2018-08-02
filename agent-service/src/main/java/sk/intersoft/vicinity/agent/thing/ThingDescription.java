@@ -18,6 +18,7 @@ public class ThingDescription {
 
     public String oid = null;
     public String infrastructureId = null;
+    public String agentId = null;
     public String adapterId = null;
     public String adapterOID = null;
     public String adapterInfrastructureID = null;
@@ -82,6 +83,7 @@ public class ThingDescription {
         password = configThing.password;
     }
     public void updatePersistence(PersistedThing persisted) {
+        agentId = persisted.agentId;
         adapterInfrastructureID = persisted.adapterInfrastructureId;
         password = persisted.password;
     }
@@ -242,6 +244,7 @@ public class ThingDescription {
         dump.add("THING :", indent);
         dump.add("oid: "+oid, (indent + 1));
         dump.add("infrastructure-id: "+infrastructureId, (indent + 1));
+        dump.add("agent-id: "+agentId, (indent + 1));
         dump.add("adapter-id: "+adapterId, (indent + 1));
         dump.add("adapter-oid: "+adapterOID, (indent + 1));
         dump.add("adapter-infrastructure-id: "+adapterInfrastructureID, (indent + 1));
@@ -279,13 +282,15 @@ public class ThingDescription {
     }
 
     public String toSimpleString(){
-        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][ADAPTER-ID: "+adapterId+"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
+        return "THING : [OID: "+oid+"][INFRA-ID: "+ infrastructureId +"][AGENT-ID: "+agentId+"][ADAPTER-ID: "+adapterId+"][ADAPTER-INFRA-ID: "+adapterInfrastructureID+"][PWD: "+password+"] ";
     }
 
     public JSONObject toStatusJSON() {
         JSONObject object = new JSONObject();
 
         object.put("oid", oid);
+        object.put("agent-id", agentId);
+        object.put("adapter-id", adapterId);
         object.put("infra-id", infrastructureId);
         object.put("adapter-oid", adapterOID);
         object.put("adapter-infra-id", adapterInfrastructureID);

@@ -3,6 +3,7 @@ package sk.intersoft.vicinity.agent.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
@@ -23,9 +24,9 @@ public class StartStop {
             // START SEQUENCE:
             // 0. init persistence for case that it does not exist yet
             // 1. INITIALIZE PERSISTENCE
-            PersistedThing.createTable();
+            Persistence.createTable();
             logger.info("Initialized persistence");
-            PersistedThing.list();
+            Persistence.list();
 
 
             // 1. read config mappings
@@ -36,11 +37,14 @@ public class StartStop {
             // 2. configure agents config by config, getting last configuration from NM
             Configuration.configureAgents();
 
+            // 3. remove unused adapters with content
+            Configuration.removeUnusedAdapters();
+
 
             // 4. list status of processed components
             logger.info("FINAL CONFIGURATION STATUS: \n"+Configuration.toStatusString(0));
             logger.info("FINAL CONFIGURATION PERSISTENCE:");
-            PersistedThing.list();
+            Persistence.list();
 
             logger.info("STARTUP SEQUENCE COMPLETED!");
 

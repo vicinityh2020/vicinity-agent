@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -175,7 +176,7 @@ public class AgentConfig {
             if (thing != null) {
                 logger.debug("processed thing: " + thing.oid);
                 try {
-                    PersistedThing persisted = PersistedThing.getByOID(thing.oid);
+                    PersistedThing persisted = Persistence.getByOID(thing.oid);
                     if(persisted != null){
                         thing.updatePersistence(persisted);
                         configurationThings.add(thing);
@@ -235,6 +236,16 @@ public class AgentConfig {
 
 
 
+    public void updatePersistence() throws Exception {
+        Persistence.clearAgent(agentId);
+        logger.debug("persistence cleared for agent: "+toSimpleString());
+
+        Persistence.saveAgent(agentId, password);
+        logger.debug("persistence updated for adapter "+toSimpleString());
+        Persistence.list();
+
+    }
+
     private boolean configureAgent(){
         try{
             logger.info("CONFIGURING AGENT: ["+agentId+"] ");
@@ -242,7 +253,7 @@ public class AgentConfig {
 
             updateLastConfiguration();
             discoverAdapters();
-
+            updatePersistence();
             updateMappings();
             logger.info("DONE CONFIGURING AGENT: ["+agentId+"]");
 

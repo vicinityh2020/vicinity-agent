@@ -104,12 +104,15 @@ public class NeighbourhoodManager {
         return createUpdateThingsPayload(things, agentId, false);
     }
 
-    public static void delete(JSONObject payload, AgentConfig agent) throws Exception {
+    public static void delete(JSONObject payload, String agentId, String agentPassword) throws Exception {
         logger.info("delete payload: \n" + payload.toString(2));
 
-        String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, agentPassword);
         logger.info("delete raw response: \n" + deleteResponse);
 
+    }
+    public static void delete(JSONObject payload, AgentConfig agent) throws Exception {
+        delete(payload, agent.agentId, agent.password);
     }
 
 

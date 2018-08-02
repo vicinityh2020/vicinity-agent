@@ -32,7 +32,7 @@ public class DiscoResource extends ServerResource {
             request.addHeader("Content-Type", "application/json");
 
             if(objects != null){
-                StringEntity data = new StringEntity(objects);
+                StringEntity data = new StringEntity(objects, "utf-8");
                 request.setEntity(data);
             }
 

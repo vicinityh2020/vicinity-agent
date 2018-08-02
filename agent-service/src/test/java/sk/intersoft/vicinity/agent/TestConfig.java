@@ -7,6 +7,7 @@ import sk.intersoft.vicinity.agent.service.config.Configuration;
 
 import java.io.File;
 import java.util.Scanner;
+import java.util.Set;
 
 public class TestConfig {
     public class AgentConfigThread implements Runnable {

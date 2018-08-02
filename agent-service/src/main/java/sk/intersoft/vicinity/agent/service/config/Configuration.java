@@ -4,14 +4,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.FileUtil;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Configuration {
@@ -79,6 +80,28 @@ public class Configuration {
             }
         }
 
+
+    }
+
+    public static void removeUnusedAdapters()  {
+        logger.info("REMOVING UNUSED ADAPTERS");
+        try{
+            Set<String> all = Persistence.getAdapterIds();
+            logger.info("ALL KNOWN ADAPTERS: "+all.size());
+            for(String aid : all){
+                AdapterConfig c = Configuration.adapters.get(aid);
+                boolean inConfig = (c != null);
+                logger.info("> "+aid+" .. exists in config: "+inConfig);
+                if(!inConfig){
+                    logger.info("  > permanently removing missing adapter: "+aid);
+                    AdapterConfig.remove(aid);
+                }
+            }
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+        }
 
     }
 

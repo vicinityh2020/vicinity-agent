@@ -6,7 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
+import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
+import sk.intersoft.vicinity.agent.db.PersistedAgent;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
+import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.processor.Discovery;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
@@ -16,10 +19,7 @@ import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
 import sk.intersoft.vicinity.agent.utils.Dump;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -51,6 +51,50 @@ public class AdapterConfig {
 
     private boolean configurationRunning = false;
 
+    public static void removeAdapterThings(String adapterId){
+        Set<PersistedThing> things = Persistence.getAdapterThings(adapterId);
+        logger.debug("ADAPTER ["+adapterId+"] THINGS TO REMOVE: "+ things.size());
+        String agentId = null;
+        JSONArray toDelete = new JSONArray();
+        for(PersistedThing t : things){
+            logger.debug("> ["+t.oid+"][agent: "+t.agentId+"][adapter: "+t.adapterId+"]");
+            agentId = t.agentId;
+            toDelete.put(t.oid);
+        }
+
+        logger.debug("AGENT HOLDING THINGS TO REMOVE: "+ agentId);
+
+        if(agentId == null || agentId.trim().equalsIgnoreCase("null")){
+            logger.debug("MUST BE OLD RECORDS.. NO AGENT ID.. skip :/");
+        }
+        else{
+            PersistedAgent a = Persistence.getAgent(agentId);
+
+            if(a == null){
+                logger.debug("NO PERSISTENCE FOR AGENT ["+agentId+"] CREDENTIALS .. MUST BE OLD RECORD .. skip :/");
+            }
+            else{
+                logger.debug("AGENT ["+agentId+"] PERSISTENCE: "+a.toString());
+                JSONObject payload = NeighbourhoodManager.deletePayload(toDelete, agentId);
+                logger.debug("REMOVE THINGS PAYLOAD: \n"+ payload.toString(2));
+                try{
+                    NeighbourhoodManager.delete(payload, agentId, a.password);
+                    Persistence.clearAdapter(adapterId);
+                }
+                catch(Exception e){
+                    logger.error("", e);
+                }
+            }
+
+        }
+
+    }
+    public static void remove(String adapterId){
+        logger.debug("PREMANENTLY REMOVING ADAPTER ["+adapterId+"]");
+        removeAdapterThings(adapterId);
+        logger.debug("PREMANENTLY REMOVING ADAPTER RECOVERY ["+adapterId+"]");
+        Persistence.clearRecoveryAdapter(adapterId);
+    }
 
     public void login(){
         logger.debug("log-in all things of adapter "+toSimpleString());
@@ -82,14 +126,14 @@ public class AdapterConfig {
 
 
     public void updatePersistence(ThingDescriptions things) throws Exception {
-        PersistedThing.clearAdapter(adapterId);
+        Persistence.clearAdapter(adapterId);
         logger.debug("persistence cleared for adapter : "+toSimpleString());
         for (Map.Entry<String, ThingDescription> entry : things.byAdapterOID.entrySet()) {
             ThingDescription thing = entry.getValue();
-            PersistedThing.save(thing);
+            Persistence.save(thing);
         }
         logger.debug("persistence updated for adapter "+toSimpleString());
-        PersistedThing.list();
+        Persistence.list();
 
     }
 
@@ -294,6 +338,14 @@ public class AdapterConfig {
         return adapterThings;
     }
 
+    public void updateAgentId(ThingDescriptions things) {
+        List<ThingDescription> ts = ThingDescriptions.toList(things.byAdapterOID);
+        for (ThingDescription t : ts){
+            t.agentId = agent.agentId;
+        }
+
+    }
+
     public boolean discoverAdapter(String data, boolean recover) {
         logger.debug("DISCOVERY FOR ADAPTER ["+adapterId+"] .. agent ["+agent.agentId+"]");
         logger.debug("RECOVERY: "+recover);
@@ -316,15 +368,19 @@ public class AdapterConfig {
 
                 discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
 
+                updateAgentId(discoveredThings);
+
                 updatePersistence(discoveredThings);
             }
             else {
                 logger.debug("RECOVERING ADAPTER THINGS FOR: "+adapterId);
-                String recoveryData = PersistedThing.getRecoveryDataByAdapterID(adapterId);
+                String recoveryData = Persistence.getRecoveryDataByAdapterID(adapterId);
                 logger.debug("RECOVERY DATA FOR ADAPTER: "+adapterId);
                 logger.debug(""+recoveryData);
 
+
                 discoveredThings = recoverAdapterThings(recoveryData);
+                updateAgentId(discoveredThings);
             }
 
 
@@ -349,11 +405,11 @@ public class AdapterConfig {
                     recovery.put(json);
                 }
                 logger.info("RECOVERY DATA JSON: "+adapterId+"\n"+recovery.toString(2));
-                PersistedThing.clearRecoveryAdapter(adapterId);
-                PersistedThing.saveRecovery(adapterId, recovery.toString());
+                Persistence.clearRecoveryAdapter(adapterId);
+                Persistence.saveRecovery(agent.agentId, adapterId, recovery.toString());
 
                 logger.info("PERSISTENCE: ");
-                PersistedThing.listRecovery();
+                Persistence.listRecovery();
 
             }
             else{
