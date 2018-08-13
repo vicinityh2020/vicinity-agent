@@ -181,7 +181,7 @@ public class AdapterConfig {
     }
 
     private void openEventChannels(){
-        logger.debug("OPENING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
+        logger.debug("OPENING EVENT CHANNELS ["+eventChannels.size()+"] FOR ADAPTER "+toSimpleString());
 
         for(EventChannel e : eventChannels){
             logger.debug("OPENING EVENT CHANNEL: "+e.toString());
@@ -208,7 +208,7 @@ public class AdapterConfig {
     }
 
     private void subscribeEventChannels(){
-        logger.debug("SUBSCRIBING EVENT CHANNELS FOR ADAPTER "+toSimpleString());
+        logger.debug("SUBSCRIBING EVENT CHANNELS ["+eventSubscriptions.size()+"] FOR ADAPTER "+toSimpleString());
 
         for(EventChannelSubscription e : eventSubscriptions){
             logger.debug("SUBSCRIBING TO EVENT CHANNEL: "+e.toString());

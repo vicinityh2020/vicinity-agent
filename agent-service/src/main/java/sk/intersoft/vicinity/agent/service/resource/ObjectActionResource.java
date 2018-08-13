@@ -92,7 +92,7 @@ public class ObjectActionResource extends AgentResource {
 
             JSONObject result = new JSONObject(adapterResponse);
 
-            logger.info("EXECUTE ACTION RESPONSE: " + result.toString());
+            logger.info("CANCEL ACTION RESPONSE: " + result.toString());
 
             return ResourceResponse.success(result).toString();
 

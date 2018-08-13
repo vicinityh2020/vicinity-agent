@@ -39,7 +39,7 @@ public class RemoteObjectActionResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            String gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
+            String gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwResponse;
