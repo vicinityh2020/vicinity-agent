@@ -48,6 +48,12 @@ public class StartStop {
 
             logger.info("STARTUP SEQUENCE COMPLETED!");
 
+            logger.info("STARTING CONTINUAL SUBSCRIPTION THREAD!");
+            Thread subscription = new Thread(new ContinualSubscription());
+            subscription.start();
+
+
+
         }
         catch(Exception e){
             logger.error("START SEQUENCE FAILED!", e);

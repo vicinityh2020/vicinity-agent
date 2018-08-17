@@ -207,7 +207,7 @@ public class AdapterConfig {
 
     }
 
-    private void subscribeEventChannels(){
+    public void subscribeEventChannels(){
         logger.debug("SUBSCRIBING EVENT CHANNELS ["+eventSubscriptions.size()+"] FOR ADAPTER "+toSimpleString());
 
         for(EventChannelSubscription e : eventSubscriptions){

@@ -22,3 +22,13 @@ JAR=agent-service-full-x.y.z.jar
 
 * cleanup of unused adapters: all adapters that are not presented in agent config are permanently
   removed, including things in those adapters, all credentials and friendships are lost
+
+* events and actions were tested on level on GTW - AGENT communication,
+    * major bug fixed for invoking action on remote object
+
+* improved event subscriptions defined in adapter static configuration
+    * when adapter is discovered, agent tries to subscribe all specified
+      objects to related event channels, however the channel must be open,
+      if object needs to subscribe to it. this sequence (1. open, 2. subscribe)
+      can not be assured. now, agent implements specific separate process
+      continually trying to make subscriptions, until successfully subscribed to channel
