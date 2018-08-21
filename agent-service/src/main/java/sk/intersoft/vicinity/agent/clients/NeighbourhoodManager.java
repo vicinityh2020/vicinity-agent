@@ -14,15 +14,32 @@ import java.util.List;
 public class NeighbourhoodManager {
     final static Logger logger = LoggerFactory.getLogger(NeighbourhoodManager.class.getName());
 
-    public static final String AGID_KEY = "adid";
+    public static final String AGID_KEY = "agid";
     public static final String THING_DESCRIPTIONS_KEY = "thingDescriptions";
     public static final String OIDS_KEY = "oids";
 
 
     public static JSONArray getConfigurationThings(String data) throws Exception {
         JSONObject root = new JSONObject(data);
-        JSONArray results = root.getJSONArray("message");
+
         JSONArray extraction = new JSONArray();
+
+        logger.debug("parsing configuration things..");
+
+        try{
+            JSONObject msgObj = root.getJSONObject("message");
+            logger.debug("message is object .. no configuration case");
+            return extraction;
+        }
+        catch(Exception ex){
+
+        }
+
+
+        logger.debug("[message] key exists");
+
+
+        JSONArray results = root.getJSONArray("message");
         Iterator<Object> i = results.iterator();
         while(i.hasNext()){
             JSONObject item = (JSONObject)i.next();
@@ -30,6 +47,8 @@ public class NeighbourhoodManager {
                 extraction.put(item.getJSONObject("id").getJSONObject("info"));
             }
         }
+
+
         return extraction;
     }
 
@@ -137,4 +156,14 @@ public class NeighbourhoodManager {
 
         return updateResponse;
     }
+
+    public static String updateContent(JSONObject payload, AgentConfig agent) throws Exception {
+        logger.info("update things content payload: \n" + payload.toString(2));
+
+        String updateResponse = GatewayAPIClient.patch(GatewayAPIClient.updateEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        logger.info("update things content raw response: \n" + updateResponse);
+
+        return updateResponse;
+    }
+
 }

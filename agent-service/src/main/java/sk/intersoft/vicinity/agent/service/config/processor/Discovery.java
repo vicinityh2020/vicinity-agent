@@ -132,9 +132,11 @@ public class Discovery {
         }
 
 
-        // HANDLE UPDATE
+        // HANDLE CREATE
+        logger.info("HANDLING UPDATE: ");
+        // HANDLE UPDATE UNHANGED CONTENT
         logger.info("HANDLING UPDATE of content of unchanged things: ");
-        List<ThingDescription> toUpdateList = ThingDescriptions.toList(diff.unchanged.byAdapterOID);
+        List<ThingDescription> toUpdateList = ThingDescriptions.toList(diff.update.byAdapterOID);
         if(toUpdateList.size() > 0){
             result.add(
                     processUpdatedThings(
@@ -143,10 +145,27 @@ public class Discovery {
                                             toUpdateList,
                                             adapter.agent.agentId),
                                     adapter.agent),
-                            diff.unchanged));
+                            diff.update));
         }
         else{
             logger.info("..nothing to update");
+        }
+
+        // HANDLE UPDATE UNHANGED CONTENT
+        logger.info("HANDLING UPDATE of content of unchanged things: ");
+        List<ThingDescription> toUpdateContentList = ThingDescriptions.toList(diff.unchanged.byAdapterOID);
+        if(toUpdateContentList.size() > 0){
+            result.add(
+                    processUpdatedThings(
+                            NeighbourhoodManager.updateContent(
+                                    NeighbourhoodManager.updateThingsPayload(
+                                            toUpdateContentList,
+                                            adapter.agent.agentId),
+                                    adapter.agent),
+                            diff.unchanged));
+        }
+        else{
+            logger.info("..nothing to update content (for unchanged)");
         }
 
 

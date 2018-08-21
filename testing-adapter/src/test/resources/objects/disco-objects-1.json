@@ -38,7 +38,7 @@
             ],
             "properties": [
                 {
-                    "pid": "brightness1",
+                    "pid": "test-property",
                     "monitors": "adapters:ValvePosition",
                     "read_link": {
                         "href": "/objects/{oid}/properties/{pid}",
@@ -77,7 +77,7 @@
                             "type": "object",
                             "field": [
                                 {
-                                    "name": "success",
+                                    "name": "success-update",
                                     "schema": {
                                         "type": "boolean"
                                     }

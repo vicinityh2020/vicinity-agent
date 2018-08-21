@@ -12,7 +12,7 @@ import java.util.Map;
 public class ContinualSubscription  implements Runnable  {
     final static Logger logger = LoggerFactory.getLogger(ContinualSubscription.class.getName());
 
-    final long sleepTime = 1000;
+    final long sleepTime = 30000;
 
     public void sleep(long millis){
         try{
