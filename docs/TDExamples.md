@@ -5,11 +5,11 @@
 {
     "oid": "bulb1",
     "name": "human reads my name here",
-    "type": "PHLightBulb",
+    "type": "core:Device",
     "properties": [
         {
             "pid": "brightness",
-            "monitors": "Brightness",
+            "monitors": "adapters:LightColor",
             "read_link": {
                 "href": "/device/{oid}/property/{pid}",
                 "output": {
@@ -60,7 +60,7 @@
     "actions": [
         {
             "aid": "set-brightness",
-            "affects": "Brightness",
+            "affects": "adapters:LightColor",
             "read_link": {
                 "href": "/device/{oid}/status/{aid}",
                 "output": {
@@ -111,7 +111,7 @@
     "events": [
         {
             "eid": "set-brightness",
-            "monitors": "Brightness",
+            "monitors": "adapters:LightColor",
             "output": {
                 "type": "object",
                 "field": [
