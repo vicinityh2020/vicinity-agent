@@ -20,6 +20,8 @@ public class NeighbourhoodManager {
 
 
     public static JSONArray getConfigurationThings(String data) throws Exception {
+
+
         JSONObject root = new JSONObject(data);
 
         JSONArray extraction = new JSONArray();
@@ -36,7 +38,10 @@ public class NeighbourhoodManager {
         }
 
 
-        logger.debug("[message] key exists");
+        if(!root.has("message")){
+            logger.debug("[message] key does not exist?? .. return empty config");
+            return extraction;
+        }
 
 
         JSONArray results = root.getJSONArray("message");
@@ -54,10 +59,28 @@ public class NeighbourhoodManager {
 
     public static List<JSONObject> getCreateResults(String data) throws Exception {
         JSONObject root = new JSONObject(data);
-        JSONArray results = root.getJSONArray("message");
 
         List<JSONObject> extraction = new ArrayList<JSONObject>();
 
+        logger.debug("parsing configuration things..");
+
+        try{
+            JSONObject msgObj = root.getJSONObject("message");
+            logger.debug("message is object .. no configuration case");
+            return extraction;
+        }
+        catch(Exception ex){
+
+        }
+
+
+        if(!root.has("message")){
+            logger.debug("[message] key does not exist?? .. return empty config");
+            return extraction;
+        }
+
+
+        JSONArray results = root.getJSONArray("message");
         Iterator<Object> i = results.iterator();
         while(i.hasNext()){
             JSONObject item = (JSONObject)i.next();
