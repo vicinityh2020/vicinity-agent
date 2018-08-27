@@ -19,7 +19,7 @@
     <version>0-SNAPSHOT</version>
 
     <properties>
-        <release.version>0.6.0.a</release.version>
+        <release.version>0.6.2</release.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

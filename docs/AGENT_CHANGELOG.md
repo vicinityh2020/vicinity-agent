@@ -12,7 +12,7 @@ JAR=agent-service-full-x.y.z.jar
 
 ## 0.6.0 is starting agent version
 
-## currently added to next version:
+## 0.6.2
 
 * updated persistence,
     * agent credentials are now persisted
@@ -20,11 +20,17 @@ JAR=agent-service-full-x.y.z.jar
       correctly remove unused adapters
     * adapter things must be discovered at least once, so persistence updates will have effect
 
-* cleanup of unused adapters: all adapters that are not presented in agent config are permanently
-  removed, including things in those adapters, all credentials and friendships are lost
-
 * events and actions were tested on level on GTW - AGENT communication,
     * major bug fixed for invoking action on remote object
+
+* discovery process was refined to use specific IoT thing UPDATE/UPGRADE services
+on Neighbourhood manager when thing violates or does not violate the contract
+
+
+## to next version:
+
+* cleanup of unused adapters: all adapters that are not presented in agent config are permanently
+  removed, including things in those adapters, all credentials and friendships are lost
 
 * improved event subscriptions defined in adapter static configuration
     * when adapter is discovered, agent tries to subscribe all specified
