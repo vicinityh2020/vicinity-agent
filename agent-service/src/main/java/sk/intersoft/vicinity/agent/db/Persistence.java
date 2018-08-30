@@ -91,11 +91,19 @@ public class Persistence {
         return "SELECT * FROM "+AGENTS_TABLE;
     }
 
-    private static final String thingsAdaptersQuery(){
-        return "SELECT "+ADAPTER_ID+" FROM "+THINGS_TABLE;
+    private static final String thingsAdaptersQuery(String agentId){
+        String where = "";
+        if(agentId != null && !agentId.trim().equals("")){
+            where = " WHERE "+AGENT_ID+" = '"+agentId+"'";
+        }
+        return "SELECT "+ADAPTER_ID+" FROM "+THINGS_TABLE + where;
     }
-    private static final String recoveryAdaptersQuery(){
-        return "SELECT "+ADAPTER_ID+" FROM "+RECOVERY_TABLE;
+    private static final String recoveryAdaptersQuery(String agentId){
+        String where = "";
+        if(agentId != null && !agentId.trim().equals("")){
+            where = " WHERE "+AGENT_ID+" = '"+agentId+"'";
+        }
+        return "SELECT "+ADAPTER_ID+" FROM "+RECOVERY_TABLE + where;
     }
 
     private static final String adapterThingsQuery(String adapterId){
@@ -210,10 +218,10 @@ public class Persistence {
     }
 
 
-    public static Set<String> thingAdapterIds(Connection conn) throws Exception{
+    public static Set<String> thingAdapterIds(Connection conn, String agentId) throws Exception{
         Set<String> ids = new HashSet<String>();
 
-        String query = thingsAdaptersQuery();
+        String query = thingsAdaptersQuery(agentId);
         Statement statement = conn.createStatement();
         ResultSet result = statement.executeQuery(query);
         while (result.next()) {
@@ -222,10 +230,10 @@ public class Persistence {
         result.close();
         return ids;
     }
-    public static Set<String> recoveryAdapterIds(Connection conn) throws Exception{
+    public static Set<String> recoveryAdapterIds(Connection conn, String agentId) throws Exception{
         Set<String> ids = new HashSet<String>();
 
-        String query = recoveryAdaptersQuery();
+        String query = recoveryAdaptersQuery(agentId);
         Statement statement = conn.createStatement();
         ResultSet result = statement.executeQuery(query);
         while (result.next()) {
@@ -235,13 +243,13 @@ public class Persistence {
         return ids;
     }
 
-    public static Set<String> getAdapterIds() throws Exception {
+    public static Set<String> getAdapterIds(String agentId) throws Exception {
         Set<String> ids = new HashSet<String>();
         try{
             Connection conn = HSQL.getConnection();
             try{
-                ids.addAll(recoveryAdapterIds(conn));
-                ids.addAll(thingAdapterIds(conn));
+                ids.addAll(recoveryAdapterIds(conn, agentId));
+                ids.addAll(thingAdapterIds(conn, agentId));
                 conn.close();
             }
             catch (Exception e){

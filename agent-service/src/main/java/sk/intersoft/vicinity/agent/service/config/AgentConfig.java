@@ -246,6 +246,29 @@ public class AgentConfig {
 
     }
 
+    public void removeUnusedAdapters()  {
+        logger.info("REMOVING UNUSED ADAPTERS FIR AGENT ["+agentId+"]");
+        try{
+            Set<String> all = Persistence.getAdapterIds(agentId);
+            logger.info("ALL KNOWN ADAPTERS FOR AGENT ["+agentId+"]: "+all.size());
+            for(String aid : all){
+                AdapterConfig c = Configuration.adapters.get(aid);
+                boolean inConfig = (c != null);
+                logger.info("> "+aid+" .. exists in config: "+inConfig);
+                if(!inConfig){
+                    logger.info("  > permanently removing missing adapter: "+aid);
+                    AdapterConfig.remove(aid);
+                }
+            }
+
+        }
+        catch(Exception e){
+            logger.error("", e);
+        }
+
+    }
+
+
     private boolean configureAgent(){
         try{
             logger.info("CONFIGURING AGENT: ["+agentId+"] ");
@@ -255,6 +278,7 @@ public class AgentConfig {
             discoverAdapters();
             updatePersistence();
             updateMappings();
+            removeUnusedAdapters();
             logger.info("DONE CONFIGURING AGENT: ["+agentId+"]");
 
             return true;

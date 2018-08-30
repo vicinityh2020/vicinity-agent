@@ -86,7 +86,7 @@ public class Configuration {
     public static void removeUnusedAdapters()  {
         logger.info("REMOVING UNUSED ADAPTERS");
         try{
-            Set<String> all = Persistence.getAdapterIds();
+            Set<String> all = Persistence.getAdapterIds(null);
             logger.info("ALL KNOWN ADAPTERS: "+all.size());
             for(String aid : all){
                 AdapterConfig c = Configuration.adapters.get(aid);
