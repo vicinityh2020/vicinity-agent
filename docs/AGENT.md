@@ -74,6 +74,14 @@ Stop the agent:
 
 To redeploy the Agent, simply stop the agent, replace the **agent.jar** file and run it again.
 
+**Agent Service runs at default endpoint**:
+
+```
+http://localhost:9997/agent
+resp.
+http://IP:PORT/agent
+```
+
 ## Download
 
 Agent skeleton (folder structure above) and most recent **agent.jar** are now
@@ -182,6 +190,7 @@ CONFIG_FILE=config/service-config.json
 AGENT_CONFIG_FOLDER=config/agents
 LOGS_FOLDER=logs
 ```
+
 
 
 ## Agent response
