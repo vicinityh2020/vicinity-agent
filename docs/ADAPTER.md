@@ -28,6 +28,16 @@ provides services just fir very basic interactions with objects behind it, namel
 
 Lets look at them in details.
 
+# Agent Service endpoint
+
+**Agent Service runs at default endpoint**:
+
+```
+http://localhost:9997/agent
+resp.
+http://IP:PORT/agent
+```
+
 
 # Adapter API
 
