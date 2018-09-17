@@ -84,8 +84,11 @@ http://IP:PORT/agent
 
 ## Download
 
-Agent skeleton (folder structure above) and most recent **agent.jar** are now
+Agent skeleton (folder structure above) and most recent **agent-vX.Y.Z.jar** are now
 **[available here](../agent-service/build)**.
+
+When changing to new **agent-vX.Y.Z.jar**,
+please, update **JAR** variable in **agent.sh** script to new JAR version.
 
 
 ## Configuration

@@ -46,10 +46,10 @@ and vice versa, when objects behind Adapter needs to interact with remote object
 object in this Adapter -> this Agent -> this GTW Api ---> remote GTW API -> its Agent -> object of its Adapter
 
 # Working documents
-* [Agent Changelog by Version](docs/AGENT_CHANGELOG.md)
-* [Agent](docs/AGENT.md)
-* [Agent auto discovery/configuration process](docs/DISCO.md)
-* [Full Agent API](docs/AGENT_API.md)
-* [Adapter](docs/ADAPTER.md)
-* [Common Thing Description Format](docs/TD.md)
+* [Agent Changelog by Version](docs/AGENT_CHANGELOG.md): list of changes applied for particular agent service versions
+* [Agent Service Documentation](docs/AGENT.md) : agent service installation, deployment and configuration, description of basic concepts of interactions with agent service
+* [Full Agent API](docs/AGENT_API.md): list of agent service endpoints
+* [Adapter for Developers](docs/ADAPTER.md): Complete guide, how to implement the adapter and how adapter interacts with agent service
+* [Common Thing Description Format](docs/TD.md): the specification document
 * [Thing Description Examples](docs/TDExamples.md)
+* [Agent auto discovery/configuration process description](docs/DISCO.md)
