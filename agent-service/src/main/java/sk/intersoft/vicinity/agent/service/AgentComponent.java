@@ -14,6 +14,8 @@ public class AgentComponent extends Component {
         Server s = new Server(Protocol.HTTP, Integer.parseInt(System.getProperty("server.port")), this);
         getServers().add(s);
         s.getContext().getParameters().add("useForwardedForHeader", "true");
+        s.getContext().getParameters().add("maxThreads", "1000");
+
         // Attach the application to the default virtual host
         getDefaultHost().attach("/agent", new AgentApplication());
     }
