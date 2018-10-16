@@ -18,6 +18,7 @@ public class SubscribeReceiveEventResource extends AgentResource {
 
     private static String OBJECT_ID = "oid";
     private static String EVENT_ID = "eid";
+    private static String SOURCE_OID = "sourceOid";
 
 
     @Post()
@@ -52,10 +53,17 @@ public class SubscribeReceiveEventResource extends AgentResource {
         try {
             String oid = getAttribute(OBJECT_ID);
             String eid = getAttribute(EVENT_ID);
+            String sourceOid = getQueryValue(SOURCE_OID);
 
             logger.info("RECEIVING EVENT FOR: ");
             logger.info("SUBSCRIBER OID: " + oid);
             logger.info("EID: " + eid);
+            logger.info("PUBLISHER (SOURCE) OID: " + sourceOid);
+
+
+            if(sourceOid == null || sourceOid.trim().equals("")){
+                throw new Exception("Unknown source OID!");
+            }
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -74,7 +82,7 @@ public class SubscribeReceiveEventResource extends AgentResource {
             logger.info("ADAPTER FOR THING [" + oid + "]: " + thing.toSimpleString());
             logger.info("\n" + adapter.toSimpleString());
 
-            String endpoint = adapter.endpoint + AdapterEndpoint.getReceiveEventEndpoint(thing.infrastructureId, eid);
+            String endpoint = adapter.endpoint + AdapterEndpoint.getReceiveEventEndpoint(thing.infrastructureId, sourceOid.trim(), eid);
 
             logger.info("PASS EVENT TO ADAPTER ENDPOINT: [" + endpoint + "]");
 

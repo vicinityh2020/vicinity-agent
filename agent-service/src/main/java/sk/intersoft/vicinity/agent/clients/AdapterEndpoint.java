@@ -16,8 +16,8 @@ public class AdapterEndpoint {
         return href.replaceAll("\\{oid\\}", oid).replaceAll("\\{pid\\}", patternId).replaceAll("\\{aid\\}", patternId).replaceAll("\\{eid\\}", patternId);
     }
 
-    public static String getReceiveEventEndpoint(String infrastructureId, String eventId)  {
-        return "/objects/"+infrastructureId+"/events/"+eventId;
+    public static String getReceiveEventEndpoint(String infrastructureId, String publisherId, String eventId)  {
+        return "/objects/"+infrastructureId+"/publishers/"+publisherId+"/events/"+eventId;
     }
     private static String getAdapterEndpoint(ThingDescription thing) throws Exception {
         logger.debug("Getting read endpoint for thing: " + thing.toSimpleString());

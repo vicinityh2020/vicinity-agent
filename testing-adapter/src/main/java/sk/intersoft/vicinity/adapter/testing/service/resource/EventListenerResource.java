@@ -12,22 +12,28 @@ public class EventListenerResource extends ServerResource {
     public String readEvent(Representation entity)  {
         try{
 
+            String iid = getAttribute("iid");
             String oid = getAttribute("oid");
-            String pid = getAttribute("pid");
+            String eid = getAttribute("eid");
 
             System.out.println("\n\n");
             System.out.println("getting event: ");
-            System.out.println("oid: "+oid);
-            System.out.println("pid: "+pid);
+            System.out.println("receiver oid: "+iid);
+            System.out.println("source oid: "+oid);
+            System.out.println("eid: "+eid);
 
             JSONObject input = new JSONObject(entity.getText());
 
             System.out.println("event payload: \n"+input.toString(2));
+
+
+            return "{\"event\": \"received [from: "+oid+"][to: "+iid+"][event: "+eid+"]\"}";
+
         }
         catch(Exception e){
             e.printStackTrace();
+            return "{\"event\": \"not received\"}";
         }
-        return "{\"event\": \"received\"}";
     }
 
 }
