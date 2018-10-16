@@ -2,6 +2,8 @@
 
 Agent releases are now build as agent-service-full-x.y.z.jar
 
+All agent binaries are available under **Releases** tab, corresponding **jar** file is attached to each release.
+
 When using new release, please update your **agent.sh** script (or any other script you use) to
 new **.jar** version.
 
@@ -27,7 +29,7 @@ JAR=agent-service-full-x.y.z.jar
 on Neighbourhood manager when thing violates or does not violate the contract
 
 
-## to next version:
+## 0.6.3:
 
 * cleanup of unused adapters: all adapters that are not presented in agent config are permanently
   removed, including things in those adapters, all credentials and friendships are lost
@@ -47,3 +49,5 @@ on Neighbourhood manager when thing violates or does not violate the contract
 
       **infrastructure-id** is receiver,
       **oid** is publisher and **eid** is identifier of published event
+
+## to next version:
