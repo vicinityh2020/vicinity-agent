@@ -1,0 +1,164 @@
+{
+    "adapter-id": "adapter-1",
+    "thing-descriptions": [
+
+        {
+            "oid": "test-agora-1",
+            "name": "test agora 1",
+            "type": "adapters:ActivityTracker",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:Motion",
+                    "read_link": {
+                        "href": "/objects/{oid}/property/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-agora-1-property-1",
+                            "field": [
+                                {
+                                    "name": "test-agora-1-data",
+                                    "description": "test-agora-1 property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": []
+        },
+        {
+            "oid": "test-agora-2",
+            "name": "test agora 2",
+            "type": "adapters:ActivityTracker",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:Motion",
+                    "read_link": {
+                        "href": "/objects/{oid}/property/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-agora-2-property-1",
+                            "field": [
+                                {
+                                    "name": "test-agora-2-data",
+                                    "description": "test-agora-2 property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": []
+        },
+        {
+            "oid": "test-agora-3",
+            "name": "test agora 3",
+            "type": "adapters:Thermometer",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:AverageTemperature",
+                    "read_link": {
+                        "href": "/objects/{oid}/property/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-agora-3-property-1",
+                            "field": [
+                                {
+                                    "name": "test-agora-3-data",
+                                    "description": "test-agora-3 property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": []
+        },
+        {
+            "oid": "test-agora-4",
+            "name": "test agora 4",
+            "type": "adapters:Thermometer",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:AmbientTemperature",
+                    "read_link": {
+                        "href": "/objects/{oid}/property/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-agora-4-property-1",
+                            "field": [
+                                {
+                                    "name": "test-agora-4-data",
+                                    "description": "test-agora-4 property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": []
+        },
+        {
+            "oid": "test-agora-5",
+            "name": "test agora 5",
+            "type": "adapters:Thermostat",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:AmbientTemperature",
+                    "read_link": {
+                        "href": "/objects/{oid}/property/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-agora-5-property-1",
+                            "field": [
+                                {
+                                    "name": "test-agora-5-data",
+                                    "description": "test-agora-5 property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": []
+        }
+
+    ]
+}
+
+
