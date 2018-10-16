@@ -321,11 +321,10 @@ The object with **oid** is found and the request is forwarder to the related Ada
 If Adapter wants to receive the events, it must implement the following endpoint:
 
 ```
-PUT: /objects/{infrastructure-id}/events/{eid}
+PUT: /objects/{infrastructure-id}/publishers/{oid}/events/{eid}
 ```
 
 Parameters:
-* **infrastructure-id** - the internal identifier of object, which is subscribed to event (receiver)
+* **infrastructure-id** - receiver - the internal identifier of object, which is subscribed to event
+* **oid** - publisher - the VICINITY identifier of object, which produced event
 * **eid** - the event identifier
-
-The **oid** of object, that produced the event, will be attached into event payload.

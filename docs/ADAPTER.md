@@ -203,8 +203,13 @@ The same pattern is applied for both **read/write_link** and for all interaction
 
 If Adapter tends to receive the events, it must implement the following endpoint:
 ```
-PUT /objects/{subscriber-id}/events/{eid}
+PUT: /objects/{infrastructure-id}/publishers/{oid}/events/{eid}
 ```
+
+Parameters:
+* **infrastructure-id** - receiver - the internal identifier of object, which is subscribed to event
+* **oid** - publisher - the VICINITY identifier of object, which produced event
+* **eid** - the event identifier
 
 The rule is, that always **object subscribes to event channel**.
 The event channel name is always
@@ -224,7 +229,7 @@ will be included in the event payload. Event payload structure is yet TBD.
 Adapter implements following services:
 * **GET /objects** - object discovery service - **mandatory** if adapter is configured for passive discovery
 * **mandatory**: endpoints with [prescribed http method](#http-methods-for-interaction-patterns) provided in **read/write_link** in thing descriptions
-* optional: **PUT /objects/{subscriber-id}/events/{eid}** if Adapter needs to receive events
+* optional: **PUT /objects/{subscriber-id}/publishers/{oid}/events/{eid}** if Adapter needs to receive events
 
 All other functionality, such as how to access the remote object, how to open or subscribe event channels for objects, is part of [Agent documentation](AGENT.md).
 Use it.
