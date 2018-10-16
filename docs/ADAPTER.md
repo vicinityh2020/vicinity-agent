@@ -221,8 +221,7 @@ The **oid** is VICINITY identifier of object producing the event **eid**.
 
 
 Once Agent receives the event, it propagates it into Adapter by calling its endpoint above. **subscriber-id** is the internal
-idetifier of Adapter object subscribed to event **eid** of object **oid**. The **oid** of object that produced the event
-will be included in the event payload. Event payload structure is yet TBD.
+idetifier of Adapter object subscribed to event **eid** of object **oid**.
 
 # Adapter API requirements summarized
 
