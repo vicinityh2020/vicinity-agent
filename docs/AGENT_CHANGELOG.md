@@ -38,3 +38,9 @@ on Neighbourhood manager when thing violates or does not violate the contract
       if object needs to subscribe to it. this sequence (1. open, 2. subscribe)
       can not be assured. now, agent implements specific separate process
       continually trying to make subscriptions, until successfully subscribed to channel
+
+* updated passing events to adapters
+    * sourceOID of publisher is extracted from event published into agent and passed into adapter
+    * **adapter must implement new endpoint for listening for events: **
+      **GET: /objects/{infrastructure-id}/publishers/{oid}/events/{eid}**, where **infrastructure-id** is receiver,
+      **oid** is publisher and **eid** is identifier of published event
