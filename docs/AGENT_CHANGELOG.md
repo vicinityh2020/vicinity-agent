@@ -41,6 +41,9 @@ on Neighbourhood manager when thing violates or does not violate the contract
 
 * updated passing events to adapters
     * sourceOID of publisher is extracted from event published into agent and passed into adapter
-    * **adapter must implement new endpoint for listening for events: **
-      **GET: /objects/{infrastructure-id}/publishers/{oid}/events/{eid}**, where **infrastructure-id** is receiver,
+    * **adapter must implement new endpoint for listening for events:**
+
+      **GET: /objects/{infrastructure-id}/publishers/{oid}/events/{eid}**
+
+      **infrastructure-id** is receiver,
       **oid** is publisher and **eid** is identifier of published event
