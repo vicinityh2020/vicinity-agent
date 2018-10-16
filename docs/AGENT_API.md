@@ -275,6 +275,34 @@ provided in thing description of requested local object.
 
 ## Events
 
+### Open event channel
+
+Endpoint:
+```
+POST /events/{eid}
+```
+
+Request headers:
+* infrastructure-id: internal id of object that will publish the events
+* adapter-id: adapter for this object
+
+The body of this request must be empty.
+
+### Subscribe to event channel
+
+Endpoint:
+```
+POST /objects/{oid}/events/{eid}
+```
+
+Request headers:
+* infrastructure-id: internal id of object that will publish the events
+* adapter-id: adapter for this object
+
+The request parameter **oid** specifies the VICINITY oid of object, to which channel this subscription applies.
+
+The body of this request must be empty.
+
 ### Publish the event
 
 Endpoint:
