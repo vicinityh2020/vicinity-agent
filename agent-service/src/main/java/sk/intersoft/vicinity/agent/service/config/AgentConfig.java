@@ -218,7 +218,7 @@ public class AgentConfig {
 
 
         logger.info("CONFIGURATION THINGS: \n" + configurationThings.toString(0));
-        logger.info("FULL CONFIGURATION THINGS: \n" + configurationThings.toFullString(0));
+//        logger.info("FULL CONFIGURATION THINGS: \n" + configurationThings.toFullString(0));
 
     }
 
