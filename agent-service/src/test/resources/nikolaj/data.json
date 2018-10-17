@@ -1,0 +1,7123 @@
+{
+  "thingDescriptions": [{
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 11",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_11"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 12",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_12"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 13",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_13"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 14",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_14"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 15",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_15"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 16",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_16"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 17",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_17"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 14",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_14"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 13",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_13"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 12",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_12"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 11",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_11"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 17",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_17"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 16",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_16"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart oven 15",
+    "type": "core:Device",
+    "actions": [{
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Baking",
+      "aid": "baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Stop",
+      "aid": "stop"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "id"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:Start",
+      "aid": "start"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      },
+      "affects": "adapters:DelayedBaking",
+      "aid": "delayed_baking",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "delayed_baking"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "start_baking_at"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "duration"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "delay"
+          }, {
+            "schema": {
+              "type": "integer"
+            },
+            "name": "temperature"
+          }, {
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/actions/{pid}"
+      }
+    }],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:OvenDoorStatus"
+    }, {
+      "pid": "bake_remaining_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_remaining_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingRemainingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "heater_system",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "heater_system"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterSystem"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_hour",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_hour"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeHour"
+    }, {
+      "pid": "selected_heater_preheat_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_preheat_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterPreheatAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "alarm_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "alarm_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:AlarmTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTemperature"
+    }, {
+      "pid": "selected_heater_meat_probe_allowed",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "selected_heater_meat_probe_allowed"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMeatProbeAllowed"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_baking_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_baking_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingTime"
+    }, {
+      "pid": "current_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceLightStatus"
+    }, {
+      "pid": "current_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "current_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "set_meat_probe_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "set_meat_probe_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:MeatProbeTemperature"
+    }, {
+      "pid": "selected_heater_default_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_default_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterDefaultTemperature"
+    }, {
+      "pid": "selected_heater_min_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_min_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMinTemperature"
+    }, {
+      "pid": "selected_heater_max_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "selected_heater_max_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:HeaterMaxTemperature"
+    }, {
+      "pid": "bake_elapsed_time",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "bake_elapsed_time"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ElapsedBakingTime"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "baking_start_time_minute",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "baking_start_time_minute"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:BakingStartTimeMinute"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "door"
+        }],
+        "type": "object"
+      },
+      "eid": "door",
+      "monitors": "adapters:OvenDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_oven_15"
+  }, {
+    "adapter-id": "dev-adapter-gorenje",
+    "name": "Smart refrigerator 10",
+    "type": "core:Device",
+    "actions": [],
+    "properties": [{
+      "pid": "device_status",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "device_status"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:DeviceStatus"
+    }, {
+      "pid": "freezer_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "refrigerator_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "refrigerator_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorTemperature"
+    }, {
+      "pid": "refrigerator_door",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_door"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "supercool",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "supercool"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:SuperCool"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "fastfreeze",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "fastfreeze"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FastFreeze"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "child_lock",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "child_lock"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:ChildLock"
+    }, {
+      "pid": "refrigerator_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "refrigerator_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:RefrigeratorLightStatus"
+    }, {
+      "write_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "result"
+          }],
+          "type": "object"
+        },
+        "input": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "pid": "freezer_temperature",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "integer"
+            },
+            "name": "freezer_temperature"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerTemperature"
+    }, {
+      "pid": "freezer_light",
+      "read_link": {
+        "output": {
+          "field": [{
+            "schema": {
+              "type": "string"
+            },
+            "name": "freezer_light"
+          }],
+          "type": "object"
+        },
+        "href": "/objects/{oid}/properties/{pid}"
+      },
+      "monitors": "adapters:FreezerLightStatus"
+    }],
+    "events": [{
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "freezer_door"
+        }],
+        "type": "object"
+      },
+      "eid": "freezer_door",
+      "monitors": "adapters:FreezerDoorStatus"
+    }, {
+      "output": {
+        "field": [{
+          "schema": {
+            "type": "string"
+          },
+          "name": "refrigerator_door"
+        }],
+        "type": "object"
+      },
+      "eid": "refrigerator_door",
+      "monitors": "adapters:RefrigeratorDoorStatus"
+    }],
+    "infrastructure-id": "dev-adapter-gorenje---!---smart_refrigerator_10"
+  }],
+  "agid": "d29d63b3-975c-48fc-8201-05fc51dd1303"
+}
