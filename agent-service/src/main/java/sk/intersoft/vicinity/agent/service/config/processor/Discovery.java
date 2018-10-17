@@ -97,7 +97,8 @@ public class Discovery {
         logger.debug("CONFIG: \n");
         logger.debug(configThings.toString(0));
         logger.debug("ADAPTER: \n");
-        logger.debug(adapterThings.toString(0));
+//        logger.debug(adapterThings.toString(0));
+        logger.debug(adapterThings.toFullString(0));
 
         ThingDescriptions result = new ThingDescriptions();
 

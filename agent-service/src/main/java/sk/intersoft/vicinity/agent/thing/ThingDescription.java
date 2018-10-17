@@ -33,6 +33,10 @@ public class ThingDescription {
 
     public Map<String, String> jsonExtension = new HashMap<String, String>();
 
+    // for comparator:
+    public String getOID(){
+        return this.oid;
+    }
 
     // JSON keys
     public static String OID_KEY = "oid";

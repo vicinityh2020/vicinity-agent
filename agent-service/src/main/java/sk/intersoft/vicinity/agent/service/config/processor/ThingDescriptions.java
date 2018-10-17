@@ -84,6 +84,39 @@ public class ThingDescriptions {
         return dump.toString();
     }
 
+    public String toFullString(int indent) {
+        Dump dump = new Dump();
+
+        dump.add("THING DESCRIPTIONS:", indent);
+
+        dump.add("BY ADAPTER-OID: " + byAdapterOID.keySet().size(), (indent + 1));
+        for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
+            String id = entry.getKey();
+            dump.add("mapped-id: " + id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 3), 0);
+        }
+
+        dump.add("BY ADAPTER-INFRASTRUCTURE ID: " + byAdapterInfrastructureID.keySet().size(), (indent + 1));
+        for (Map.Entry<String, ThingDescription> entry : byAdapterInfrastructureID.entrySet()) {
+            String id = entry.getKey();
+            dump.add("mapped-id: " + id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 3), 0);
+        }
+
+        dump.add("BY ADAPTER-ID: " + byAdapterID.keySet().size(), (indent + 1));
+        for (Map.Entry<String, Set<ThingDescription>> entry : byAdapterID.entrySet()) {
+            String id = entry.getKey();
+            Set<ThingDescription> things = entry.getValue();
+            dump.add("adapter-id: " + id, (indent + 2));
+            dump.add("things: " + things.size(), (indent + 3));
+            for (ThingDescription t : things) {
+                dump.add(t.toSimpleString(), (indent + 3));
+            }
+        }
+
+        return dump.toString();
+    }
+
     public String toStatusString(int indent) {
         Dump dump = new Dump();
 
