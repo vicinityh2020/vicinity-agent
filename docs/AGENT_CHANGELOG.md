@@ -52,7 +52,7 @@ on Neighbourhood manager when thing violates or does not violate the contract
 
 ## to next version:
 
-* **Fixed major bug [OP:45]**. Agent was unable to send big payload to GTW API.
+* **Fixed the major blocker bug [OP:45]**. Agent was unable to send big payload to GTW API.
     The problem was found in HTTP client implementation used by Agent Service.
     HTTP client implementation was completely replaced. [OP:45] is fixed now.
 
