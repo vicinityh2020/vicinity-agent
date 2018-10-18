@@ -129,7 +129,7 @@
         {
             "oid": "test-agora-5",
             "name": "test agora 5",
-            "type": "adapters:Thermostat",
+            "type": "adapters:Thermometer",
             "properties": [
                 {
                     "pid": "prop-1",
@@ -156,6 +156,61 @@
             ],
             "actions": [],
             "events": []
+        },
+
+
+        {
+            "oid": "test-to-play",
+            "name": "test to play",
+            "type": "adapters:Thermometer",
+            "properties": [
+                {
+                    "pid": "prop-1",
+                    "monitors": "adapters:AmbientTemperature",
+                    "read_link": {
+                        "href": "/objects/{oid}/properties/{pid}",
+                        "output":
+                        {
+                            "type": "object",
+                            "description": "test-property-1",
+                            "field": [
+                                {
+                                    "name": "test-data",
+                                    "description": "test property",
+                                    "predicate": "core:value",
+                                    "schema": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "actions": [],
+            "events": [
+                {
+                    "eid": "live",
+                    "monitors": "adapters:AmbientTemperature",
+                    "output": {
+                        "type": "object",
+                        "field": [
+                            {
+                                "name": "observed-property",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            {
+                                "name": "value",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
         }
 
     ]

@@ -66,21 +66,47 @@ public class TestPOST {
 
         Configuration.gatewayAPIEndpoint = "http://localhost:8181/api";
 
-        String login = "697f4484-f7d3-401a-90d0-fc6c50b3f37b";
-        String pwd = "devgrnadapter";
+//        String login = "697f4484-f7d3-401a-90d0-fc6c50b3f37b";
+//        String pwd = "devgrnadapter";
 
-        JSONObject payload = new JSONObject(file2string(file));
+        String login = "test";
+        String pwd = "test";
+
+        JSONObject payload = new JSONObject("{}");
         payload.put("agid", login);
         System.out.println("DATA: "+payload.toString());
 
 
 
 
-        String endpoint = "http://localhost:8181/api/agents/d29d63b3-975c-48fc-8201-05fc51dd1303/objects";
+//        String endpoint = "http://localhost:8181/api/agents/d29d63b3-975c-48fc-8201-05fc51dd1303/objects";
+//        String endpoint = "http://localhost:8181/api/test";
+        String endpoint = "http://localhost:9995/adapter";
 
 //        String createResponse = GatewayAPIClient.post(GatewayAPIClient.createEndpoint(login), payload.toString(), login, pwd);
 
 
+        Writer writer = new StringWriter();
+
+        ClientResource clientResource = new ClientResource(endpoint);
+        clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, pwd);
+
+        Representation responseRepresentation = clientResource.patch(new JsonRepresentation(payload.toString()), MediaType.APPLICATION_JSON);
+
+        if (responseRepresentation != null){
+
+            responseRepresentation.write(writer);
+
+            // your return values:
+            String yourReturnString = writer.toString();
+            int returnCode = clientResource.getStatus().getCode();
+            String returnCodeReason = clientResource.getStatus().getReasonPhrase();
+
+            System.out.println("RESPONSE: "+yourReturnString);
+            System.out.println("core: "+returnCode);
+            System.out.println("reason: "+returnCodeReason);
+
+        }
 
     }
 

@@ -51,3 +51,10 @@ on Neighbourhood manager when thing violates or does not violate the contract
       **oid** is publisher and **eid** is identifier of published event
 
 ## to next version:
+
+* **Fixed major bug [OP:45]**. Agent was unable to send big payload to GTW API.
+    The problem was found in HTTP client implementation used by Agent Service.
+    HTTP client implementation was completely replaced. [OP:45] is fixed now.
+
+* Implemented new GTW API endpoint for updating the content of discovered
+    TDs in Neighbourhood manager and Semantic repository.

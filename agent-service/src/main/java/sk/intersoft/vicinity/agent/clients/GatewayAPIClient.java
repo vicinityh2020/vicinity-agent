@@ -5,14 +5,27 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.restlet.Request;
+import org.restlet.data.ChallengeScheme;
+import org.restlet.data.Header;
+import org.restlet.data.MediaType;
+import org.restlet.engine.header.HeaderConstants;
+import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.representation.Representation;
+import org.restlet.resource.ClientResource;
+import org.restlet.util.Series;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
+
+import java.io.StringWriter;
+import java.io.Writer;
 
 public class GatewayAPIClient {
     final static Logger logger = LoggerFactory.getLogger(GatewayAPIClient.class.getName());
@@ -39,6 +52,10 @@ public class GatewayAPIClient {
 
     public static String updateEndpoint(String agentId) {
         return "/agents/"+agentId+"/objects";
+    }
+
+    public static String updateContentEndpoint(String agentId) {
+        return "/agents/"+agentId+"/objects/update";
     }
 
     public static String deleteEndpoint(String agentId) {
@@ -107,22 +124,51 @@ public class GatewayAPIClient {
             logger.info("password: " + password);
 
 
-            HttpClient client = getClient(login, password);
+//            HttpClient client = getClient(login, password);
+//
+//            HttpGet request = new HttpGet(callEndpoint);
+//
+//            request.addHeader("Content-Type", "application/json; charset=utf-8");
+//
+//            HttpResponse response = client.execute(request);
+//
+//            int status = response.getStatusLine().getStatusCode();
+//            logger.info("GET status: " + status);
+//
+//            String responseContent = EntityUtils.toString(response.getEntity());
+//            logger.info("GTW API response: " + responseContent);
+//
+//
+//            return responseContent;
 
-            HttpGet request = new HttpGet(callEndpoint);
+            logger.info("using restlet client ...");
 
-            request.addHeader("Content-Type", "application/json; charset=utf-8");
+            Writer writer = new StringWriter();
 
-            HttpResponse response = client.execute(request);
+            ClientResource clientResource = new ClientResource(callEndpoint);
+            clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("GET status: " + status);
+            Representation responseRepresentation = clientResource.get();
 
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
+            if (responseRepresentation != null){
 
+                responseRepresentation.write(writer);
 
-            return responseContent;
+                // your return values:
+                String response = writer.toString();
+
+                int returnCode = clientResource.getStatus().getCode();
+                String returnCodeReason = clientResource.getStatus().getReasonPhrase();
+
+                logger.info("RESPONSE: "+response);
+                logger.info("code: "+returnCode);
+                logger.info("reason: "+returnCodeReason);
+
+                return response;
+
+            }
+            else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
+
         }
         catch(Exception e){
             logger.error("", e);
@@ -145,22 +191,52 @@ public class GatewayAPIClient {
             logger.info("password: " + password);
 
 
-            HttpClient client = getClient(login, password);
+//            HttpClient client = getClient(login, password);
+//
+//            HttpDelete request = new HttpDelete(callEndpoint);
+//
+//            request.addHeader("Content-Type", "application/json");
+//
+//            HttpResponse response = client.execute(request);
+//
+//            int status = response.getStatusLine().getStatusCode();
+//            logger.info("DELETE status: " + status);
+//
+//            String responseContent = EntityUtils.toString(response.getEntity());
+//            logger.info("GTW API response: " + responseContent);
+//
+//
+//            return responseContent;
 
-            HttpDelete request = new HttpDelete(callEndpoint);
 
-            request.addHeader("Content-Type", "application/json");
+            logger.info("using restlet client ...");
 
-            HttpResponse response = client.execute(request);
+            Writer writer = new StringWriter();
 
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("DELETE status: " + status);
+            ClientResource clientResource = new ClientResource(callEndpoint);
+            clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
+            Representation responseRepresentation = clientResource.delete();
 
+            if (responseRepresentation != null){
 
-            return responseContent;
+                responseRepresentation.write(writer);
+
+                // your return values:
+                String response = writer.toString();
+
+                int returnCode = clientResource.getStatus().getCode();
+                String returnCodeReason = clientResource.getStatus().getReasonPhrase();
+
+                logger.info("RESPONSE: "+response);
+                logger.info("code: "+returnCode);
+                logger.info("reason: "+returnCodeReason);
+
+                return response;
+
+            }
+            else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
+
         }
         catch(Exception e){
             logger.error("", e);
@@ -187,29 +263,74 @@ public class GatewayAPIClient {
 
 
 
-            HttpClient client = getClient(login, password);
+//            HttpClient client = getClient(login, password);
+//
+//
+//            HttpPost request = new HttpPost(callEndpoint);
+//            RequestConfig requestConfig = RequestConfig.custom()
+//                    .setSocketTimeout(5000)
+//                    .setConnectTimeout(5000)
+//                    .build();
+//            request.setConfig(requestConfig);
+//
+//
+//            request.addHeader("Content-Type", "application/json; charset=utf-8");
+//
+//            if(payload != null){
+//                StringEntity data = new StringEntity(payload, "utf-8");
+//                request.setEntity(data);
+//            }
+//
+//
+//            HttpResponse response = client.execute(request);
+//
+//            int status = response.getStatusLine().getStatusCode();
+//            logger.info("POST status: " + status);
+//
+//            String responseContent = EntityUtils.toString(response.getEntity());
+//            logger.info("GTW API response: " + responseContent);
+//
+//
+//            return responseContent;
 
+            logger.info("using restlet client ...");
 
-            HttpPost request = new HttpPost(callEndpoint);
+            Writer writer = new StringWriter();
 
-            request.addHeader("Content-Type", "application/json; charset=utf-8");
+            ClientResource clientResource = new ClientResource(callEndpoint);
+            clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            if(payload != null){
-                StringEntity data = new StringEntity(payload, "utf-8");
-                request.setEntity(data);
+            Representation payloadContent = null;
+            if(payload != null && !payload.trim().equals("")){
+                payloadContent = new JsonRepresentation(payload);
             }
+            logger.info("posting .. "+payloadContent);
+            Representation responseRepresentation = clientResource.post(payloadContent, MediaType.APPLICATION_JSON);
+            logger.info("post done with: "+responseRepresentation);
 
+            if (responseRepresentation != null){
 
-            HttpResponse response = client.execute(request);
+                logger.info("response exists");
 
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("POST status: " + status);
+                responseRepresentation.write(writer);
 
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
+                // your return values:
+                String response = writer.toString();
 
+                logger.info("response: "+response);
 
-            return responseContent;
+                int returnCode = clientResource.getStatus().getCode();
+                String returnCodeReason = clientResource.getStatus().getReasonPhrase();
+
+                logger.info("RESPONSE: "+response);
+                logger.info("code: "+returnCode);
+                logger.info("reason: "+returnCodeReason);
+
+                return response;
+
+            }
+            else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
+
         }
         catch(Exception e){
             logger.error("", e);
@@ -236,29 +357,81 @@ public class GatewayAPIClient {
 
 
 
-            HttpClient client = getClient(login, password);
+//            HttpClient client = getClient(login, password);
+//
+//
+//            HttpPut request = new HttpPut(callEndpoint);
+//            RequestConfig requestConfig = RequestConfig.custom()
+//                    .setSocketTimeout(5000)
+//                    .setConnectTimeout(5000)
+//                    .build();
+//            request.setConfig(requestConfig);
+//
+//            request.addHeader("Content-Type", "application/json; charset=utf-8");
+//
+//            if(payload != null){
+//                StringEntity data = new StringEntity(payload, "utf-8");
+//                request.setEntity(data);
+//            }
+//
+//
+//            HttpResponse response = client.execute(request);
+//
+//            int status = response.getStatusLine().getStatusCode();
+//            logger.info("PUT status: " + status);
+//
+//            String responseContent = EntityUtils.toString(response.getEntity());
+//            logger.info("GTW API response: " + responseContent);
+//
+//            return responseContent;
 
+            logger.info("using restlet client ...");
 
-            HttpPut request = new HttpPut(callEndpoint);
+            Writer writer = new StringWriter();
 
-            request.addHeader("Content-Type", "application/json; charset=utf-8");
+            ClientResource clientResource = new ClientResource(callEndpoint);
+            clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
-            if(payload != null){
-                StringEntity data = new StringEntity(payload, "utf-8");
-                request.setEntity(data);
+            Representation payloadContent = null;
+            if(payload != null && !payload.trim().equals("")){
+                payloadContent = new JsonRepresentation(payload);
             }
 
+//            String cntType = "application/json; charset=utf-8";
+//            Series<Header> headerValue = new Series<>(Header.class);
+//            Request request = clientResource.getRequest();
+//            headerValue.add("Content-Type", cntType);
+//            request.getAttributes().put(HeaderConstants.ATTRIBUTE_HEADERS, headerValue);            //            request.addHeader("Content-Type", "application/json; charset=utf-8");
+//
+//            logger.info("content-type header set to: "+cntType);
 
-            HttpResponse response = client.execute(request);
+            logger.info("putting .. "+payloadContent);
+            Representation responseRepresentation = clientResource.put(payloadContent, MediaType.APPLICATION_JSON);
+            logger.info("put done with: "+responseRepresentation);
 
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("PUT status: " + status);
+            if (responseRepresentation != null){
 
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
+                logger.info("response exists");
 
+                responseRepresentation.write(writer);
 
-            return responseContent;
+                // your return values:
+                String response = writer.toString();
+
+                logger.info("response: "+response);
+
+                int returnCode = clientResource.getStatus().getCode();
+                String returnCodeReason = clientResource.getStatus().getReasonPhrase();
+
+                logger.info("RESPONSE: "+response);
+                logger.info("code: "+returnCode);
+                logger.info("reason: "+returnCodeReason);
+
+                return response;
+
+            }
+            else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
+
         }
         catch(Exception e){
             logger.error("", e);
@@ -268,105 +441,5 @@ public class GatewayAPIClient {
     }
 
 
-    public static String patch(String path, String payload, String login, String password) throws Exception {
-        try{
-
-
-            String callEndpoint = Configuration.gatewayAPIEndpoint + path;
-
-            logger.info("GTW API PATCH:");
-            logger.info("path: " + path);
-            logger.info("endpoint: " + callEndpoint);
-            logger.info("payload: " + payload);
-            logger.info("credentials: ");
-            logger.info("login: " + login);
-            logger.info("password: " + password);
-            logger.info("headers set to [application/json; charset=utf-8]");
-
-
-
-
-            HttpClient client = getClient(login, password);
-
-
-            HttpPatch request = new HttpPatch(callEndpoint);
-
-
-            request.addHeader("Content-Type", "application/json; charset=utf-8");
-
-            if(payload != null){
-                StringEntity data = new StringEntity(payload, "utf-8");
-                request.setEntity(data);
-            }
-
-
-            HttpResponse response = client.execute(request);
-
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("PATCH status: " + status);
-
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
-
-
-            return responseContent;
-        }
-        catch(Exception e){
-            logger.error("", e);
-            throw e;
-        }
-
-    }
-
-
-    public static String fakepost(String path, String payload, String login, String password) throws Exception {
-        try{
-
-
-            String callEndpoint = path;
-
-            logger.info("GTW API POST:");
-            logger.info("path: " + path);
-            logger.info("endpoint: " + callEndpoint);
-            logger.info("payload: " + payload);
-            logger.info("credentials: ");
-            logger.info("login: " + login);
-            logger.info("password: " + password);
-            logger.info("headers set to [application/json; charset=utf-8]");
-            logger.info("entity encoded as utf-8");
-
-
-
-
-            HttpClient client = getClient(login, password);
-
-
-            HttpPost request = new HttpPost(callEndpoint);
-
-            request.addHeader("Content-Type", "application/json; charset=utf-8");
-
-            if(payload != null){
-                StringEntity data = new StringEntity(payload, "utf-8");
-                request.setEntity(data);
-            }
-
-
-            HttpResponse response = client.execute(request);
-
-            int status = response.getStatusLine().getStatusCode();
-            logger.info("POST status: " + status);
-
-            String responseContent = EntityUtils.toString(response.getEntity());
-            logger.info("GTW API response: " + responseContent);
-
-
-            return responseContent;
-        }
-        catch(Exception e){
-            logger.error("", e);
-            throw e;
-        }
-
-    }
 
 }

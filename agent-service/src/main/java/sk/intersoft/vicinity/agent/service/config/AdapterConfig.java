@@ -204,7 +204,6 @@ public class AdapterConfig {
 
     public static void subscribeEventChannel(ThingDescription thing, String oid, String eventId) throws Exception {
         GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password);
-
     }
 
     public void subscribeEventChannels(){

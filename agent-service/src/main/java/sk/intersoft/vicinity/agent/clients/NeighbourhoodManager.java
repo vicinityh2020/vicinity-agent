@@ -183,7 +183,7 @@ public class NeighbourhoodManager {
     public static String updateContent(JSONObject payload, AgentConfig agent) throws Exception {
         logger.info("update things content payload: \n" + payload.toString(2));
 
-        String updateResponse = GatewayAPIClient.patch(GatewayAPIClient.updateEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        String updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateContentEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
         logger.info("update things content raw response: \n" + updateResponse);
 
         return updateResponse;

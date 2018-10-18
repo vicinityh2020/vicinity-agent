@@ -2,7 +2,6 @@ package sk.intersoft.vicinity.agent.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sk.intersoft.vicinity.agent.db.PersistedThing;
 import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
@@ -49,8 +48,8 @@ public class StartStop {
             logger.info("STARTUP SEQUENCE COMPLETED!");
 
             logger.info("STARTING CONTINUAL SUBSCRIPTION THREAD!");
-            Thread subscription = new Thread(new ContinualSubscription());
-            subscription.start();
+//            Thread subscription = new Thread(new ContinualSubscription());
+//            subscription.start();
 
 
 

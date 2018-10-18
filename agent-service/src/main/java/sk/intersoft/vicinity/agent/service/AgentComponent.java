@@ -16,6 +16,8 @@ public class AgentComponent extends Component {
         s.getContext().getParameters().add("useForwardedForHeader", "true");
         s.getContext().getParameters().add("maxThreads", "1000");
 
+        getClients().add(Protocol.HTTP);
+
         // Attach the application to the default virtual host
         getDefaultHost().attach("/agent", new AgentApplication());
     }
