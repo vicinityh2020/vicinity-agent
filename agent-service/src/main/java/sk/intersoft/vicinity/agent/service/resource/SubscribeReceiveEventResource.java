@@ -34,6 +34,14 @@ public class SubscribeReceiveEventResource extends AgentResource {
             ThingDescription thing = getCallerObject();
             logger.info("CALLER THING: " + thing.toSimpleString());
 
+            AdapterConfig adapter = Configuration.adapters.get(thing.adapterId);
+            logger.info("CALLER THING ADAPTER: " + adapter.toSimpleString());
+
+            if(!adapter.hasEndpoint()) {
+                throw new Exception("Adapter [" + adapter.adapterId + "] does not have endpoint.. unable to subscribe its thing to channels, events can not be received!");
+            }
+
+
             String endpoint = GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eid);
 
             String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
@@ -82,6 +90,9 @@ public class SubscribeReceiveEventResource extends AgentResource {
             logger.info("ADAPTER FOR THING [" + oid + "]: " + thing.toSimpleString());
             logger.info("\n" + adapter.toSimpleString());
 
+            if(!adapter.hasEndpoint()) {
+                throw new Exception("Adapter [" + adapter.adapterId + "] does not have endpoint.. unable to pass the event into adapter!");
+            }
             String endpoint = adapter.endpoint + AdapterEndpoint.getReceiveEventEndpoint(thing.infrastructureId, sourceOid.trim(), eid);
 
             logger.info("PASS EVENT TO ADAPTER ENDPOINT: [" + endpoint + "]");

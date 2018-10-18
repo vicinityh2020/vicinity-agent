@@ -58,3 +58,9 @@ on Neighbourhood manager when thing violates or does not violate the contract
 
 * Implemented new GTW API endpoint for updating the content of discovered
     TDs in Neighbourhood manager and Semantic repository.
+
+* Fixed bug [OP:34] with event subscriptions for adapter with missing endpoints. If adapter
+    misses endpoint, its things can not receive events. So they also can not subscribe to events.
+    Applied for both static and dynamic subscriptions.
+
+* Fixed bug with attempt to pass events to adapters without endpoints.

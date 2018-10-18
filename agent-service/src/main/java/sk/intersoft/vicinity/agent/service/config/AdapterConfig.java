@@ -51,6 +51,10 @@ public class AdapterConfig {
 
     private boolean configurationRunning = false;
 
+    public boolean hasEndpoint(){
+        return (endpoint != null && !endpoint.trim().equals(""));
+    }
+
     public static void removeAdapterThings(String adapterId){
         Set<PersistedThing> things = Persistence.getAdapterThings(adapterId);
         logger.debug("ADAPTER ["+adapterId+"] THINGS TO REMOVE: "+ things.size());
@@ -462,14 +466,21 @@ public class AdapterConfig {
                 }
             }
 
-            if(events.has(SUBSCRIBE_EVENT_CHANNELS_KEY)){
-                JSONArray channelsArray = events.getJSONArray(SUBSCRIBE_EVENT_CHANNELS_KEY);
-                Iterator<Object> it = channelsArray.iterator();
-                while(it.hasNext()){
-                    JSONObject obj = (JSONObject)it.next();
-                    EventChannelSubscription c = EventChannelSubscription.create(obj, config);
-                    config.eventSubscriptions.add(c);
+            logger.debug("REGISTERING SUBSCRIPTIONS FOR ADAPTER "+config.toSimpleString());
+            if(config.hasEndpoint()){
+                if(events.has(SUBSCRIBE_EVENT_CHANNELS_KEY)){
+                    JSONArray channelsArray = events.getJSONArray(SUBSCRIBE_EVENT_CHANNELS_KEY);
+                    Iterator<Object> it = channelsArray.iterator();
+                    while(it.hasNext()){
+                        JSONObject obj = (JSONObject)it.next();
+                        EventChannelSubscription c = EventChannelSubscription.create(obj, config);
+                        config.eventSubscriptions.add(c);
+                    }
                 }
+            }
+            else {
+                logger.debug("NOT REGISTERING SUBSCRIPTIONS FOR ADAPTER ["+config.adapterId+"]: no endpoint = no way how to receive events!");
+
             }
 
         }
@@ -542,7 +553,7 @@ public class AdapterConfig {
     }
 
     public String toSimpleString() {
-        return "[ADAPTER: " + adapterId + " [agent-id: "+agent.agentId+"] [active-disco: "+activeDiscovery+"]]";
+        return "[ADAPTER: " + adapterId + " [agent-id: "+agent.agentId+"] [active-disco: "+activeDiscovery+"] [endpoint: "+endpoint+"]]";
     }
 
 
