@@ -1,8 +1,3 @@
-1. commit and push actual version, when pushing, check push-tags checkbox!
-
-AFTER PUSH:
-2. add tag:
-IDEA: tools/git/tag/create
 
 cmd:
 git tag vx.x.x
@@ -13,5 +8,5 @@ cmd:
 git tag -d vx.x.x
 git push --tags
 
-3 at github, find the release and manually add the vx.x.x jar file
+2 at github, find the release and manually add the vx.x.x jar file
 (so people do not have to download whole stuff)
