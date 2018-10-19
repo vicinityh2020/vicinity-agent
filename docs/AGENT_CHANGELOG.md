@@ -50,8 +50,6 @@ on Neighbourhood manager when thing violates or does not violate the contract
       **infrastructure-id** is receiver,
       **oid** is publisher and **eid** is identifier of published event
 
-## to next version:
-
 * **Fixed the major blocker bug [OP:45]**. Agent was unable to send big payload to GTW API.
     The problem was found in HTTP client implementation used by Agent Service.
     HTTP client implementation was completely replaced. [OP:45] is fixed now.
@@ -73,3 +71,6 @@ on Neighbourhood manager when thing violates or does not violate the contract
     From now on, unused adapters are cleaned for each agent separately, only if
     agent discovery process is successfull, so all required configuration information is
     clearly known.
+
+## to next version:
+
