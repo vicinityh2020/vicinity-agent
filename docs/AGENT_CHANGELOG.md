@@ -64,3 +64,5 @@ on Neighbourhood manager when thing violates or does not violate the contract
     Applied for both static and dynamic subscriptions.
 
 * Fixed bug with attempt to pass events to adapters without endpoints.
+
+* Added agent service run.bat script to be able to run agent on Windows.
