@@ -83,27 +83,6 @@ public class Configuration {
 
     }
 
-    public static void removeUnusedAdapters()  {
-        logger.info("REMOVING UNUSED ADAPTERS");
-        try{
-            Set<String> all = Persistence.getAdapterIds(null);
-            logger.info("ALL KNOWN ADAPTERS: "+all.size());
-            for(String aid : all){
-                AdapterConfig c = Configuration.adapters.get(aid);
-                boolean inConfig = (c != null);
-                logger.info("> "+aid+" .. exists in config: "+inConfig);
-                if(!inConfig){
-                    logger.info("  > permanently removing missing adapter: "+aid);
-                    AdapterConfig.remove(aid);
-                }
-            }
-
-        }
-        catch(Exception e){
-            logger.error("", e);
-        }
-
-    }
 
 
     public static String toString(int indent) {

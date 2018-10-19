@@ -248,7 +248,7 @@ public class AgentConfig {
     }
 
     public void removeUnusedAdapters()  {
-        logger.info("REMOVING UNUSED ADAPTERS FIR AGENT ["+agentId+"]");
+        logger.info("REMOVING UNUSED ADAPTERS FOR AGENT ["+agentId+"]");
         try{
             Set<String> all = Persistence.getAdapterIds(agentId);
             logger.info("ALL KNOWN ADAPTERS FOR AGENT ["+agentId+"]: "+all.size());

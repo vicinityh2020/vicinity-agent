@@ -5,11 +5,15 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="bad previous commit! this one instead: for communication with gateway, restlet client is now used, fixed problems with post/put big payloads">
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/bin/agent.sh" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/bin/agent.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/AGENT_CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/AGENT_CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,51 +42,53 @@
     <session id="-35372169">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
-          <entry key="project.open.time.0" value="17" />
+          <entry key="project.closed" value="27" />
+          <entry key="project.open.time.0" value="18" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="bat" value="1" />
           <entry key="class" value="1" />
-          <entry key="java" value="120" />
-          <entry key="json" value="31" />
-          <entry key="md" value="18" />
-          <entry key="sh" value="10" />
+          <entry key="java" value="128" />
+          <entry key="json" value="32" />
+          <entry key="md" value="19" />
+          <entry key="sh" value="12" />
           <entry key="txt" value="2" />
-          <entry key="xml" value="16" />
+          <entry key="xml" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="120" />
-          <entry key="JSON" value="31" />
-          <entry key="PLAIN_TEXT" value="30" />
-          <entry key="XML" value="16" />
+          <entry key="JAVA" value="128" />
+          <entry key="JSON" value="32" />
+          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="XML" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="bat" value="60" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="12546" />
-          <entry key="json" value="375" />
-          <entry key="md" value="3877" />
-          <entry key="sh" value="71" />
-          <entry key="txt" value="2002" />
-          <entry key="xml" value="72" />
+          <entry key="java" value="12822" />
+          <entry key="json" value="376" />
+          <entry key="md" value="4402" />
+          <entry key="sh" value="75" />
+          <entry key="txt" value="2159" />
+          <entry key="xml" value="75" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12546" />
-          <entry key="JSON" value="375" />
-          <entry key="PLAIN_TEXT" value="5961" />
-          <entry key="XML" value="72" />
+          <entry key="JAVA" value="12822" />
+          <entry key="JSON" value="376" />
+          <entry key="PLAIN_TEXT" value="6707" />
+          <entry key="XML" value="75" />
         </counts>
       </usages-collector>
     </session>
@@ -93,10 +99,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="65" column="44" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="252" column="50" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/Persistence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+            <state relative-caret-position="452">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#1025#1048#0" expanded="true" />
               </folding>
@@ -105,77 +138,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1804">
-              <caret line="93" selection-start-line="92" selection-end-line="93" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/AgentResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+            <state relative-caret-position="257">
+              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding>
-                <element signature="e#2199#2200#0" expanded="true" />
-                <element signature="e#2269#2270#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java">
+        <entry file="file://$PROJECT_DIR$/agent-service/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="1826">
+              <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectPropertyResource.java">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/ContinualSubscription.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="161" selection-start-line="161" selection-end-line="214" />
+            <state relative-caret-position="374">
+              <caret line="24" column="56" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="65" column="71" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="71" />
+            <state relative-caret-position="462">
+              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ObjectActionResource.java">
+        <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="85" column="51" selection-start-line="85" selection-start-column="51" selection-end-line="85" selection-end-column="51" />
+            <state relative-caret-position="446">
+              <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="74" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -183,8 +188,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+            <state relative-caret-position="41">
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -200,9 +205,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>execu</find>
-      <find>insert in</find>
-      <find>new thingdescription(</find>
       <find>insert</find>
       <find>new Persistedthing</find>
       <find>getadaptero</find>
@@ -229,7 +231,10 @@
       <find>gtwapi</find>
       <find>get(</find>
       <find>gatewayapi</find>
+      <find>adapterendpoint.get</find>
+      <find>pass event to</find>
       <find>subscri</find>
+      <find>fir</find>
     </findStrings>
     <replaceStrings>
       <replace>\&quot;</replace>
@@ -239,6 +244,7 @@
       <dir>$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent</dir>
       <dir>$PROJECT_DIR$/agent-service</dir>
       <dir>$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource</dir>
+      <dir>$PROJECT_DIR$/agent-service/src/main/java</dir>
     </dirStrings>
   </component>
   <component name="FindManager">
@@ -255,10 +261,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utils/pom.xml" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/test/AnotherTestClass.java" />
         <option value="$PROJECT_DIR$/agent-service/bin/tags-howto.txt" />
-        <option value="$PROJECT_DIR$/agent-service/bin/agent.sh" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedThingx.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedThing.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/PersistedAgent.java" />
@@ -271,7 +275,6 @@
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-2.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/Persistence.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/docs/AGENT.md" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/nikolaj-case/td.json" />
@@ -279,15 +282,12 @@
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-agora.sh" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/EventListenerResource.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
         <option value="$PROJECT_DIR$/docs/AGENT_API.md" />
         <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java" />
-        <option value="$PROJECT_DIR$/agent-service/bin/build/agent.sh" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/thing/ThingDescription.java" />
         <option value="$PROJECT_DIR$/utils/src/main/java/sk/intersoft/vicinity/agent/utils/DateTimeUtil.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
         <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/WP6DIffGenerator.java" />
         <option value="$PROJECT_DIR$/agent-service/src/test/resources/nikolaj/data.json" />
         <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestPOST.java" />
@@ -298,14 +298,20 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/OpenPublishEventResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/TestPUT.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
-        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" />
-        <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
+        <option value="$PROJECT_DIR$/agent-service/bin/agent.bat" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java" />
+        <option value="$PROJECT_DIR$/agent-service/bin/agent.sh" />
+        <option value="$PROJECT_DIR$/agent-service/bin/build/agent.sh" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
+        <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
+        <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json" />
         <option value="$PROJECT_DIR$/docs/AGENT_CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -733,8 +739,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -774,10 +780,10 @@
       <recent name="sk.intersoft.vicinity.agent.db" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/agent-service/bin" />
       <recent name="$PROJECT_DIR$/testing-adapter/src/test/resources/objects" />
       <recent name="$PROJECT_DIR$/testing-adapter/bin" />
       <recent name="$PROJECT_DIR$/agent-service/bin/build/config/agents" />
-      <recent name="$PROJECT_DIR$/agent-service/bin" />
       <recent name="$PROJECT_DIR$/agent-service/src/test/resources/config/agents" />
     </key>
   </component>
@@ -1061,27 +1067,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
-    </task>
-    <task id="LOCAL-00238" summary="fixed empty responses in NM agent config">
-      <created>1531313312284</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1531313312284</updated>
-    </task>
-    <task id="LOCAL-00239" summary="added recovery for active adapters .. after agent restart, the last remembered configuration for active adapters is applied, so they do not have to push discovery each time agent is down">
-      <created>1531321517542</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1531321517542</updated>
-    </task>
-    <task id="LOCAL-00240" summary="updated build update with active adapter recovery">
-      <created>1531321562061</created>
-      <option name="number" value="00240" />
-      <option name="presentableId" value="LOCAL-00240" />
-      <option name="project" value="LOCAL" />
-      <updated>1531321562061</updated>
     </task>
     <task id="LOCAL-00241" summary="just backup, no way, how to find out the full IP address of client, who requested resource .. blind street :/">
       <created>1531400715962</created>
@@ -1405,14 +1390,35 @@
       <option name="project" value="LOCAL" />
       <updated>1539878464654</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="fixed bugs with event subscriptions and event passing for adapters without endpoints">
+      <created>1539882452521</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1539882452521</updated>
+    </task>
+    <task id="LOCAL-00288" summary="added agent service run.bat script to run agent on windows">
+      <created>1539935039874</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1539935039874</updated>
+    </task>
+    <task id="LOCAL-00289" summary="updated docs">
+      <created>1539935080305</created>
+      <option name="number" value="00289" />
+      <option name="presentableId" value="LOCAL-00289" />
+      <option name="project" value="LOCAL" />
+      <updated>1539935080305</updated>
+    </task>
+    <option name="localTasksCounter" value="290" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26256683" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26524064" />
       <window_info id="Structure" order="1" weight="0.24973261" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1441,6 +1447,7 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sh" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.json" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1480,8 +1487,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="actions prepared for testing" />
-    <MESSAGE value="fixed payload entity encoding .. no more ? instead of greek characters!" />
     <MESSAGE value="fixed small bug .. not trying to parse non existing recovery data" />
     <MESSAGE value="enhanced static configuration to be thread safe" />
     <MESSAGE value="moved to new IDE, added versioning support" />
@@ -1500,60 +1505,20 @@
     <MESSAGE value="updated number of restlet parallel connections .. added nikolaj's case to test his issue" />
     <MESSAGE value="preparing for agora demo" />
     <MESSAGE value="updated receiving events to pass also the sourceOID into adapter" />
-    <MESSAGE value="updated docs" />
     <MESSAGE value="added wp6 agent diff performance test skeleton" />
     <MESSAGE value="just small changes in logging" />
     <MESSAGE value="backup before refactoring the client part .. drop apache http client, deploy restlet http client" />
     <MESSAGE value="bad previous commit! this one instead: for communication with gateway, restlet client is now used, fixed problems with post/put big payloads" />
-    <option name="LAST_COMMIT_MESSAGE" value="bad previous commit! this one instead: for communication with gateway, restlet client is now used, fixed problems with post/put big payloads" />
+    <MESSAGE value="fixed bugs with event subscriptions and event passing for adapters without endpoints" />
+    <MESSAGE value="added agent service run.bat script to run agent on windows" />
+    <MESSAGE value="updated docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated docs" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/EventListenerResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5170">
-          <caret line="235" selection-start-line="235" selection-end-line="235" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/AGENT.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12606">
-          <caret line="573" selection-start-line="566" selection-end-line="573" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="23" column="93" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/tags-howto.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="14" selection-start-line="7" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/AGENT_API.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="304" selection-start-line="304" selection-end-line="304" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -1565,17 +1530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-          <folding>
-            <element signature="e#10065#10066#0" expanded="true" />
-            <element signature="e#10148#10149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1611,13 +1565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7720">
           <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4290">
-          <caret line="220" column="78" selection-start-line="220" selection-start-column="78" selection-end-line="220" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -1704,13 +1651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/nikolaj-case/nikolaj.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1766,23 +1706,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/TryPUT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/TryPUT.java" />
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1803,13 +1727,6 @@
             <element signature="e#2649#2650#0" expanded="true" />
             <element signature="e#2690#2691#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
@@ -1872,45 +1789,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="698" column="29" selection-start-line="698" selection-start-column="29" selection-end-line="698" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11484">
+          <caret line="554" column="18" selection-start-line="554" selection-start-column="18" selection-end-line="554" selection-end-column="18" />
+          <folding>
+            <element signature="e#2199#2200#0" expanded="true" />
+            <element signature="e#2271#2272#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/agent.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/AgentComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/agent.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/ContinualSubscription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="252" column="50" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/db/Persistence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+        <state relative-caret-position="452">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#1025#1048#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
+    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+        <state relative-caret-position="257">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
-            <element signature="e#2199#2200#0" expanded="true" />
-            <element signature="e#2269#2270#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java">
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1804">
-          <caret line="93" selection-start-line="92" selection-end-line="93" />
+        <state relative-caret-position="41">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="65" column="71" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="71" />
+        <state relative-caret-position="446">
+          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="74" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
         </state>
       </provider>
     </entry>

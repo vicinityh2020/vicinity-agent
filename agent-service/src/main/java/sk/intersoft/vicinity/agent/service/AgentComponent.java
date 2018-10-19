@@ -17,6 +17,7 @@ public class AgentComponent extends Component {
         s.getContext().getParameters().add("maxThreads", "1000");
 
         getClients().add(Protocol.HTTP);
+        getClients().add(Protocol.HTTPS);
 
         // Attach the application to the default virtual host
         getDefaultHost().attach("/agent", new AgentApplication());

@@ -18,7 +18,7 @@ public class StartStop {
 
 
     public static void start() {
-        logger.info("LAUNCHING START SEQUENCE!");
+        logger.info("LAUNCHING START SEQUENCE 0.6.3.a !");
         try{
             // START SEQUENCE:
             // 0. init persistence for case that it does not exist yet
@@ -36,8 +36,12 @@ public class StartStop {
             // 2. configure agents config by config, getting last configuration from NM
             Configuration.configureAgents();
 
-            // 3. remove unused adapters with content
-            Configuration.removeUnusedAdapters();
+            // 3. don't remove unused adapters, because u can not know,
+            // if agent configuration failed because parsing exceptions ..
+            // so u do not know, if adapter is still valid or not
+            // to know it is valid, agent must be discovered ..
+            // tricky
+//            Configuration.removeUnusedAdapters();
 
 
             // 4. list status of processed components
@@ -48,8 +52,8 @@ public class StartStop {
             logger.info("STARTUP SEQUENCE COMPLETED!");
 
             logger.info("STARTING CONTINUAL SUBSCRIPTION THREAD!");
-//            Thread subscription = new Thread(new ContinualSubscription());
-//            subscription.start();
+            Thread subscription = new Thread(new ContinualSubscription());
+            subscription.start();
 
 
 

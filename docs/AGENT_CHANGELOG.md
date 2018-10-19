@@ -66,3 +66,10 @@ on Neighbourhood manager when thing violates or does not violate the contract
 * Fixed bug with attempt to pass events to adapters without endpoints.
 
 * Added agent service run.bat script to be able to run agent on Windows.
+
+* Fixed very stupid bug [OP:86]. Agent tried to cleanup all adapters, which are not used in
+    configuration anymore. However, if discovery fails on level of agent (e.g. json parsing error),
+    agent service is no more able to decide, if adapter should be cleaned or not.
+    From now on, unused adapters are cleaned for each agent separately, only if
+    agent discovery process is successfull, so all required configuration information is
+    clearly known.
