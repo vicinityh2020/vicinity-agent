@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVER_PORT=9995
-JAR=testing-adapter.jar
+JAR=example-adapter-0.6.3.jar
 
 ADAPTER_ID=adapter-1
 

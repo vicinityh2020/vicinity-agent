@@ -1,0 +1,37 @@
+{
+  "adapter-id": "example-adapter",
+  "thing-descriptions": [
+
+    {
+      "oid": "example-thing",
+      "name": "test to play",
+      "type": "adapters:Thermometer",
+      "properties": [
+        {
+          "pid": "example-property",
+          "monitors": "adapters:AmbientTemperature",
+          "read_link": {
+            "href": "/objects/{oid}/properties/{pid}",
+            "output":
+            {
+              "type": "object",
+              "field": [
+                {
+                  "name": "test-data",
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "actions": [],
+      "events": []
+    }
+
+  ]
+}
+
+

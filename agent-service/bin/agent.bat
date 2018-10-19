@@ -20,6 +20,6 @@ set PERSISTENCE_FILE=config/db/thing.db
 # ------------------------------
 
 
-java -Dservice.config=%CONFIG_FILE% -Dagents.config=%AGENT_CONFIG_FOLDER% -Dserver.port=%SERVER_PORT% -Dpersistence.file=%PERSISTENCE_FILE% -Dlogs.folder=%LOGS_FOLDER% -jar $JAR  >> %LOGS_FOLDER%/agent.log
+java -Dservice.config=%CONFIG_FILE% -Dagents.config=%AGENT_CONFIG_FOLDER% -Dserver.port=%SERVER_PORT% -Dpersistence.file=%PERSISTENCE_FILE% -Dlogs.folder=%LOGS_FOLDER% -jar %JAR%  >> %LOGS_FOLDER%/agent.log
 
 

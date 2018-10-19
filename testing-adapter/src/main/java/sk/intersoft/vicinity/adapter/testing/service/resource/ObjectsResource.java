@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class ObjectsResource extends ServerResource {
 
     public static String file2string(String path) throws Exception {
+
         try{
             return new Scanner(new File(path)).useDelimiter("\\Z").next();
         }
