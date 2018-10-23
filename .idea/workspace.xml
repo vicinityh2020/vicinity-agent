@@ -73,7 +73,7 @@
           <entry key="java" value="12823" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
-          <entry key="rst" value="2068" />
+          <entry key="rst" value="2083" />
           <entry key="sh" value="540" />
           <entry key="txt" value="2655" />
           <entry key="xml" value="83" />
@@ -83,7 +83,7 @@
         <counts>
           <entry key="JAVA" value="12823" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="9771" />
+          <entry key="PLAIN_TEXT" value="9786" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -115,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+            <state relative-caret-position="480">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
             </state>
           </provider>
         </entry>
@@ -908,20 +908,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00252" summary="testing push tag to github">
-      <created>1533123855235</created>
-      <option name="number" value="00252" />
-      <option name="presentableId" value="LOCAL-00252" />
-      <option name="project" value="LOCAL" />
-      <updated>1533123855235</updated>
-    </task>
-    <task id="LOCAL-00253" summary="testing push tag to github">
-      <created>1533123944412</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1533123944412</updated>
-    </task>
     <task id="LOCAL-00254" summary="testing push tag to github">
       <created>1533125326448</created>
       <option name="number" value="00254" />
@@ -1251,11 +1237,26 @@
       <option name="project" value="LOCAL" />
       <updated>1540298694047</updated>
     </task>
-    <option name="localTasksCounter" value="301" />
+    <task id="LOCAL-00301" summary="updated getting started docs">
+      <created>1540300129650</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1540300129651</updated>
+    </task>
+    <task id="LOCAL-00302" summary="updated getting started docs">
+      <created>1540300757346</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1540300757346</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
       <window_info id="Structure" order="1" weight="0.24973261" />
@@ -1708,8 +1709,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+        <state relative-caret-position="480">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
         </state>
       </provider>
     </entry>
