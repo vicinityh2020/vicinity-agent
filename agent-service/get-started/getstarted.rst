@@ -140,9 +140,9 @@ online and available via Neighbourhood Manager.
 
 Lets do this.
 
-1. **Run VICINITY Gateway API** (see above)
+**1. Run VICINITY Gateway API** (see above)
 
-2. **Run example Adapter**
+**2. Run example Adapter**
 
 ::
     cd adapter-build-x.y.z
@@ -160,7 +160,7 @@ Your Adapter is now running. In console, you should see:
 
 
 
-3. Run Agent Service
+**3. Run Agent Service**
 
 
 -----------------------------------------------
