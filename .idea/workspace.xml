@@ -73,7 +73,7 @@
           <entry key="java" value="12823" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
-          <entry key="rst" value="2245" />
+          <entry key="rst" value="2257" />
           <entry key="sh" value="540" />
           <entry key="txt" value="2655" />
           <entry key="xml" value="83" />
@@ -83,7 +83,7 @@
         <counts>
           <entry key="JAVA" value="12823" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="9948" />
+          <entry key="PLAIN_TEXT" value="9960" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -115,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+            <state relative-caret-position="268">
+              <caret line="135" column="1" selection-start-line="135" selection-start-column="1" selection-end-line="135" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -908,20 +908,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00256" summary="revert of testing things">
-      <created>1533125876531</created>
-      <option name="number" value="00256" />
-      <option name="presentableId" value="LOCAL-00256" />
-      <option name="project" value="LOCAL" />
-      <updated>1533125876531</updated>
-    </task>
-    <task id="LOCAL-00257" summary="added persistence of agent credentials, persistent mapping things to also agents, added permanent removal of adapters that are not used in any agent config">
-      <created>1533216729574</created>
-      <option name="number" value="00257" />
-      <option name="presentableId" value="LOCAL-00257" />
-      <option name="project" value="LOCAL" />
-      <updated>1533216729575</updated>
-    </task>
     <task id="LOCAL-00258" summary="u">
       <created>1533217214290</created>
       <option name="number" value="00258" />
@@ -1251,7 +1237,21 @@
       <option name="project" value="LOCAL" />
       <updated>1540301000425</updated>
     </task>
-    <option name="localTasksCounter" value="305" />
+    <task id="LOCAL-00305" summary="updated getting started docs">
+      <created>1540301073449</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1540301073449</updated>
+    </task>
+    <task id="LOCAL-00306" summary="updated getting started docs">
+      <created>1540301158512</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1540301158512</updated>
+    </task>
+    <option name="localTasksCounter" value="307" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1709,8 +1709,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+        <state relative-caret-position="268">
+          <caret line="135" column="1" selection-start-line="135" selection-start-column="1" selection-end-line="135" selection-end-column="1" />
         </state>
       </provider>
     </entry>

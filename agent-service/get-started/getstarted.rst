@@ -129,11 +129,11 @@ will go as follows:
 
 **VIKTOR: NEPOZNAM MARKUP PRE NUMBERING: START**
 
-1. Agent Service will run the startup sequence, which includes discovery of objects exposed by adapters attached to Agent Service.
+* Agent Service will run the startup sequence, which includes discovery of objects exposed by adapters attached to Agent Service.
 
-2. New things will be registered into VICINITY, existing will be updated, missing deleted.
+* New things will be registered into VICINITY, existing will be updated, missing deleted.
 
-3. Agent Service ends with actual configuration on VICINITY Node, all things are discovered,
+* Agent Service ends with actual configuration on VICINITY Node, all things are discovered,
 online and available via Neighbourhood Manager.
 
 **VIKTOR: NEPOZNAM MARKUP PRE NUMBERING: END**
