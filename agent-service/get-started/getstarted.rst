@@ -131,6 +131,7 @@ Fill in correct values in:
         "password": "agent password goes here"
     }
 
+Everything is now prepared for the first run.
 
 
 -----------------------------------------------
