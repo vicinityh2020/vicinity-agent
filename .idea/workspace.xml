@@ -73,7 +73,7 @@
           <entry key="java" value="12823" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
-          <entry key="rst" value="2724" />
+          <entry key="rst" value="4255" />
           <entry key="sh" value="540" />
           <entry key="txt" value="2655" />
           <entry key="xml" value="83" />
@@ -83,7 +83,7 @@
         <counts>
           <entry key="JAVA" value="12823" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="10427" />
+          <entry key="PLAIN_TEXT" value="11958" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -116,7 +116,7 @@
         <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="524">
-              <caret line="219" column="2" selection-start-line="219" selection-start-column="2" selection-end-line="219" selection-end-column="2" />
+              <caret line="291" column="87" selection-start-line="291" selection-start-column="87" selection-end-line="291" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -908,20 +908,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00260" summary="prepared separate service thread .. now doing only continual event subscription">
-      <created>1534490006429</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1534490006429</updated>
-    </task>
-    <task id="LOCAL-00261" summary="fixed management of thing CRUD in case it is updated (violations) or unchanged (update only content).. fixes for dev and prod environment">
-      <created>1534859282069</created>
-      <option name="number" value="00261" />
-      <option name="presentableId" value="LOCAL-00261" />
-      <option name="project" value="LOCAL" />
-      <updated>1534859282069</updated>
-    </task>
     <task id="LOCAL-00262" summary="prerelease of version for testing">
       <created>1534861983660</created>
       <option name="number" value="00262" />
@@ -1251,7 +1237,21 @@
       <option name="project" value="LOCAL" />
       <updated>1540301355572</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="updated getting started docs">
+      <created>1540302119058</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1540302119058</updated>
+    </task>
+    <task id="LOCAL-00310" summary="updated getting started docs">
+      <created>1540302164818</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1540302164818</updated>
+    </task>
+    <option name="localTasksCounter" value="311" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1710,7 +1710,7 @@
     <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
-          <caret line="219" column="2" selection-start-line="219" selection-start-column="2" selection-end-line="219" selection-end-column="2" />
+          <caret line="291" column="87" selection-start-line="291" selection-start-column="87" selection-end-line="291" selection-end-column="87" />
         </state>
       </provider>
     </entry>

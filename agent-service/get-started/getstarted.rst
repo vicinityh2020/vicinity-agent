@@ -119,7 +119,7 @@ Everything is now prepared for the first run.
 
 
 -----------------------------------------------
-Register your device
+Register your things
 -----------------------------------------------
 
 In the first run of complete VICINITY Node instalation, the things exposed by
@@ -187,7 +187,7 @@ You can check your actual Agent Service configuration at endpoint
 
     GET http://localhost:9997/agent/configuration
 
-You can check it in your browser. You should see
+You can check it in your browser. You should see similar content
 
 ::
 
@@ -219,15 +219,74 @@ You can check it in your browser. You should see
       }],
   ...
 
+If you see configuration, discovery process was successfull and your example
+things were registered. Each thing obtained unique VICINITY **oid**. This is
+unique persistent identifier of your thing. Any other things in VICINITY can
+interact with other things using their VICINITY **oid**.
+
+Following the configuration above, our example things are mapped as follows:
+
+**example-thing-1**
+
+::
+
+    infrastructure-id: example-thing-1
+    oid: f9d16d9e-02ec-40bc-ad38-4b814d62ea33
+
+
+**example-thing-2**
+
+::
+
+    infrastructure-id: example-thing-2
+    oid: 10c67501-9536-4b58-937a-804df9bdcde6
+
+If you will run this step, you will receive unique specific **oid**s for your things.
+
+Now we are ready to interact with our example things.
+
 
 -----------------------------------------------
-Register your device
+Read data from your example thing
 -----------------------------------------------
 
-.. todo:: Add registration of device without VICINITY Agent
+When your things were successfully registered, you need to enable them
+in Neighbourhood Manager user interface. It is possible to interact only
+with enabled things.
 
------------------------------------------------
-Read data from your device
------------------------------------------------
+To simulate interaction between thing behind the adapter and another VICINITY thing,
+we will use following Agent Service endpoint
 
-.. todo:: Add VICINITY Agent installation
+
+::
+
+    GET http://localhost:9997/agent/remote/objects/f9d16d9e-02ec-40bc-ad38-4b814d62ea33/properties/example-property
+    headers:
+    adapter-id=example-adapter
+    infrastructure-id=example-thing-2
+
+This call means, that thing inside **example-adapter** with its internal identifier **example-thing-2** wants
+to read property of remote thing with VICINITY identifier **f9d16d9e-02ec-40bc-ad38-4b814d62ea33**.
+
+Use Postman to perform this call. The response to this call will look as follows
+
+
+::
+
+    {
+        "error": false,
+        "statusCode": 200,
+        "statusCodeReason": "OK",
+        "message": [
+            {
+                "data": {
+                    "echo": "get property",
+                    "pid": "example-property",
+                    "oid": "example-thing-1"
+                },
+                "status": "success"
+            }
+        ]
+    }
+
+Now you are officially integrated into VICINITY and you can interact with known things.
