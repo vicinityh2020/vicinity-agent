@@ -80,7 +80,7 @@ file
 
 ::
 
-adapter-build-x.y.z/objects/example-objects.json
+    adapter-build-x.y.z/objects/example-objects.json
 
 
 
