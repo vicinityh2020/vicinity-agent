@@ -124,12 +124,13 @@ Update Agent Service credentials in configuration file
 
 Fill in correct values in:
 
-```
-"credentials": {
-    "agent-id": "agent id goes here",
-    "password": "agent password goes here"
-}
-```
+::
+
+    "credentials": {
+        "agent-id": "agent id goes here",
+        "password": "agent password goes here"
+    }
+
 
 
 -----------------------------------------------
