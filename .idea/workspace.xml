@@ -5,33 +5,13 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases">
-      <change afterPath="$PROJECT_DIR$/agent-service/agent-skeleton/agent.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/agent-skeleton/agent.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/agent-skeleton/config/agents/example-agent.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/agent-skeleton/config/service-config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/bin/agent-ids.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/bin/make-agent-build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent-service/build/agent-build-0.6.3.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing-adapter/bin/make-adapter-build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3.zip" afterDir="false" />
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated docs">
+      <change afterPath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/bin/agent.bat" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/bin/agent.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/bin/build4deployment.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/bin/make-build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/build/agent-service-full-0.6.0.a.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/build/agent-skeleton.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/build/agent.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/bin/adapter-2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/bin/adapter-agora.sh" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/bin/adapter-agora.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/bin/adapter-greek-case.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/bin/event-generator.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/build/agent-build-0.6.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/build/agent-build-0.6.3.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,12 +40,12 @@
     <session id="-35372169">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="27" />
-          <entry key="project.open.time.0" value="18" />
+          <entry key="project.closed" value="29" />
+          <entry key="project.open.time.0" value="20" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,10 +53,11 @@
           <entry key="bat" value="5" />
           <entry key="class" value="1" />
           <entry key="java" value="129" />
-          <entry key="json" value="42" />
-          <entry key="md" value="19" />
-          <entry key="sh" value="23" />
-          <entry key="txt" value="5" />
+          <entry key="json" value="47" />
+          <entry key="md" value="20" />
+          <entry key="rst" value="1" />
+          <entry key="sh" value="26" />
+          <entry key="txt" value="6" />
           <entry key="xml" value="23" />
         </counts>
       </usages-collector>
@@ -84,8 +65,8 @@
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="129" />
-          <entry key="JSON" value="42" />
-          <entry key="PLAIN_TEXT" value="52" />
+          <entry key="JSON" value="47" />
+          <entry key="PLAIN_TEXT" value="58" />
           <entry key="XML" value="23" />
         </counts>
       </usages-collector>
@@ -94,18 +75,19 @@
           <entry key="bat" value="92" />
           <entry key="dummy" value="11" />
           <entry key="java" value="12823" />
-          <entry key="json" value="533" />
-          <entry key="md" value="4402" />
-          <entry key="sh" value="538" />
-          <entry key="txt" value="2627" />
+          <entry key="json" value="580" />
+          <entry key="md" value="4405" />
+          <entry key="rst" value="514" />
+          <entry key="sh" value="540" />
+          <entry key="txt" value="2639" />
           <entry key="xml" value="83" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="12823" />
-          <entry key="JSON" value="533" />
-          <entry key="PLAIN_TEXT" value="7670" />
+          <entry key="JSON" value="580" />
+          <entry key="PLAIN_TEXT" value="8201" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -117,19 +99,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/make-agent-build.sh">
+        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="27" column="18" selection-start-line="24" selection-end-line="27" selection-end-column="18" />
+            <state relative-caret-position="176">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/bin/make-adapter-build.sh">
+        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            <state relative-caret-position="528">
+              <caret line="24" selection-start-line="13" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -137,44 +128,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent-service/bin/agent-ids.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="36" selection-start-line="1" selection-end-line="1" selection-end-column="36" />
+            <state relative-caret-position="44">
+              <caret line="2" column="36" selection-start-line="2" selection-end-line="2" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.sh">
+        <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/testing-adapter/bin/adapter-agora.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="553">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
             </state>
           </provider>
         </entry>
@@ -182,8 +146,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="161" selection-end-line="219" />
+            <state relative-caret-position="1910">
+              <caret line="213" selection-start-line="161" selection-end-line="213" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3/objects/example-objects.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="34" column="29" selection-end-line="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/append/config-hiits.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -191,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+            <state relative-caret-position="1430">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
         </entry>
@@ -217,8 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>insert</find>
-      <find>new Persistedthing</find>
       <find>getadaptero</find>
       <find>recovery</find>
       <find>clear</find>
@@ -247,10 +227,13 @@
       <find>pass event to</find>
       <find>subscri</find>
       <find>fir</find>
+      <find>/objects/{oid}/property/{pid}</find>
+      <find>predica</find>
     </findStrings>
     <replaceStrings>
       <replace>\&quot;</replace>
       <replace>System.out.println</replace>
+      <replace>/objects/{oid}/properties/{pid}</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent</dir>
@@ -273,9 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/AGENT.md" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/nikolaj-case/td.json" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/TestingAdapterApplication.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/EventListenerResource.java" />
         <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
         <option value="$PROJECT_DIR$/docs/AGENT_API.md" />
@@ -293,7 +273,6 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/OpenPublishEventResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/TestPUT.java" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/AdapterEndpoint.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/SubscribeReceiveEventResource.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AdapterConfig.java" />
@@ -301,9 +280,6 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/AgentConfig.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/Configuration.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/StartStop.java" />
-        <option value="$PROJECT_DIR$/docs/AGENT_CHANGELOG.md" />
-        <option value="$PROJECT_DIR$/agent-service/bin/build/agent.sh" />
-        <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/agent.sh" />
         <option value="$PROJECT_DIR$/agent-service/bin/tags-howto.txt" />
         <option value="$PROJECT_DIR$/agent-service/bin/agent-skeleton/agent.sh" />
@@ -319,11 +295,18 @@
         <option value="$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.bat" />
         <option value="$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.sh" />
         <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java" />
-        <option value="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" />
         <option value="$PROJECT_DIR$/agent-service/bin/make-agent-build.sh" />
         <option value="$PROJECT_DIR$/testing-adapter/bin/make-adapter-build.sh" />
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh" />
         <option value="$PROJECT_DIR$/testing-adapter/bin/adapter-agora.sh" />
+        <option value="$PROJECT_DIR$/docs/AGENT_CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/agent-service/bin/build/agent.sh" />
+        <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-hiits.json" />
+        <option value="$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json" />
+        <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" />
+        <option value="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3/objects/example-objects.json" />
+        <option value="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" />
+        <option value="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" />
       </list>
     </option>
   </component>
@@ -372,6 +355,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -388,233 +373,7 @@
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
               <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
               <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="agents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="agents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="clients" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="thing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="nikolaj" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="objects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="schema" type="462c0819:PsiDirectoryNode" />
+              <item name="get-started" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
@@ -660,6 +419,21 @@
               <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
               <item name="testing-adapter" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="testing-adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter-build-0.6.3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="testing-adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter-build-0.6.3" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
@@ -781,8 +555,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -807,12 +579,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/testing-adapter/adapter-skeleton" />
-      <recent name="$PROJECT_DIR$/agent-service/bin/agent-skeleton" />
-      <recent name="$PROJECT_DIR$/agent-service/bin" />
-      <recent name="$PROJECT_DIR$/testing-adapter/src/test/resources/objects" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/agent-service/bin/build/config/agents" />
+      <recent name="$PROJECT_DIR$/agent-service/bin/build/config/append" />
+      <recent name="$PROJECT_DIR$/agent-service" />
       <recent name="$PROJECT_DIR$/testing-adapter/bin" />
+      <recent name="$PROJECT_DIR$/agent-service/bin/build/config/backup" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sk.intersoft.vicinity.agent" />
@@ -821,12 +593,12 @@
       <recent name="sk.intersoft.vicinity.adapter.testing.service.resource" />
       <recent name="sk.intersoft.vicinity.agent.db" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/agent-service" />
-      <recent name="$PROJECT_DIR$/testing-adapter/bin" />
-      <recent name="$PROJECT_DIR$/agent-service/bin/build/config/backup" />
-      <recent name="$PROJECT_DIR$/agent-service/bin/build/config/agents" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/agent-service/bin/build/config/append" />
+      <recent name="$PROJECT_DIR$/testing-adapter/adapter-skeleton" />
+      <recent name="$PROJECT_DIR$/agent-service/bin/agent-skeleton" />
+      <recent name="$PROJECT_DIR$/agent-service/bin" />
+      <recent name="$PROJECT_DIR$/testing-adapter/src/test/resources/objects" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1109,20 +881,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
-    </task>
-    <task id="LOCAL-00244" summary="updated docs">
-      <created>1531919077313</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1531919077313</updated>
-    </task>
-    <task id="LOCAL-00245" summary="updated docs">
-      <created>1531919183763</created>
-      <option name="number" value="00245" />
-      <option name="presentableId" value="LOCAL-00245" />
-      <option name="project" value="LOCAL" />
-      <updated>1531919183763</updated>
     </task>
     <task id="LOCAL-00246" summary="updated docs">
       <created>1531919293957</created>
@@ -1453,14 +1211,27 @@
       <option name="project" value="LOCAL" />
       <updated>1539953521355</updated>
     </task>
-    <option name="localTasksCounter" value="293" />
+    <task id="LOCAL-00293" summary="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases">
+      <created>1539959072036</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1539959072036</updated>
+    </task>
+    <task id="LOCAL-00294" summary="updated docs">
+      <created>1539959575081</created>
+      <option name="number" value="00294" />
+      <option name="presentableId" value="LOCAL-00294" />
+      <option name="project" value="LOCAL" />
+      <updated>1539959575081</updated>
+    </task>
+    <option name="localTasksCounter" value="295" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26524064" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
       <window_info id="Structure" order="1" weight="0.24973261" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1474,7 +1245,7 @@
       <window_info anchor="bottom" id="Changes" order="7" visible="true" weight="0.23768736" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005348" side_tool="true" weight="0.3286638" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" visible="true" weight="0.3265086" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" visible="true" weight="0.3265086" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946523" weight="0.3286638" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.31681034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1529,7 +1300,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing push tag to github" />
     <MESSAGE value="revert of testing things" />
     <MESSAGE value="added persistence of agent credentials, persistent mapping things to also agents, added permanent removal of adapters that are not used in any agent config" />
     <MESSAGE value="u" />
@@ -1550,41 +1320,18 @@
     <MESSAGE value="bad previous commit! this one instead: for communication with gateway, restlet client is now used, fixed problems with post/put big payloads" />
     <MESSAGE value="fixed bugs with event subscriptions and event passing for adapters without endpoints" />
     <MESSAGE value="added agent service run.bat script to run agent on windows" />
-    <MESSAGE value="updated docs" />
     <MESSAGE value="fixed OP:86 .. undecidable adapter cleanup ..now adapters are cleaned only for each agent, when agent discovery is successful, so decision about adapter cleanup is fully informed" />
     <MESSAGE value="small update of scripts" />
     <MESSAGE value="testing commit after git tag removal" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing commit after git tag removal" />
+    <MESSAGE value="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases" />
+    <MESSAGE value="updated docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated docs" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/NeighbourhoodManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="185" column="77" selection-start-line="185" selection-start-column="77" selection-end-line="185" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestPOST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="109" selection-start-line="88" selection-end-line="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestPUT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="33" selection-start-line="27" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ConfigureAgentResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-176">
@@ -1627,9 +1374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
           <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1748,13 +1492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="74" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/bin/agent.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -1765,16 +1502,7 @@
     <entry file="file://$PROJECT_DIR$/agent-service/bin/config/service-config.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/build4deployment.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="30" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build4deployment.sh" />
     <entry file="file://$PROJECT_DIR$/agent-service/bin/config/agents/config-1.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1816,13 +1544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/agent-skeleton/agent.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1854,44 +1575,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="161" selection-end-line="219" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/agent-ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="36" selection-start-line="1" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/bin/make-agent-build.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
+        <state relative-caret-position="594">
           <caret line="27" column="18" selection-start-line="24" selection-end-line="27" selection-end-column="18" />
         </state>
       </provider>
@@ -1903,17 +1589,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/bin/tags-howto.txt">
+    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/ObjectsResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="29" />
+        <state relative-caret-position="154">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -1921,6 +1600,90 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/tags-howto.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/append/config-hiits.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1910">
+          <caret line="213" selection-start-line="161" selection-end-line="213" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3/objects/example-objects.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="34" column="29" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/adapter.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/bin/adapter-1.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/agent-ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="36" selection-start-line="2" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" selection-start-line="13" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>

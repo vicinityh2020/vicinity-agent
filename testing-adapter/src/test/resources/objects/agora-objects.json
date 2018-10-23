@@ -11,7 +11,7 @@
                     "pid": "prop-1",
                     "monitors": "adapters:Motion",
                     "read_link": {
-                        "href": "/objects/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output":
                         {
                             "type": "object",
@@ -42,7 +42,7 @@
                     "pid": "prop-1",
                     "monitors": "adapters:Motion",
                     "read_link": {
-                        "href": "/objects/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output":
                         {
                             "type": "object",
@@ -73,7 +73,7 @@
                     "pid": "prop-1",
                     "monitors": "adapters:AverageTemperature",
                     "read_link": {
-                        "href": "/objects/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output":
                         {
                             "type": "object",
@@ -104,7 +104,7 @@
                     "pid": "prop-1",
                     "monitors": "adapters:AmbientTemperature",
                     "read_link": {
-                        "href": "/objects/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output":
                         {
                             "type": "object",
@@ -135,7 +135,7 @@
                     "pid": "prop-1",
                     "monitors": "adapters:AmbientTemperature",
                     "read_link": {
-                        "href": "/objects/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
                         "output":
                         {
                             "type": "object",
@@ -177,7 +177,6 @@
                                 {
                                     "name": "test-data",
                                     "description": "test property",
-                                    "predicate": "core:value",
                                     "schema": {
                                         "type": "string"
                                     }

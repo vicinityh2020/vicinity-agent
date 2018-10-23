@@ -3,8 +3,36 @@
   "thing-descriptions": [
 
     {
-      "oid": "example-thing",
-      "name": "test to play",
+      "oid": "example-thing-1",
+      "name": "test to play 1",
+      "type": "adapters:Thermometer",
+      "properties": [
+        {
+          "pid": "example-property",
+          "monitors": "adapters:AmbientTemperature",
+          "read_link": {
+            "href": "/objects/{oid}/properties/{pid}",
+            "output":
+            {
+              "type": "object",
+              "field": [
+                {
+                  "name": "test-data",
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "actions": [],
+      "events": []
+    },
+    {
+      "oid": "example-thing-2",
+      "name": "test to play 2",
       "type": "adapters:Thermometer",
       "properties": [
         {
