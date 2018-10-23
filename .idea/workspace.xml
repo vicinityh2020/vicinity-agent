@@ -73,7 +73,7 @@
           <entry key="java" value="12823" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
-          <entry key="rst" value="1202" />
+          <entry key="rst" value="2068" />
           <entry key="sh" value="540" />
           <entry key="txt" value="2655" />
           <entry key="xml" value="83" />
@@ -83,7 +83,7 @@
         <counts>
           <entry key="JAVA" value="12823" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="8905" />
+          <entry key="PLAIN_TEXT" value="9771" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -115,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="131" column="4" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="4" />
+            <state relative-caret-position="502">
+              <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -908,20 +908,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00250" summary="enhanced static configuration to be thread safe">
-      <created>1532334813743</created>
-      <option name="number" value="00250" />
-      <option name="presentableId" value="LOCAL-00250" />
-      <option name="project" value="LOCAL" />
-      <updated>1532334813744</updated>
-    </task>
-    <task id="LOCAL-00251" summary="moved to new IDE, added versioning support">
-      <created>1533123629961</created>
-      <option name="number" value="00251" />
-      <option name="presentableId" value="LOCAL-00251" />
-      <option name="project" value="LOCAL" />
-      <updated>1533123629961</updated>
-    </task>
     <task id="LOCAL-00252" summary="testing push tag to github">
       <created>1533123855235</created>
       <option name="number" value="00252" />
@@ -1251,12 +1237,25 @@
       <option name="project" value="LOCAL" />
       <updated>1540298585213</updated>
     </task>
-    <option name="localTasksCounter" value="299" />
+    <task id="LOCAL-00299" summary="updated getting started docs">
+      <created>1540298614535</created>
+      <option name="number" value="00299" />
+      <option name="presentableId" value="LOCAL-00299" />
+      <option name="project" value="LOCAL" />
+      <updated>1540298614535</updated>
+    </task>
+    <task id="LOCAL-00300" summary="updated getting started docs">
+      <created>1540298694047</created>
+      <option name="number" value="00300" />
+      <option name="presentableId" value="LOCAL-00300" />
+      <option name="project" value="LOCAL" />
+      <updated>1540298694047</updated>
+    </task>
+    <option name="localTasksCounter" value="301" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
       <window_info id="Structure" order="1" weight="0.24973261" />
@@ -1709,8 +1708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="131" column="4" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="4" />
+        <state relative-caret-position="502">
+          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
         </state>
       </provider>
     </entry>

@@ -138,7 +138,15 @@ Everything is now prepared for the first run.
 Register your device
 -----------------------------------------------
 
-.. todo::  Add registration of device with VICINITY Agent
+In the first run of complete VICINITY Node instalation, the things exposed by
+example Adapter will be registered in VICINITY and they will obtain persistent
+identifiers, under which they will be know to any other thing in VICINITY. The process
+will go as follows:
+
+1. Agent Service will run the startup sequence, which includes discovery of objects exposed by adapters attached to Agent Service.
+2. New things will be registered into VICINITY, existing will be updated, missing deleted.
+3. Agent Service ends with actual configuration on VICINITY Node, all things are discovered,
+online and available via Neighbourhood Manager.
 
 -----------------------------------------------
 Register your device
