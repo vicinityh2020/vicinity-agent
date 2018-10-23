@@ -5,13 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated docs">
-      <change afterPath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" afterDir="false" />
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated getting started docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/build/agent-build-0.6.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/build/agent-build-0.6.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3.zip" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +49,8 @@
           <entry key="bat" value="5" />
           <entry key="class" value="1" />
           <entry key="java" value="129" />
-          <entry key="json" value="47" />
-          <entry key="md" value="20" />
+          <entry key="json" value="48" />
+          <entry key="md" value="21" />
           <entry key="rst" value="1" />
           <entry key="sh" value="26" />
           <entry key="txt" value="6" />
@@ -65,8 +61,8 @@
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="129" />
-          <entry key="JSON" value="47" />
-          <entry key="PLAIN_TEXT" value="58" />
+          <entry key="JSON" value="48" />
+          <entry key="PLAIN_TEXT" value="59" />
           <entry key="XML" value="23" />
         </counts>
       </usages-collector>
@@ -77,9 +73,9 @@
           <entry key="java" value="12823" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
-          <entry key="rst" value="514" />
+          <entry key="rst" value="1179" />
           <entry key="sh" value="540" />
-          <entry key="txt" value="2639" />
+          <entry key="txt" value="2655" />
           <entry key="xml" value="83" />
         </counts>
       </usages-collector>
@@ -87,7 +83,7 @@
         <counts>
           <entry key="JAVA" value="12823" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="8201" />
+          <entry key="PLAIN_TEXT" value="8882" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -119,8 +115,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="458">
+              <caret line="131" column="1" lean-forward="true" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/build/agent-build-0.6.3/config/agents/example-agent.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="166" selection-start-line="164" selection-end-line="166" />
             </state>
           </provider>
         </entry>
@@ -130,15 +144,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
               <caret line="2" column="36" selection-start-line="2" selection-end-line="2" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/AGENT_CHANGELOG.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
             </state>
           </provider>
         </entry>
@@ -175,15 +180,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1430">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/tags-howto.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -368,6 +364,36 @@
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
               <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
               <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-build-0.6.3" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="agents" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
@@ -882,20 +908,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00246" summary="updated docs">
-      <created>1531919293957</created>
-      <option name="number" value="00246" />
-      <option name="presentableId" value="LOCAL-00246" />
-      <option name="project" value="LOCAL" />
-      <updated>1531919293957</updated>
-    </task>
-    <task id="LOCAL-00247" summary="fixed payload entity encoding .. no more ? instead of greek characters!">
-      <created>1531987897265</created>
-      <option name="number" value="00247" />
-      <option name="presentableId" value="LOCAL-00247" />
-      <option name="project" value="LOCAL" />
-      <updated>1531987897265</updated>
-    </task>
     <task id="LOCAL-00248" summary="fixed payload entity encoding .. no more ? instead of greek characters!">
       <created>1531987941060</created>
       <option name="number" value="00248" />
@@ -1225,13 +1237,28 @@
       <option name="project" value="LOCAL" />
       <updated>1539959575081</updated>
     </task>
-    <option name="localTasksCounter" value="295" />
+    <task id="LOCAL-00295" summary="updated getting started docs">
+      <created>1540297771916</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1540297771916</updated>
+    </task>
+    <task id="LOCAL-00296" summary="updated getting started docs">
+      <created>1540297826604</created>
+      <option name="number" value="00296" />
+      <option name="presentableId" value="LOCAL-00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1540297826604</updated>
+    </task>
+    <option name="localTasksCounter" value="297" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
       <window_info id="Structure" order="1" weight="0.24973261" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1245,7 +1272,7 @@
       <window_info anchor="bottom" id="Changes" order="7" visible="true" weight="0.23768736" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005348" side_tool="true" weight="0.3286638" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" visible="true" weight="0.3265086" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" visible="true" weight="0.3265086" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946523" weight="0.3286638" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.31681034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1300,7 +1327,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="revert of testing things" />
     <MESSAGE value="added persistence of agent credentials, persistent mapping things to also agents, added permanent removal of adapters that are not used in any agent config" />
     <MESSAGE value="u" />
     <MESSAGE value="events and actions tested, related bugs were fixed" />
@@ -1325,20 +1351,14 @@
     <MESSAGE value="testing commit after git tag removal" />
     <MESSAGE value="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases" />
     <MESSAGE value="updated docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated docs" />
+    <MESSAGE value="updated getting started docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated getting started docs" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/ConfigureAgentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -1530,13 +1550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agent-service/build/agent-build-0.6.3/config/agents/example-agent.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/agent-skeleton/config/agents/example-agent.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1680,10 +1693,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/build/agent-build-0.6.3/config/agents/example-agent.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/ADAPTER.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="166" selection-start-line="164" selection-end-line="166" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/agent-service/get-started/getstarted.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="458">
+          <caret line="131" column="1" lean-forward="true" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
         </state>
       </provider>
     </entry>

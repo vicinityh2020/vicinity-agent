@@ -73,22 +73,66 @@ We provide very simple example Adapter as a playground for first run and testing
 
 Please, download prepared Adapter example from VICINITY Agent GitHub. In releases tab,
 find last release and download attached file **adapter-build-x.y.z.zip**, where
-*x.y.z* is the version of actual release. Unzip it.
+**x.y.z** is the version of actual release. Unzip it.
 
-Example Adapter exposes two **things**. You can find their thing descriptions in
-file
+Example Adapter exposes two **things**: *example-thing-1* and *example-thing-2*.
+You can find their thing descriptions in file
 
 ::
 
     adapter-build-x.y.z/objects/example-objects.json
 
+In command line, start example Adapter.
+
+::
+
+    ./adapter.sh
+
+Your Adapter is now running. In console, you should see:
+
+::
+
+    Oct 23, 2018 2:32:36 PM org.restlet.engine.connector.NetServerHelper start
+    INFO: Starting the internal [HTTP/1.1] server on port 9998
+    Oct 23, 2018 2:32:36 PM org.restlet.Application start
+    INFO: Starting sk.intersoft.vicinity.adapter.testing.service.TestingAdapterApplication application
+    starting
 
 
 -----------------------------------------------
-Install the VICINITY Agent
+Install the VICINITY Agent Service
 -----------------------------------------------
 
-.. todo:: Add VICINITY Agent installation
+We provide very Agent Service build preconfigured to work with example Adapter.
+Later, you can reconfigure of Agent Service to work with any other adapters.
+
+Please, download prepared Agent Service from VICINITY Agent GitHub. In releases tab,
+find last release and download attached file **agent-build-x.y.z.zip**, where
+**x.y.z** is the version of actual release. Unzip it.
+
+**VIKTOR: TOTO PREFORMULUJ: START**
+
+In order to be able to run Agent Service, you will need to configure the credentials.
+
+**VIKTOR: TOTO PREFORMULUJ: END**
+
+Update Agent Service credentials in configuration file
+
+::
+
+     agent-build-x.y.z/config/agents/example-agent.json
+
+Fill in correct values in:
+
+```
+#!json
+"credentials": {
+    "agent-id": "agent id goes here",
+    "password": "agent password goes here"
+}
+```
+
+
 
 -----------------------------------------------
 Register your device
