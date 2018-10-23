@@ -144,8 +144,6 @@ Lets do this.
 
 2. **Run example Adapter**
 
-In command line, start example Adapter.
-
 ::
     cd adapter-build-x.y.z
     ./adapter.sh
