@@ -290,3 +290,11 @@ Use Postman to perform this call. The response to this call will look as follows
     }
 
 Now you are officially integrated into VICINITY and you can interact with known things.
+
+To correctly stop the Agent Service, run following command
+
+
+::
+
+    cd agent-build-x.y.z
+    ./agent.sh **stop**
