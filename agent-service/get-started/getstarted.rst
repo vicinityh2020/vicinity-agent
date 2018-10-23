@@ -191,32 +191,32 @@ You can check it in your browser. You should see
 
 ::
 
-{
-  "adapters": [{
-    "adapter-id": "example-adapter",
-    "things": [
-      {
-        "adapter-infra-id": "example-adapter---!---example-thing-1",
-        "infra-id": "example-thing-1",
-        "password": "R1az6N72N7KfEvGYKVLp5f7PiS3Bv3prIfSkuyb0k+Y=",
-        "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
+    {
+      "adapters": [{
         "adapter-id": "example-adapter",
-        "oid": "f9d16d9e-02ec-40bc-ad38-4b814d62ea33",
-        "adapter-oid": "example-adapter---!---f9d16d9e-02ec-40bc-ad38-4b814d62ea33"
-      },
-      {
-        "adapter-infra-id": "example-adapter---!---example-thing-2",
-        "infra-id": "example-thing-2",
-        "password": "anea2CW6UAPikNfCYp+xZLsERIF0Mxys4hvZvRy9qNk=",
-        "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
-        "adapter-id": "example-adapter",
-        "oid": "10c67501-9536-4b58-937a-804df9bdcde6",
-        "adapter-oid": "example-adapter---!---10c67501-9536-4b58-937a-804df9bdcde6"
-      }
-    ],
-    "subscribe-channels": [],
-    "open-channels": []
-  }],
+        "things": [
+          {
+            "adapter-infra-id": "example-adapter---!---example-thing-1",
+            "infra-id": "example-thing-1",
+            "password": "R1az6N72N7KfEvGYKVLp5f7PiS3Bv3prIfSkuyb0k+Y=",
+            "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
+            "adapter-id": "example-adapter",
+            "oid": "f9d16d9e-02ec-40bc-ad38-4b814d62ea33",
+            "adapter-oid": "example-adapter---!---f9d16d9e-02ec-40bc-ad38-4b814d62ea33"
+          },
+          {
+            "adapter-infra-id": "example-adapter---!---example-thing-2",
+            "infra-id": "example-thing-2",
+            "password": "anea2CW6UAPikNfCYp+xZLsERIF0Mxys4hvZvRy9qNk=",
+            "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
+            "adapter-id": "example-adapter",
+            "oid": "10c67501-9536-4b58-937a-804df9bdcde6",
+            "adapter-oid": "example-adapter---!---10c67501-9536-4b58-937a-804df9bdcde6"
+          }
+        ],
+        "subscribe-channels": [],
+        "open-channels": []
+      }],
   ...
 
 
