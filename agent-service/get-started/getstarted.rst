@@ -82,22 +82,6 @@ You can find their thing descriptions in file
 
     adapter-build-x.y.z/objects/example-objects.json
 
-In command line, start example Adapter.
-
-::
-
-    ./adapter.sh
-
-Your Adapter is now running. In console, you should see:
-
-::
-
-    Oct 23, 2018 2:32:36 PM org.restlet.engine.connector.NetServerHelper start
-    INFO: Starting the internal [HTTP/1.1] server on port 9998
-    Oct 23, 2018 2:32:36 PM org.restlet.Application start
-    INFO: Starting sk.intersoft.vicinity.adapter.testing.service.TestingAdapterApplication application
-    starting
-
 
 -----------------------------------------------
 Install the VICINITY Agent Service
@@ -143,6 +127,8 @@ example Adapter will be registered in VICINITY and they will obtain persistent
 identifiers, under which they will be know to any other thing in VICINITY. The process
 will go as follows:
 
+**VIKTOR: NEPOZNAM MARKUP PRE NUMBERING: START**
+
 1. Agent Service will run the startup sequence, which includes discovery of objects exposed by adapters attached to Agent Service.
 
 2. New things will be registered into VICINITY, existing will be updated, missing deleted.
@@ -150,7 +136,35 @@ will go as follows:
 3. Agent Service ends with actual configuration on VICINITY Node, all things are discovered,
 online and available via Neighbourhood Manager.
 
-asdasd
+**VIKTOR: NEPOZNAM MARKUP PRE NUMBERING: END**
+
+Lets do this.
+
+1. **Run VICINITY Gateway API** (see above)
+
+2. **Run example Adapter**
+
+In command line, start example Adapter.
+
+::
+    cd adapter-build-x.y.z
+    ./adapter.sh
+
+Your Adapter is now running. In console, you should see:
+
+::
+
+    Oct 23, 2018 2:32:36 PM org.restlet.engine.connector.NetServerHelper start
+    INFO: Starting the internal [HTTP/1.1] server on port 9998
+    Oct 23, 2018 2:32:36 PM org.restlet.Application start
+    INFO: Starting sk.intersoft.vicinity.adapter.testing.service.TestingAdapterApplication application
+    starting
+
+
+
+3. Run Agent Service
+
+
 -----------------------------------------------
 Register your device
 -----------------------------------------------
