@@ -26,6 +26,9 @@ public class GetSetPropertyResource extends ServerResource {
             out.put("oid", oid);
             out.put("pid", pid);
 
+            String value = "echo for ["+oid+"] get-property ["+pid+"]";
+            out.put("value", value);
+
             return out.toString();
         }
         catch(Exception e){

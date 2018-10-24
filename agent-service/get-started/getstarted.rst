@@ -297,4 +297,5 @@ To correctly stop the Agent Service, run following command
 ::
 
     cd agent-build-x.y.z
-    ./agent.sh **stop**
+    ./agent.sh stop
+

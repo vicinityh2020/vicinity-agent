@@ -18,7 +18,7 @@
                             "description": "test-agora-1-property-1",
                             "field": [
                                 {
-                                    "name": "test-agora-1-data",
+                                    "name": "value",
                                     "description": "test-agora-1 property",
                                     "predicate": "core:value",
                                     "schema": {
@@ -49,7 +49,7 @@
                             "description": "test-agora-2-property-1",
                             "field": [
                                 {
-                                    "name": "test-agora-2-data",
+                                    "name": "value",
                                     "description": "test-agora-2 property",
                                     "predicate": "core:value",
                                     "schema": {
@@ -80,7 +80,7 @@
                             "description": "test-agora-3-property-1",
                             "field": [
                                 {
-                                    "name": "test-agora-3-data",
+                                    "name": "value",
                                     "description": "test-agora-3 property",
                                     "predicate": "core:value",
                                     "schema": {
@@ -111,7 +111,7 @@
                             "description": "test-agora-4-property-1",
                             "field": [
                                 {
-                                    "name": "test-agora-4-data",
+                                    "name": "value",
                                     "description": "test-agora-4 property",
                                     "predicate": "core:value",
                                     "schema": {
@@ -142,7 +142,7 @@
                             "description": "test-agora-5-property-1",
                             "field": [
                                 {
-                                    "name": "test-agora-5-data",
+                                    "name": "value",
                                     "description": "test-agora-5 property",
                                     "predicate": "core:value",
                                     "schema": {
@@ -175,7 +175,7 @@
                             "description": "test-property-1",
                             "field": [
                                 {
-                                    "name": "test-data",
+                                    "name": "value",
                                     "description": "test property",
                                     "schema": {
                                         "type": "string"
