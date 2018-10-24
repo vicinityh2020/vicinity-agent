@@ -5,11 +5,10 @@
     <bookmark url="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/Discovery.java" line="31" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated getting started docs">
+    <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated adapter response for more meaningful get-property payload in agora testing">
+      <change afterPath="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/JustTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" beforeDir="false" afterPath="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +49,7 @@
         <counts>
           <entry key="bat" value="5" />
           <entry key="class" value="1" />
-          <entry key="java" value="130" />
+          <entry key="java" value="131" />
           <entry key="json" value="48" />
           <entry key="md" value="21" />
           <entry key="rst" value="1" />
@@ -62,7 +61,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="130" />
+          <entry key="JAVA" value="131" />
           <entry key="JSON" value="48" />
           <entry key="PLAIN_TEXT" value="59" />
           <entry key="XML" value="23" />
@@ -72,20 +71,20 @@
         <counts>
           <entry key="bat" value="92" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="12897" />
+          <entry key="java" value="13082" />
           <entry key="json" value="580" />
           <entry key="md" value="4405" />
           <entry key="rst" value="4328" />
           <entry key="sh" value="540" />
-          <entry key="txt" value="2655" />
+          <entry key="txt" value="2747" />
           <entry key="xml" value="83" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12897" />
+          <entry key="JAVA" value="13082" />
           <entry key="JSON" value="580" />
-          <entry key="PLAIN_TEXT" value="12031" />
+          <entry key="PLAIN_TEXT" value="12123" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -96,15 +95,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/agent-service/bin/build/agent.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/agent-service/bin/build/config/agents/config-1.json">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3850">
@@ -160,10 +150,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/JustTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" lean-forward="true" selection-start-line="10" selection-end-line="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="488">
+              <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -197,7 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getadaptero</find>
       <find>recovery</find>
       <find>clear</find>
       <find>subscribi</find>
@@ -227,6 +228,7 @@
       <find>fir</find>
       <find>/objects/{oid}/property/{pid}</find>
       <find>predica</find>
+      <find>field</find>
     </findStrings>
     <replaceStrings>
       <replace>\&quot;</replace>
@@ -254,7 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/ADAPTER.md" />
         <option value="$PROJECT_DIR$/docs/AGENT_API.md" />
         <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/TestConfig.java" />
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/config/processor/ThingDescriptions.java" />
@@ -303,8 +304,9 @@
         <option value="$PROJECT_DIR$/testing-adapter/build/adapter-build-0.6.3/objects/example-objects.json" />
         <option value="$PROJECT_DIR$/testing-adapter/adapter-skeleton/objects/example-objects.json" />
         <option value="$PROJECT_DIR$/agent-service/get-started/getstarted.rst" />
-        <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" />
+        <option value="$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/JustTest.java" />
+        <option value="$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java" />
       </list>
     </option>
   </component>
@@ -411,6 +413,36 @@
               <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
               <item name="agent-service" type="462c0819:PsiDirectoryNode" />
               <item name="get-started" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vicinity-agent" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="agent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vicinity-agent" type="b2602c69:ProjectViewProjectNode" />
@@ -650,7 +682,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestPUT">
+  <component name="RunManager" selected="Application.JustTest">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -735,6 +767,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JustTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sk.intersoft.vicinity.agent.JustTest" />
+      <module name="agent-service" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PrepareLogging" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sk.intersoft.vicinity.agent.service.config.PrepareLogging" />
       <module name="agent-service" />
@@ -779,16 +819,6 @@
       <option name="MAIN_CLASS_NAME" value="sk.intersoft.vicinity.agent.TestPUT" />
       <module name="agent-service" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestReference" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sk.intersoft.vicinity.agent.TestReference" />
-      <module name="agent-service" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -893,18 +923,18 @@
       <item itemvalue="Application.PrepareLogging" />
       <item itemvalue="Application.TestThingProcessor" />
       <item itemvalue="Application.TestConfig" />
-      <item itemvalue="Application.TestReference" />
       <item itemvalue="Application.WP6DIffGenerator" />
       <item itemvalue="Application.TestPOST" />
       <item itemvalue="Application.TestPUT" />
+      <item itemvalue="Application.JustTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JustTest" />
         <item itemvalue="Application.TestPUT" />
         <item itemvalue="Application.TestPOST" />
         <item itemvalue="Application.WP6DIffGenerator" />
         <item itemvalue="Application.TestConfig" />
-        <item itemvalue="Application.TestReference" />
       </list>
     </recent_temporary>
   </component>
@@ -918,13 +948,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
-    </task>
-    <task id="LOCAL-00264" summary="updated docs">
-      <created>1534937470047</created>
-      <option name="number" value="00264" />
-      <option name="presentableId" value="LOCAL-00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1534937470047</updated>
     </task>
     <task id="LOCAL-00265" summary="fixed error in reading NM things .. new prerelease for testing">
       <created>1535110807594</created>
@@ -1262,11 +1285,19 @@
       <option name="project" value="LOCAL" />
       <updated>1540302882441</updated>
     </task>
-    <option name="localTasksCounter" value="313" />
+    <task id="LOCAL-00313" summary="updated adapter response for more meaningful get-property payload in agora testing">
+      <created>1540386026371</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1540386026371</updated>
+    </task>
+    <option name="localTasksCounter" value="314" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1916" y="35" width="1920" height="1045" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27058825" />
       <window_info id="Structure" order="1" weight="0.24973261" />
@@ -1274,7 +1305,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32327586" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32219827" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32219827" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3982684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1282,7 +1313,7 @@
       <window_info anchor="bottom" id="Changes" order="7" visible="true" weight="0.23768736" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005348" side_tool="true" weight="0.3286638" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" visible="true" weight="0.3265086" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946523" weight="0.3265086" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946523" weight="0.3286638" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.31681034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1337,7 +1368,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added persistence of agent credentials, persistent mapping things to also agents, added permanent removal of adapters that are not used in any agent config" />
     <MESSAGE value="u" />
     <MESSAGE value="events and actions tested, related bugs were fixed" />
     <MESSAGE value="prepared separate service thread .. now doing only continual event subscription" />
@@ -1362,14 +1392,14 @@
     <MESSAGE value="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases" />
     <MESSAGE value="updated docs" />
     <MESSAGE value="updated getting started docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated getting started docs" />
+    <MESSAGE value="updated adapter response for more meaningful get-property payload in agora testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated adapter response for more meaningful get-property payload in agora testing" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/TryPUT.java" />
     <entry file="file://$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/clients/GatewayAPIClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1710,17 +1740,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3850">
           <caret line="175" column="34" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agent-service/src/test/java/sk/intersoft/vicinity/agent/JustTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" lean-forward="true" selection-start-line="10" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing-adapter/src/main/java/sk/intersoft/vicinity/adapter/testing/service/resource/GetSetPropertyResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
         </state>
       </provider>
     </entry>

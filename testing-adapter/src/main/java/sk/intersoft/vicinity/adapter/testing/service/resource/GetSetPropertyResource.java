@@ -8,9 +8,15 @@ import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
 import java.io.File;
+import java.util.Random;
 import java.util.Scanner;
 
 public class GetSetPropertyResource extends ServerResource {
+
+    public int random(int minimum, int maximum){
+        Random r = new Random();
+        return minimum + r.nextInt(maximum - minimum + 1);
+    }
 
     @Get("json")
     public String getPropertyValue()  {
@@ -26,7 +32,8 @@ public class GetSetPropertyResource extends ServerResource {
             out.put("oid", oid);
             out.put("pid", pid);
 
-            String value = "echo for ["+oid+"] get-property ["+pid+"]";
+//            String value = "echo for ["+oid+"] get-property ["+pid+"]";
+            int value = random(20, 30);
             out.put("value", value);
 
             return out.toString();
