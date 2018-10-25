@@ -1,5 +1,7 @@
 package sk.intersoft.vicinity.agent;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingsDiff;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
@@ -222,9 +224,30 @@ public class WP6DIffGenerator {
     }
 
 
+    public void json() throws Exception {
+        ThingDescriptions config = init(3);
+
+        System.out.println("CONFIG: \n"+config.toFullString(0));
+
+        JSONArray array = new JSONArray();
+        for (Map.Entry<String, ThingDescription> entry : config.byAdapterInfrastructureID.entrySet()) {
+            array.put(ThingDescription.toJSON(entry.getValue()));
+        }
+        JSONObject x = new JSONObject();
+        x.put("adapter-id", "keket");
+        x.put("thing-descriptions", array);
+
+
+        System.out.println("CONFIG JSON: \n"+x.toString(2));
+
+
+    }
+
     public static void main(String[] args) throws Exception {
 
         WP6DIffGenerator g = new WP6DIffGenerator();
+
+        g.json();
 
         ThingDescriptions config = g.init(300);
         WP6DIffExpectation expectation = g.stub(config, 2, 1, 1);
