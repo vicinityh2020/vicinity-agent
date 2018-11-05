@@ -43,7 +43,7 @@ public class RemoteObjectPropertyResource extends AgentResource {
 
         } catch (Exception e) {
             logger.error("GET OBJECT PROPERTY FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 
@@ -79,7 +79,7 @@ public class RemoteObjectPropertyResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("SET OBJECT PROPERTY FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 }

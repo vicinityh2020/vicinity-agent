@@ -56,22 +56,19 @@ public class ObjectActionResource extends AgentResource {
             String adapterResponse = AdapterClient.post(endpoint, rawPayload);
             logger.info("EXECUTE ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            JSONObject result = new JSONObject(adapterResponse);
 
-            logger.info("EXECUTE ACTION RESPONSE: " + result.toString());
-
-            return ResourceResponse.success(result).toString();
+            return adapterSuccess(adapterResponse).toString();
 
         }
         catch (Exception e) {
             logger.error("EXECUTE ACTION FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return adapterError(e).toString();
         }
     }
 
     // CANCEL ACTION
     @Delete
-    public String cancelAction() {
+    public String cancelAction()  {
         try {
             String oid = getAttribute(OBJECT_ID);
             String aid = getAttribute(ACTION_ID);
@@ -90,16 +87,13 @@ public class ObjectActionResource extends AgentResource {
             String adapterResponse = AdapterClient.delete(endpoint);
             logger.info("CANCEL ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            JSONObject result = new JSONObject(adapterResponse);
 
-            logger.info("CANCEL ACTION RESPONSE: " + result.toString());
-
-            return ResourceResponse.success(result).toString();
+            return adapterSuccess(adapterResponse).toString();
 
         }
         catch (Exception e) {
             logger.error("CANCEL ACTION FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return adapterError(e).toString();
         }
     }
 

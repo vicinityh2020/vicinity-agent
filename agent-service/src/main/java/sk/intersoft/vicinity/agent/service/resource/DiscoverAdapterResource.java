@@ -44,7 +44,7 @@ public class DiscoverAdapterResource extends  AgentResource {
             if(adapter != null){
                 boolean success = adapter.discover(rawPayload);
                 if(success){
-                    return ResourceResponse.success("Discovery for adapter ["+adapterId+"] successfully done!").toString();
+                    return gtwSuccess("Discovery for adapter ["+adapterId+"] successfully done!").toString();
                 }
                 else {
                     throw new Exception("Discovery for adapter ["+adapterId+"] failed! See agent logs!");
@@ -60,7 +60,7 @@ public class DiscoverAdapterResource extends  AgentResource {
         }
         catch(Exception e){
             logger.error("", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
 
     }

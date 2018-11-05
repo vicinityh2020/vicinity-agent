@@ -47,7 +47,7 @@ public class RemoteObjectActionResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("EXECUTE REMOTE ACTION  FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 }

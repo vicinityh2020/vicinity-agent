@@ -43,7 +43,7 @@ public class RemoteObjectActionTaskResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("GET REMOTE ACTION STATUS FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 
@@ -75,7 +75,7 @@ public class RemoteObjectActionTaskResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("CANCEL REMOTE ACTION FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 

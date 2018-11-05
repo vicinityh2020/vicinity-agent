@@ -13,6 +13,8 @@ public class AgentApplication extends Application {
     final static Logger logger = LoggerFactory.getLogger(AgentApplication.class.getName());
 
     public static final String ALIVE = "/alive";
+    public static final String TEST = "/test";
+
     public static final String CONFIGURATION = "/configuration";
     public static final String CONFIGURE_AGENT = "/agents/{agid}/configure";
 
@@ -47,6 +49,8 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(ALIVE, AliveResource.class);
         apiRouter.attach(ALIVE+"/", AliveResource.class);
+        apiRouter.attach(TEST, TestResource.class);
+        apiRouter.attach(TEST+"/", TestResource.class);
 
         apiRouter.attach(CONFIGURATION, ConfigurationResource.class);
         apiRouter.attach(CONFIGURATION+"/", ConfigurationResource.class);

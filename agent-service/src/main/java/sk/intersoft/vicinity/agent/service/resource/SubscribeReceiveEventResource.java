@@ -52,7 +52,7 @@ public class SubscribeReceiveEventResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("SUBSCRIBE EVENT CHANNEL FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 
@@ -100,12 +100,12 @@ public class SubscribeReceiveEventResource extends AgentResource {
             String adapterResponse = AdapterClient.put(endpoint, rawPayload);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            return ResourceResponse.success(adapterResponse).toString();
+            return adapterSuccess(adapterResponse).toString();
 
         }
         catch (Exception e) {
             logger.error("RECEIVE EVENT FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return adapterError(e).toString();
         }
     }
 }

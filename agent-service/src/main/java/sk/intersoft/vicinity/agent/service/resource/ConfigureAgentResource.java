@@ -10,7 +10,7 @@ import sk.intersoft.vicinity.agent.service.config.Configuration;
 
 import java.io.File;
 
-public class ConfigureAgentResource extends ServerResource {
+public class ConfigureAgentResource extends AgentResource {
     final static Logger logger = LoggerFactory.getLogger(ConfigureAgentResource.class.getName());
 
     private static String AGENT_ID = "agid";
@@ -26,7 +26,7 @@ public class ConfigureAgentResource extends ServerResource {
             if(configFile != null){
                 logger.info("found configuration file: "+configFile.getAbsolutePath());
                 if(AgentConfig.configure(configFile, false)){
-                    return ResourceResponse.success("Agent ["+agentId+"] was successfully configured!").toString();
+                    return gtwSuccess("Agent ["+agentId+"] was successfully configured!").toString();
                 }
                 else {
                     throw new Exception("Agent ["+agentId+"] was NOT configured! .. see agent service logs!");
@@ -39,7 +39,7 @@ public class ConfigureAgentResource extends ServerResource {
         }
         catch(Exception e){
             logger.error("UNABLE TO CONFIGURE AGENT ["+agentId+"]", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 

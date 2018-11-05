@@ -77,7 +77,7 @@ public class ObjectUpdateActionResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("UPDATE ACTION STATUS FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 

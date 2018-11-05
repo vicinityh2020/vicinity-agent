@@ -42,7 +42,7 @@ public class OpenPublishEventResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("OPEN EVENT CHANNEL FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 
@@ -80,7 +80,7 @@ public class OpenPublishEventResource extends AgentResource {
         }
         catch (Exception e) {
             logger.error("PUBLISH EVENT FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return gtwError(e).toString();
         }
     }
 

@@ -1,11 +1,15 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.Response;
 import org.restlet.data.ChallengeResponse;
 import org.restlet.data.Header;
 import org.restlet.data.Reference;
+import org.restlet.data.Status;
 import org.restlet.resource.Resource;
+import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 import org.restlet.util.Series;
 import org.slf4j.Logger;
@@ -16,6 +20,8 @@ import sk.intersoft.vicinity.agent.service.config.Configuration;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Iterator;
 
 public class AgentResource extends ServerResource {
@@ -153,5 +159,69 @@ public class AgentResource extends ServerResource {
         }
         return false;
     }
+
+    // RESPONSE HANDLER: START
+    public static final String STATUS = "status";
+    public static final String SUCCESS = "success";
+    public static final String FAILURE = "failure";
+    public static final String REASON = "reason";
+    public static final String DATA = "data";
+
+
+
+    public JSONObject gtwSuccess(Status status, JSONObject message) {
+        getResponse().setStatus(Status.SUCCESS_OK);
+
+        JSONObject out = new JSONObject();
+        out.put("error", true);
+        out.put("statusCode", status.getCode());
+        out.put("statusCodeReason", status.getReasonPhrase());
+        JSONArray msgArray = new JSONArray();
+        if(message != null){
+            msgArray.put(message);
+        }
+        out.put("message", msgArray);
+
+        return out;
+    }
+
+    public JSONObject gtwSuccess(String message) {
+        JSONObject msgObject = new JSONObject();
+        msgObject.put("response", message);
+        return gtwSuccess(Status.SUCCESS_OK, msgObject);
+    }
+
+    public JSONObject gtwError(Status status, Exception e) {
+        getResponse().setStatus(status);
+
+        JSONObject out = new JSONObject();
+        out.put("error", true);
+        out.put("statusCode", status.getCode());
+        out.put("statusCodeReason", status.getReasonPhrase() + ": " + e.getMessage());
+        out.put("message", new JSONArray());
+
+        return out;
+    }
+
+    public JSONObject gtwError(Exception e) {
+        return gtwError(Status.SERVER_ERROR_INTERNAL, e);
+    }
+
+
+    public JSONObject adapterSuccess(String result) {
+        getResponse().setStatus(Status.SUCCESS_OK);
+        JSONObject response = new JSONObject(result);
+        return response;
+    }
+
+    public JSONObject adapterError(Exception e)  {
+        getResponse().setStatus(Status.SERVER_ERROR_INTERNAL);
+        JSONObject error = new JSONObject();
+        error.put("error", true);
+        error.put("reason", e.getMessage());
+        return error;
+    }
+
+    //RESPONSE HANDLER: END
 
 }

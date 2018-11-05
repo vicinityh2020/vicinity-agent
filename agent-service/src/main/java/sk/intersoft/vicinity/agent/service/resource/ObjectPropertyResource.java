@@ -5,6 +5,7 @@ import org.restlet.data.ClientInfo;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Put;
+import org.restlet.resource.ResourceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
@@ -47,15 +48,11 @@ public class ObjectPropertyResource extends AgentResource {
             String adapterResponse = AdapterClient.get(endpoint);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            JSONObject result = new JSONObject(adapterResponse);
-
-            logger.info("GET PROP RESPONSE: " + result.toString());
-
-            return ResourceResponse.success(result).toString();
+            return adapterSuccess(adapterResponse).toString();
 
         } catch (Exception e) {
             logger.error("GET OBJECT PROPERTY FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return adapterError(e).toString();
         }
     }
 
@@ -95,16 +92,12 @@ public class ObjectPropertyResource extends AgentResource {
             String adapterResponse = AdapterClient.put(endpoint, rawPayload);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            JSONObject result = new JSONObject(adapterResponse);
-
-            logger.info("SET PROP RESPONSE: " + result.toString());
-
-            return ResourceResponse.success(result).toString();
+            return adapterSuccess(adapterResponse).toString();
 
         }
         catch (Exception e) {
             logger.error("SET OBJECT PROPERTY FAILURE! ", e);
-            return ResourceResponse.failure(e).toString();
+            return adapterError(e).toString();
         }
     }
 }
