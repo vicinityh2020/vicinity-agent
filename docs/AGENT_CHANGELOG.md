@@ -74,3 +74,7 @@ on Neighbourhood manager when thing violates or does not violate the contract
 
 ## to next version:
 
+* Added error propagation from Gateway API and Adapters. Now, all payloads should be uniform,
+    if error happens on local node, response has status Internal Server Error 500. If
+    error happens on remote node, status is 200, payload contains full description of error
+    and status code.
