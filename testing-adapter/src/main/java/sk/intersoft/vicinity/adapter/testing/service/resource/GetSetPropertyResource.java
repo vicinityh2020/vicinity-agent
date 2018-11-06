@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.adapter.testing.service.resource;
 
 import org.json.JSONObject;
+import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
@@ -35,6 +36,7 @@ public class GetSetPropertyResource extends ServerResource {
 //            String value = "echo for ["+oid+"] get-property ["+pid+"]";
             int value = random(20, 30);
             out.put("value", value);
+
 
             return out.toString();
         }

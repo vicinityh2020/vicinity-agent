@@ -6,6 +6,7 @@ import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 
@@ -39,10 +40,10 @@ public class RemoteObjectActionResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            String gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
-            return gtwResponse;
+            return gtwSuccess(gtwResponse);
 
         }
         catch (Exception e) {

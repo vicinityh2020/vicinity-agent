@@ -1,6 +1,5 @@
 package sk.intersoft.vicinity.agent.clients;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
@@ -28,7 +27,7 @@ public class AdapterClient {
 
     }
 
-    public static String delete(String endpoint) throws Exception {
+    public static ClientResponse delete(String endpoint) throws Exception {
         try{
             logger.info("DELETE ENDPOINT: " + endpoint);
             HttpClient client = getClient();
@@ -37,12 +36,13 @@ public class AdapterClient {
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
+            String reason = response.getStatusLine().getReasonPhrase();
             String content = EntityUtils.toString(response.getEntity());
 
             logger.info("agent DELETE status: " + status);
             logger.info("agent DELETE response: " + content);
 
-            return content;
+            return new ClientResponse(status, reason, content);
 
         }
         catch(Exception e){
@@ -52,7 +52,7 @@ public class AdapterClient {
 
     }
 
-    public static String get(String endpoint) throws Exception {
+    public static ClientResponse get(String endpoint) throws Exception {
         try{
             logger.info("GET ENDPOINT: " + endpoint);
             HttpClient client = getClient();
@@ -62,12 +62,13 @@ public class AdapterClient {
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
+            String reason = response.getStatusLine().getReasonPhrase();
             String content = EntityUtils.toString(response.getEntity());
 
             logger.info("agent GET status: " + status);
             logger.info("agent GET response: " + content);
 
-            return content;
+            return new ClientResponse(status, reason, content);
 
         }
         catch(Exception e){
@@ -77,7 +78,7 @@ public class AdapterClient {
 
     }
 
-    public static String post(String endpoint, String payload) throws Exception {
+    public static ClientResponse post(String endpoint, String payload) throws Exception {
         try{
             logger.info("POST ENDPOINT: " + endpoint);
             logger.info("POST DATA: \n"+payload);
@@ -96,12 +97,13 @@ public class AdapterClient {
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
+            String reason = response.getStatusLine().getReasonPhrase();
             String content = EntityUtils.toString(response.getEntity());
 
             logger.info("agent POST status: " + status);
             logger.info("agent POST response: " + content);
 
-            return content;
+            return new ClientResponse(status, reason, content);
 
         }
         catch(Exception e){
@@ -111,7 +113,7 @@ public class AdapterClient {
 
     }
 
-    public static String put(String endpoint, String payload) throws Exception {
+    public static ClientResponse put(String endpoint, String payload) throws Exception {
         try{
             logger.info("PUT ENDPOINT: " + endpoint);
             logger.info("PUT DATA: \n"+payload);
@@ -130,12 +132,13 @@ public class AdapterClient {
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
+            String reason = response.getStatusLine().getReasonPhrase();
             String content = EntityUtils.toString(response.getEntity());
 
             logger.info("agent PUT status: " + status);
             logger.info("agent PUT response: " + content);
 
-            return content;
+            return new ClientResponse(status, reason, content);
 
         }
         catch(Exception e){

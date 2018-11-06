@@ -1,6 +1,7 @@
 package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.Response;
@@ -14,6 +15,7 @@ import org.restlet.resource.ServerResource;
 import org.restlet.util.Series;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.AgentConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
@@ -169,7 +171,7 @@ public class AgentResource extends ServerResource {
 
 
 
-    public JSONObject gtwSuccess(Status status, JSONObject message) {
+    public JSONObject gtwWrapper(Status status, JSONObject message) {
         getResponse().setStatus(Status.SUCCESS_OK);
 
         JSONObject out = new JSONObject();
@@ -185,10 +187,10 @@ public class AgentResource extends ServerResource {
         return out;
     }
 
-    public JSONObject gtwSuccess(String message) {
+    public JSONObject gtwWrapper(String message) {
         JSONObject msgObject = new JSONObject();
         msgObject.put("response", message);
-        return gtwSuccess(Status.SUCCESS_OK, msgObject);
+        return gtwWrapper(Status.SUCCESS_OK, msgObject);
     }
 
     public JSONObject gtwError(Status status, Exception e) {
@@ -203,19 +205,30 @@ public class AgentResource extends ServerResource {
         return out;
     }
 
+
+    public String gtwSuccess(ClientResponse response) throws JSONException {
+        JSONObject out = new JSONObject(response.data);
+        getResponse().setStatus(new Status(response.statusCode, response.statusCodeReason));
+        logger.debug("setting response status code to: "+getResponse().getStatus().getCode());
+        return out.toString();
+    }
+
     public JSONObject gtwError(Exception e) {
         return gtwError(Status.SERVER_ERROR_INTERNAL, e);
     }
 
 
-    public JSONObject adapterSuccess(String result) {
-        getResponse().setStatus(Status.SUCCESS_OK);
-        JSONObject response = new JSONObject(result);
-        return response;
+    public String adapterSuccess(ClientResponse response) throws JSONException {
+        JSONObject out = new JSONObject(response.data);
+        getResponse().setStatus(new Status(response.statusCode, response.statusCodeReason));
+        logger.debug("setting response status code to: "+getResponse().getStatus().getCode());
+        return out.toString();
     }
+
 
     public JSONObject adapterError(Exception e)  {
         getResponse().setStatus(Status.SERVER_ERROR_INTERNAL);
+        logger.debug("setting response status code to: "+getResponse().getStatus().getCode());
         JSONObject error = new JSONObject();
         error.put("error", true);
         error.put("reason", e.getMessage());

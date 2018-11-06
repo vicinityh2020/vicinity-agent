@@ -149,7 +149,7 @@ public class NeighbourhoodManager {
     public static void delete(JSONObject payload, String agentId, String agentPassword) throws Exception {
         logger.info("delete payload: \n" + payload.toString(2));
 
-        String deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, agentPassword);
+        ClientResponse deleteResponse = GatewayAPIClient.post(GatewayAPIClient.deleteEndpoint(agentId), payload.toString(), agentId, agentPassword);
         logger.info("delete raw response: \n" + deleteResponse);
 
     }
@@ -161,32 +161,43 @@ public class NeighbourhoodManager {
     public static String create(JSONObject payload, AgentConfig agent) throws Exception {
         logger.info("create payload: \n" + payload.toString(2));
 
-        String createResponse = GatewayAPIClient.post(GatewayAPIClient.createEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        ClientResponse createResponse = GatewayAPIClient.post(GatewayAPIClient.createEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
         logger.info("create raw response: \n" + createResponse);
 //        String createResponse = GatewayAPIClient.fakepost("https://vicinity.bavenir.eu:3000/commServer/items/register", payload.toString(), agent.agentId, agent.password);
 //        String test = GatewayAPIClient.fakepost("http://localhost:9995/adapter/objects/x/actions/y", payload.toString(), agent.agentId, agent.password);
 //        logger.info("test response: \n" + test);
+        if(!createResponse.isOK()){
+            throw new Exception("wrong response .. fail!");
+        }
 
-        return createResponse;
+        return createResponse.data;
     }
 
 
     public static String update(JSONObject payload, AgentConfig agent) throws Exception {
         logger.info("update payload: \n" + payload.toString(2));
 
-        String updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        ClientResponse updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
         logger.info("update raw response: \n" + updateResponse);
 
-        return updateResponse;
+        if(!updateResponse.isOK()){
+            throw new Exception("wrong response .. fail!");
+        }
+
+        return updateResponse.data;
     }
 
     public static String updateContent(JSONObject payload, AgentConfig agent) throws Exception {
         logger.info("update things content payload: \n" + payload.toString(2));
 
-        String updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateContentEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
+        ClientResponse updateResponse = GatewayAPIClient.put(GatewayAPIClient.updateContentEndpoint(agent.agentId), payload.toString(), agent.agentId, agent.password);
         logger.info("update things content raw response: \n" + updateResponse);
 
-        return updateResponse;
+        if(!updateResponse.isOK()){
+            throw new Exception("wrong response .. fail!");
+        }
+
+        return updateResponse.data;
     }
 
 }

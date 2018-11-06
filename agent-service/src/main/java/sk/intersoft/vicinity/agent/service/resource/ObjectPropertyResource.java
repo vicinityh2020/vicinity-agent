@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.AdapterEndpoint;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.InteractionPatternEndpoint;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -45,10 +46,10 @@ public class ObjectPropertyResource extends AgentResource {
 
             logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            String adapterResponse = AdapterClient.get(endpoint);
+            ClientResponse adapterResponse = AdapterClient.get(endpoint);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            return adapterSuccess(adapterResponse).toString();
+            return adapterSuccess(adapterResponse);
 
         } catch (Exception e) {
             logger.error("GET OBJECT PROPERTY FAILURE! ", e);
@@ -89,10 +90,10 @@ public class ObjectPropertyResource extends AgentResource {
 
             logger.info("SET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            String adapterResponse = AdapterClient.put(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            return adapterSuccess(adapterResponse).toString();
+            return adapterSuccess(adapterResponse);
 
         }
         catch (Exception e) {

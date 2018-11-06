@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.AdapterEndpoint;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.service.config.AdapterConfig;
 import sk.intersoft.vicinity.agent.service.config.Configuration;
@@ -44,10 +45,10 @@ public class SubscribeReceiveEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eid);
 
-            String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
-            return gtwResponse;
+            return gtwSuccess(gtwResponse);
 
         }
         catch (Exception e) {
@@ -97,10 +98,10 @@ public class SubscribeReceiveEventResource extends AgentResource {
 
             logger.info("PASS EVENT TO ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            String adapterResponse = AdapterClient.put(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            return adapterSuccess(adapterResponse).toString();
+            return adapterSuccess(adapterResponse);
 
         }
         catch (Exception e) {

@@ -26,7 +26,7 @@ public class ConfigureAgentResource extends AgentResource {
             if(configFile != null){
                 logger.info("found configuration file: "+configFile.getAbsolutePath());
                 if(AgentConfig.configure(configFile, false)){
-                    return gtwSuccess("Agent ["+agentId+"] was successfully configured!").toString();
+                    return gtwWrapper("Agent ["+agentId+"] was successfully configured!").toString();
                 }
                 else {
                     throw new Exception("Agent ["+agentId+"] was NOT configured! .. see agent service logs!");

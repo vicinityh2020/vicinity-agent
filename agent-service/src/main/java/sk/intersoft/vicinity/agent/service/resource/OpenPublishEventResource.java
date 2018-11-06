@@ -5,6 +5,7 @@ import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
@@ -34,10 +35,11 @@ public class OpenPublishEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getOpenEventChannelEndpoint(eid);
 
-            String gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
-            return gtwResponse;
+            return gtwSuccess(gtwResponse);
+
 
         }
         catch (Exception e) {
@@ -72,10 +74,11 @@ public class OpenPublishEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getPublishEventEndpoint(eid);
 
-            String gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
-            return gtwResponse;
+            return gtwSuccess(gtwResponse);
+
 
         }
         catch (Exception e) {

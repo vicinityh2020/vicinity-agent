@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
 import sk.intersoft.vicinity.agent.clients.AdapterEndpoint;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.InteractionPatternEndpoint;
@@ -53,11 +54,11 @@ public class ObjectActionResource extends AgentResource {
 
             logger.info("EXECUTE ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            String adapterResponse = AdapterClient.post(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.post(endpoint, rawPayload);
             logger.info("EXECUTE ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
 
-            return adapterSuccess(adapterResponse).toString();
+            return adapterSuccess(adapterResponse);
 
         }
         catch (Exception e) {
@@ -84,11 +85,11 @@ public class ObjectActionResource extends AgentResource {
 
             logger.info("CANCEL ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            String adapterResponse = AdapterClient.delete(endpoint);
+            ClientResponse adapterResponse = AdapterClient.delete(endpoint);
             logger.info("CANCEL ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
 
-            return adapterSuccess(adapterResponse).toString();
+            return adapterSuccess(adapterResponse);
 
         }
         catch (Exception e) {

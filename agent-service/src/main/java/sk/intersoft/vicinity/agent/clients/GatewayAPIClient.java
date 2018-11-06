@@ -112,7 +112,7 @@ public class GatewayAPIClient {
         get(LOGOUT_ENDPOINT, login, password);
     }
 
-    public static String get(String path, String login, String password) throws Exception {
+    public static ClientResponse get(String path, String login, String password) throws Exception {
         try{
 
 
@@ -166,7 +166,7 @@ public class GatewayAPIClient {
                 logger.info("code: "+returnCode);
                 logger.info("reason: "+returnCodeReason);
 
-                return response;
+                return new ClientResponse(returnCode, returnCodeReason, response);
 
             }
             else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
@@ -179,7 +179,7 @@ public class GatewayAPIClient {
 
     }
 
-    public static String delete(String path, String login, String password) throws Exception {
+    public static ClientResponse delete(String path, String login, String password) throws Exception {
         try{
 
 
@@ -234,7 +234,7 @@ public class GatewayAPIClient {
                 logger.info("code: "+returnCode);
                 logger.info("reason: "+returnCodeReason);
 
-                return response;
+                return new ClientResponse(returnCode, returnCodeReason, response);
 
             }
             else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
@@ -247,7 +247,7 @@ public class GatewayAPIClient {
 
     }
 
-    public static String post(String path, String payload, String login, String password) throws Exception {
+    public static ClientResponse post(String path, String payload, String login, String password) throws Exception {
         try{
 
 
@@ -328,7 +328,7 @@ public class GatewayAPIClient {
                 logger.info("code: "+returnCode);
                 logger.info("reason: "+returnCodeReason);
 
-                return response;
+                return new ClientResponse(returnCode, returnCodeReason, response);
 
             }
             else throw new Exception("GTW API RETURNED EMPTY RESPONSE");
@@ -341,7 +341,7 @@ public class GatewayAPIClient {
 
     }
 
-    public static String put(String path, String payload, String login, String password) throws Exception {
+    public static ClientResponse put(String path, String payload, String login, String password) throws Exception {
         try{
 
 
@@ -429,7 +429,7 @@ public class GatewayAPIClient {
                 logger.info("code: "+returnCode);
                 logger.info("reason: "+returnCodeReason);
 
-                return response;
+                return new ClientResponse(returnCode, returnCodeReason, response);
 
             }
             else throw new Exception("GTW API RETURNED EMPTY RESPONSE");

@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sk.intersoft.vicinity.agent.clients.AdapterClient;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.db.PersistedAgent;
@@ -13,7 +14,6 @@ import sk.intersoft.vicinity.agent.db.Persistence;
 import sk.intersoft.vicinity.agent.service.config.processor.Discovery;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.service.config.processor.ThingProcessor;
-import sk.intersoft.vicinity.agent.service.resource.AgentResource;
 import sk.intersoft.vicinity.agent.thing.InteractionPattern;
 import sk.intersoft.vicinity.agent.thing.ThingDescription;
 import sk.intersoft.vicinity.agent.thing.ThingValidator;
@@ -177,7 +177,7 @@ public class AdapterConfig {
         GatewayAPIClient.post(GatewayAPIClient.getOpenEventChannelEndpoint(eventId), null, thing.oid, thing.password);
 
     }
-    public static String getEventChannelStatus(ThingDescription thing, String eventId) throws Exception {
+    public static ClientResponse getEventChannelStatus(ThingDescription thing, String eventId) throws Exception {
         logger.debug("GETTING EVENT CHANNEL STATUS: "+thing.toSimpleString() + " / EID: "+eventId);
         InteractionPattern event = thing.getInteractionPattern(eventId, InteractionPattern.EVENT);
         return GatewayAPIClient.get(GatewayAPIClient.getEventChannelStatusEndpoint(thing.oid, eventId), thing.oid, thing.password);
@@ -194,7 +194,7 @@ public class AdapterConfig {
                 if(thing != null){
                     logger.debug("THING OPENING THE CHANNEL ["+e.toString()+"]: "+thing.toSimpleString());
                     openEventChannel(thing, e.eventId);
-                    String channelStatus = getEventChannelStatus(thing, e.eventId);
+                    ClientResponse channelStatus = getEventChannelStatus(thing, e.eventId);
                     logger.debug("THING-CHANNEL STATUS: ["+thing.toSimpleString()+"]["+e.toString()+"]: "+channelStatus);
                 }
                 else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
@@ -263,8 +263,14 @@ public class AdapterConfig {
             }
             else {
                 logger.debug("PASSIVE DISCOVERY! .. fetching data from adapter");
-                String data = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
-                return discover(data);
+                ClientResponse response = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
+                if(response.statusCode != 200){
+                    logger.debug("wrong response from adapter .. fail!");
+                    return false;
+                }
+                else{
+                    return discover(response.data);
+                }
             }
 
         }

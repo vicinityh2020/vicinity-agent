@@ -1,5 +1,6 @@
 package sk.intersoft.vicinity.adapter.testing.service.resource;
 
+import org.restlet.data.Status;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 

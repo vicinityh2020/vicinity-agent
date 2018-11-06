@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sk.intersoft.vicinity.agent.clients.ClientResponse;
 import sk.intersoft.vicinity.agent.clients.GatewayAPIClient;
 import sk.intersoft.vicinity.agent.clients.NeighbourhoodManager;
 import sk.intersoft.vicinity.agent.db.PersistedThing;
@@ -162,9 +163,12 @@ public class AgentConfig {
         logger.info("ACQUIRE LAST CONFIGURATION");
         configurationThings = new ThingDescriptions();
 
-        String configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
+        ClientResponse configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
         logger.debug("Configuration raw response: \n" + configData);
-        List<JSONObject> objects = ThingProcessor.processConfiguration(configData);
+        if(!configData.isOK()){
+            throw new Exception("wrong response .. fail!");
+        }
+        List<JSONObject> objects = ThingProcessor.processConfiguration(configData.data);
 
         List<JSONObject> unprocessed = new ArrayList<JSONObject>();
 
