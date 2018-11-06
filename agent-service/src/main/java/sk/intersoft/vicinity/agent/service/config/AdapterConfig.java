@@ -174,13 +174,13 @@ public class AdapterConfig {
 
     public static void openEventChannel(ThingDescription thing, String eventId) throws Exception {
         InteractionPattern event = thing.getInteractionPattern(eventId, InteractionPattern.EVENT);
-        GatewayAPIClient.post(GatewayAPIClient.getOpenEventChannelEndpoint(eventId), null, thing.oid, thing.password);
+        GatewayAPIClient.post(GatewayAPIClient.getOpenEventChannelEndpoint(eventId), null, thing.oid, thing.password, null);
 
     }
     public static ClientResponse getEventChannelStatus(ThingDescription thing, String eventId) throws Exception {
         logger.debug("GETTING EVENT CHANNEL STATUS: "+thing.toSimpleString() + " / EID: "+eventId);
         InteractionPattern event = thing.getInteractionPattern(eventId, InteractionPattern.EVENT);
-        return GatewayAPIClient.get(GatewayAPIClient.getEventChannelStatusEndpoint(thing.oid, eventId), thing.oid, thing.password);
+        return GatewayAPIClient.get(GatewayAPIClient.getEventChannelStatusEndpoint(thing.oid, eventId), thing.oid, thing.password, null);
 
     }
 
@@ -207,7 +207,7 @@ public class AdapterConfig {
     }
 
     public static void subscribeEventChannel(ThingDescription thing, String oid, String eventId) throws Exception {
-        GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password);
+        GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password, null);
     }
 
     public void subscribeEventChannels(){
@@ -263,7 +263,7 @@ public class AdapterConfig {
             }
             else {
                 logger.debug("PASSIVE DISCOVERY! .. fetching data from adapter");
-                ClientResponse response = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint));
+                ClientResponse response = AdapterClient.get(AdapterClient.objectsEndpoint(endpoint), null);
                 if(response.statusCode != 200){
                     logger.debug("wrong response from adapter .. fail!");
                     return false;

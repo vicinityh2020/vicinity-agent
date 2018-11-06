@@ -38,6 +38,8 @@ public class ObjectActionResource extends AgentResource {
             logger.info("EXECUTING LOCAL ACTION FOR TARGET: ");
             logger.info("OID: " + oid);
             logger.info("AID: " + aid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
 
             if(entity == null) {
@@ -54,7 +56,7 @@ public class ObjectActionResource extends AgentResource {
 
             logger.info("EXECUTE ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.post(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.post(endpoint, rawPayload, query);
             logger.info("EXECUTE ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
 
@@ -77,6 +79,8 @@ public class ObjectActionResource extends AgentResource {
             logger.info("CANCEL LOCAL ACTION FOR TARGET: ");
             logger.info("OID: " + oid);
             logger.info("AID: " + aid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             ThingDescription thing = getThingByOID(oid);
             logger.info("ADAPTER THING FOR OID [" + oid + "]: " + thing.toSimpleString());
@@ -85,7 +89,7 @@ public class ObjectActionResource extends AgentResource {
 
             logger.info("CANCEL ACTION ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.delete(endpoint);
+            ClientResponse adapterResponse = AdapterClient.delete(endpoint, query);
             logger.info("CANCEL ACTION ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
 

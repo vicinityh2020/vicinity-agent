@@ -35,7 +35,7 @@ public class OpenPublishEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getOpenEventChannelEndpoint(eid);
 
-            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password, null);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);
@@ -54,6 +54,8 @@ public class OpenPublishEventResource extends AgentResource {
             String eid = getAttribute(EVENT_ID);
 
             logger.info("PUBLISHING EVENT: ["+eid+"]");
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -74,7 +76,7 @@ public class OpenPublishEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getPublishEventEndpoint(eid);
 
-            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

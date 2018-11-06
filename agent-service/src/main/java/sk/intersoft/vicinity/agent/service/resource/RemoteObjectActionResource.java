@@ -25,6 +25,8 @@ public class RemoteObjectActionResource extends AgentResource {
             logger.info("EXECUTE REMOTE ACTION FOR TARGET : ");
             logger.info("OID: " + oid);
             logger.info("AID: " + aid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -40,7 +42,7 @@ public class RemoteObjectActionResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

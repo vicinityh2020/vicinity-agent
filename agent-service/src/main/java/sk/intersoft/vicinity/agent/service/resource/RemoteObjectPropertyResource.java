@@ -29,6 +29,8 @@ public class RemoteObjectPropertyResource extends AgentResource {
             logger.info("GETTING REMOTE PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             ThingDescription thing = getCallerObject();
             logger.info("CALLER THING: " + thing.toSimpleString());
@@ -37,7 +39,7 @@ public class RemoteObjectPropertyResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.get(endpoint, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.get(endpoint, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);
@@ -58,6 +60,8 @@ public class RemoteObjectPropertyResource extends AgentResource {
             logger.info("SETTING REMOTE PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -73,7 +77,7 @@ public class RemoteObjectPropertyResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

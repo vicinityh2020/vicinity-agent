@@ -45,7 +45,7 @@ public class SubscribeReceiveEventResource extends AgentResource {
 
             String endpoint = GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eid);
 
-            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, null, thing.oid, thing.password, null);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);
@@ -68,6 +68,8 @@ public class SubscribeReceiveEventResource extends AgentResource {
             logger.info("SUBSCRIBER OID: " + oid);
             logger.info("EID: " + eid);
             logger.info("PUBLISHER (SOURCE) OID: " + sourceOid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
 
             if(sourceOid == null || sourceOid.trim().equals("")){
@@ -98,7 +100,7 @@ public class SubscribeReceiveEventResource extends AgentResource {
 
             logger.info("PASS EVENT TO ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload, query);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
             return adapterSuccess(adapterResponse);

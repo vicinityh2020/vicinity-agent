@@ -49,6 +49,8 @@ public class ObjectUpdateActionResource extends AgentResource {
 
             logger.info("UPDATE ACTION STATUS OF LOCAL OBJECT: ");
             logger.info("AID: " + aid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             if(entity == null) {
                 throw new Exception("Empty payload!");
@@ -70,7 +72,7 @@ public class ObjectUpdateActionResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.put(endpoint, rawPayload, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

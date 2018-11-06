@@ -30,7 +30,7 @@ public class TestPUT {
         String payload = "{\"x\": y}";
         String path = "/events/live";
         Configuration.gatewayAPIEndpoint = "http://localhost:8181/api";
-        GatewayAPIClient.put(path, payload, login, password);
+        GatewayAPIClient.put(path, payload, login, password, null);
     }
 
 

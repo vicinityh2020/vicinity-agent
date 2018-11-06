@@ -5,10 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.restlet.Context;
 import org.restlet.Response;
-import org.restlet.data.ChallengeResponse;
-import org.restlet.data.Header;
-import org.restlet.data.Reference;
-import org.restlet.data.Status;
+import org.restlet.data.*;
 import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
@@ -160,6 +157,18 @@ public class AgentResource extends ServerResource {
             logger.error("", e);
         }
         return false;
+    }
+
+    public String getQueryString(Form query){
+        if(query != null){
+            String qString = query.getQueryString();
+            if(qString != null && !qString.trim().equals("")){
+                return "?"+qString.trim();
+            }
+        }
+
+        return null;
+
     }
 
     // RESPONSE HANDLER: START

@@ -104,19 +104,22 @@ public class GatewayAPIClient {
 
     public static void login(String login, String password) throws Exception {
         logger.info("doing login: ["+login+"]["+password+"]");
-        get(LOGIN_ENDPOINT, login, password);
+        get(LOGIN_ENDPOINT, login, password, null);
     }
 
     public static void logout(String login, String password) throws Exception {
         logger.info("doing logout: ["+login+"]["+password+"]");
-        get(LOGOUT_ENDPOINT, login, password);
+        get(LOGOUT_ENDPOINT, login, password, null);
     }
 
-    public static ClientResponse get(String path, String login, String password) throws Exception {
+    public static ClientResponse get(String path, String login, String password, String query) throws Exception {
         try{
 
 
             String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+            if(query != null){
+                callEndpoint = callEndpoint+query;
+            }
 
             logger.info("GTW API GET:");
             logger.info("path: " + path);
@@ -179,11 +182,14 @@ public class GatewayAPIClient {
 
     }
 
-    public static ClientResponse delete(String path, String login, String password) throws Exception {
+    public static ClientResponse delete(String path, String login, String password, String query) throws Exception {
         try{
 
 
             String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+            if(query != null){
+                callEndpoint = callEndpoint+query;
+            }
 
             logger.info("GTW API DELETE:");
             logger.info("path: " + path);
@@ -247,11 +253,14 @@ public class GatewayAPIClient {
 
     }
 
-    public static ClientResponse post(String path, String payload, String login, String password) throws Exception {
+    public static ClientResponse post(String path, String payload, String login, String password, String query) throws Exception {
         try{
 
 
             String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+            if(query != null){
+                callEndpoint = callEndpoint+query;
+            }
 
             logger.info("GTW API POST:");
             logger.info("path: " + path);
@@ -341,11 +350,14 @@ public class GatewayAPIClient {
 
     }
 
-    public static ClientResponse put(String path, String payload, String login, String password) throws Exception {
+    public static ClientResponse put(String path, String payload, String login, String password, String query) throws Exception {
         try{
 
 
             String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+            if(query != null){
+                callEndpoint = callEndpoint+query;
+            }
 
             logger.info("GTW API PUT:");
             logger.info("path: " + path);

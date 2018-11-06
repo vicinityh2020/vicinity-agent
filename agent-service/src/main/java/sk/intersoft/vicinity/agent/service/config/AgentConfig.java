@@ -163,7 +163,7 @@ public class AgentConfig {
         logger.info("ACQUIRE LAST CONFIGURATION");
         configurationThings = new ThingDescriptions();
 
-        ClientResponse configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password);
+        ClientResponse configData = GatewayAPIClient.get(GatewayAPIClient.configurationEndpoint(agentId), agentId, password, null);
         logger.debug("Configuration raw response: \n" + configData);
         if(!configData.isOK()){
             throw new Exception("wrong response .. fail!");

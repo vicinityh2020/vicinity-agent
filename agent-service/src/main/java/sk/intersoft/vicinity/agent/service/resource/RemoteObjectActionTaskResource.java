@@ -28,6 +28,8 @@ public class RemoteObjectActionTaskResource extends AgentResource {
             logger.info("OID: " + oid);
             logger.info("AID: " + aid);
             logger.info("TASK-ID: " + tid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             ThingDescription thing = getCallerObject();
             logger.info("CALLER THING: " + thing.toSimpleString());
@@ -36,7 +38,7 @@ public class RemoteObjectActionTaskResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.get(endpoint, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.get(endpoint, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);
@@ -61,6 +63,8 @@ public class RemoteObjectActionTaskResource extends AgentResource {
             logger.info("OID: " + oid);
             logger.info("AID: " + aid);
             logger.info("TASK-ID: " + tid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
             ThingDescription thing = getCallerObject();
             logger.info("CALLER THING: " + thing.toSimpleString());
@@ -69,7 +73,7 @@ public class RemoteObjectActionTaskResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.delete(endpoint, thing.oid, thing.password);
+            ClientResponse gtwResponse = GatewayAPIClient.delete(endpoint, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

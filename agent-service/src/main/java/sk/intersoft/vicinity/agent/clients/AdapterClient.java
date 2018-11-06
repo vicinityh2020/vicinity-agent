@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.restlet.data.Form;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,12 +28,18 @@ public class AdapterClient {
 
     }
 
-    public static ClientResponse delete(String endpoint) throws Exception {
+    public static ClientResponse delete(String endpoint, String query) throws Exception {
         try{
             logger.info("DELETE ENDPOINT: " + endpoint);
+            logger.info("query: " + query);
+
+            String qEndpoint = endpoint;
+            if(query != null) qEndpoint = endpoint+query;
+
+            logger.info("DELETE ENDPOINT+QUERY: " + qEndpoint);
             HttpClient client = getClient();
 
-            HttpDelete request = new HttpDelete(endpoint);
+            HttpDelete request = new HttpDelete(qEndpoint);
             HttpResponse response = client.execute(request);
 
             int status = response.getStatusLine().getStatusCode();
@@ -52,12 +59,19 @@ public class AdapterClient {
 
     }
 
-    public static ClientResponse get(String endpoint) throws Exception {
+    public static ClientResponse get(String endpoint, String query) throws Exception {
         try{
             logger.info("GET ENDPOINT: " + endpoint);
+            logger.info("query: " + query);
+
+            String qEndpoint = endpoint;
+            if(query != null) qEndpoint = endpoint+query;
+
+            logger.info("GET ENDPOINT+QUERY: " + qEndpoint);
+
             HttpClient client = getClient();
 
-            HttpGet request = new HttpGet(endpoint);
+            HttpGet request = new HttpGet(qEndpoint);
             request.addHeader("Content-Type", "application/json; charset=utf-8");
             HttpResponse response = client.execute(request);
 
@@ -78,14 +92,21 @@ public class AdapterClient {
 
     }
 
-    public static ClientResponse post(String endpoint, String payload) throws Exception {
+    public static ClientResponse post(String endpoint, String payload, String query) throws Exception {
         try{
             logger.info("POST ENDPOINT: " + endpoint);
             logger.info("POST DATA: \n"+payload);
+            logger.info("query: " + query);
+
+            String qEndpoint = endpoint;
+            if(query != null) qEndpoint = endpoint+query;
+
+            logger.info("POST ENDPOINT+QUERY: " + qEndpoint);
+
 
             HttpClient client = getClient();
 
-            HttpPost request = new HttpPost(endpoint);
+            HttpPost request = new HttpPost(qEndpoint);
 
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
@@ -113,14 +134,20 @@ public class AdapterClient {
 
     }
 
-    public static ClientResponse put(String endpoint, String payload) throws Exception {
+    public static ClientResponse put(String endpoint, String payload, String query) throws Exception {
         try{
             logger.info("PUT ENDPOINT: " + endpoint);
             logger.info("PUT DATA: \n"+payload);
+            logger.info("query: " + query);
+
+            String qEndpoint = endpoint;
+            if(query != null) qEndpoint = endpoint+query;
+
+            logger.info("PUT ENDPOINT+QUERY: " + qEndpoint);
 
             HttpClient client = getClient();
 
-            HttpPut request = new HttpPut(endpoint);
+            HttpPut request = new HttpPut(qEndpoint);
 
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");

@@ -78,3 +78,5 @@ on Neighbourhood manager when thing violates or does not violate the contract
     if error happens on local node, response has status Internal Server Error 500. If
     error happens on remote node, status is 200, payload contains full description of error
     and status code.
+
+* Query parameter of agent calls are propagated to adapter and to gtw in all directions of communication.

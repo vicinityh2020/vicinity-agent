@@ -2,6 +2,7 @@ package sk.intersoft.vicinity.agent.service.resource;
 
 import org.json.JSONObject;
 import org.restlet.data.ClientInfo;
+import org.restlet.data.Form;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Put;
@@ -31,6 +32,9 @@ public class ObjectPropertyResource extends AgentResource {
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
 
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
+
             ClientInfo info = getClientInfo();
             logger.info("client: "+info);
             if(info != null){
@@ -44,9 +48,10 @@ public class ObjectPropertyResource extends AgentResource {
 
             String endpoint = AdapterEndpoint.getEndpoint(thing, pid, InteractionPattern.PROPERTY, InteractionPatternEndpoint.READ);
 
+
             logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.get(endpoint);
+            ClientResponse adapterResponse = AdapterClient.get(endpoint, query);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
             return adapterSuccess(adapterResponse);
@@ -66,6 +71,8 @@ public class ObjectPropertyResource extends AgentResource {
             logger.info("SETTING LOCAL PROPERTY VALUE TARGET FOR: ");
             logger.info("OID: " + oid);
             logger.info("PID: " + pid);
+            String query = getQueryString(getQuery());
+            logger.info("QUERY: " + query);
 
 
             ClientInfo info = getClientInfo();
@@ -90,7 +97,7 @@ public class ObjectPropertyResource extends AgentResource {
 
             logger.info("SET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload);
+            ClientResponse adapterResponse = AdapterClient.put(endpoint, rawPayload, query);
             logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
             return adapterSuccess(adapterResponse);
