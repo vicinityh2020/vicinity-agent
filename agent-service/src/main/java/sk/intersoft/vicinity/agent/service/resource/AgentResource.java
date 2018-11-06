@@ -210,6 +210,7 @@ public class AgentResource extends ServerResource {
         out.put("statusCode", status.getCode());
         out.put("statusCodeReason", status.getReasonPhrase() + ": " + e.getMessage());
         out.put("message", new JSONArray());
+        logger.debug("return error ("+getResponse().getStatus()+"): "+out.toString());
 
         return out;
     }
@@ -241,6 +242,8 @@ public class AgentResource extends ServerResource {
         JSONObject error = new JSONObject();
         error.put("error", true);
         error.put("reason", e.getMessage());
+
+        logger.debug("return error ("+getResponse().getStatus()+"): "+error.toString());
         return error;
     }
 
