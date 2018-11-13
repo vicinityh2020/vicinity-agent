@@ -452,7 +452,7 @@ A task on a remote object can be cancelled, if it is either in the
 
 To cancel the task, Agent provides the endpoint:
 ```
-GET: /remote/objects/{oid}/actions/{aid}/task/{tid}
+DELETE: /remote/objects/{oid}/actions/{aid}/task/{tid}
 ```
 
 **The request header must contain key-value pairs** identifying the object requesting the information:
