@@ -414,7 +414,7 @@ status you receive can be one of the following:
 To get the action status, Agent implements the endpoint:
 
 ```
-GET: /remote/objects/{oid}/actions/{aid}/task/{tid}
+GET: /remote/objects/{oid}/actions/{aid}/tasks/{tid}
 ```
 
 **The request header must contain key-value pairs** identifying the object requesting the information:
