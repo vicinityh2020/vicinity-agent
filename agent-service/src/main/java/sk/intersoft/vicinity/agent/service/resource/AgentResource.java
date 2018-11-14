@@ -184,7 +184,7 @@ public class AgentResource extends ServerResource {
         getResponse().setStatus(Status.SUCCESS_OK);
 
         JSONObject out = new JSONObject();
-        out.put("error", true);
+        out.put("error", false);
         out.put("statusCode", status.getCode());
         out.put("statusCodeReason", status.getReasonPhrase());
         JSONArray msgArray = new JSONArray();
