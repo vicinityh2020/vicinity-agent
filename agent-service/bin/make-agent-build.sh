@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.6.3
+VERSION=0.6.3.1
 
 echo "preparing agent build for $VERSION"
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.6.3
+VERSION=0.6.3.1
 
 echo "preparing adapter build for $VERSION"
 

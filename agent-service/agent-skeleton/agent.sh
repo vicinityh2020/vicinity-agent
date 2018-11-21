@@ -6,7 +6,7 @@ AGENT_CONFIG_FOLDER=config/agents
 
 LOGS_FOLDER=logs
 
-JAR=agent-service-full-0.6.3.jar
+JAR=agent-service-full-0.6.3.1.jar
 
 # ==============================
 # DON'T TOUCH ANYTHING BELOW

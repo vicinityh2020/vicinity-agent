@@ -1,7 +1,7 @@
 @echo off
 
 set SERVER_PORT=9998
-set JAR=example-adapter-0.6.3.jar
+set JAR=example-adapter-0.6.3.1.jar
 
 set ADAPTER_ID=example-adapter
 
