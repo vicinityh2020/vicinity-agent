@@ -79,7 +79,7 @@ on Neighbourhood manager when thing violates or does not violate the contract
     error happens on remote node, status is 200, payload contains full description of error
     and status code.
 
-* **Agent payload wrapper is not used anymore.** Agent Service wrapped the data from adapters into
+* **Agent payload wrapper is not used anymore.** Agent Service used to wrap the data from adapters into
     ```
     {
         "data": data from adapter,
