@@ -79,6 +79,16 @@ on Neighbourhood manager when thing violates or does not violate the contract
     error happens on remote node, status is 200, payload contains full description of error
     and status code.
 
-* Query parameter of agent calls are propagated to adapter and to gtw in all directions of communication.
+* *Agent payload wrapper is not used anymore*. Agent wrapped the data from adapter into
+```
+{
+    "data": data from adapter,
+    "status": "success/failure",
+}
+```
+    this wrapper is not used anymore! Data from adapters are retrieved untouched.
+
+
+* Query parameters of agent calls are propagated to adapter and to gtw in all directions of communication.
 
 ## to next version:
