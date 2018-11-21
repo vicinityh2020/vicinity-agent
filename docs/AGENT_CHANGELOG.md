@@ -80,12 +80,12 @@ on Neighbourhood manager when thing violates or does not violate the contract
     and status code.
 
 * *Agent payload wrapper is not used anymore*. Agent wrapped the data from adapter into
-```
-{
-    "data": data from adapter,
-    "status": "success/failure",
-}
-```
+    ```
+    {
+        "data": data from adapter,
+        "status": "success/failure",
+    }
+    ```
     this wrapper is not used anymore! Data from adapters are retrieved untouched.
 
 
