@@ -72,7 +72,7 @@ on Neighbourhood manager when thing violates or does not violate the contract
     agent discovery process is successfull, so all required configuration information is
     clearly known.
 
-## to next version:
+## 0.6.3.1:
 
 * Added error propagation from Gateway API and Adapters. Now, all payloads should be uniform,
     if error happens on local node, response has status Internal Server Error 500. If
@@ -80,3 +80,5 @@ on Neighbourhood manager when thing violates or does not violate the contract
     and status code.
 
 * Query parameter of agent calls are propagated to adapter and to gtw in all directions of communication.
+
+## to next version:
