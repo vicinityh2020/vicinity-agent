@@ -207,18 +207,24 @@ public class AdapterConfig {
     }
 
     public static void subscribeEventChannel(ThingDescription thing, String oid, String eventId) throws Exception {
-        GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password, null);
+        GatewayAPIClient.post(GatewayAPIClient.getSubscribeEventChannelEndpoint(oid, eventId), null, thing.oid, thing.password, null, false);
     }
 
-    public void subscribeEventChannels(){
-        logger.debug("SUBSCRIBING EVENT CHANNELS ["+eventSubscriptions.size()+"] FOR ADAPTER "+toSimpleString());
+    public void subscribeEventChannels(boolean doLog){
+        if(doLog){
+            logger.debug("SUBSCRIBING EVENT CHANNELS ["+eventSubscriptions.size()+"] FOR ADAPTER "+toSimpleString());
+        }
 
         for(EventChannelSubscription e : eventSubscriptions){
-            logger.debug("SUBSCRIBING TO EVENT CHANNEL: "+e.toString());
+            if(doLog) {
+                logger.debug("SUBSCRIBING TO EVENT CHANNEL: " + e.toString());
+            }
             try{
                 ThingDescription thing = things.byAdapterInfrastructureID.get(ThingDescription.identifier(e.infrastructureId, adapterId));
                 if(thing != null){
-                    logger.debug("SUBSCRIBING THING: "+thing.toSimpleString());
+                    if(doLog) {
+                        logger.debug("SUBSCRIBING THING: " + thing.toSimpleString());
+                    }
                     subscribeEventChannel(thing, e.oid, e.eventId);
                 }
                 else throw new Exception("thing with [infrastructure-id:"+e.infrastructureId+"] does not exist!");
@@ -399,7 +405,7 @@ public class AdapterConfig {
             login();
 
             openEventChannels();
-            subscribeEventChannels();
+            subscribeEventChannels(true);
 
             if(activeDiscovery && !recover){
                 logger.debug("DISCOVERED ADAPTER ["+adapterId+"] IS ACTIVE AND THIS IS NOT RECOVERY .. SAVING CONFIGURATION FOR DISCOVERY");

@@ -22,10 +22,10 @@ public class ContinualSubscription  implements Runnable  {
     }
 
     private void subscribe(){
-        logger.info("RUNNING CONTINUAL SUBSCRIPTION FOR ["+Configuration.adapters.keySet().size()+"] CONFIGURED ADAPTERS");
+//        logger.info("RUNNING CONTINUAL SUBSCRIPTION FOR ["+Configuration.adapters.keySet().size()+"] CONFIGURED ADAPTERS");
         for (Map.Entry<String, AdapterConfig> entry : Configuration.adapters.entrySet()) {
             AdapterConfig adapter = entry.getValue();
-            adapter.subscribeEventChannels();
+            adapter.subscribeEventChannels(false);
         }
     }
 

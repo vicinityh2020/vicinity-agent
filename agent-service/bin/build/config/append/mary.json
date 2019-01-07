@@ -1,0 +1,53 @@
+
+{
+  "credentials": {
+    "agent-id": "069d282c-7f43-4679-a1c1-d4ec0d9d1ec1",
+    "password": "justtest"
+  },
+  "adapters": [
+    {
+      "adapter-id": "TestGDPR",
+      "active-discovery": true,
+      "endpoint": "http://160.40.49.115:8080/PressureMat-0.0.1-SNAPSHOT",
+      "events": {
+        "subscriptions": [
+          {
+            "infrastructure-id": "test_gdpr",
+            "oid": "baa5e05c-4bbf-4a1c-8605-7a06506953a6",
+            "eid": "freezer_door"
+          },
+          {
+            "infrastructure-id": "test_gdpr",
+            "oid": "baa5e05c-4bbf-4a1c-8605-7a06506953a6",
+            "eid": "refrigerator_door"
+          },
+          {
+            "infrastructure-id": "test_gdpr",
+            "oid": "115ecfb8-4d2b-4490-a1be-b9cd243420ed",
+            "eid": "door"
+          },
+          {
+            "infrastructure-id": "test_gdpr",
+            "oid": "5055aed3-a367-4c70-877d-096ffab75c6b",
+            "eid": "entry"
+          },
+          {
+            "infrastructure-id": "test_gdpr",
+            "oid": "a0e7e46f-0f56-4c93-abdf-8a00f96c717f",
+            "eid": "entry"
+          }
+        ]
+      }
+    },
+    {
+      "adapter-id": "adapter3.1.2",
+      "active-discovery": true,
+      "endpoint": "http://160.40.49.115:8081"
+    },
+    {
+      "adapter-id": "adapter3.2.2",
+      "active-discovery": true,
+      "endpoint": "http://160.40.49.115:8082"
+    }
+  ]
+}

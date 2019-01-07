@@ -45,7 +45,7 @@ public class GatewayAPIClient {
 
     // configuration:
     public static String configurationEndpoint(String agentId) {
-      return "/agents/"+agentId+"/objects";
+        return "/agents/"+agentId+"/objects";
     }
 
     public static String createEndpoint(String agentId) {
@@ -253,7 +253,12 @@ public class GatewayAPIClient {
 
     }
 
-    public static ClientResponse post(String path, String payload, String login, String password, String query) throws Exception {
+    public static ClientResponse post(String path,
+                                      String payload,
+                                      String login,
+                                      String password,
+                                      String query,
+                                      boolean doLog) throws Exception {
         try{
 
 
@@ -262,14 +267,17 @@ public class GatewayAPIClient {
                 callEndpoint = callEndpoint+query;
             }
 
-            logger.info("GTW API POST:");
-            logger.info("path: " + path);
-            logger.info("endpoint: " + callEndpoint);
-            logger.info("payload: " + payload);
-            logger.info("credentials: ");
-            logger.info("login: " + login);
-            logger.info("password: " + password);
-            logger.info("headers set to [application/json; charset=utf-8]");
+            if(doLog){
+                logger.info("GTW API POST:");
+                logger.info("path: " + path);
+                logger.info("endpoint: " + callEndpoint);
+                logger.info("payload: " + payload);
+                logger.info("credentials: ");
+                logger.info("login: " + login);
+                logger.info("password: " + password);
+                logger.info("headers set to [application/json; charset=utf-8]");
+
+            }
 
 
 
@@ -303,8 +311,9 @@ public class GatewayAPIClient {
 //
 //
 //            return responseContent;
-
-            logger.info("using restlet client ...");
+            if(doLog){
+                logger.info("using restlet client ...");
+            }
 
             Writer writer = new StringWriter();
 
@@ -315,27 +324,39 @@ public class GatewayAPIClient {
             if(payload != null && !payload.trim().equals("")){
                 payloadContent = new JsonRepresentation(payload);
             }
-            logger.info("posting .. "+payloadContent);
+            if(doLog){
+                logger.info("posting .. "+payloadContent);
+            }
+
             Representation responseRepresentation = clientResource.post(payloadContent, MediaType.APPLICATION_JSON);
-            logger.info("post done with: "+responseRepresentation);
+
+            if(doLog) {
+                logger.info("post done with: " + responseRepresentation);
+            }
 
             if (responseRepresentation != null){
 
-                logger.info("response exists");
+                if(doLog) {
+                    logger.info("response exists");
+                }
 
                 responseRepresentation.write(writer);
 
                 // your return values:
                 String response = writer.toString();
 
-                logger.info("response: "+response);
+                if(doLog) {
+                    logger.info("response: " + response);
+                }
 
                 int returnCode = clientResource.getStatus().getCode();
                 String returnCodeReason = clientResource.getStatus().getReasonPhrase();
 
-                logger.info("RESPONSE: "+response);
-                logger.info("code: "+returnCode);
-                logger.info("reason: "+returnCodeReason);
+                if(doLog) {
+                    logger.info("RESPONSE: " + response);
+                    logger.info("code: " + returnCode);
+                    logger.info("reason: " + returnCodeReason);
+                }
 
                 return new ClientResponse(returnCode, returnCodeReason, response);
 
@@ -350,6 +371,10 @@ public class GatewayAPIClient {
 
     }
 
+
+    public static ClientResponse post(String path, String payload, String login, String password, String query) throws Exception {
+        return post(path, payload, login, password, query, true);
+    }
     public static ClientResponse put(String path, String payload, String login, String password, String query) throws Exception {
         try{
 
