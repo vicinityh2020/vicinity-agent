@@ -96,9 +96,9 @@ public class TestThingDescription {
 
     public static void main(String[] args) throws Exception {
         TestThingDescription p = new TestThingDescription();
-//        p.process();
+        p.process();
 //        p.predicate();
-        p.x();
+//        p.x();
     }
 
 }

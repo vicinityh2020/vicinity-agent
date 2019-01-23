@@ -1,15 +1,15 @@
 #!/bin/bash
 
 SERVER_PORT=9995
-JAR=example-adapter-0.6.3.jar
+JAR=example-adapter-0.6.3.2.jar
 
 ADAPTER_ID=adapter-1
 
 AGENT_ENDPOINT=http://localhost:9997/agent
-#OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
+OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
 ACTIVE_OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/disco-objects-1.json
 
-OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/nikolaj-case/nikolaj.json
+#OBJECTS_FILE=/home/kostelni/work/eu-projekty/vicinity/github-workspace/vicinity-agent/testing-adapter/src/test/resources/objects/nikolaj-case/nikolaj.json
 
 COMMAND=$1
 

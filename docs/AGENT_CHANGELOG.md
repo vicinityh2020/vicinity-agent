@@ -92,3 +92,7 @@ on Neighbourhood manager when thing violates or does not violate the contract
 * Query parameters of agent calls are propagated to adapter and to gtw in all directions of communication.
 
 ## to next version:
+
+* Added possibility to specify the static value of property for reading. If
+    static value is specified, if requested, agent responds directly with this
+    value without requesting it from adapter

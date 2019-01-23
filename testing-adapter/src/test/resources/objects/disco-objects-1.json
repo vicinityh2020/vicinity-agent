@@ -7,10 +7,13 @@
             "type": "core:Device",
             "properties": [
                 {
-                    "pid": "brightness",
+                    "pid": "static",
                     "monitors": "adapters:LightColor",
                     "read_link": {
-                        "href": "/device/{oid}/property/{pid}",
+                        "href": "/objects/{oid}/properties/{pid}",
+                        "static-value": {
+                            "value": "goes here"
+                        },
                         "output": {
                             "type": "object",
                             "field": [
@@ -28,149 +31,11 @@
                                 }
                             ]
                         }
-                    },
-                    "write_link": {
-                        "href": "/bulb/set-brightness/{oid}",
-                        "input": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "brightness-level",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        },
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "success",
-                                    "schema": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            ]
-                        }
                     }
-                }
-            ],
-            "actions": [
+                },
                 {
-                    "aid": "set-brightness",
-                    "affects": "adapters:LightColor",
-                    "read_link": {
-                        "href": "/device/{oid}/status/{aid}",
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "action",
-                                    "schema": {
-                                        "type": "string"
-                                    }
-                                },
-                                {
-                                    "name": "status",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "write_link": {
-                        "href": "/bulb/set-brightness/{oid}",
-                        "input": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "brightness-level",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        },
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "success",
-                                    "schema": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "events": [
-                {
-                    "eid": "set-brightness",
+                    "pid": "dynamic",
                     "monitors": "adapters:LightColor",
-                    "output": {
-                        "type": "object",
-                        "field": [
-                            {
-                                "name": "observed-property",
-                                "schema": {
-                                    "type": "string"
-                                }
-                            },
-                            {
-                                "name": "value",
-                                "schema": {
-                                    "type": "integer"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-
-        {
-            "oid": "test-2",
-            "name": "test me: αβγ 你好",
-            "type": "core:Device",
-            "actions": [
-                {
-                    "aid": "test-action",
-                    "affects": "adapters:ValvePosition",
-                    "write_link": {
-                        "href": "/objects/{oid}/actions/{aid}",
-                        "input": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "brightness-level",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        },
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "success",
-                                    "schema": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "properties": [
-                {
-                    "pid": "test-property",
-                    "monitors": "adapters:ValvePosition",
                     "read_link": {
                         "href": "/objects/{oid}/properties/{pid}",
                         "output": {
@@ -190,51 +55,11 @@
                                 }
                             ]
                         }
-                    },
-                    "write_link": {
-                        "href": "/objects/{oid}/properties/{pid}",
-                        "input": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "brightness-level",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        },
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "success-update",
-                                    "schema": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            ]
-                        }
                     }
                 }
             ],
-            "events": [
-                {
-                    "eid": "test-event",
-                    "monitors": "adapters:ValvePosition",
-                    "output": {
-                        "type": "object",
-                        "field": [
-                            {
-                                "name": "value",
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
+            "actions": [],
+            "events": []
         }
 
     ]

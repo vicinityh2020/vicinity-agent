@@ -9,6 +9,10 @@
             "monitors": "Luminance",
             "read_link": {
                 "href": "/device/{oid}/property/{pid}",
+                "static-value": {
+                    "a": "b",
+                    "c": "d"
+                },
                 "output": {
                     "type": "object",
                     "description": "person name and address",

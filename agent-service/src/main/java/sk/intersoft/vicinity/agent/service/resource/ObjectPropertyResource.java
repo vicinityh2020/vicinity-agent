@@ -46,15 +46,29 @@ public class ObjectPropertyResource extends AgentResource {
             ThingDescription thing = getThingByOID(oid);
             logger.info("ADAPTER THING FOR OID [" + oid + "]: " + thing.toSimpleString());
 
-            String endpoint = AdapterEndpoint.getEndpoint(thing, pid, InteractionPattern.PROPERTY, InteractionPatternEndpoint.READ);
+            InteractionPattern pattern = thing.getInteractionPattern(pid, InteractionPattern.PROPERTY);
+            logger.info("property pattern: \n" + pattern.toString(1));
+            logger.info("read link: " + pattern.readEndpoint);
+            if(pattern.readEndpoint != null && pattern.readEndpoint.staticValue != null){
+                logger.info("has static value: " + pattern.readEndpoint.staticValue);
+                logger.info("returning static");
+                ClientResponse staticResponse = new ClientResponse(200, "OK", pattern.readEndpoint.staticValue.toString());
+                return adapterSuccess(staticResponse);
+            }
+            else {
+                logger.info("has NOT static value .. asking from adapter");
+
+                String endpoint = AdapterEndpoint.getEndpoint(thing, pid, InteractionPattern.PROPERTY, InteractionPatternEndpoint.READ);
 
 
-            logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
+                logger.info("GET PROPERTY ADAPTER ENDPOINT: [" + endpoint + "]");
 
-            ClientResponse adapterResponse = AdapterClient.get(endpoint, query);
-            logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
+                ClientResponse adapterResponse = AdapterClient.get(endpoint, query);
+                logger.info("ADAPTER RAW RESPONSE: \n" + adapterResponse);
 
-            return adapterSuccess(adapterResponse);
+                return adapterSuccess(adapterResponse);
+            }
+
 
         } catch (Exception e) {
             logger.error("GET OBJECT PROPERTY FAILURE! ", e);
