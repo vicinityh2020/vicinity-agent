@@ -1,0 +1,44 @@
+{
+    "oid": "test3",
+    "adapter-id": "test",
+    "name": "human reads my name here",
+    "type": "Lightbulb",
+    "located-in": [
+        {
+            "location_type": "geo:Kokot",
+            "label": "geo:Kokot label"
+        },
+        {
+            "location_type": "geo:Chuj",
+            "label": "geo:Chuj label"
+        }
+    ],
+    "properties": [
+        {
+            "pid": "latitude",
+            "monitors": "adapters:GPSLatitude",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "static-value": {
+                    "gps-lat": "goes here"
+                },
+                "output": {
+                    "type": "object",
+                    "description": "gps lat",
+                    "field": [
+                        {
+                            "name": "gps-latitude",
+                            "predicate": "core:value",
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                }
+
+            }
+        }
+    ],
+    "actions": [],
+    "events": []
+}

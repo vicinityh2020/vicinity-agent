@@ -9,6 +9,7 @@ import sk.intersoft.vicinity.agent.service.config.processor.ThingDescriptions;
 import sk.intersoft.vicinity.agent.utils.Dump;
 import sk.intersoft.vicinity.agent.utils.JSONUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,8 @@ public class ThingDescription {
     public Map<String, InteractionPattern> actions = new HashMap<String, InteractionPattern>();
     public Map<String, InteractionPattern> events = new HashMap<String, InteractionPattern>();
 
+    public Map<String, ThingLocation> locations = new HashMap<String, ThingLocation>();
+
     public Map<String, String> jsonExtension = new HashMap<String, String>();
 
     // for comparator:
@@ -48,6 +51,7 @@ public class ThingDescription {
     public static String PROPERTIES_KEY = "properties";
     public static String ACTIONS_KEY = "actions";
     public static String EVENTS_KEY = "events";
+    public static String LOCATED_IN_KEY = "located-in";
 
 
     public InteractionPattern getInteractionPattern(String patternID, String patternType) throws Exception {
@@ -180,6 +184,26 @@ public class ThingDescription {
                 }
             }
 
+            List<JSONObject> locations = JSONUtil.getObjectArray(LOCATED_IN_KEY, thingJSON);
+            if(locations != null){
+                for(JSONObject location : locations){
+                    ThingLocation loc = ThingLocation.create(location, validator);
+                    if(loc == null)
+                        fail = true;
+                    else{
+                        ThingLocation existing = thing.locations.get(loc.className);
+                        if(existing != null){
+                            validator.error("Duplicate location for [type]:["+loc.className+"]: "+location);
+                            fail = true;
+                        }
+                        else {
+                            thing.locations.put(loc.className, loc);
+                        }
+                    }
+                }
+            }
+
+
             if(fail){
                 validator.error("Unable to process thing: "+validator.identify(thing.oid, thingJSON));
                 return null;
@@ -207,10 +231,12 @@ public class ThingDescription {
         JSONArray jsonProperties = new JSONArray();
         JSONArray jsonActions = new JSONArray();
         JSONArray jsonEvents = new JSONArray();
+        JSONArray jsonLocations = new JSONArray();
 
         object.put(PROPERTIES_KEY, jsonProperties);
         object.put(ACTIONS_KEY, jsonActions);
         object.put(EVENTS_KEY, jsonEvents);
+        object.put(LOCATED_IN_KEY, jsonLocations);
 
         object.put(OID_KEY, thing.oid);
         object.put(TYPE_KEY, thing.type);
@@ -228,6 +254,10 @@ public class ThingDescription {
         for (Map.Entry<String, InteractionPattern> entry : thing.events.entrySet()) {
             InteractionPattern pattern = entry.getValue();
             jsonEvents.put(InteractionPattern.eventJSON(pattern));
+        }
+        for (Map.Entry<String, ThingLocation> entry : thing.locations.entrySet()) {
+            ThingLocation l = entry.getValue();
+            jsonLocations.put(ThingLocation.toJSON(l));
         }
 
         addExtension(thing.jsonExtension, object);
@@ -271,6 +301,12 @@ public class ThingDescription {
         for (Map.Entry<String, InteractionPattern> entry : events.entrySet()) {
             String id = entry.getKey();
             dump.add("EVENT MAPPED KEY: "+id, (indent + 2));
+            dump.add(entry.getValue().toString(indent + 2));
+        }
+        dump.add("LOACTIONS: "+locations.size(), (indent + 1));
+        for (Map.Entry<String, ThingLocation> entry : locations.entrySet()) {
+            String className = entry.getKey();
+            dump.add("LOACTION TYPE: "+className, (indent + 2));
             dump.add(entry.getValue().toString(indent + 2));
         }
 

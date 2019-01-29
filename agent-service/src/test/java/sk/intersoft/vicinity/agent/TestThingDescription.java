@@ -21,12 +21,13 @@ public class TestThingDescription {
 
     public void process() throws Exception{
 //        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/adapter-thing.json"));
-        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-1.json"));
+        JSONObject in = new JSONObject(file2string(new File("").getAbsolutePath() + "/agent-service/src/test/resources/objects/test-2.json"));
 
         ThingValidator validator = new ThingValidator(false);
         try{
             ThingDescription t = ThingDescription.create(in, validator);
-            System.out.println(t.toString(0));
+            System.out.println("READABLE: \n"+t.toString(0));
+            System.out.println("JSON: \n"+ThingDescription.toJSON(t).toString(2));
 
             t.jsonExtension.put("t-key-1", "t-val-1");
             t.jsonExtension.put("t-key-2", "t-val-2");

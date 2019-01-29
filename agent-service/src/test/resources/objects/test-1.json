@@ -3,6 +3,16 @@
     "adapter-id": "test",
     "name": "human reads my name here",
     "type": "Lightbulb",
+    "located-in": [
+        {
+            "type": "geo:Kokot",
+            "label": "geo:Kokot label"
+        },
+        {
+            "type": "geo:Chuj",
+            "label": "geo:Chuj label"
+        }
+    ],
     "properties": [
         {
             "pid": "brightness",
