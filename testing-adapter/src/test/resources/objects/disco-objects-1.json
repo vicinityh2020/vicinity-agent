@@ -5,10 +5,16 @@
             "oid": "test-1",
             "name": "human reads my name here",
             "type": "core:Device",
+            "located-in": [
+                {
+                    "location_type": "s4bldg:Building",
+                    "label": "building label"
+                }
+            ],
             "properties": [
                 {
                     "pid": "static",
-                    "monitors": "adapters:LightColor",
+                    "monitors": "adapters:GPSLatitude",
                     "read_link": {
                         "href": "/objects/{oid}/properties/{pid}",
                         "static-value": {

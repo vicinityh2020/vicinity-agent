@@ -27,6 +27,7 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | properties | array of objects | yes | The array of property interaction patterns [see Property](#property) |
 | actions | array of objects | yes | The array of action interaction patterns [see Action](#action) |
 | events | array of objects | yes | The array of event interaction patterns [see Event](#event)|
+| located-in | array of objects | yes | The array of location meta-data [see Location](#location)|
 | requirements | object | no | The requirement object [see Requirements](#requirements)|
 
 **Validity**
@@ -120,7 +121,8 @@ Link represents the resource for interaction with the object. It is specified as
 | --- | --- | --- | --- |
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
 | input | object | no | The payload of input to interaction pattern for this link. Mandatory for **write_link** |
-| output | object | yes | The payload of output of interaction pattern for this link. Always required. |
+| output | object | yes | The definition of output payload of interaction pattern for this link. Always required. |
+| static-value | object | yes | The definition of static output payload (see below). |
 
 
 In actual implementation of Agent, the **href** should always start with the  **/**. Agent executes link as
@@ -142,6 +144,30 @@ The important change according former thing description is, that link contains t
 It was necessary to move inputs/outputs into links, because different link may produce different outputs (e.g. reading the property value produces different payload as setting this property).
 
 Links for writing must contain mandatory **input** field. **input** describes the schema of payload required to set the property or execute the action.
+
+**Static value** is now accepted only in property read_link.
+If specified: if agent receives request for property and static value is specified,
+it is directly returned to requester. In case of static value, adapter is not
+asked to provide value of property. Value is returned according to TD.
+Static value is specified as JSON object that will be returned as payload for the property read_link.
+Payload specified as static-value must follow the definition of payload specified in **output** data schema.
+
+## Location
+
+It is possible to attach the location meta-data to the thing.
+Location meta-data is the array of location descriptions, each points to the ontology type
+and label (human readable name).
+
+
+| Field name | JSON Construct | Mandatory | Description |
+| --- | --- | --- | --- |
+| location_type | string | yes | Specification of location type, annotation to ontology class. [Ontology annotation](#ontology-annotation) |
+| label | string | yes | Human radable name of location |
+
+
+**Validity**
+* Field **location_type** must contain the existing semantic annotation in VICINITY ontology.
+
 
 ### Requirements
 

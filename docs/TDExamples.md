@@ -6,12 +6,22 @@
     "oid": "bulb1",
     "name": "human reads my name here",
     "type": "core:Device",
+    "located-in": [
+        {
+            "location_type": "s4bldg:Building",
+            "label": "building label"
+        }
+    ],
     "properties": [
         {
             "pid": "brightness",
             "monitors": "adapters:LightColor",
             "read_link": {
                 "href": "/device/{oid}/property/{pid}",
+                "static-value": {
+                    "property": "property name",
+                    "value": "property value"
+                },
                 "output": {
                     "type": "object",
                     "field": [
