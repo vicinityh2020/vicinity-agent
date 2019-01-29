@@ -122,7 +122,7 @@ Link represents the resource for interaction with the object. It is specified as
 | href | string | yes | Adapter endpoint that will be used to interact with pattern. |
 | input | object | no | The payload of input to interaction pattern for this link. Mandatory for **write_link** |
 | output | object | yes | The definition of output payload of interaction pattern for this link. Always required. |
-| static-value | object | yes | The definition of static output payload (see below). |
+| static-value | object | no | The definition of static output payload (see below). |
 
 
 In actual implementation of Agent, the **href** should always start with the  **/**. Agent executes link as
