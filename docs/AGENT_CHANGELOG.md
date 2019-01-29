@@ -96,3 +96,6 @@ on Neighbourhood manager when thing violates or does not violate the contract
 * Added possibility to specify the static value of property for reading. If
     static value is specified, if requested, agent responds directly with this
     value without requesting it from adapter
+
+* Added parsers / validators for thing location information semantic metadata
+  to be attached from TD
