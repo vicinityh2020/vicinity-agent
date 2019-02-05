@@ -10,7 +10,8 @@
         },
         {
             "location_type": "geo:Chuj",
-            "label": "geo:Chuj label"
+            "label": "geo:Chuj label",
+            "location_id": "this type is"
         }
     ],
     "properties": [
