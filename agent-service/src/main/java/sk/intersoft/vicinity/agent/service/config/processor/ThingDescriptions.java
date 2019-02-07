@@ -140,4 +140,14 @@ public class ThingDescriptions {
         return array;
     }
 
+    public JSONArray toJSON() throws Exception {
+        JSONArray array = new JSONArray();
+
+        for (Map.Entry<String, ThingDescription> entry : byAdapterOID.entrySet()) {
+            array.put(ThingDescription.toJSON(entry.getValue()));
+        }
+
+        return array;
+    }
+
 }

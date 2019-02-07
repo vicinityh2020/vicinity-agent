@@ -8,7 +8,8 @@
             "located-in": [
                 {
                     "location_type": "s4bldg:Building",
-                    "label": "building label"
+                    "label": "building label",
+                    "location_id": "http://dbpedia.org/Greece"
                 }
             ],
             "properties": [

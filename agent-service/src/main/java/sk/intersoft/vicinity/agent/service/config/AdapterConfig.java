@@ -376,12 +376,19 @@ public class AdapterConfig {
 
                 logger.debug("PROCESSED ADAPTER THINGS: "+adapterThings.byAdapterInfrastructureID.keySet().size());
                 logger.debug("\n" + adapterThings.toString(0));
+//                logger.debug("\n" + adapterThings.toFullString(0));
+//                logger.debug("\n" + adapterThings.toJSON().toString(0));
 
                 agent.updateLastConfiguration();
                 ThingDescriptions configurationThings = agent.configurationThingsForAdapter(adapterId);
                 logger.debug("CONFIGURATION THINGS FOR ADAPTER: \n"+configurationThings.toString(0));
 
                 discoveredThings =  Discovery.execute(configurationThings, adapterThings, this);
+
+                logger.debug("DISCOVERED THINGS FOR ADAPTER: \n"+configurationThings.toString(0));
+//                logger.debug("\n" + discoveredThings.toFullString(0));
+//                logger.debug("\n" + discoveredThings.toJSON().toString(0));
+
 
                 updateAgentId(discoveredThings);
 

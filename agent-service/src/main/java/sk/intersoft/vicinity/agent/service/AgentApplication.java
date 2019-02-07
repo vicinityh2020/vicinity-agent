@@ -31,6 +31,8 @@ public class AgentApplication extends Application {
     public static final String OBJECT_EVENT_OPEN_PUBLISH = "/events/{eid}";
     public static final String OBJECT_EVENT_SUBSCRIBE_RECEIVE = "/objects/{oid}/events/{eid}";
 
+    public static final String SPARQL = "/sparql";
+
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
 
@@ -85,6 +87,9 @@ public class AgentApplication extends Application {
 
         apiRouter.attach(OBJECT_EVENT_SUBSCRIBE_RECEIVE, SubscribeReceiveEventResource.class);
         apiRouter.attach(OBJECT_EVENT_SUBSCRIBE_RECEIVE+"/", SubscribeReceiveEventResource.class);
+
+        apiRouter.attach(SPARQL, SPARQLResource.class);
+        apiRouter.attach(SPARQL+"/", SPARQLResource.class);
 
         return apiRouter;
     }

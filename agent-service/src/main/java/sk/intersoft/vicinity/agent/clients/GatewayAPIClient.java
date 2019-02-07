@@ -41,6 +41,7 @@ public class GatewayAPIClient {
     public static final String OBJECT_PROPERTY_ENDPOINT = "/objects/{oid}/properties/{pid}";
     public static final String OBJECT_ACTION_ENDPOINT = "/objects/{oid}/actions/{aid}";
     public static final String OBJECT_ACTION_TASK_ENDPOINT = "/objects/{oid}/actions/{aid}/tasks/{tid}";
+    public static final String SPARQL_ENDPOINT = "/sparql";
 
 
     // configuration:
@@ -83,6 +84,9 @@ public class GatewayAPIClient {
     }
     public static String getPublishEventEndpoint(String eventId) {
         return "/events/"+eventId;
+    }
+    public static String getSPARQLEndpoint() {
+        return "/search/sparql";
     }
 
     public static HttpClient getClient(String login, String password) {
