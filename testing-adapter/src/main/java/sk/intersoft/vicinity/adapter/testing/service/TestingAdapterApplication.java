@@ -24,6 +24,8 @@ public class TestingAdapterApplication extends Application {
     public static final String EVENT_LISTENER = "/objects/{iid}/publishers/{oid}/events/{eid}";
     public static final String EVENT_PUBLISHER = "/objects/{iid}/events/{eid}/publish";
 
+    public static final String SLEEP = "/sleep";
+
     public static final String ADAPTER_ID = "adapter-1";
 
     private ChallengeAuthenticator createApiGuard(Restlet next) {
@@ -51,6 +53,7 @@ public class TestingAdapterApplication extends Application {
         apiRouter.attach(POST_CUSTOM_ACTION, CustomActionResource.class);
         apiRouter.attach(EVENT_LISTENER, EventListenerResource.class);
         apiRouter.attach(EVENT_PUBLISHER, EventPublisherResource.class);
+        apiRouter.attach(SLEEP, SleepResource.class);
 
         return apiRouter;
     }

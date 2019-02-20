@@ -12,6 +12,7 @@ import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.data.ChallengeScheme;
 import org.restlet.data.Header;
@@ -89,22 +90,6 @@ public class GatewayAPIClient {
         return "/search/sparql";
     }
 
-    public static HttpClient getClient(String login, String password) {
-
-        CredentialsProvider provider = new BasicCredentialsProvider();
-        UsernamePasswordCredentials credentials
-                = new UsernamePasswordCredentials(login, password);
-        provider.setCredentials(AuthScope.ANY, credentials);
-
-//        logger.info("GTW API CALL CREDENTIALS:");
-//        logger.info("login: ["+login+"]");
-//        logger.info("password: ["+password+"]");
-
-        return HttpClientBuilder.create()
-                .setDefaultCredentialsProvider(provider)
-                .build();
-
-    }
 
     public static void login(String login, String password) throws Exception {
         logger.info("doing login: ["+login+"]["+password+"]");
@@ -317,10 +302,15 @@ public class GatewayAPIClient {
 //            return responseContent;
             if(doLog){
                 logger.info("using restlet client ...");
+                logger.info("using timeout context...");
             }
 
             Writer writer = new StringWriter();
 
+//            Context ctx = new Context();
+//            ctx.getParameters().add("readTimeout", "180000");
+//            ctx.getParameters().add("socketConnectTimeoutMs", "180000");
+//            ClientResource clientResource = new ClientResource(ctx, callEndpoint);
             ClientResource clientResource = new ClientResource(callEndpoint);
             clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, login, password);
 
@@ -484,5 +474,93 @@ public class GatewayAPIClient {
     }
 
 
+    // APACHE OVERRIDE 4 SPARQL: START
+    public static HttpClient getClient(String login, String password) {
+
+        CredentialsProvider provider = new BasicCredentialsProvider();
+        UsernamePasswordCredentials credentials
+                = new UsernamePasswordCredentials(login, password);
+        provider.setCredentials(AuthScope.ANY, credentials);
+
+//        logger.info("GTW API CALL CREDENTIALS:");
+//        logger.info("login: ["+login+"]");
+//        logger.info("password: ["+password+"]");
+
+        return HttpClientBuilder.create()
+                .setDefaultCredentialsProvider(provider)
+                .build();
+
+    }
+
+    public static ClientResponse postApache(String path,
+                                            String payload,
+                                            String login,
+                                            String password,
+                                            String query) throws Exception {
+        try{
+
+
+            String callEndpoint = Configuration.gatewayAPIEndpoint + path;
+//            String callEndpoint = path;
+            if(query != null){
+                callEndpoint = callEndpoint+query;
+            }
+
+            logger.info("GTW APACHE API POST:");
+            logger.info("path: " + path);
+            logger.info("endpoint: " + callEndpoint);
+            logger.info("payload: " + payload);
+            logger.info("credentials: ");
+            logger.info("login: " + login);
+            logger.info("password: " + password);
+            logger.info("headers set to [application/json; charset=utf-8]");
+
+
+            logger.info("using APACHE client ...");
+            logger.info("using timeout context...");
+
+
+
+            HttpClient client = getClient(login, password);
+
+
+            HttpPost request = new HttpPost(callEndpoint);
+            RequestConfig requestConfig = RequestConfig.custom()
+                    .setSocketTimeout(360000)
+                    .setConnectTimeout(360000)
+                    .build();
+            request.setConfig(requestConfig);
+
+
+            request.addHeader("Content-Type", "application/json; charset=utf-8");
+
+            if(payload != null){
+                StringEntity data = new StringEntity(payload, "utf-8");
+                request.setEntity(data);
+            }
+
+
+            HttpResponse response = client.execute(request);
+
+            int returnCode = response.getStatusLine().getStatusCode();
+            String returnCodeReason = response.getStatusLine().getReasonPhrase();
+
+            String responseContent = EntityUtils.toString(response.getEntity());
+
+            logger.info("GTW API response: " + responseContent);
+            logger.info("core: " + returnCode);
+            logger.info("reason: " + returnCodeReason);
+
+
+            return new ClientResponse(returnCode, returnCodeReason, responseContent);
+
+        }
+        catch(Exception e){
+            logger.error("APACHE POST EXCEPTION!!!", e);
+            throw e;
+        }
+
+    }
+    // APACHE OVERRIDE 4 SPARQL: END
 
 }

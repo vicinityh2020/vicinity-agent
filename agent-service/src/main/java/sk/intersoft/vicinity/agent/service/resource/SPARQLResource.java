@@ -36,7 +36,7 @@ public class SPARQLResource extends AgentResource {
 
             logger.info("GTW API ENDPOINT: "+endpoint);
 
-            ClientResponse gtwResponse = GatewayAPIClient.post(endpoint, rawPayload, thing.oid, thing.password, query);
+            ClientResponse gtwResponse = GatewayAPIClient.postApache(endpoint, rawPayload, thing.oid, thing.password, query);
             logger.info("GTW API RAW RESPONSE: \n"+gtwResponse);
 
             return gtwSuccess(gtwResponse);

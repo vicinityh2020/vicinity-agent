@@ -4,7 +4,7 @@
         {
             "oid": "test-1",
             "name": "human reads my name here",
-            "type": "core:Device",
+            "type": "adapters:HumiditySensor",
             "located-in": [
                 {
                     "location_type": "s4bldg:Building",

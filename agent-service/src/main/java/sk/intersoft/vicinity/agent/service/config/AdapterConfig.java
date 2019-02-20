@@ -132,6 +132,7 @@ public class AdapterConfig {
     public void updatePersistence(ThingDescriptions things) throws Exception {
         Persistence.clearAdapter(adapterId);
         logger.debug("persistence cleared for adapter : "+toSimpleString());
+        logger.debug("saving persistence for things : "+things.byAdapterOID.entrySet().size());
         for (Map.Entry<String, ThingDescription> entry : things.byAdapterOID.entrySet()) {
             ThingDescription thing = entry.getValue();
             Persistence.save(thing);
