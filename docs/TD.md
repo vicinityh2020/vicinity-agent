@@ -1,4 +1,4 @@
-# Thing Descriptions for integrators
+# Thing Descriptions for integrators of IoT infrastructures and Value-added services
 
 VICINITY Common Thing Description format is based on [W3C Wot Thing Description working draft](https://www.w3.org/TR/wot-thing-description).
 For purposes of VICINITY it was necessary to slightly change it, but we try to follow it (what is quite tricky sometimes,
@@ -21,9 +21,9 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | --- | --- | --- | --- |
 | oid | string | yes | Infrastructure specific unique identifier of the object |
 | name | string | yes | Human readable name of object visible in Neighbourhood manager |
-| type | string | yes | [Ontology annotation](#ontology-annotation) |
-| version | string | yes |Defines the version of the service. It is possible to have registered different version of the services |
-| keywords | array of strings | yes |Describes the service key features - products. Keywords are used to search service in VICINITY Platform.|
+| type | string | yes | [Ontology annotation](#ontology-annotation) of device or service. If you describe the service (e.g. "type"="core:Service" or subclass), you should define "version" and "keywords" attributes. |
+| version | string | yes |Defines the version of the service (i.e. "type"="core:Service" or sub-class). It is possible to have registered different version of the same service. |
+| keywords | array of strings | yes |Describes the service key features - products (e.g. "Energy audit, Health status, etc."). Keywords are used to search service in VICINITY Platform.|
 | properties | array of objects | yes | The array of property interaction patterns [see Property](#property) |
 | actions | array of objects | yes | The array of action interaction patterns [see Action](#action) |
 | events | array of objects | yes | The array of event interaction patterns [see Event](#event)|
