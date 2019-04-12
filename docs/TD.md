@@ -398,8 +398,8 @@ Example, property produces payload:
 }
 ```
 
-Agora needs to understand, that the real value produced by this JSON is available in *property-value* and
-timestamp is available via *value-read-time*. We add semantic annotations into property "output" data schema.
+Agora needs to understand, that the real **value** produced by this JSON is available in **property-value** field and
+**timestamp** is available via **value-read-time** field. We add semantic annotations into property **output** data schema.
 We will use existing annotations (in the moment, only these two exist):
 * **core:value** : this annotation tells, that JSON key is the value produced by payload
 * **core:timestamp** : this annotation tells, that JSON key is the timestamp produced by payload
@@ -408,8 +408,8 @@ Annotations are attached to object fields in JSON object produced by property.
 
 **Restrictions:**
 * **Agora annotations are now interpreted only in property read_link output**
-* **Agora annotations may be attached only to field in JSON object.
-* ** Each agora annotation may be attached only once in Data Schema.**
+* **Agora annotations may be attached only to field in JSON object.**
+* **Each agora annotation may be attached only once in Data Schema.**
 * **To attach Agora annotation, always use "predicate": "annotation"**.
 
 Agora annotations in Data Schema are automatically translated into semantic model.
