@@ -376,6 +376,81 @@ Fast example of expected payload for array  above:
 ]
 ```
 
+#### Enhancement of Data Schema with Agora annotations
+
+Generally, properties may return any payload. The structure of JSON produced by
+property is not limited (except it must be JSON Object).
+
+Agora component is generally able to work with any payload structure.
+But to enable Agora to properly interpret the produced JSON, the payload must be annotated
+in TD. Agora now works with basic annotations present in semantic model. Concretelly : **value** and **timestamp**.
+This are two possible output features recognized by Agora (of course, semantic model can be easily
+extended to support any new). To enable Agora to understand the output, the parts of JSON produced
+by entity must be annotated.
+
+Example, property produces payload:
+```
+#!json
+{
+    "name": "some human readable name goes here",
+    "property-value": 45.7,
+    "value-read-time": 123232139712,
+}
+```
+
+Agora needs to understand, that the real value produced by this JSON is available in *property-value* and
+timestamp is available via *value-read-time*. We add semantic annotations into property "output" data schema.
+We will use existing annotations (in the moment, only these two exist):
+* **core:value** : this annotation tells, that JSON key is the value produced by payload
+* **core:timestamp** : this annotation tells, that JSON key is the timestamp produced by payload
+
+Annotations are attached to object fields in JSON object produced by property.
+
+**Restrictions:**
+* **Agora annotations are now interpreted only in property read_link output**
+* **Agora annotations may be attached only to field in JSON object.
+* ** Each agora annotation may be attached only once in Data Schema.**
+* **To attach Agora annotation, always use "predicate": "annotation"**.
+
+Agora annotations in Data Schema are automatically translated into semantic model.
+
+Agora annotations are optional.
+
+
+Example of schema annotation:
+```
+#!json
+{
+    "type": "object",
+    "description": "my property produces this payload",
+    "field": [
+        {
+            "name": "name",
+            "description": "name of property",
+            "schema": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "property-value",
+            "description": "here comes real value of my property in this payload",
+            "predicate": "core:value",   // THIS FIELD REPRESENTS THE VALUE
+            "schema": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "value-read-time",
+            "description": "here comes the timestamp produced by my property",
+            "predicate": "core:timestamp", // THIS FIELD REPRESENTS THE TIMESTAMP
+            "schema": {
+                "type": "string"
+            }
+        }
+    ]
+}
+```
+
 
 ## Serialization of Thing Descriptions
 

@@ -5,13 +5,6 @@
             "oid": "test-1",
             "name": "human reads my name here",
             "type": "adapters:HumiditySensor",
-            "located-in": [
-                {
-                    "location_type": "s4bldg:Building",
-                    "label": "building label",
-                    "location_id": "http://dbpedia.org/Greece"
-                }
-            ],
             "properties": [
                 {
                     "pid": "static",
@@ -32,11 +25,17 @@
                                 },
                                 {
                                     "name": "value",
+                                    "predicate": "core:value",
                                     "schema": {
                                         "type": "integer"
                                     }
-                                }
-                            ]
+                                },
+                                {
+                                    "name": "value",
+                                    "schema": {
+                                        "type": "integer"
+                                    }
+                                }                            ]
                         }
                     }
                 },
@@ -65,7 +64,52 @@
                     }
                 }
             ],
-            "actions": [],
+            "actions": [
+                {
+                    "aid": "fick-mich",
+                    "affects": "adapters:GPSLatitude",
+                    "read_link": {
+                        "href": "/objects/{oid}/actions/{pid}",
+                        "output": {
+                            "type": "object",
+                            "field": [
+                                {
+                                    "name": "value",
+                                    "schema": {
+                                        "type": "integer"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "write_link": {
+                        "href": "/objects/{oid}/actions/{pid}",
+                        "input": {
+                            "type": "object",
+                            "field": [
+                                {
+                                    "name": "value",
+                                    "schema": {
+                                        "type": "integer"
+                                    }
+                                }
+                            ]
+                        },
+                        "output": {
+                            "type": "object",
+                            "field": [
+                                {
+                                    "name": "value",
+                                    "schema": {
+                                        "type": "integer"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+
+            ],
             "events": []
         }
 

@@ -33,8 +33,16 @@
                         },
                         {
                             "name": "value",
+                            "predicate": "core:timestamp",
                             "schema": {
                                 "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "time",
+                            "predicate": "core:timestamp",
+                            "schema": {
+                                "type": "long"
                             }
                         }
                     ]
