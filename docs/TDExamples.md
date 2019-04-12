@@ -33,7 +33,7 @@
                         },
                         {
                             "name": "value",
-                            "predicate": "core:timestamp",
+                            "predicate": "core:value",
                             "schema": {
                                 "type": "integer"
                             }

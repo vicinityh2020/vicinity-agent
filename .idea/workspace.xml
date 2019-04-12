@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6aee5373-07b6-4968-9ecf-6144c6bd836c" name="Default" comment="updated docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/TD.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/TD.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/TDExamples.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/TDExamples.md" afterDir="false" />
     </list>
     <ignored path="vicinity-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,7 +75,7 @@
           <entry key="dummy" value="11" />
           <entry key="java" value="21171" />
           <entry key="json" value="1217" />
-          <entry key="md" value="9034" />
+          <entry key="md" value="9064" />
           <entry key="rst" value="4328" />
           <entry key="sh" value="563" />
           <entry key="txt" value="3751" />
@@ -86,7 +86,7 @@
         <counts>
           <entry key="JAVA" value="21171" />
           <entry key="JSON" value="1217" />
-          <entry key="PLAIN_TEXT" value="17792" />
+          <entry key="PLAIN_TEXT" value="17822" />
           <entry key="XML" value="123" />
         </counts>
       </usages-collector>
@@ -124,20 +124,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/TD.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="401" column="66" selection-start-line="401" selection-start-column="66" selection-end-line="401" selection-end-column="66" />
+            <state relative-caret-position="219">
+              <caret line="404" column="73" selection-start-line="404" selection-start-column="73" selection-end-line="404" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/TDExamples.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+            <state relative-caret-position="307">
+              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -304,8 +304,8 @@
         <option value="$PROJECT_DIR$/agent-service/src/main/java/sk/intersoft/vicinity/agent/service/resource/RemoteObjectPropertyResource.java" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/agora-objects.json" />
         <option value="$PROJECT_DIR$/testing-adapter/src/test/resources/objects/disco-objects-1.json" />
-        <option value="$PROJECT_DIR$/docs/TDExamples.md" />
         <option value="$PROJECT_DIR$/docs/TD.md" />
+        <option value="$PROJECT_DIR$/docs/TDExamples.md" />
       </list>
     </option>
   </component>
@@ -1067,20 +1067,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495541046885</updated>
     </task>
-    <task id="LOCAL-00292" summary="testing commit after git tag removal">
-      <created>1539953521355</created>
-      <option name="number" value="00292" />
-      <option name="presentableId" value="LOCAL-00292" />
-      <option name="project" value="LOCAL" />
-      <updated>1539953521355</updated>
-    </task>
-    <task id="LOCAL-00293" summary="releasing v0.6.3 .. prepared agent and adapter skeletons generated for each new release .. added semi-automatic skeketon building to generate new agent/adapter releases">
-      <created>1539959072036</created>
-      <option name="number" value="00293" />
-      <option name="presentableId" value="LOCAL-00293" />
-      <option name="project" value="LOCAL" />
-      <updated>1539959072036</updated>
-    </task>
     <task id="LOCAL-00294" summary="updated docs">
       <created>1539959575081</created>
       <option name="number" value="00294" />
@@ -1410,7 +1396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555070436045</updated>
     </task>
-    <option name="localTasksCounter" value="341" />
+    <task id="LOCAL-00341" summary="updated docs">
+      <created>1555070492590</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
+      <option name="project" value="LOCAL" />
+      <updated>1555070492590</updated>
+    </task>
+    <task id="LOCAL-00342" summary="updated docs">
+      <created>1555070546231</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1555070546231</updated>
+    </task>
+    <option name="localTasksCounter" value="343" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1866,17 +1866,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/TDExamples.md">
+    <entry file="file://$PROJECT_DIR$/docs/TD.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+        <state relative-caret-position="219">
+          <caret line="404" column="73" selection-start-line="404" selection-start-column="73" selection-end-line="404" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/TD.md">
+    <entry file="file://$PROJECT_DIR$/docs/TDExamples.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="401" column="66" selection-start-line="401" selection-start-column="66" selection-end-line="401" selection-end-column="66" />
+        <state relative-caret-position="307">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
         </state>
       </provider>
     </entry>
