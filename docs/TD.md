@@ -399,7 +399,7 @@ Example, property produces payload:
 ```
 
 Agora needs to understand, that the real **value** produced by this JSON is available in **property-value** field and
-**timestamp** is available via **value-read-time** field. We add semantic annotations into property **output** data schema.
+**timestamp** is available via **value-read-time** field. We will add semantic annotations into property **output** data schema.
 We will use existing annotations (in the moment, only these two exist):
 * **core:value** : this annotation tells, that JSON key is the value produced by payload
 * **core:timestamp** : this annotation tells, that JSON key is the timestamp produced by payload
