@@ -9,6 +9,7 @@
     "located-in": [
         {
             "location_type": "s4bldg:Building",
+            "location_id": "http://mybuilding.eu",
             "label": "building label"
         }
     ],

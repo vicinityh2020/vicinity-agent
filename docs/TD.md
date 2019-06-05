@@ -162,7 +162,12 @@ and label (human readable name).
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
 | location_type | string | yes | Specification of location type, annotation to ontology class. [Ontology annotation](#ontology-annotation) |
+| location_id | string | no | Specification of location instance, see below |
 | label | string | yes | Human radable name of location |
+
+**location_id** is the IRI of specific instance, that represents the location. The purpose is
+to be able to identify the same location instance. For example, for Greece country,
+the IRI can be: **http://dbpedia.org/Greece**.
 
 
 **Validity**
