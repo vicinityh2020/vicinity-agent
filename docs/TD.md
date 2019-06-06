@@ -21,7 +21,7 @@ when it is (in)valid and how to understand the *mandatory* parts of description.
 | --- | --- | --- | --- |
 | oid | string | yes | Infrastructure specific unique identifier of the object |
 | name | string | yes | Human readable name of object visible in Neighbourhood manager |
-| type | string | yes | [Ontology annotation](#ontology-annotation) of device or service. If you describe the service (e.g. "type"="core:Service" or subclass), you should define "version" and "keywords" attributes. |
+| type | string | yes | [Ontology annotation](#ontology-annotation) of device or service. For device, use "type"="core:Device" or its subclass. If you describe service, use "type"="core:Service" or subclass. For service, you should define "version" and "keywords" attributes. |
 | version | string | yes |Defines the version of the service (i.e. "type"="core:Service" or sub-class). It is possible to have registered different version of the same service. |
 | keywords | array of strings | yes |Describes the service key features - products (e.g. "Energy audit, Health status, etc."). Keywords are used to search service in VICINITY Platform.|
 | properties | array of objects | yes | The array of property interaction patterns [see Property](#property) |
@@ -161,13 +161,18 @@ and label (human readable name).
 
 | Field name | JSON Construct | Mandatory | Description |
 | --- | --- | --- | --- |
-| location_type | string | yes | Specification of location type, annotation to ontology class. [Ontology annotation](#ontology-annotation) |
+| location_type | string | yes | Specification of location type, annotation to ontology class. [Ontology annotation](#ontology-annotation). See below for more details. |
 | location_id | string | no | Specification of location instance, see below |
 | label | string | yes | Human radable name of location |
 
+**location_type** is ontology class that identifies the location type. All known available location
+type annotations can be found via Neighborhood Manager service: https://api.vicinity.bavenir.eu/api/repository/annotations. In JSON, look for data/location.
+
 **location_id** is the IRI of specific instance, that represents the location. The purpose is
 to be able to identify the same location instance. For example, for Greece country,
-the IRI can be: **http://dbpedia.org/Greece**.
+the IRI can be: **http://dbpedia.org/Greece**. **Location-id** can be any IRI that uniquely identifies the location.
+
+
 
 
 **Validity**
@@ -381,17 +386,18 @@ Fast example of expected payload for array  above:
 ]
 ```
 
-#### Enhancement of Data Schema with Agora annotations
+#### Enhancement of Data Schema with semantic services annotations
 
 Generally, properties may return any payload. The structure of JSON produced by
 property is not limited (except it must be JSON Object).
 
-Agora component is generally able to work with any payload structure.
-But to enable Agora to properly interpret the produced JSON, the payload must be annotated
-in TD. Agora now works with basic annotations present in semantic model. Concretelly : **value** and **timestamp**.
-This are two possible output features recognized by Agora (of course, semantic model can be easily
-extended to support any new). To enable Agora to understand the output, the parts of JSON produced
-by entity must be annotated.
+Semantic services component is generally able to work with any payload structure.
+But to enable semantic services to properly interpret the produced JSON, the payload must be annotated
+in TD. Semantic services now work with basic annotations present in semantic model. Concretely : **value** and **timestamp**.
+This are two possible output features recognized by semantic services (of course, semantic model can be easily
+extended to support any new). To enable semantic services to understand the output, the parts of JSON produced
+by entity may be annotated with
+
 
 Example, property produces payload:
 ```
@@ -403,7 +409,7 @@ Example, property produces payload:
 }
 ```
 
-Agora needs to understand, that the real **value** produced by this JSON is available in **property-value** field and
+Semantic services need to understand, that the real **value** produced by this JSON is available in **property-value** field and
 **timestamp** is available via **value-read-time** field. We will add semantic annotations into property **output** data schema.
 We will use existing annotations (in the moment, only these two exist):
 * **core:value** : this annotation tells, that JSON field represents the **value** produced by payload
@@ -412,14 +418,15 @@ We will use existing annotations (in the moment, only these two exist):
 Annotations are attached to object fields in JSON object produced by property.
 
 **Restrictions:**
-* **Agora annotations are now interpreted only in property read_link output**
-* **Agora annotations may be attached only to field in JSON object.**
-* **Each agora annotation may be attached only once in Data Schema.**
-* **To attach Agora annotation, always use "predicate": "annotation"**.
+* **Semantic services annotations are now interpreted only in property read_link output**
+* **Semantic services annotations may be attached only to field in JSON object.**
+* **Each Semantic services annotation may be attached only once in Data Schema.**
+* **To attach Semantic services annotation, always use "predicate": "annotation"**.
 
-Agora annotations in Data Schema are automatically translated into semantic model.
+Semantic services annotations in Data Schema are automatically translated into semantic model.
+Annotations are not mandatory.
+If they are present in data schema, semantic services may understand the structure of property output payload.
 
-Agora annotations are optional.
 
 
 Example of schema annotation:
@@ -505,3 +512,5 @@ This prevents from possible ambiguity, when importing external models. These may
 use the same names of classes or individuals, but with different prefix (domain namespace).
 
 See the actual [hierarchy of devices and services](http://iot.linkeddata.es/def/adapters/)
+
+All known ontology annotations can be found via Neighborhood Manager service: https://api.vicinity.bavenir.eu/api/repository/annotations
