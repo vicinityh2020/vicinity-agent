@@ -82,8 +82,14 @@ In VICINITY Gateway API, ongoing actions are modelled as task resources, which a
 | --- | --- | --- | --- |
 | aid | string | yes | Unique identifier of the action. Used by all VICINITY components as specified here. |
 | affects | string | yes | Specification of what is affected by action. [Ontology annotation](#ontology-annotation) |
-| read_link | object | no | Definition of interaction to read the property. [see Link](#link) |
-| write_link | object | no | Definition of interaction to set the property. [see Link](#link) |
+| read_link | object | no | Definition of interaction to read the action status and return value. [see Link](#link) |
+| write_link | object | no | Definition of interaction to execute or cancel the action. [see Link](#link) |
+
+* **write_link** is uset to execute or cancel the action. To be able to execute the action.
+* **write_link** must have present description of input parameters to execute action specified in **write_link/input**.
+* **write_link** must have present description of output payload describing the return value of action execution, in **write_link/output**.
+
+* **read_link** basically specifies the output payload of action, when its execution is finished
 
 
 **Validity**
