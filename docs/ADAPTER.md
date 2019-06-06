@@ -23,7 +23,7 @@ Adapter represents the *driver* to specific infrastructure and
 provides services just fir very basic interactions with objects behind it, namely:
 * provide discovery information in *Common VICINITY Thing Description* format
 * get/set object property
-* get status/execute object action
+* get status/execute/cancel object action
 * receive event
 
 Lets look at them in details.
@@ -114,10 +114,19 @@ what Adapter endpoint should be used to set the value of property or execute the
 
 ### How agent interpretes the links in interaction patterns
 
-On the level of Agent, the common interaction patterns in VICINITY are **read/set property** or **read status/execute action**:
+On the level of Agent, the common interaction patterns in VICINITY are **read/set property** or **read status/execute/cancel action**:
+
+**Property:**
 ```
-GET/PUT  /objects/{oid}/properties/{pid}
-GET/POST /objects/{oid}/actions/{aid}
+read property: GET  /objects/{oid}/properties/{pid}
+set property: GET  /objects/{oid}/properties/{pid}
+```
+
+**Action:**
+```
+execute action: POST /objects/{oid}/actions/{aid}
+cancel action: POST /objects/{oid}/actions/{aid}
+read action status: GET  /objects/{oid}/actions/{aid}
 ```
 
 **oid** in request is always VICINITY identifier of object. When such a request arrives into Agent, Agent must translate it
@@ -143,19 +152,6 @@ Adapter always uses the internal, infrastructure specific, identifiers of object
 some of Adapter objects needs to interact with remote object (from another VICINITY node). For example,
 if object representing the value added service needs to access remote objects. In this case, of course,
 the VICINITY **oid** of this remote object must be used.
-
-
-### HTTP Methods for interaction patterns
-
-To follow the REST specification and W3C WoT recommendations, Adapters **must always** implement the following
-http methods in endpoints of the interaction patterns:
-
-| Pattern | link | method |
-| --- | --- | --- |
-| Property | read_link | GET |
-| Property | write_link | PUT |
-| Action | read_link | GET |
-| Action | write_link | POST |
 
 
 ### Examples:

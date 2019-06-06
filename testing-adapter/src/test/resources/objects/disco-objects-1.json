@@ -68,20 +68,6 @@
                 {
                     "aid": "fick-mich",
                     "affects": "adapters:GPSLatitude",
-                    "read_link": {
-                        "href": "/objects/{oid}/actions/{pid}",
-                        "output": {
-                            "type": "object",
-                            "field": [
-                                {
-                                    "name": "value",
-                                    "schema": {
-                                        "type": "integer"
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "write_link": {
                         "href": "/objects/{oid}/actions/{pid}",
                         "input": {
