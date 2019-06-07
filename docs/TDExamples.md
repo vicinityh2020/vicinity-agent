@@ -21,7 +21,8 @@
                 "href": "/device/{oid}/property/{pid}",
                 "static-value": {
                     "property": "property name",
-                    "value": "property value"
+                    "value": "property value",
+                    "time": 12345
                 },
                 "output": {
                     "type": "object",

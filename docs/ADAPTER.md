@@ -125,7 +125,7 @@ set property: GET  /objects/{oid}/properties/{pid}
 **Action:**
 ```
 execute action: POST /objects/{oid}/actions/{aid}
-cancel action: POST /objects/{oid}/actions/{aid}
+cancel action: DELETE /objects/{oid}/actions/{aid}
 read action status: GET  /objects/{oid}/actions/{aid}
 ```
 

@@ -6,7 +6,7 @@ set AGENT_CONFIG_FOLDER=config/agents
 
 set LOGS_FOLDER=logs
 
-set JAR=agent-service-full-0.6.3.1.jar
+set JAR=agent-service-full-0.6.3.2.jar
 
 # ==============================
 # DON'T TOUCH ANYTHING BELOW
